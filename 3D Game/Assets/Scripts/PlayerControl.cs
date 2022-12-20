@@ -5,24 +5,64 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     private Vector3 moveTarget = new Vector3(0, 1, 0);
+    private Vector3 skillTarget = new Vector3(0, 1, 0);
 
-    public float speed;
+    public float moveSpeed;
+    public float projSpeed;
 
-    void Update()
+    public Skill skill;
+
+    public float attackSpeed = 1;
+    private float lastAttack = 0;
+
+    private bool stopMoving = false;
+
+    private void Update()
     {
-        if(Input.GetMouseButton(0))
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
+            if (hit.transform.gameObject.tag == "Ground")
             {
-                if(hit.transform.gameObject.tag == "Ground")
+                if (Input.GetMouseButton(0))
                 {
                     moveTarget = new Vector3(hit.point.x, 1, hit.point.z);
                 }
+
+                skillTarget = new Vector3(hit.point.x, 1, hit.point.z);
             }
         }
+        
+        GetSkillKey("q");
 
-        transform.position = Vector3.MoveTowards(transform.position, moveTarget, speed/100);
+        if(!stopMoving)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, moveTarget, moveSpeed / 100);
+        }
+    }
+
+    private void GetSkillKey(string key)
+    {
+        if (Input.GetKey(key))
+        {
+            stopMoving = true;
+            moveTarget = transform.position;
+
+            if (Time.time - 1 / attackSpeed > lastAttack)
+            {
+                UseSkill();
+                lastAttack = Time.time;
+            }
+        }
+        else
+        {
+            stopMoving = false;
+        }
+    }
+
+    private void UseSkill()
+    {
+        skill.UseSkill(transform.position, skillTarget, projSpeed);
     }
 }
