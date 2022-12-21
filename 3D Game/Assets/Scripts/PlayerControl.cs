@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerControl : MonoBehaviour
 {
-    private Vector3 moveTarget = new Vector3(0, 1, 0);
     private Vector3 skillTarget = new Vector3(0, 1, 0);
 
     public float moveSpeed;
@@ -14,8 +14,6 @@ public class PlayerControl : MonoBehaviour
 
     public float attackSpeed = 1;
     private float lastAttack = 0;
-
-    private bool stopMoving = false;
 
     private void Update()
     {
@@ -27,7 +25,8 @@ public class PlayerControl : MonoBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
-                    moveTarget = new Vector3(hit.point.x, 1, hit.point.z);
+                    GetComponent<NavMeshAgent>().destination = new Vector3(hit.point.x, 1, hit.point.z);
+                    //moveTarget = new Vector3(hit.point.x, 1, hit.point.z);
                 }
 
                 skillTarget = new Vector3(hit.point.x, 1, hit.point.z);
@@ -35,19 +34,13 @@ public class PlayerControl : MonoBehaviour
         }
         
         GetSkillKey("q");
-
-        if(!stopMoving)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, moveTarget, moveSpeed / 100);
-        }
     }
 
     private void GetSkillKey(string key)
     {
         if (Input.GetKey(key))
         {
-            stopMoving = true;
-            moveTarget = transform.position;
+            StopMoving();
 
             if (Time.time - 1 / attackSpeed > lastAttack)
             {
@@ -55,14 +48,15 @@ public class PlayerControl : MonoBehaviour
                 lastAttack = Time.time;
             }
         }
-        else
-        {
-            stopMoving = false;
-        }
     }
 
     private void UseSkill()
     {
         skill.UseSkill(transform.position, skillTarget, projSpeed);
+    }
+
+    private void StopMoving()
+    {
+        GetComponent<NavMeshAgent>().destination = transform.position;
     }
 }
