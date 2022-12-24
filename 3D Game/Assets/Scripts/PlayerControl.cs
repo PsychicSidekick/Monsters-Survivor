@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerControl : Character
 {
     private Vector3 skillTarget = new Vector3(0, 1, 0);
 
@@ -26,7 +26,6 @@ public class PlayerControl : MonoBehaviour
                 if (Input.GetMouseButton(0))
                 {
                     GetComponent<NavMeshAgent>().destination = new Vector3(hit.point.x, 1, hit.point.z);
-                    //moveTarget = new Vector3(hit.point.x, 1, hit.point.z);
                 }
 
                 skillTarget = new Vector3(hit.point.x, 1, hit.point.z);
