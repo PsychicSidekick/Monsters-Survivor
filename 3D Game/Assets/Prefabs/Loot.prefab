@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8669105932509889640}
   - component: {fileID: 4084722879767912879}
   - component: {fileID: -3327741007343149883}
+  - component: {fileID: -2233513554043782195}
   m_Layer: 0
   m_Name: Loot
   m_TagString: Untagged
@@ -114,3 +115,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-2233513554043782195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708462287413670352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df2389a800e1f84aa87504cc398e864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  pickUpBtnPrefab: {fileID: 8761218252961306140, guid: 2aaa3550560a86f4b98d9c76b73c4995, type: 3}
+  lootCanvas: {fileID: 0}

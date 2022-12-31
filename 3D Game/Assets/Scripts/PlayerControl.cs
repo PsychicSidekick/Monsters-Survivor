@@ -21,18 +21,34 @@ public class PlayerControl : Character
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100))
         {
-            if (hit.transform.gameObject.tag == "Ground")
+            GameObject hitObj = hit.transform.gameObject;
+
+            if (hitObj.tag == "Ground")
             {
                 if (Input.GetMouseButton(0))
                 {
-                    GetComponent<NavMeshAgent>().destination = new Vector3(hit.point.x, 1, hit.point.z);
+                    Move(hit.point);
                 }
 
-                skillTarget = new Vector3(hit.point.x, 1, hit.point.z);
+                skillTarget = RefinedPos(hit.point);
+            }
+            else if (hit.transform.gameObject.tag == "Enemy")
+            {
+                skillTarget = RefinedPos(hitObj.transform.position);
             }
         }
         
         GetSkillKey("q");
+    }
+
+    public Vector3 RefinedPos(Vector3 position)
+    {
+        return new Vector3(position.x, 1, position.z);
+    }
+
+    public void Move(Vector3 targetPosition)
+    {
+        GetComponent<NavMeshAgent>().destination = RefinedPos(targetPosition);
     }
 
     private void GetSkillKey(string key)
@@ -54,8 +70,21 @@ public class PlayerControl : Character
         skill.UseSkill(transform.position, skillTarget, projSpeed);
     }
 
+    public void PickUpItem(GameObject gameObject)
+    {
+
+    }
+
     private void StopMoving()
     {
         GetComponent<NavMeshAgent>().destination = transform.position;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Loot")
+        {
+            PickUpItem(other.gameObject);
+        }
     }
 }
