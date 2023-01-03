@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class PlayerControl : Character
 {
+    public static PlayerControl instance;
+
     private Vector3 skillTarget = new Vector3(0, 1, 0);
 
     public float moveSpeed;
@@ -14,6 +17,14 @@ public class PlayerControl : Character
 
     public float attackSpeed = 1;
     private float lastAttack = 0;
+
+    public bool pickingUpLoot = false;
+    public GameObject targetLoot;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
@@ -25,8 +36,9 @@ public class PlayerControl : Character
 
             if (hitObj.tag == "Ground")
             {
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButton(0) && !IsMouseOverUI())
                 {
+                    pickingUpLoot = false;
                     Move(hit.point);
                 }
 
@@ -37,18 +49,18 @@ public class PlayerControl : Character
                 skillTarget = RefinedPos(hitObj.transform.position);
             }
         }
+
+        if(pickingUpLoot)
+        {
+            if (Vector3.Distance(transform.position, RefinedPos(targetLoot.transform.position)) < 0.1f)
+            {
+                targetLoot.GetComponent<Loot>().OnPickUp();
+                Inventory.instance.AddItem(targetLoot.GetComponent<Loot>().item);
+                pickingUpLoot = false;
+            }
+        }
         
         GetSkillKey("q");
-    }
-
-    public Vector3 RefinedPos(Vector3 position)
-    {
-        return new Vector3(position.x, 1, position.z);
-    }
-
-    public void Move(Vector3 targetPosition)
-    {
-        GetComponent<NavMeshAgent>().destination = RefinedPos(targetPosition);
     }
 
     private void GetSkillKey(string key)
@@ -70,21 +82,15 @@ public class PlayerControl : Character
         skill.UseSkill(transform.position, skillTarget, projSpeed);
     }
 
-    public void PickUpItem(GameObject gameObject)
+    public void StartPickUpLoot(GameObject loot)
     {
-
+        pickingUpLoot = true;
+        targetLoot = loot;
+        Move(RefinedPos(loot.transform.position));
     }
 
-    private void StopMoving()
+    public bool IsMouseOverUI()
     {
-        GetComponent<NavMeshAgent>().destination = transform.position;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Loot")
-        {
-            PickUpItem(other.gameObject);
-        }
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }

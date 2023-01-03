@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4084722879767912879}
   - component: {fileID: -3327741007343149883}
   - component: {fileID: -2233513554043782195}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Loot
-  m_TagString: Untagged
+  m_TagString: Loot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df2389a800e1f84aa87504cc398e864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  item: {fileID: 11400000, guid: 968923314bc038642a559e0ef93830e9, type: 2}
   pickUpBtnPrefab: {fileID: 8761218252961306140, guid: 2aaa3550560a86f4b98d9c76b73c4995, type: 3}
+  pickUpBtn: {fileID: 0}
   lootCanvas: {fileID: 0}
+  player: {fileID: 0}
+  pickedUp: 0
