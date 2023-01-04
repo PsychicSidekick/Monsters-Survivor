@@ -4,10 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+public enum ItemType
+    {
+        Weapon,
+        Helmet,
+        Body
+    }
+
 [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
 public class Item : ScriptableObject
 {
     public string itemName;
-    public bool equipped;
-    public bool pickedUp;
+    public ItemType type;
 }

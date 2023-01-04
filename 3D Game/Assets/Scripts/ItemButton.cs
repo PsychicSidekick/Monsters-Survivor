@@ -20,7 +20,7 @@ public class ItemButton : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.pointerId == -1)
         {
-            Debug.Log("Left Click");
+            Inventory.instance.EquipItem(item);
         } 
         else if (eventData.pointerId == -2)
         {
@@ -32,6 +32,6 @@ public class ItemButton : MonoBehaviour, IPointerClickHandler
     {
         Loot loot = Instantiate(lootObjPrefab, PlayerControl.instance.transform.position, Quaternion.identity).GetComponent<Loot>();
         loot.item = item;
-        Inventory.instance.Remove(item);
+        Inventory.instance.RemoveItem(item);
     }
 }

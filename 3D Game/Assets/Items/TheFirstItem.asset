@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
   m_Name: TheFirstItem
   m_EditorClassIdentifier: 
-  itemName: TheFirstItem
+  itemName: Weapon
+  type: 0
   equipped: 0
   pickedUp: 0

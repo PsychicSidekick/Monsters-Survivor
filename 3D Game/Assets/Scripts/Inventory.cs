@@ -6,11 +6,16 @@ using TMPro;
 
 public class Inventory : MonoBehaviour
 {
-    public List<Item> inventory = new List<Item>();
-    public List<GameObject> itemBtns = new List<GameObject>();
-
     public static Inventory instance;
 
+    public List<Item> inventory = new List<Item>();
+    public Dictionary<ItemType, ItemSlot> itemSlots = new Dictionary<ItemType, ItemSlot>();
+
+    public ItemSlot weaponSlot;
+    public ItemSlot helmetSlot;
+    public ItemSlot bodySlot;
+
+    public List<GameObject> itemBtns = new List<GameObject>();
     public GameObject inventoryUI;
 
     public TMP_Text label;
@@ -20,6 +25,13 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        itemSlots.Add(ItemType.Weapon, weaponSlot);
+        itemSlots.Add(ItemType.Helmet, helmetSlot);
+        itemSlots.Add(ItemType.Body, bodySlot);
     }
 
     private void Update()
@@ -36,10 +48,21 @@ public class Inventory : MonoBehaviour
         UpdateUI();
     }
 
-    public void Remove(Item item)
+    public void RemoveItem(Item item)
     {
         inventory.Remove(item);
         UpdateUI();
+    }
+
+    public void EquipItem(Item item)
+    {
+        itemSlots[item.type].Equip(item);
+        RemoveItem(item);
+    }
+
+    public void UnequipItem(Item item)
+    {
+        AddItem(item);
     }
 
     public void UpdateUI()
