@@ -10,7 +10,7 @@ public class Enemy : Character
 
     public void SpawnLoot()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
             Vector3 randomOffset = new Vector3(Random.Range(0, 1.5f), 0, Random.Range(0, 1.5f));
             Loot loot = Instantiate(lootPrefab, transform.position + randomOffset, Quaternion.identity).GetComponent<Loot>();

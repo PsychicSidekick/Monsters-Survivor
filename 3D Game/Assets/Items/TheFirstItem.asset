@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Weapon
   type: 0
-  equipped: 0
-  pickedUp: 0
+  size: {x: 1, y: 3}
+  itemImage: {fileID: 4215918397728472815, guid: 9620dfd51fa8ba541b194111793a53aa, type: 3}

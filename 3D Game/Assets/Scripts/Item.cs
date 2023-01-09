@@ -16,4 +16,6 @@ public class Item : ScriptableObject
 {
     public string itemName;
     public ItemType type;
+    public Vector2Int size;
+    public Image itemImage;
 }

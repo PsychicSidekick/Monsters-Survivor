@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Helmet
   type: 1
-  equipped: 0
-  pickedUp: 0
+  size: {x: 2, y: 2}
+  itemImage: {fileID: 5764053196939517172, guid: 8abefad793bb59541a079c18759f28d6, type: 3}
