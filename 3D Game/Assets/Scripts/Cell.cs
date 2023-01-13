@@ -8,14 +8,14 @@ public class Cell : MonoBehaviour, IPointerMoveHandler
 {
     public Vector2Int pos;
     public bool occupied;
-    public Item occupiedBy;
+    public ItemObj occupiedBy;
     List<Cell> childCells = new List<Cell>();
 
-    public void PlaceItem(Item item)
+    public void PlaceItem(ItemObj itemObj)
     {
-        item.occupies = this;
+        itemObj.occupyingCell = this;
 
-        childCells = FindCellGroupOfSize(item.size);
+        childCells = FindCellGroupOfSize(itemObj.item.size);
         if(childCells == null)
         {
             Debug.Log("Item cannot be placed in this parent cell");
@@ -24,13 +24,13 @@ public class Cell : MonoBehaviour, IPointerMoveHandler
         foreach (Cell c in childCells)
         {
             c.occupied = true;
-            c.occupiedBy = item;
+            c.occupiedBy = itemObj;
         }
     }
 
     public void RemoveItem()
     {
-        occupiedBy.occupies = null;
+        occupiedBy.occupyingCell = null;
 
         foreach (Cell c in childCells)
         {

@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
     public List<Item> itemList = new List<Item>();
     public Dictionary<ItemType, ItemSlot> itemSlots = new Dictionary<ItemType, ItemSlot>();
 
-    public Item cursorItem;
+    public ItemObj cursorItem;
 
     public ItemSlot weaponSlot;
     public ItemSlot helmetSlot;
@@ -68,11 +68,11 @@ public class Inventory : MonoBehaviour
             {
                 if (inventoryUI.activeInHierarchy)
                 {
-                    PickUpItemWithCursor(player.targetLoot.GetComponent<Loot>().item);
+                    PickUpItemWithCursor(player.targetLoot.GetComponent<ItemObj>());
                 }
                 else
                 {
-                    PlaceItemInInventory(player.targetLoot.GetComponent<Loot>().item);
+                    PlaceItemInInventory(player.targetLoot.GetComponent<ItemObj>(), FindFirstAvailableCell(player.targetLoot.GetComponent<ItemObj>().item.size));
                 }
             }
         }
@@ -132,32 +132,33 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
-    public void PlaceItemInInventory(Item item)
+    public void PlaceItemInInventory(ItemObj itemObj, Cell c)
     {
         pickingUpLoot = false;
-        Cell c = FindFirstAvailableCell(item.size);
-        c.PlaceItem(item);
+        c.PlaceItem(itemObj);
 
-        Destroy(item.lootObj);
-        InstantiateItemImg(item);
-        item.itemImg.transform.position = FindItemImgPos(c, item.size);
+        itemObj.isPickedUp = true;
+        itemObj.isPlaced = true;
+        itemObj.itemImg.transform.position = FindItemImgPos(c, itemObj.item.size);
     }
     
-    public void PickUpItemWithCursor(Item item)
+    public void PickUpItemWithCursor(ItemObj itemObj)
     {
         lockCursor = true;
-
         pickingUpLoot = false;
-        Destroy(item.lootObj);
-        InstantiateItemImg(item);
-        cursorItem = item;
+        itemObj.isPickedUp = true;
+        cursorItem = itemObj;
     }
 
-    public void DropItem(Item item)
+    public void DropItem(ItemObj itemObj)
     {
-        InstantiateLootObj(item);
-
-        Destroy(item.itemImg);
+        itemObj.OnDrop();
+        if (itemObj.isPlaced)
+        {
+            itemObj.occupyingCell.RemoveItem();
+        }
+        itemObj.isPlaced = false;
+        itemObj.isPickedUp = false;
         cursorItem = null;
     }
 
@@ -172,20 +173,6 @@ public class Inventory : MonoBehaviour
         pickingUpLoot = true;
         player.targetLoot = lootObj;
         player.Move(lootObj.transform.position);
-    }
-
-    public void InstantiateLootObj(Item item)
-    {
-        Loot lootObj = Instantiate(item.itemPrefab.lootPrefab, PlayerControl.instance.transform.position, Quaternion.identity).GetComponent<Loot>();
-        lootObj.item = item;
-        item.lootObj = lootObj.gameObject;
-    }
-
-    public void InstantiateItemImg(Item item)
-    {
-        Image itemImg = Instantiate(item.itemPrefab.itemImgPrefab, Input.mousePosition, Quaternion.identity).GetComponent<Image>();
-        itemImg.transform.SetParent(inventoryUI.transform);
-        item.itemImg = itemImg.gameObject;
     }
 
     public Vector3 FindItemImgPos(Cell cell, Vector2Int itemSize)

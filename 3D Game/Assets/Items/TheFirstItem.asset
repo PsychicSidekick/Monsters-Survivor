@@ -15,7 +15,5 @@ MonoBehaviour:
   itemName: Weapon
   type: 0
   size: {x: 1, y: 3}
-  lootPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  lootObj: {fileID: 0}
+  itemObjPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
   itemImgPrefab: {fileID: 4065881981570626885, guid: 9620dfd51fa8ba541b194111793a53aa, type: 3}
-  itemImg: {fileID: 0}

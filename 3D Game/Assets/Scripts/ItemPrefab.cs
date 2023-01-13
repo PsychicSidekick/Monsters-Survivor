@@ -17,6 +17,6 @@ public class ItemPrefab : ScriptableObject
     public string itemName;
     public ItemType type;
     public Vector2Int size;
-    public GameObject lootPrefab;
+    public GameObject itemObjPrefab;
     public GameObject itemImgPrefab;
 }

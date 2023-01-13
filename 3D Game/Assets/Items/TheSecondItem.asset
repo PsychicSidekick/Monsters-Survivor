@@ -15,7 +15,5 @@ MonoBehaviour:
   itemName: Helmet
   type: 1
   size: {x: 2, y: 2}
-  lootPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  lootObj: {fileID: 0}
+  itemObjPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
   itemImgPrefab: {fileID: 126991780030651831, guid: 8abefad793bb59541a079c18759f28d6, type: 3}
-  itemImg: {fileID: 0}

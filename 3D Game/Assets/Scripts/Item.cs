@@ -8,15 +8,9 @@ public class Item
     public Vector2Int size;
     public ItemType type;
 
-    public ItemPrefab itemPrefab;
-    public GameObject lootObj;
-    public GameObject itemImg;
 
-    public Cell occupies;
-
-    public Item(ItemPrefab _itemPrefab)
+    public Item(ItemPrefab itemPrefab)
     {
-        itemPrefab = _itemPrefab;
         name = itemPrefab.name;
         size = itemPrefab.size;
         type = itemPrefab.type;

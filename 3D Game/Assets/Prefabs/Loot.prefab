@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8669105932509889640}
   - component: {fileID: 4084722879767912879}
   - component: {fileID: -3327741007343149883}
-  - component: {fileID: -2233513554043782195}
+  - component: {fileID: 1953721579108883685}
   m_Layer: 6
   m_Name: Loot
   m_TagString: Loot
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6708462287413670352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.43, z: -2.617}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-2233513554043782195
+--- !u!114 &1953721579108883685
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,10 +124,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6708462287413670352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df2389a800e1f84aa87504cc398e864, type: 3}
+  m_Script: {fileID: 11500000, guid: f9044db768ce7314bb8b1c2e22288ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 0}
   lootTextPrefab: {fileID: 4541949895424491162, guid: dec1f91504f816b4d8141d79c632f74e, type: 3}
+  itemImgPrefab: {fileID: 0}
   lootText: {fileID: 0}
+  itemImg: {fileID: 0}
   lootCanvas: {fileID: 0}
-  pickedUp: 0
+  mr: {fileID: 0}
+  rb: {fileID: 0}
+  occupyingCell: {fileID: 0}
+  isPickedUp: 0
+  isPlaced: 0

@@ -7,18 +7,18 @@ using TMPro;
 public class LootText : MonoBehaviour, IPointerDownHandler
 {
     public TMP_Text itemNameTxt;
-    public GameObject lootObj;
+    public ItemObj itemObj;
 
     private void Start()
     {
-        itemNameTxt.text = lootObj.GetComponent<Loot>().item.name;
+        itemNameTxt.text = itemObj.item.name;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.pointerId == -1)
         {
-            Inventory.instance.MovePlayerToLoot(lootObj);
+            Inventory.instance.MovePlayerToLoot(itemObj.gameObject);
         }
     }
 }
