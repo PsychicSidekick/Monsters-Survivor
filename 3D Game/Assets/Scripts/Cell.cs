@@ -8,10 +8,14 @@ public class Cell : MonoBehaviour, IPointerMoveHandler
 {
     public Vector2Int pos;
     public bool occupied;
+    public Item occupiedBy;
+    List<Cell> childCells = new List<Cell>();
 
     public void PlaceItem(Item item)
     {
-        List<Cell> childCells = FindCellGroupOfSize(item.size);
+        item.occupies = this;
+
+        childCells = FindCellGroupOfSize(item.size);
         if(childCells == null)
         {
             Debug.Log("Item cannot be placed in this parent cell");
@@ -20,10 +24,21 @@ public class Cell : MonoBehaviour, IPointerMoveHandler
         foreach (Cell c in childCells)
         {
             c.occupied = true;
+            c.occupiedBy = item;
+        }
+    }
+
+    public void RemoveItem()
+    {
+        occupiedBy.occupies = null;
+
+        foreach (Cell c in childCells)
+        {
+            c.occupied = false;
+            c.occupiedBy = null;
         }
 
-        Image itemImg = Instantiate(item.itemImage, FindItemImgPos(item.size), Quaternion.identity);
-        itemImg.transform.SetParent(Inventory.instance.inventoryUI.transform);
+        childCells = null;
     }
 
     public bool CanFitItem(Vector2Int itemSize)
@@ -71,17 +86,9 @@ public class Cell : MonoBehaviour, IPointerMoveHandler
         return cells;
     }
 
-    public Vector3 FindItemImgPos(Vector2Int itemSize)
-    {
-        float xPos = transform.position.x + (itemSize.x - 1) * 40;
-        float yPos = transform.position.y + (itemSize.y - 1) * -40;
-
-        return new Vector3(xPos, yPos, 0);
-    }
-
     public void OnPointerMove(PointerEventData eventData)
     {
-        Debug.Log(transform.position + "/" + Time.time);
+        //Debug.Log(transform.position + "/" + Time.time);
         //Debug.Log(Input.mousePosition);
     }
 }

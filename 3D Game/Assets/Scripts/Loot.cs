@@ -6,40 +6,27 @@ using UnityEngine.UI;
 public class Loot : MonoBehaviour
 {
     public Item item;
-    public GameObject pickUpBtnPrefab;
-    public RectTransform pickUpBtn;
+    public GameObject lootTextPrefab;
+    public GameObject lootText;
     public GameObject lootCanvas;
-
-    public bool pickedUp;
 
     private void Start()
     {
         lootCanvas = GameObject.Find("LootCanvas");
 
-        GameObject btn = Instantiate(pickUpBtnPrefab, new Vector2(0, 0), Quaternion.identity);
-        pickUpBtn = btn.GetComponent<RectTransform>();
-        btn.GetComponent<LootButton>().lootObj = gameObject;
-        pickUpBtn.transform.SetParent(lootCanvas.transform);
+        lootText = Instantiate(lootTextPrefab, new Vector2(0, 0), Quaternion.identity);
+        lootText.GetComponent<LootText>().lootObj = gameObject;
+        lootText.transform.SetParent(lootCanvas.transform);
     }
 
     private void Update()
     {
-        if(pickedUp)
-        {
-            pickUpBtn.gameObject.SetActive(false);
-            transform.position = PlayerControl.instance.transform.position;
-        }
-        else
-        {
-            pickUpBtn.gameObject.SetActive(true); ;
-        }
-
-        pickUpBtn.anchoredPosition = WorldToCanvasPos(transform.position);
+        lootText.GetComponent<RectTransform>().anchoredPosition = WorldToCanvasPos(transform.position);
     }
 
-    public void OnPickUp()
+    public void OnDestroy()
     {
-        pickedUp = true;
+        Destroy(lootText);
     }
 
     public Vector2 WorldToCanvasPos(Vector3 worldPos)

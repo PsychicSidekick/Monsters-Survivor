@@ -9,6 +9,7 @@ public class PlayerControl : Character
     public static PlayerControl instance;
 
     private Vector3 skillTarget = new Vector3(0, 1, 0);
+    private Vector3 moveTarget = new Vector3(0, 1, 0);
 
     public float moveSpeed;
     public float projSpeed;
@@ -18,7 +19,7 @@ public class PlayerControl : Character
     public float attackSpeed = 1;
     private float lastAttack = 0;
 
-    public bool pickingUpLoot = false;
+    public bool cursorHoldsItem = false;
     public GameObject targetLoot;
 
     private void Awake()
@@ -32,35 +33,42 @@ public class PlayerControl : Character
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100))
         {
-            GameObject hitObj = hit.transform.gameObject;
+            FindSkillTarget(hit);
+            FindMoveTarget(hit);
 
-            if (hitObj.tag == "Ground")
+            if (Input.GetMouseButton(0) && !Inventory.instance.lockCursor)
             {
-                if (Input.GetMouseButton(0) && !IsMouseOverUI())
-                {
-                    pickingUpLoot = false;
-                    Move(hit.point);
-                }
-
-                skillTarget = RefinedPos(hit.point);
-            }
-            else if (hit.transform.gameObject.tag == "Enemy")
-            {
-                skillTarget = RefinedPos(hitObj.transform.position);
-            }
-        }
-
-        if(pickingUpLoot)
-        {
-            if (Vector3.Distance(transform.position, RefinedPos(targetLoot.transform.position)) < 0.1f)
-            {
-                targetLoot.GetComponent<Loot>().OnPickUp();
-                Inventory.instance.AddItem(targetLoot.GetComponent<Loot>().item);
-                pickingUpLoot = false;
-            }
+                Inventory.instance.pickingUpLoot = false;
+                Move(moveTarget);
+            } 
         }
         
         GetSkillKey("q");
+    }
+
+    public void FindMoveTarget(RaycastHit hit)
+    {
+        GameObject hitObj = hit.transform.gameObject;
+
+        if (hitObj.tag == "Ground")
+        {
+            moveTarget = RefinedPos(hit.point);
+        }
+    }
+
+    public void FindSkillTarget(RaycastHit hit)
+    {
+        GameObject hitObj = hit.transform.gameObject;
+
+        if (hitObj.tag == "Ground")
+        {
+            skillTarget = RefinedPos(hit.point);
+        }
+
+        if (hitObj.tag == "Enemy")
+        {
+            skillTarget = RefinedPos(hitObj.transform.position);
+        }
     }
 
     private void GetSkillKey(string key)
@@ -80,13 +88,6 @@ public class PlayerControl : Character
     private void UseSkill()
     {
         skill.UseSkill(transform.position, skillTarget, projSpeed);
-    }
-
-    public void StartPickUpLoot(GameObject loot)
-    {
-        pickingUpLoot = true;
-        targetLoot = loot;
-        Move(RefinedPos(loot.transform.position));
     }
 
     public bool IsMouseOverUI()

@@ -15,4 +15,7 @@ MonoBehaviour:
   itemName: Body Armour
   type: 2
   size: {x: 2, y: 3}
-  itemImage: {fileID: 7865651702269884642, guid: 4cac273e5b7400e48abebe2c5dba6fd0, type: 3}
+  lootPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
+  lootObj: {fileID: 0}
+  itemImgPrefab: {fileID: 4028795390590836520, guid: 4cac273e5b7400e48abebe2c5dba6fd0, type: 3}
+  itemImg: {fileID: 0}

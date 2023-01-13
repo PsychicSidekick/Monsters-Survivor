@@ -13,12 +13,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public void Equip(Item item)
     {
         equippedItem = item;
-        itemName.text = item.itemName;
+        itemName.text = item.name;
     }
 
     public void Unequip()
     {
-        Inventory.instance.UnequipItem(equippedItem);
+        //Inventory.instance.UnequipItem(equippedItem);
         equippedItem = null;
         itemName.text = "";
     }
