@@ -20,7 +20,7 @@ public class PlayerControl : Character
     private float lastAttack = 0;
 
     public bool cursorHoldsItem = false;
-    public GameObject targetLoot;
+    public GameObject targetItem;
 
     private void Awake()
     {
@@ -36,7 +36,7 @@ public class PlayerControl : Character
             FindSkillTarget(hit);
             FindMoveTarget(hit);
 
-            if (Input.GetMouseButton(0) && !Inventory.instance.lockCursor)
+            if (Input.GetMouseButton(0) && !Inventory.instance.lockCursor && !IsMouseOverUI())
             {
                 Inventory.instance.pickingUpLoot = false;
                 Move(moveTarget);

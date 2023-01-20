@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class Inventory : MonoBehaviour
 {
@@ -64,19 +65,19 @@ public class Inventory : MonoBehaviour
 
         if (pickingUpLoot)
         {
-            if (Vector3.Distance(player.transform.position, player.RefinedPos(player.targetLoot.transform.position)) < 0.1f)
+            if (Vector3.Distance(player.transform.position, player.RefinedPos(player.targetItem.transform.position)) < 0.1f)
             {
                 if (inventoryUI.activeInHierarchy)
                 {
-                    PickUpItemWithCursor(player.targetLoot.GetComponent<ItemObj>());
+                    PickUpItemWithCursor(player.targetItem.GetComponent<ItemObj>());
                 }
                 else
                 {
-                    PlaceItemInInventory(player.targetLoot.GetComponent<ItemObj>(), FindFirstAvailableCell(player.targetLoot.GetComponent<ItemObj>().item.size));
+                    PlaceItemInInventory(player.targetItem.GetComponent<ItemObj>(), FindFirstAvailableCell(player.targetItem.GetComponent<ItemObj>().item.size));
                 }
             }
         }
-        else if (cursorItem != null && lockCursor && Input.GetKeyDown(KeyCode.Mouse0))
+        else if (cursorItem != null && lockCursor && Input.GetKeyDown(KeyCode.Mouse0) && !IsMouseOverUI())
         {
             DropItem(cursorItem);
         }
@@ -134,20 +135,37 @@ public class Inventory : MonoBehaviour
 
     public void PlaceItemInInventory(ItemObj itemObj, Cell c)
     {
+        ResetCellsColour();
+
         pickingUpLoot = false;
         c.PlaceItem(itemObj);
 
         itemObj.isPickedUp = true;
         itemObj.isPlaced = true;
         itemObj.itemImg.transform.position = FindItemImgPos(c, itemObj.item.size);
+        cursorItem = null;
     }
     
     public void PickUpItemWithCursor(ItemObj itemObj)
     {
+        if (itemObj.occupyingCell != null)
+        {
+            itemObj.occupyingCell.RemoveItem();
+        }
+
         lockCursor = true;
         pickingUpLoot = false;
         itemObj.isPickedUp = true;
+        itemObj.isPlaced = false;
         cursorItem = itemObj;
+    }
+
+    public void SwapItemWithInventoryItem(ItemObj itemObj, Cell c)
+    {
+        ItemObj inventoryItem = c.FindOccupyingItemInCells(c.FindCellGroupOfSize(itemObj.item.size));
+        PickUpItemWithCursor(inventoryItem);
+        PlaceItemInInventory(itemObj, c);
+        cursorItem = inventoryItem;
     }
 
     public void DropItem(ItemObj itemObj)
@@ -162,7 +180,7 @@ public class Inventory : MonoBehaviour
         cursorItem = null;
     }
 
-    public void MovePlayerToLoot(GameObject lootObj)
+    public void MovePlayerToLoot(GameObject itemObj)
     {
         if (lockCursor)
         {
@@ -171,8 +189,27 @@ public class Inventory : MonoBehaviour
 
         lockCursor = true;
         pickingUpLoot = true;
-        player.targetLoot = lootObj;
-        player.Move(lootObj.transform.position);
+        player.targetItem = itemObj;
+        player.Move(itemObj.transform.position);
+    }
+
+    public void ResetCellsColour()
+    {
+        for (int x = 0; x < inventorySize.x; x++)
+        {
+            for (int y = 0; y < inventorySize.y; y++)
+            {
+                inventory[x][y].state = CellState.Normal;
+            }
+        }
+    }
+
+    public void ChangeCellsStates(List<Cell> cellsToBeHighlighted, CellState state)
+    {
+        foreach (Cell cell in cellsToBeHighlighted)
+        {
+            cell.state = state;
+        }
     }
 
     public Vector3 FindItemImgPos(Cell cell, Vector2Int itemSize)
@@ -181,5 +218,10 @@ public class Inventory : MonoBehaviour
         float yPos = cell.transform.position.y + (itemSize.y - 1) * -40;
 
         return new Vector3(xPos, yPos, 0);
+    }
+
+    public bool IsMouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }

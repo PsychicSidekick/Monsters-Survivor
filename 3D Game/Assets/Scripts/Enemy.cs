@@ -8,7 +8,7 @@ public class Enemy : Character
 
     public void SpawnLoot()
     {
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 3; i++)
         {
             // Choose random item from loot pool
             ItemPrefab itemPrefab = lootPool[Random.Range(0, lootPool.Count)];

@@ -36,8 +36,7 @@ public class ItemObj : MonoBehaviour
         lootText = Instantiate(lootTextPrefab, lootCanvas.transform);
         lootText.GetComponent<LootText>().itemObj = this;
 
-        itemImg = Instantiate(itemImgPrefab, Inventory.instance.inventoryUI.transform);
-        itemImg.GetComponent<ItemImg>().itemObj = this;
+        itemImg = Instantiate(itemImgPrefab, Inventory.instance.transform);
     }
 
     private void Update()
@@ -47,6 +46,7 @@ public class ItemObj : MonoBehaviour
         mr.enabled = !isPickedUp;
         lootText.SetActive(!isPickedUp);
         itemImg.SetActive(isPickedUp);
+        itemImg.transform.SetParent(isPlaced ? Inventory.instance.inventoryUI.transform : Inventory.instance.transform);
     }
 
     public void OnDrop()

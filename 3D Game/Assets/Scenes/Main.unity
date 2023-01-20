@@ -604,7 +604,7 @@ MonoBehaviour:
   skill: {fileID: 11400000, guid: 5ee7d55195090fd42b0c142b1922f0af, type: 2}
   attackSpeed: 3
   cursorHoldsItem: 0
-  targetLoot: {fileID: 0}
+  targetItem: {fileID: 0}
 --- !u!195 &158529583
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1657,6 +1657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   lootPool:
+  - {fileID: 11400000, guid: 6289acc5426ff5347aa3315353793f72, type: 2}
+  - {fileID: 11400000, guid: 9fde4a3d0b726c1469c1328db1089c73, type: 2}
   - {fileID: 11400000, guid: 968923314bc038642a559e0ef93830e9, type: 2}
 --- !u!1 &1788209548
 GameObject:

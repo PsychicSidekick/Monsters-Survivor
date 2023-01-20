@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2475250742713193921}
   - component: {fileID: 4141185563066638953}
   - component: {fileID: 5764053196939517172}
-  - component: {fileID: 1491614600774694799}
   m_Layer: 5
   m_Name: SecondItemImage
   m_TagString: Untagged
@@ -61,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.04484415, a: 0.50980395}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -77,16 +76,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1491614600774694799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126991780030651831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc887ed8fb578fd4e8d6b8a2fa57cca3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  im: {fileID: 0}
