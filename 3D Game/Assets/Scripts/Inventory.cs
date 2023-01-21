@@ -96,7 +96,7 @@ public class Inventory : MonoBehaviour
 
             for (int y = 0; y < inventorySize.y; y++)
             {
-                Cell c = Instantiate(cellPrefab, inventoryAnchor.transform.position + new Vector3(x * 80, y * -80, 0), Quaternion.identity).GetComponent<Cell>();
+                Cell c = Instantiate(cellPrefab, inventoryAnchor.transform.position + new Vector3(x * 60, y * -60, 0), Quaternion.identity).GetComponent<Cell>();
                 c.pos = new Vector2Int(x, y);
                 c.occupied = false;
                 c.transform.SetParent(inventoryUI.transform);
@@ -145,6 +145,17 @@ public class Inventory : MonoBehaviour
         itemObj.itemImg.transform.position = FindItemImgPos(c, itemObj.item.size);
         cursorItem = null;
     }
+
+    public void PlaceItemInItemSlot(ItemObj itemObj, ItemSlot slot)
+    {
+        pickingUpLoot = false;
+        slot.EquipItem(itemObj);
+
+        itemObj.isPickedUp = true;
+        itemObj.isPlaced = true;
+        itemObj.itemImg.transform.position = slot.transform.position;
+        cursorItem = null;
+    }
     
     public void PickUpItemWithCursor(ItemObj itemObj)
     {
@@ -166,6 +177,14 @@ public class Inventory : MonoBehaviour
         PickUpItemWithCursor(inventoryItem);
         PlaceItemInInventory(itemObj, c);
         cursorItem = inventoryItem;
+    }
+
+    public void SwapItemWithEquippedItem(ItemObj itemObj, ItemSlot slot)
+    {
+        ItemObj equippedItem = slot.equippedItem;
+        PickUpItemWithCursor(equippedItem);
+        PlaceItemInItemSlot(itemObj, slot);
+        cursorItem = equippedItem;
     }
 
     public void DropItem(ItemObj itemObj)
@@ -214,8 +233,8 @@ public class Inventory : MonoBehaviour
 
     public Vector3 FindItemImgPos(Cell cell, Vector2Int itemSize)
     {
-        float xPos = cell.transform.position.x + (itemSize.x - 1) * 40;
-        float yPos = cell.transform.position.y + (itemSize.y - 1) * -40;
+        float xPos = cell.transform.position.x + (itemSize.x - 1) * 30;
+        float yPos = cell.transform.position.y + (itemSize.y - 1) * -30;
 
         return new Vector3(xPos, yPos, 0);
     }

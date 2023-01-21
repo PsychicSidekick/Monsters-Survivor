@@ -8,7 +8,13 @@ public enum ItemType
     {
         Weapon,
         Helmet,
-        Body
+        Body,
+        Boots,
+        Gloves,
+        OffHand,
+        Ring,
+        Amulet,
+        Belt
     }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Item")]

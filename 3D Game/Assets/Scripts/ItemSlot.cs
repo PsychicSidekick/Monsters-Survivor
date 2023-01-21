@@ -7,32 +7,46 @@ using TMPro;
 public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
     public ItemType slotType;
-    public Item equippedItem;
-    public TMP_Text itemName;
+    public ItemObj equippedItem;
 
-    public void Equip(Item item)
+    public void EquipItem(ItemObj itemObj)
     {
-        equippedItem = item;
-        itemName.text = item.name;
+        equippedItem = itemObj;
     }
 
-    public void Unequip()
+    public void UnequipItem()
     {
-        //Inventory.instance.UnequipItem(equippedItem);
         equippedItem = null;
-        itemName.text = "";
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(equippedItem == null)
+        if (eventData.pointerId != -1)
         {
             return;
         }
 
-        if (eventData.pointerId == -1)
+        ItemObj cursorItem = Inventory.instance.cursorItem;
+
+        if (cursorItem != null && cursorItem.item.type == slotType)
         {
-            Unequip();
+            if (equippedItem == null)
+            {
+                Inventory.instance.PlaceItemInItemSlot(cursorItem, this);
+                return;
+            }
+            else
+            {
+                Inventory.instance.SwapItemWithEquippedItem(cursorItem, this);
+                return;
+            }
+        }
+
+        if (equippedItem != null)
+        {
+            Inventory.instance.PickUpItemWithCursor(equippedItem);
+            UnequipItem();
+            return;
         }
     }
 }

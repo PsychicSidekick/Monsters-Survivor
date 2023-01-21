@@ -19,7 +19,6 @@ public class PlayerControl : Character
     public float attackSpeed = 1;
     private float lastAttack = 0;
 
-    public bool cursorHoldsItem = false;
     public GameObject targetItem;
 
     private void Awake()
