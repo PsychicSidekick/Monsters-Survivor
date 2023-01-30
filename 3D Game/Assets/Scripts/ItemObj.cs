@@ -23,6 +23,8 @@ public class ItemObj : MonoBehaviour
     public bool isPickedUp = false;
     public bool isPlaced = false;
 
+    public List<StatModifier> itemModifiers = new List<StatModifier>();
+
     private void Start()
     {
         lootCanvas = GameObject.Find("LootCanvas");
@@ -37,6 +39,10 @@ public class ItemObj : MonoBehaviour
         lootText.GetComponent<LootText>().itemObj = this;
 
         itemImg = Instantiate(itemImgPrefab, Inventory.instance.transform);
+
+        itemModifiers.Add(new StatModifier(StatType.Life, 50, ModType.Flat));
+        itemModifiers.Add(new StatModifier(StatType.Life, 50, ModType.Inc));
+        itemModifiers.Add(new StatModifier(StatType.Life, 20, ModType.More));
     }
 
     private void Update()

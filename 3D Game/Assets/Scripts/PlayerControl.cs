@@ -9,7 +9,7 @@ public class PlayerControl : Character
     public static PlayerControl instance;
 
     private Vector3 skillTarget = new Vector3(0, 1, 0);
-    private Vector3 moveTarget = new Vector3(0, 1, 0);
+    private Vector3 moveTarget = new Vector3(0, 0, 0);
 
     public float moveSpeed;
     public float projSpeed;
@@ -26,8 +26,10 @@ public class PlayerControl : Character
         instance = this;
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100))
@@ -86,7 +88,9 @@ public class PlayerControl : Character
 
     private void UseSkill()
     {
-        skill.UseSkill(transform.position, skillTarget, projSpeed);
+        animator.Play("Attack", -1, 0f);
+        transform.LookAt(skillTarget);
+        skill.UseSkill(RefinedPos(transform.position), skillTarget, projSpeed);
     }
 
     public bool IsMouseOverUI()

@@ -183,6 +183,7 @@ public class Inventory : MonoBehaviour
     {
         ItemObj equippedItem = slot.equippedItem;
         PickUpItemWithCursor(equippedItem);
+        slot.UnequipItem();
         PlaceItemInItemSlot(itemObj, slot);
         cursorItem = equippedItem;
     }

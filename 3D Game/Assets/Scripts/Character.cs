@@ -5,7 +5,24 @@ using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
+    protected Animator animator;
+    NavMeshAgent agent;
+
     public int health;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+    }
+
+    public virtual void Update()
+    {
+        if (GetComponent<NavMeshAgent>().remainingDistance < 0.1)
+        {
+            animator.SetBool("isWalking", false);
+        }
+    }
 
     public void ReceiveDamage(int dmg)
     {
@@ -24,12 +41,13 @@ public class Character : MonoBehaviour
 
     public void Move(Vector3 targetPosition)
     {
-        GetComponent<NavMeshAgent>().destination = RefinedPos(targetPosition);
+        animator.SetBool("isWalking", true);
+        GetComponent<NavMeshAgent>().SetDestination(RefinedPos(targetPosition));
     }
 
     public void StopMoving()
     {
-        GetComponent<NavMeshAgent>().destination = transform.position;
+        GetComponent<NavMeshAgent>().SetDestination(transform.position);
     }
 
     public virtual void OnDeath()
