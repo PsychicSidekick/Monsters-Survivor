@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : Character
 {
+    public float detectionRange;
+    public float attackRange;
     public List<ItemPrefab> lootPool = new List<ItemPrefab>();
 
     public override void Update()
@@ -12,9 +14,17 @@ public class Enemy : Character
 
         float distanceFromPlayer = Vector3.Distance(PlayerControl.instance.transform.position, transform.position);
 
-        if (distanceFromPlayer < 5)
+        if (distanceFromPlayer < detectionRange)
         {
-            Move(PlayerControl.instance.transform.position);
+            if (distanceFromPlayer < attackRange)
+            {
+                animator.SetBool("isAttacking", true);
+            }
+            else
+            {
+                Move(PlayerControl.instance.transform.position);
+                animator.SetBool("isAttacking", false);
+            }
             Vector3 lookDir = Vector3.RotateTowards(transform.forward, PlayerControl.instance.transform.position - transform.position, 3 * Time.deltaTime, 0.0f);
             transform.rotation = Quaternion.LookRotation(lookDir);
         }

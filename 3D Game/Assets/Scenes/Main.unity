@@ -3745,6 +3745,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  detectionRange: 0
+  attackRange: 0
   lootPool:
   - {fileID: 11400000, guid: 6289acc5426ff5347aa3315353793f72, type: 2}
   - {fileID: 11400000, guid: 7fb6d9a1a3286c64186b909e1871511b, type: 2}
@@ -4836,6 +4838,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  detectionRange: 5
+  attackRange: 1
   lootPool:
   - {fileID: 11400000, guid: 6289acc5426ff5347aa3315353793f72, type: 2}
   - {fileID: 11400000, guid: 7fb6d9a1a3286c64186b909e1871511b, type: 2}

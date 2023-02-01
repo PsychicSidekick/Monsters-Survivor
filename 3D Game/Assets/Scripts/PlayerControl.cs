@@ -95,6 +95,14 @@ public class PlayerControl : Character
         skill.UseSkill(RefinedPos(transform.position), skillTarget, projSpeed);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("AttackHB"))
+        {
+            ReceiveDamage(10);
+        }
+    }
+
     public bool IsMouseOverUI()
     {
         return EventSystem.current.IsPointerOverGameObject();
