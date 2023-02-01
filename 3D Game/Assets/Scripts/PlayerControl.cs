@@ -89,7 +89,9 @@ public class PlayerControl : Character
     private void UseSkill()
     {
         animator.Play("Attack", -1, 0f);
-        transform.LookAt(skillTarget);
+        Vector3 lookDir = Vector3.RotateTowards(transform.forward, skillTarget - transform.position, 10, 0.0f);
+        transform.rotation = Quaternion.LookRotation(lookDir);
+        //transform.LookAt(skillTarget);
         skill.UseSkill(RefinedPos(transform.position), skillTarget, projSpeed);
     }
 

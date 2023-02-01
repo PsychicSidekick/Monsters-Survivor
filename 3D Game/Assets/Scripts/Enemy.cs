@@ -6,6 +6,24 @@ public class Enemy : Character
 {
     public List<ItemPrefab> lootPool = new List<ItemPrefab>();
 
+    public override void Update()
+    {
+        base.Update();
+
+        float distanceFromPlayer = Vector3.Distance(PlayerControl.instance.transform.position, transform.position);
+
+        if (distanceFromPlayer < 5)
+        {
+            Move(PlayerControl.instance.transform.position);
+            Vector3 lookDir = Vector3.RotateTowards(transform.forward, PlayerControl.instance.transform.position - transform.position, 3 * Time.deltaTime, 0.0f);
+            transform.rotation = Quaternion.LookRotation(lookDir);
+        }
+        else
+        {
+            StopMoving();
+        }
+    }
+
     public void SpawnLoot()
     {
         for (int i = 0; i < 6; i++)

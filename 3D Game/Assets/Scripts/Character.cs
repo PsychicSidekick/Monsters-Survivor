@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Character : MonoBehaviour
 {
     protected Animator animator;
-    NavMeshAgent agent;
+    protected NavMeshAgent agent;
 
     public int health;
 
@@ -18,7 +18,7 @@ public class Character : MonoBehaviour
 
     public virtual void Update()
     {
-        if (GetComponent<NavMeshAgent>().remainingDistance < 0.1)
+        if (agent.remainingDistance < 0.1)
         {
             animator.SetBool("isWalking", false);
         }
@@ -42,12 +42,12 @@ public class Character : MonoBehaviour
     public void Move(Vector3 targetPosition)
     {
         animator.SetBool("isWalking", true);
-        GetComponent<NavMeshAgent>().SetDestination(RefinedPos(targetPosition));
+        agent.SetDestination(RefinedPos(targetPosition));
     }
 
     public void StopMoving()
     {
-        GetComponent<NavMeshAgent>().SetDestination(transform.position);
+        agent.SetDestination(transform.position);
     }
 
     public virtual void OnDeath()

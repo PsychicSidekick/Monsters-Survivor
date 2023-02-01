@@ -65,7 +65,7 @@ public class Inventory : MonoBehaviour
 
         if (pickingUpLoot)
         {
-            if (Vector3.Distance(player.transform.position, player.RefinedPos(player.targetItem.transform.position)) < 0.1f)
+            if (Vector3.Distance(player.transform.position, player.targetItem.transform.position) < 0.1f)
             {
                 if (inventoryUI.activeInHierarchy)
                 {
