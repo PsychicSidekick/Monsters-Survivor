@@ -105,8 +105,6 @@ public class CharacterStat
             finalValue *= 1 + mod.value / 100;
         }
 
-        
-
         return (float)Mathf.Round(finalValue);
     }
 }

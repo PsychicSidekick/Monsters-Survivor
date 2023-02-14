@@ -5,17 +5,17 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public enum ItemType
-    {
-        Weapon,
-        Helmet,
-        Body,
-        Boots,
-        Gloves,
-        OffHand,
-        Ring,
-        Amulet,
-        Belt
-    }
+{
+    Weapon,
+    Helmet,
+    Body,
+    Boots,
+    Gloves,
+    OffHand,
+    Ring,
+    Amulet,
+    Belt,
+}
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
 public class ItemPrefab : ScriptableObject

@@ -5,10 +5,11 @@ using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
-    protected Animator animator;
-    protected NavMeshAgent agent;
+    public Animator animator;
+    public NavMeshAgent agent;
 
     public int health;
+    public float moveSpeed;
 
     private void Start()
     {
@@ -21,6 +22,14 @@ public class Character : MonoBehaviour
         if (agent.remainingDistance < 0.1)
         {
             animator.SetBool("isWalking", false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("AttackHB"))
+        {
+            ReceiveDamage(10);
         }
     }
 

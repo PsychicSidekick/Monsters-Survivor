@@ -8,16 +8,10 @@ public class PlayerControl : Character
 {
     public static PlayerControl instance;
 
-    private Vector3 skillTarget = new Vector3(0, 1, 0);
+    public Vector3 skillTarget = new Vector3(0, 1, 0);
     private Vector3 moveTarget = new Vector3(0, 0, 0);
 
-    public float moveSpeed;
-    public float projSpeed;
-
-    public Skill skill;
-
-    public float attackSpeed = 1;
-    private float lastAttack = 0;
+    public bool isAttacking;
 
     public GameObject targetItem;
 
@@ -37,14 +31,18 @@ public class PlayerControl : Character
             FindSkillTarget(hit);
             FindMoveTarget(hit);
 
-            if (Input.GetMouseButton(0) && !Inventory.instance.lockCursor && !IsMouseOverUI())
+            if (!isAttacking && Input.GetMouseButton(0) && !Inventory.instance.lockCursor && !IsMouseOverUI())
             {
                 Inventory.instance.pickingUpLoot = false;
                 Move(moveTarget);
             } 
+
+            if (isAttacking && Input.GetMouseButtonDown(0) && !Inventory.instance.lockCursor && !IsMouseOverUI())
+            {
+                Inventory.instance.pickingUpLoot = false;
+                Move(moveTarget);
+            }
         }
-        
-        GetSkillKey("q");
     }
 
     public void FindMoveTarget(RaycastHit hit)
@@ -69,37 +67,6 @@ public class PlayerControl : Character
         if (hitObj.tag == "Enemy")
         {
             skillTarget = RefinedPos(hitObj.transform.position);
-        }
-    }
-
-    private void GetSkillKey(string key)
-    {
-        if (Input.GetKey(key))
-        {
-            StopMoving();
-
-            if (Time.time - 1 / attackSpeed > lastAttack)
-            {
-                UseSkill();
-                lastAttack = Time.time;
-            }
-        }
-    }
-
-    private void UseSkill()
-    {
-        animator.Play("Attack", -1, 0f);
-        Vector3 lookDir = Vector3.RotateTowards(transform.forward, skillTarget - transform.position, 10, 0.0f);
-        transform.rotation = Quaternion.LookRotation(lookDir);
-        //transform.LookAt(skillTarget);
-        skill.UseSkill(RefinedPos(transform.position), skillTarget, projSpeed);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("AttackHB"))
-        {
-            ReceiveDamage(10);
         }
     }
 

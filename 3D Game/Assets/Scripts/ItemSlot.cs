@@ -13,7 +13,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     {
         foreach (StatModifier mod in itemObj.itemModifiers)
         {
-            PlayerControl.instance.GetComponent<StatsManager>().FindStat(mod.statType).AddModifier(mod);
+            PlayerControl.instance.GetComponent<StatsManager>().FindStatOfType(mod.statType).AddModifier(mod);
         }
         equippedItem = itemObj;
     }
@@ -22,7 +22,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     {
         foreach (StatModifier mod in equippedItem.itemModifiers)
         {
-            PlayerControl.instance.GetComponent<StatsManager>().FindStat(mod.statType).RemoveModifier(mod);
+            PlayerControl.instance.GetComponent<StatsManager>().FindStatOfType(mod.statType).RemoveModifier(mod);
         }
         equippedItem = null;
     }

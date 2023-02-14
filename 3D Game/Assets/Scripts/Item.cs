@@ -8,7 +8,6 @@ public class Item
     public Vector2Int size;
     public ItemType type;
 
-
     public Item(ItemPrefab itemPrefab)
     {
         name = itemPrefab.name;
