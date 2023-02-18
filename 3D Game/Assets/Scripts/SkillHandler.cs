@@ -10,6 +10,10 @@ public class SkillHandler : MonoBehaviour
     KeyCode skillKey3 = KeyCode.E;
     KeyCode skillKey4 = KeyCode.R;
 
+    public LayerMask layerMask;
+
+    public Vector3 skillTarget = new Vector3(0, 1, 0);
+
     public List<KeyCode> keys;
     public List<string> skills = new List<string>();
 
@@ -34,6 +38,21 @@ public class SkillHandler : MonoBehaviour
         }
     }
 
+    public void FindSkillTarget(RaycastHit hit)
+    {
+        GameObject hitObj = hit.transform.gameObject;
+
+        if (hitObj.tag == "Ground")
+        {
+            skillTarget = PlayerControl.instance.RefinedPos(hit.point);
+        }
+
+        if (hitObj.tag == "Enemy")
+        {
+            skillTarget = PlayerControl.instance.RefinedPos(hitObj.transform.position);
+        }
+    }
+
     private void GetSkillKey(KeyCode key)
     {
         if (Input.GetKey(key))
@@ -48,9 +67,19 @@ public class SkillHandler : MonoBehaviour
 
     private void UseSkill(string skill)
     {
-        PlayerControl.instance.animator.Play("ArcaneBlast", -1, 0f);
-        Vector3 lookDir = Vector3.RotateTowards(transform.forward, PlayerControl.instance.skillTarget - transform.position, 10, 0.0f);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100, layerMask))
+        {
+            FindSkillTarget(hit);
+        }
+        PlayerControl.instance.animator.Play(skill, -1, 0f);
+    }
+
+    public void FaceSkillTarget()
+    {
+        PlayerControl.instance.StopMoving();
+        Vector3 lookDir = Vector3.RotateTowards(transform.forward, skillTarget - transform.position, 10, 0.0f);
         transform.rotation = Quaternion.LookRotation(lookDir);
-        GetComponent<Skills>().Invoke(skill, 0);
     }
 }

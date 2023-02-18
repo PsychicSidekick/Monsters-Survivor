@@ -15,6 +15,7 @@ public enum StatType
     Dex,
     Int
 }
+
 public class CharacterStat
 {
     public StatType type;

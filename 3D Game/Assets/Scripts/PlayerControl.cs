@@ -8,12 +8,13 @@ public class PlayerControl : Character
 {
     public static PlayerControl instance;
 
-    public Vector3 skillTarget = new Vector3(0, 1, 0);
     private Vector3 moveTarget = new Vector3(0, 0, 0);
 
     public bool isAttacking;
 
     public GameObject targetItem;
+
+    public LayerMask moveRayLayer;
 
     private void Awake()
     {
@@ -26,9 +27,8 @@ public class PlayerControl : Character
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 100, moveRayLayer))
         {
-            FindSkillTarget(hit);
             FindMoveTarget(hit);
 
             if (!isAttacking && Input.GetMouseButton(0) && !Inventory.instance.lockCursor && !IsMouseOverUI())
@@ -52,21 +52,6 @@ public class PlayerControl : Character
         if (hitObj.tag == "Ground")
         {
             moveTarget = RefinedPos(hit.point);
-        }
-    }
-
-    public void FindSkillTarget(RaycastHit hit)
-    {
-        GameObject hitObj = hit.transform.gameObject;
-
-        if (hitObj.tag == "Ground")
-        {
-            skillTarget = RefinedPos(hit.point);
-        }
-
-        if (hitObj.tag == "Enemy")
-        {
-            skillTarget = RefinedPos(hitObj.transform.position);
         }
     }
 
