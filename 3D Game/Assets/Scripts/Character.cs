@@ -8,11 +8,18 @@ public class Character : MonoBehaviour
     public Animator animator;
     public NavMeshAgent agent;
 
-    public int health;
+    public float life;
+    public float maxLife;
+    public float lifeRegen;
+    public float mana;
+    public float maxMana;
+    public float manaRegen;
     public float moveSpeed;
 
     private void Start()
     {
+        life = maxLife;
+        mana = maxMana;
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
@@ -23,6 +30,9 @@ public class Character : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
+
+        ReceiveHealing(lifeRegen * Time.deltaTime);
+        AddMana(manaRegen * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,16 +43,56 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void ReceiveDamage(int dmg)
+    public void ReceiveDamage(float dmg)
     {
-        health -= dmg;
-        CheckDeath();
+        if (life > 0)
+        {
+            life -= dmg;
+            CheckDeath();
+        }
+    }
+
+    public void ReceiveHealing(float healing)
+    {
+        if (life < maxLife)
+        {
+            life += healing;
+            if (life > maxLife)
+            {
+                life = maxLife;
+            }
+        }
+    }
+
+    public void ReduceMana(float value)
+    {
+        if (mana > 0)
+        {
+            mana -= value;
+            if (mana < 0)
+            {
+                mana = 0;
+            }
+        }    
+    }
+
+    public void AddMana(float value)
+    {
+        if (mana < maxMana)
+        {
+            mana += value;
+            if (mana > maxMana)
+            {
+                mana = maxMana;
+            }
+        }
     }
 
     public void CheckDeath()
     {
-        if(health <= 0)
+        if(life <= 0)
         {
+            life = 0;
             OnDeath();
             Destroy(gameObject);
         }

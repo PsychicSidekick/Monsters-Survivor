@@ -41,7 +41,7 @@ public class ItemObj : MonoBehaviour
         itemImg = Instantiate(itemImgPrefab, Inventory.instance.transform);
 
         itemModifiers.Add(new StatModifier(StatType.MoveSpd, 1, ModType.Flat));
-        itemModifiers.Add(new StatModifier(StatType.Life, 1, ModType.Flat));
+        itemModifiers.Add(new StatModifier(StatType.MaxLife, 1, ModType.Flat));
     }
 
     private void Update()

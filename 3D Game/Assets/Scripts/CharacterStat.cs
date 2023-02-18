@@ -4,8 +4,10 @@ using UnityEngine;
 
 public enum StatType
 {
-    Life,
-    Mana,
+    MaxLife,
+    LifeRegen,
+    MaxMana,
+    ManaRegen,
     MoveSpd,
     AtkSpd,
     AtkDmg,
