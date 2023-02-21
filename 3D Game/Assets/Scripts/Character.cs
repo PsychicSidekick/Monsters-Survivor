@@ -7,21 +7,19 @@ public class Character : MonoBehaviour
 {
     public Animator animator;
     public NavMeshAgent agent;
+    protected StatsManager stats;
 
     public float life;
-    public float maxLife;
-    public float lifeRegen;
     public float mana;
-    public float maxMana;
-    public float manaRegen;
-    public float moveSpeed;
 
     private void Start()
     {
-        life = maxLife;
-        mana = maxMana;
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        stats = GetComponent<StatsManager>();
+
+        life = stats.maxLife.value;
+        mana = stats.maxMana.value;
     }
 
     public virtual void Update()
@@ -31,8 +29,8 @@ public class Character : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
 
-        ReceiveHealing(lifeRegen * Time.deltaTime);
-        AddMana(manaRegen * Time.deltaTime);
+        ReceiveHealing(stats.lifeRegen.value * Time.deltaTime);
+        AddMana(stats.manaRegen.value * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,12 +52,12 @@ public class Character : MonoBehaviour
 
     public void ReceiveHealing(float healing)
     {
-        if (life < maxLife)
+        if (life < stats.maxLife.value)
         {
             life += healing;
-            if (life > maxLife)
+            if (life > stats.maxLife.value)
             {
-                life = maxLife;
+                life = stats.maxLife.value;
             }
         }
     }
@@ -78,14 +76,19 @@ public class Character : MonoBehaviour
 
     public void AddMana(float value)
     {
-        if (mana < maxMana)
+        if (mana < stats.maxMana.value)
         {
             mana += value;
-            if (mana > maxMana)
+            if (mana > stats.maxMana.value)
             {
-                mana = maxMana;
+                mana = stats.maxMana.value;
             }
         }
+    }
+
+    public bool CheckSkillCost(float value)
+    {
+        return mana >= value;
     }
 
     public void CheckDeath()

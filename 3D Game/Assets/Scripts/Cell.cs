@@ -41,6 +41,11 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
     {
         itemObj.occupyingCell = this;
 
+        if (Inventory.instance.inventoryUI.activeInHierarchy)
+        {
+            itemObj.description.SetActive(true);
+        }
+
         childCells = FindCellGroupOfSize(itemObj.item.size);
         if(childCells == null)
         {
@@ -57,6 +62,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
     public void RemoveItem()
     {
         occupiedBy.occupyingCell = null;
+        occupiedBy.description.SetActive(false);
 
         foreach (Cell c in childCells)
         {
@@ -232,6 +238,11 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
     {
         ItemObj cursorItem = Inventory.instance.cursorItem;
 
+        if (occupiedBy && !cursorItem)
+        {
+            occupiedBy.description.SetActive(true);
+        }
+
         if (cursorItem == null)
         {
             return;
@@ -253,6 +264,11 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (occupiedBy != null && !Inventory.instance.cursorItem)
+        {
+            occupiedBy.description.SetActive(false);
+        }
+
         if (pos.x == 0 || pos.y == 0)
         {
             Inventory.instance.ResetCellsColour();

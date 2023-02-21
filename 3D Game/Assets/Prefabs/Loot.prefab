@@ -130,8 +130,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 0}
   lootTextPrefab: {fileID: 4541949895424491162, guid: dec1f91504f816b4d8141d79c632f74e, type: 3}
   itemImgPrefab: {fileID: 0}
+  descriptionPrefab: {fileID: 1284963231940288248, guid: 466bd8adfde539d4aa80a9278215202b, type: 3}
   lootText: {fileID: 0}
   itemImg: {fileID: 0}
+  description: {fileID: 0}
   lootCanvas: {fileID: 0}
   mr: {fileID: 0}
   rb: {fileID: 0}

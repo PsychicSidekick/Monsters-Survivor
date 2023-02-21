@@ -176,6 +176,7 @@ public class Inventory : MonoBehaviour
         ItemObj inventoryItem = c.FindOccupyingItemInCells(c.FindCellGroupOfSize(itemObj.item.size));
         PickUpItemWithCursor(inventoryItem);
         PlaceItemInInventory(itemObj, c);
+        itemObj.description.SetActive(false);
         cursorItem = inventoryItem;
     }
 
@@ -185,6 +186,7 @@ public class Inventory : MonoBehaviour
         PickUpItemWithCursor(equippedItem);
         slot.UnequipItem();
         PlaceItemInItemSlot(itemObj, slot);
+        itemObj.description.SetActive(false);
         cursorItem = equippedItem;
     }
 

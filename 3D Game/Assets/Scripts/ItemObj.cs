@@ -11,8 +11,10 @@ public class ItemObj : MonoBehaviour
 
     public GameObject lootTextPrefab;
     public GameObject itemImgPrefab;
+    public GameObject descriptionPrefab;
     public GameObject lootText;
     public GameObject itemImg;
+    public GameObject description;
 
     public GameObject lootCanvas;
     public MeshRenderer mr;
@@ -40,8 +42,9 @@ public class ItemObj : MonoBehaviour
 
         itemImg = Instantiate(itemImgPrefab, Inventory.instance.transform);
 
-        itemModifiers.Add(new StatModifier(StatType.MoveSpd, 1, ModType.Flat));
-        itemModifiers.Add(new StatModifier(StatType.MaxLife, 1, ModType.Flat));
+        description = Instantiate(descriptionPrefab, itemImg.transform);
+
+        itemModifiers.Add(new StatModifier(StatType.ManaRegen, 1, ModType.Flat));
     }
 
     private void Update()

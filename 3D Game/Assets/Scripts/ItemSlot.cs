@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler
+public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public ItemType slotType;
     public ItemObj equippedItem;
 
     public void EquipItem(ItemObj itemObj)
     {
+        itemObj.description.SetActive(true);
         foreach (StatModifier mod in itemObj.itemModifiers)
         {
             PlayerControl.instance.GetComponent<StatsManager>().FindStatOfType(mod.statType).AddModifier(mod);
@@ -20,6 +21,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void UnequipItem()
     {
+        equippedItem.description.SetActive(false);
         foreach (StatModifier mod in equippedItem.itemModifiers)
         {
             PlayerControl.instance.GetComponent<StatsManager>().FindStatOfType(mod.statType).RemoveModifier(mod);
@@ -55,6 +57,22 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             Inventory.instance.PickUpItemWithCursor(equippedItem);
             UnequipItem();
             return;
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!Inventory.instance.cursorItem && equippedItem)
+        {
+            equippedItem.description.SetActive(true);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (!Inventory.instance.cursorItem && equippedItem)
+        {
+            equippedItem.description.SetActive(false);
         }
     }
 }

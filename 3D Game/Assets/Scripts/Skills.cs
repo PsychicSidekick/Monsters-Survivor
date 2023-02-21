@@ -7,9 +7,17 @@ public class Skills : MonoBehaviour
     public GameObject ballPrefab;
     public float ballRange;
     public float ballSpeed;
+    public float shootBallManaCost;
 
     public void ShootBall()
     {
+        if (!PlayerControl.instance.CheckSkillCost(shootBallManaCost))
+        {
+            return;
+        }
+
+        PlayerControl.instance.ReduceMana(shootBallManaCost);
+
         Vector3 startPos = PlayerControl.instance.RefinedPos(transform.position);
 
         Projectile proj = Instantiate(ballPrefab, startPos, Quaternion.identity).GetComponent<Projectile>();
@@ -20,11 +28,19 @@ public class Skills : MonoBehaviour
     }
 
     public GameObject blastColliderPrefab;
-    public float maxBlastArea = 2f;
-    public float expandTime = 1;
+    public float maxBlastArea;
+    public float expandTime;
+    public float blastManaCost;
 
     public void Blast()
     {
+        if (!PlayerControl.instance.CheckSkillCost(blastManaCost))
+        {
+            return;
+        }
+
+        PlayerControl.instance.ReduceMana(blastManaCost);
+
         StartCoroutine(ExpandSphereCollider());
     }
 
@@ -52,28 +68,4 @@ public class Skills : MonoBehaviour
             yield return null;
         }
     }
-
-
-    //float currentTime = 0f;
-    //float timeToExpand = 10f;
-
-    //private void Update()
-    //{
-    //    SphereCollider sphereCollider = GetComponent<SphereCollider>();
-
-    //    if (startBlastExpansion)
-    //    {
-    //        if (currentTime <= timeToExpand)
-    //        {
-    //            currentTime += Time.deltaTime;
-    //            sphereCollider.radius += Mathf.Lerp(0.5f, maxBlastArea, currentTime/timeToExpand);
-    //        }   
-
-    //        if (sphereCollider.radius >= maxBlastArea)
-    //        {
-    //            startBlastExpansion = false;
-    //            sphereCollider.radius = 0.5f;
-    //        }
-    //    }
-    //}
 }
