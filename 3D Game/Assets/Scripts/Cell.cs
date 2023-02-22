@@ -238,7 +238,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
     {
         ItemObj cursorItem = Inventory.instance.cursorItem;
 
-        if (occupiedBy && !cursorItem)
+        if (occupiedBy)
         {
             occupiedBy.description.SetActive(true);
         }
@@ -264,7 +264,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (occupiedBy != null && !Inventory.instance.cursorItem)
+        if (occupiedBy != null)
         {
             occupiedBy.description.SetActive(false);
         }

@@ -11,6 +11,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void EquipItem(ItemObj itemObj)
     {
+        itemObj.isEquipped = true;
         itemObj.description.SetActive(true);
         foreach (StatModifier mod in itemObj.itemModifiers)
         {
@@ -21,6 +22,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void UnequipItem()
     {
+        equippedItem.isEquipped = false;
         equippedItem.description.SetActive(false);
         foreach (StatModifier mod in equippedItem.itemModifiers)
         {
@@ -62,7 +64,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!Inventory.instance.cursorItem && equippedItem)
+        if (equippedItem)
         {
             equippedItem.description.SetActive(true);
         }
@@ -70,7 +72,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (!Inventory.instance.cursorItem && equippedItem)
+        if (equippedItem)
         {
             equippedItem.description.SetActive(false);
         }

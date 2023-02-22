@@ -20,7 +20,7 @@ public class StatsManager : MonoBehaviour
 
     public List<CharacterStat> stats = new List<CharacterStat>();
 
-    private void Start()
+    private void Awake()
     {
         c = GetComponent<Character>();
 

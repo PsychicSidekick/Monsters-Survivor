@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4220110499738584677}
   - component: {fileID: 1118969688563770183}
   - component: {fileID: 7865651702269884642}
-  - component: {fileID: 3024673256012363538}
   m_Layer: 5
   m_Name: FourthItemImg
   m_TagString: Untagged
@@ -77,18 +76,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3024673256012363538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4028795390590836520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6655c2b243c4534bb2349faa6cb4726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  descriptionPrefab: {fileID: 1284963231940288248, guid: 466bd8adfde539d4aa80a9278215202b, type: 3}
-  itemObj: {fileID: 0}
-  description: {fileID: 0}

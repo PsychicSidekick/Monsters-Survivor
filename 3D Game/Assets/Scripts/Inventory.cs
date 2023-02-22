@@ -30,6 +30,7 @@ public class Inventory : MonoBehaviour
     public Button itemBtnPrefab;
     public GameObject cellPrefab;
     public GameObject inventoryAnchor;
+    public GameObject descriptionHolder;
 
     public bool pickingUpLoot;
     public bool lockCursor;

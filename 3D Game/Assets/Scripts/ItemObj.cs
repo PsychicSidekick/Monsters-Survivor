@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class ItemObj : MonoBehaviour
 {
@@ -22,6 +22,7 @@ public class ItemObj : MonoBehaviour
 
     public Cell occupyingCell;
 
+    public bool isEquipped = false;
     public bool isPickedUp = false;
     public bool isPlaced = false;
 
@@ -40,11 +41,17 @@ public class ItemObj : MonoBehaviour
         lootText = Instantiate(lootTextPrefab, lootCanvas.transform);
         lootText.GetComponent<LootText>().itemObj = this;
 
-        itemImg = Instantiate(itemImgPrefab, Inventory.instance.transform);
+        itemImg = Instantiate(itemImgPrefab, Inventory.instance.inventoryUI.transform);
 
-        description = Instantiate(descriptionPrefab, itemImg.transform);
+        description = Instantiate(descriptionPrefab, Inventory.instance.descriptionHolder.transform);
+        description.GetComponent<DescriptionPanel>().itemObj = this;
 
-        itemModifiers.Add(new StatModifier(StatType.ManaRegen, 1, ModType.Flat));
+        StatModifier mod = new StatModifier(StatType.ManaRegen, 1, ModType.Flat);
+        StatModifier mod1 = new StatModifier(StatType.MaxLife, 100, ModType.Inc);
+        StatModifier mod2 = new StatModifier(StatType.MoveSpd, 10, ModType.More);
+        itemModifiers.Add(mod);
+        itemModifiers.Add(mod1);
+        itemModifiers.Add(mod2);
     }
 
     private void Update()
@@ -54,7 +61,7 @@ public class ItemObj : MonoBehaviour
         mr.enabled = !isPickedUp;
         lootText.SetActive(!isPickedUp);
         itemImg.SetActive(isPickedUp);
-        itemImg.transform.SetParent(isPlaced ? Inventory.instance.inventoryUI.transform : Inventory.instance.transform);
+        //itemImg.transform.SetParent(isPlaced ? Inventory.instance.inventoryUI.transform : Inventory.instance.transform);
     }
 
     public void OnDrop()
