@@ -13,7 +13,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         itemObj.isEquipped = true;
         itemObj.description.SetActive(true);
-        foreach (StatModifier mod in itemObj.itemModifiers)
+        foreach (StatModifier mod in itemObj.item.itemModifiers)
         {
             PlayerControl.instance.GetComponent<StatsManager>().FindStatOfType(mod.statType).AddModifier(mod);
         }
@@ -24,7 +24,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         equippedItem.isEquipped = false;
         equippedItem.description.SetActive(false);
-        foreach (StatModifier mod in equippedItem.itemModifiers)
+        foreach (StatModifier mod in equippedItem.item.itemModifiers)
         {
             PlayerControl.instance.GetComponent<StatsManager>().FindStatOfType(mod.statType).RemoveModifier(mod);
         }

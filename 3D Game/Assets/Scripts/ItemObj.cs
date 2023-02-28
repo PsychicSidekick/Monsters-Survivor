@@ -26,15 +26,11 @@ public class ItemObj : MonoBehaviour
     public bool isPickedUp = false;
     public bool isPlaced = false;
 
-    public List<StatModifier> itemModifiers = new List<StatModifier>();
-
     private void Start()
     {
         lootCanvas = GameObject.Find("LootCanvas");
         mr = GetComponent<MeshRenderer>();
         rb = GetComponent<Rigidbody>();
-
-        item = new Item(itemPrefab);
 
         itemImgPrefab = itemPrefab.itemImgPrefab;
 
@@ -45,13 +41,6 @@ public class ItemObj : MonoBehaviour
 
         description = Instantiate(descriptionPrefab, Inventory.instance.descriptionHolder.transform);
         description.GetComponent<DescriptionPanel>().itemObj = this;
-
-        StatModifier mod = new StatModifier(StatType.ManaRegen, 1, ModType.Flat);
-        StatModifier mod1 = new StatModifier(StatType.MaxLife, 100, ModType.Inc);
-        StatModifier mod2 = new StatModifier(StatType.MoveSpd, 10, ModType.More);
-        itemModifiers.Add(mod);
-        itemModifiers.Add(mod1);
-        itemModifiers.Add(mod2);
     }
 
     private void Update()

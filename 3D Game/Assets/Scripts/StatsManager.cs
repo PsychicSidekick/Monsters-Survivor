@@ -1,45 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class StatsManager : MonoBehaviour
 {
     private Character c;
-
-    public float baseMaxLife;
-    public float baseLifeRegen;
-    public float baseMaxMana;
-    public float baseManaRegen;
-    public float baseMoveSpeed;
 
     public CharacterStat maxLife;
     public CharacterStat lifeRegen;
     public CharacterStat maxMana;
     public CharacterStat manaRegen;
     public CharacterStat moveSpeed;
+    public CharacterStat attackSpeed;
+    public CharacterStat attackDmg;
+    public CharacterStat armor;
+    public CharacterStat evasion;
 
+    [HideInInspector]
     public List<CharacterStat> stats = new List<CharacterStat>();
 
     private void Awake()
     {
         c = GetComponent<Character>();
 
-        maxLife = new CharacterStat(StatType.MaxLife, baseMaxLife);
-        lifeRegen = new CharacterStat(StatType.LifeRegen, baseLifeRegen);
-        maxMana = new CharacterStat(StatType.MaxMana, baseMaxMana);
-        manaRegen = new CharacterStat(StatType.ManaRegen, baseManaRegen);
-        moveSpeed = new CharacterStat(StatType.MoveSpd, baseMoveSpeed);
-
         stats.Add(maxLife);
         stats.Add(lifeRegen);
         stats.Add(maxMana);
         stats.Add(manaRegen);
         stats.Add(moveSpeed);
+        stats.Add(attackSpeed);
+        stats.Add(attackDmg);
+        stats.Add(armor);
+        stats.Add(evasion);
     }
 
     private void Update()
     {
         c.agent.speed = moveSpeed.value;
+        c.animator.SetFloat("AttackSpeed", attackSpeed.value);
     }
 
     public CharacterStat FindStatOfType(StatType type)

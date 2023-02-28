@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AreaDamage : MonoBehaviour
 {
-    public int damage;
+    public float damage;
 
     private void OnTriggerEnter(Collider other)
     {

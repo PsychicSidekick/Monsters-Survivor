@@ -7,32 +7,28 @@ using UnityEngine.EventSystems;
 
 public class Inventory : MonoBehaviour
 {
+    [HideInInspector]
     public static Inventory instance;
 
+    [HideInInspector]
     public PlayerControl player;
 
+    [HideInInspector]
     public List<List<Cell>> inventory = new List<List<Cell>>();
-    public Vector2Int inventorySize = new Vector2Int(8, 6);
-    public List<Item> itemList = new List<Item>();
-    public Dictionary<ItemType, ItemSlot> itemSlots = new Dictionary<ItemType, ItemSlot>();
+    public Vector2Int inventorySize;
 
+    [HideInInspector]
     public ItemObj cursorItem;
 
-    public ItemSlot weaponSlot;
-    public ItemSlot helmetSlot;
-    public ItemSlot bodySlot;
-
-    public List<GameObject> itemBtns = new List<GameObject>();
     public GameObject inventoryUI;
 
-    public TMP_Text label;
-
-    public Button itemBtnPrefab;
     public GameObject cellPrefab;
     public GameObject inventoryAnchor;
     public GameObject descriptionHolder;
 
+    [HideInInspector]
     public bool pickingUpLoot;
+    [HideInInspector]
     public bool lockCursor;
 
     private void Awake()
@@ -44,10 +40,6 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         InitiateInventory();
-
-        itemSlots.Add(ItemType.Weapon, weaponSlot);
-        itemSlots.Add(ItemType.Helmet, helmetSlot);
-        itemSlots.Add(ItemType.Body, bodySlot);
     }
 
     private void Update()

@@ -36,12 +36,14 @@ public class Enemy : Character
 
     public void SpawnLoot()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 10; i++)
         {
             // Choose random item from loot pool
             ItemPrefab itemPrefab = lootPool[Random.Range(0, lootPool.Count)];
             ItemObj itemObj = Instantiate(itemPrefab.itemObjPrefab, transform.position, Quaternion.identity).GetComponent<ItemObj>();
             itemObj.itemPrefab = itemPrefab;
+            itemObj.item = new Item(itemPrefab);
+
             // Spread loot position
             Vector3 randomOffset = new Vector3(Random.Range(0, 1.5f), 0, Random.Range(0, 1.5f));
             itemObj.transform.position += randomOffset;

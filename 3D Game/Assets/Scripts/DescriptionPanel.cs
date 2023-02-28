@@ -20,7 +20,7 @@ public class DescriptionPanel : MonoBehaviour
 
         string itemModString = null;
 
-        foreach (var mod in itemObj.itemModifiers)
+        foreach (StatModifier mod in itemObj.item.itemModifiers)
         {
             itemModString += mod.modString + System.Environment.NewLine;
         }

@@ -19,7 +19,6 @@ public class SkillHandler : MonoBehaviour
 
     public Dictionary<KeyCode, string> keyBinds = new Dictionary<KeyCode, string>();
 
-    public float attackSpeed = 1;
     private float lastAttack = 0;
 
     private void Start()
@@ -57,7 +56,7 @@ public class SkillHandler : MonoBehaviour
     {
         if (Input.GetKey(key))
         {
-            if (Time.time - 1 / attackSpeed > lastAttack)
+            if (Time.time - 1 / GetComponent<StatsManager>().attackSpeed.value > lastAttack)
             {
                 UseSkill(keyBinds[key]);
                 lastAttack = Time.time;

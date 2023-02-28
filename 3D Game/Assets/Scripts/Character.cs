@@ -35,7 +35,7 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("AttackHB"))
+        if (!GetComponent<Enemy>() && other.CompareTag("AttackHB"))
         {
             ReceiveDamage(10);
         }
@@ -55,10 +55,11 @@ public class Character : MonoBehaviour
         if (life < stats.maxLife.value)
         {
             life += healing;
-            if (life > stats.maxLife.value)
-            {
-                life = stats.maxLife.value;
-            }
+        }
+
+        if (life > stats.maxLife.value)
+        {
+            life = stats.maxLife.value;
         }
     }
 

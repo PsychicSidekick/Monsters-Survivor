@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
+  m_Name: Gloves1
+  m_EditorClassIdentifier: 
+  itemName: Gloves1
+  type: 4
+  size: {x: 2, y: 2}
+  itemObjPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
+  itemImgPrefab: {fileID: 126991780030651831, guid: e760a0f136ee00947856912e163d2d01, type: 3}
+  modPool:
+  - statType: 0
+    modType: 010100
+  - statType: 1
+    modType: 010100
+  - statType: 2
+    modType: 010100
+  - statType: 3
+    modType: 010100
+  - statType: 7
+    modType: 010100
+  - statType: 8
+    modType: 010100
+  - statType: 5
+    modType: 000100
+  - statType: 6
+    modType: 000100

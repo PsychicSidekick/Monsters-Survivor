@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     public Vector3 targetPos;
     public float projSpeed;
 
-    public int damage;
+    public float damage;
 
     private void Update()
     {

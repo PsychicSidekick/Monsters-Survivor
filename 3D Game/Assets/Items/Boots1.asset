@@ -10,10 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
-  m_Name: TheFourthItem
+  m_Name: Boots1
   m_EditorClassIdentifier: 
-  itemName: Body Armour
-  type: 2
-  size: {x: 2, y: 3}
+  itemName: Boots1
+  type: 3
+  size: {x: 2, y: 2}
   itemObjPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImgPrefab: {fileID: 4028795390590836520, guid: 29a85967892fa9640ba261a253bc933a, type: 3}
+  itemImgPrefab: {fileID: 126991780030651831, guid: e0abf59d83af9a74a91a0d4564322da4, type: 3}
+  modPool:
+  - statType: 0
+    modType: 010100
+  - statType: 1
+    modType: 010100
+  - statType: 2
+    modType: 010100
+  - statType: 3
+    modType: 010100
+  - statType: 4
+    modType: 000100
+  - statType: 7
+    modType: 010100
+  - statType: 8
+    modType: 010100

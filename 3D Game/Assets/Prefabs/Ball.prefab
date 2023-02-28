@@ -112,4 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPos: {x: 0, y: 0, z: 0}
   projSpeed: 0
-  damage: 1
+  damage: 0

@@ -10,10 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
-  m_Name: TheFirstItem
+  m_Name: Belt1
   m_EditorClassIdentifier: 
-  itemName: Weapon
-  type: 0
-  size: {x: 1, y: 3}
+  itemName: Belt1
+  type: 8
+  size: {x: 2, y: 1}
   itemObjPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImgPrefab: {fileID: 4065881981570626885, guid: 9620dfd51fa8ba541b194111793a53aa, type: 3}
+  itemImgPrefab: {fileID: 126991780030651831, guid: b1ce261681bd14c4f8522779d61f8b5f, type: 3}
+  modPool:
+  - statType: 0
+    modType: 010100
+  - statType: 1
+    modType: 010100
+  - statType: 2
+    modType: 010100
+  - statType: 3
+    modType: 010100
+  - statType: 6
+    modType: 000100
+  - statType: 7
+    modType: 010100
+  - statType: 8
+    modType: 010100

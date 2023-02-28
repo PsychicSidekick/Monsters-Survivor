@@ -10,10 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
-  m_Name: TheThirdItem
+  m_Name: Amulet1
   m_EditorClassIdentifier: 
-  itemName: Body Armour
-  type: 2
-  size: {x: 2, y: 3}
+  itemName: Amulet1
+  type: 7
+  size: {x: 1, y: 1}
   itemObjPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImgPrefab: {fileID: 4028795390590836520, guid: 4cac273e5b7400e48abebe2c5dba6fd0, type: 3}
+  itemImgPrefab: {fileID: 4065881981570626885, guid: 5400d1ac79c3c70488e1e96357ca66b3, type: 3}
+  modPool:
+  - statType: 0
+    modType: 010100
+  - statType: 1
+    modType: 010100
+  - statType: 2
+    modType: 010100
+  - statType: 3
+    modType: 010100
+  - statType: 5
+    modType: 000100
+  - statType: 6
+    modType: 000100
+  - statType: 7
+    modType: 010100
+  - statType: 8
+    modType: 010100

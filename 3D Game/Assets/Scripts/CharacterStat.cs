@@ -14,11 +14,9 @@ public enum StatType
     AtkDmg,
     Armour,
     Evasion,
-    Str,
-    Dex,
-    Int
 }
 
+[Serializable]
 public class CharacterStat
 {
     public StatType type;
@@ -43,6 +41,13 @@ public class CharacterStat
     private readonly List<StatModifier> flatModifiers;
     private readonly List<StatModifier> incModifiers;
     private readonly List<StatModifier> moreModifiers;
+
+    public CharacterStat()
+    {
+        flatModifiers = new List<StatModifier>();
+        incModifiers = new List<StatModifier>();
+        moreModifiers = new List<StatModifier>();
+    }
 
     public CharacterStat(StatType _type, float _baseValue)
     {

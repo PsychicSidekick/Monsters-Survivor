@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using System;
 
 public enum ItemType
 {
@@ -17,6 +16,13 @@ public enum ItemType
     Belt,
 }
 
+[Serializable]
+public struct StatModType
+{
+    public StatType statType;
+    public bool[] modType;
+}
+
 [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
 public class ItemPrefab : ScriptableObject
 {
@@ -25,4 +31,5 @@ public class ItemPrefab : ScriptableObject
     public Vector2Int size;
     public GameObject itemObjPrefab;
     public GameObject itemImgPrefab;
+    public List<StatModType> modPool;
 }

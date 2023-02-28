@@ -8,6 +8,7 @@ public class Skills : MonoBehaviour
     public float ballRange;
     public float ballSpeed;
     public float shootBallManaCost;
+    public float ballBaseDmg;
 
     public void ShootBall()
     {
@@ -21,6 +22,7 @@ public class Skills : MonoBehaviour
         Vector3 startPos = PlayerControl.instance.RefinedPos(transform.position);
 
         Projectile proj = Instantiate(ballPrefab, startPos, Quaternion.identity).GetComponent<Projectile>();
+        proj.damage += ballBaseDmg + GetComponent<StatsManager>().attackDmg.value;
         Vector3 direction = Vector3.Normalize(GetComponent<SkillHandler>().skillTarget - startPos);
 
         proj.targetPos = startPos + direction * ballRange;
@@ -31,6 +33,7 @@ public class Skills : MonoBehaviour
     public float maxBlastArea;
     public float expandTime;
     public float blastManaCost;
+    public float blastBaseDmg;
 
     public void Blast()
     {
@@ -47,6 +50,7 @@ public class Skills : MonoBehaviour
     IEnumerator ExpandSphereCollider()
     {
         SphereCollider sphereCollider = Instantiate(blastColliderPrefab, PlayerControl.instance.RefinedPos(transform.position), Quaternion.identity).GetComponent<SphereCollider>();
+        sphereCollider.GetComponent<AreaDamage>().damage += blastBaseDmg + GetComponent<StatsManager>().attackDmg.value;
 
         for (float i = 0; i <= expandTime + 0.1; i+=Time.deltaTime)
         {
