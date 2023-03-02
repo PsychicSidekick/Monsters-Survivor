@@ -20,7 +20,7 @@ public enum ItemType
 public struct StatMaxValues
 {
     public StatType statType;
-    public int[3] maxValues;
+    public int[] maxValues;
 }
 
 [Serializable]

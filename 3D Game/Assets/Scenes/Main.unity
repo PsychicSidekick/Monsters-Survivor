@@ -3287,13 +3287,13 @@ MonoBehaviour:
     type: 8
     baseValue: 0
   fireRes:
-    type: 0
+    type: 9
     baseValue: 0
   coldRes:
-    type: 0
+    type: 10
     baseValue: 0
   lightningRes:
-    type: 0
+    type: 11
     baseValue: 0
   stats: []
 --- !u!1 &919132148890768385

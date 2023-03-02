@@ -37,14 +37,17 @@ public class Character : MonoBehaviour
     {
         if (!GetComponent<Enemy>() && other.CompareTag("AttackHB"))
         {
-            ReceiveDamage(1);
+            ReceiveDamage(new Damage(50, this, DamageType.Fire));
         }
     }
 
-    public void ReceiveDamage(float dmg)
+    public void ReceiveDamage(Damage dmg)
     {
         float armor = stats.armor.value;
         float evasion = stats.evasion.value;
+        float fireRes = stats.fireRes.value;
+        float coldRes = stats.coldRes.value;
+        float lightningRes = stats.lightningRes.value;
 
         if (life > 0)
         {
@@ -55,8 +58,28 @@ public class Character : MonoBehaviour
                 return;
             }
 
-            float dmgReduction = armor / (armor + 5 * dmg);
-            life -= dmg * (1 - dmgReduction);
+            float finalDmg = dmg.value;
+            float reduction = 100;
+
+            switch(dmg.type)
+            {
+                case DamageType.Physical:
+                    reduction = (1 - armor / (armor + 5 * finalDmg)) * 100;
+                    break;
+                case DamageType.Fire:
+                    reduction = Mathf.Clamp(fireRes, float.MinValue, 75);
+                    break;
+                case DamageType.Cold:
+                    reduction = Mathf.Clamp(coldRes, float.MinValue, 75);
+                    break;
+                case DamageType.Lightning:
+                    reduction = Mathf.Clamp(lightningRes, float.MinValue, 75);
+                    break;
+            }
+
+            reduction = (Mathf.Abs(reduction) + (reduction >= 0 ? 0 : 100)) / 100;
+
+            life -= finalDmg * reduction;
             CheckDeath();
         }
     }

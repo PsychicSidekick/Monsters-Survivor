@@ -50,7 +50,7 @@ public class RandomItemGenerator
             {
                 statType = random.Next(itemPrefab.modPool.Count);
                 modType = random.Next(3);
-            } while (existingMods.Contains((modPool[statType].statType, (ModType)modType)) || !modPool[statType].maxValues[modType]);
+            } while (existingMods.Contains((modPool[statType].statType, (ModType)modType)) || modPool[statType].maxValues[modType] <= 0);
 
             existingMods.Add((modPool[statType].statType, (ModType)modType));
 
@@ -58,7 +58,7 @@ public class RandomItemGenerator
                 
             while(value == 0)
             {
-                value = random.Next(maxModValues[(int)modPool[statType].statType][modType] + 1);
+                value = random.Next(modPool[statType].maxValues[modType]);
             }
 
             StatModifier mod = new StatModifier(modPool[statType].statType, value, (ModType)modType);

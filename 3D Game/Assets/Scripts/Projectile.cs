@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     public float projSpeed;
 
     public float damage;
+    public DamageType dmgType;
 
     private void Update()
     {
@@ -23,7 +24,7 @@ public class Projectile : MonoBehaviour
     {
         if(other.GetComponent<Enemy>() != null)
         {
-            other.GetComponent<Enemy>().ReceiveDamage(damage);
+            other.GetComponent<Enemy>().ReceiveDamage(new Damage(damage, other.GetComponent<Character>(), dmgType));
             Destroy(gameObject);
         }
     }
