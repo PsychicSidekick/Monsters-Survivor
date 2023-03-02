@@ -22,19 +22,25 @@ public class RandomItemGenerator
         maxModValues.Add(new int[] { 10, 100, 20 });
         maxModValues.Add(new int[] { 1000, 100, 20 });
         maxModValues.Add(new int[] { 1000, 100, 20 });
-        maxModValues.Add(new int[] { 50, 10, 5 });
-        maxModValues.Add(new int[] { 50, 10, 10 });
-        maxModValues.Add(new int[] { 50, 10, 5 });
+        maxModValues.Add(new int[] { 40, 0, 0 });
+        maxModValues.Add(new int[] { 40, 0, 0 });
+        maxModValues.Add(new int[] { 40, 0, 0 });
     }
 
     public List<StatModifier> RandomizeItemMods(ItemPrefab itemPrefab)
     {
-        List<StatModType> modPool = itemPrefab.modPool;
+        List<StatMaxValues> modPool = itemPrefab.modPool;
 
         List<(StatType, ModType)> existingMods = new List<(StatType, ModType)>();
 
         List<StatModifier> mods = new List<StatModifier>();
 
+        // Add itemBase modifier
+        BaseItemMod bsm = itemPrefab.baseItemMod;
+        StatModifier baseMod = new StatModifier(bsm.statType, random.Next(bsm.value.x, bsm.value.y + 1), bsm.modType);
+        mods.Add(baseMod);
+
+        // Add random number of random item modifiers
         for (int i = 0; i < random.Next(minModCount, maxModCount + 1); i++)
         {
             int statType;
@@ -44,7 +50,7 @@ public class RandomItemGenerator
             {
                 statType = random.Next(itemPrefab.modPool.Count);
                 modType = random.Next(3);
-            } while (existingMods.Contains((modPool[statType].statType, (ModType)modType)) || !modPool[statType].modType[modType]);
+            } while (existingMods.Contains((modPool[statType].statType, (ModType)modType)) || !modPool[statType].maxValues[modType]);
 
             existingMods.Add((modPool[statType].statType, (ModType)modType));
 
@@ -52,7 +58,7 @@ public class RandomItemGenerator
                 
             while(value == 0)
             {
-                value = random.Next(maxModValues[(int)modPool[statType].statType][modType]);
+                value = random.Next(maxModValues[(int)modPool[statType].statType][modType] + 1);
             }
 
             StatModifier mod = new StatModifier(modPool[statType].statType, value, (ModType)modType);

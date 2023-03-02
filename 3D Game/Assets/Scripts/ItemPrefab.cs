@@ -17,10 +17,18 @@ public enum ItemType
 }
 
 [Serializable]
-public struct StatModType
+public struct StatMaxValues
 {
     public StatType statType;
-    public bool[] modType;
+    public int[3] maxValues;
+}
+
+[Serializable]
+public struct BaseItemMod
+{
+    public StatType statType;
+    public ModType modType;
+    public Vector2Int value;
 }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
@@ -31,5 +39,6 @@ public class ItemPrefab : ScriptableObject
     public Vector2Int size;
     public GameObject itemObjPrefab;
     public GameObject itemImgPrefab;
-    public List<StatModType> modPool;
+    public List<StatMaxValues> modPool;
+    public BaseItemMod baseItemMod;
 }

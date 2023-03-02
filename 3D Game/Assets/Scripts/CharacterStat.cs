@@ -14,6 +14,9 @@ public enum StatType
     AtkDmg,
     Armour,
     Evasion,
+    FireRes,
+    ColdRes,
+    LightningRes
 }
 
 [Serializable]

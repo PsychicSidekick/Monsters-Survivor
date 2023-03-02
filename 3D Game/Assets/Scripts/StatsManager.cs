@@ -16,6 +16,9 @@ public class StatsManager : MonoBehaviour
     public CharacterStat attackDmg;
     public CharacterStat armor;
     public CharacterStat evasion;
+    public CharacterStat fireRes;
+    public CharacterStat coldRes;
+    public CharacterStat lightningRes;
 
     [HideInInspector]
     public List<CharacterStat> stats = new List<CharacterStat>();
@@ -33,6 +36,9 @@ public class StatsManager : MonoBehaviour
         stats.Add(attackDmg);
         stats.Add(armor);
         stats.Add(evasion);
+        stats.Add(fireRes);
+        stats.Add(coldRes);
+        stats.Add(lightningRes);
     }
 
     private void Update()

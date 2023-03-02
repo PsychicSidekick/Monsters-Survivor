@@ -30,3 +30,7 @@ MonoBehaviour:
     modType: 000100
   - statType: 6
     modType: 000100
+  baseItemMod:
+    statType: 0
+    modType: 0
+    value: {x: 10, y: 20}

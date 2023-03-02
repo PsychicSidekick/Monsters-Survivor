@@ -37,15 +37,26 @@ public class Character : MonoBehaviour
     {
         if (!GetComponent<Enemy>() && other.CompareTag("AttackHB"))
         {
-            ReceiveDamage(10);
+            ReceiveDamage(1);
         }
     }
 
     public void ReceiveDamage(float dmg)
     {
+        float armor = stats.armor.value;
+        float evasion = stats.evasion.value;
+
         if (life > 0)
         {
-            life -= dmg;
+            float evasionChance = (float)(1 - 500 * 1.25 / (500 + Mathf.Pow(evasion / 5, 0.9f)));
+            if (Random.Range(1f, 100f) < evasionChance * 100)
+            {
+                Debug.Log("Evaded");
+                return;
+            }
+
+            float dmgReduction = armor / (armor + 5 * dmg);
+            life -= dmg * (1 - dmgReduction);
             CheckDeath();
         }
     }

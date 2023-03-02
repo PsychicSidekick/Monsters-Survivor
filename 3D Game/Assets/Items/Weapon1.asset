@@ -26,3 +26,7 @@ MonoBehaviour:
     modType: 000100
   - statType: 6
     modType: 010100
+  baseItemMod:
+    statType: 6
+    modType: 0
+    value: {x: 50, y: 150}

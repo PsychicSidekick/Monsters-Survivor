@@ -8,7 +8,7 @@ public class DescriptionPanel : MonoBehaviour
     public ItemObj itemObj;
 
     public TMP_Text itemNameTxt;
-
+    public TMP_Text itemBaseModTxt;
     public TMP_Text itemModTxt;
 
     private Rect itemImgRect;
@@ -17,6 +17,10 @@ public class DescriptionPanel : MonoBehaviour
     private void Start()
     {
         itemNameTxt.text = itemObj.item.name;
+
+        List<StatModifier> mods = itemObj.item.itemModifiers;
+        itemBaseModTxt.text = mods[0].modString;
+        mods.RemoveAt(0);
 
         string itemModString = null;
 
