@@ -7,10 +7,14 @@ public class Character : MonoBehaviour
 {
     public Animator animator;
     public NavMeshAgent agent;
-    protected StatsManager stats;
+    public StatsManager stats;
 
     public float life;
     public float mana;
+    public int xp;
+    public int level;
+    
+    public bool xpIsDirty = true;
 
     private void Start()
     {
@@ -39,6 +43,55 @@ public class Character : MonoBehaviour
         {
             ReceiveDamage(new Damage(50, this, DamageType.Fire));
         }
+    }
+
+    public int GetCurrentLevel()
+    {
+        int level = 0;
+        int requiredXp = 0;
+
+        while (xp >= requiredXp)
+        {
+            requiredXp += (level + 1) * 1000;
+            level++;
+
+            if (level >= 10)
+            {
+                return level;
+            }
+        }
+
+        return level;
+    }
+
+    public int GetRequiredXp(int level)
+    {
+        int requiredXp = 0;
+
+        for (int i = 1; i < level; i++)
+        {
+            requiredXp += i * 1000;
+        }
+
+        return requiredXp;
+    }
+
+    public void ReceiveXp(int xp)
+    {
+        int currLevel = GetCurrentLevel();
+        this.xp += xp;
+        for (int i = 0; i < GetCurrentLevel()-currLevel; i++)
+        {
+            OnLevelUp();
+        }
+        xpIsDirty = true;
+    }
+
+    public void OnLevelUp()
+    {
+        Debug.Log("Leveled Up!");
+        stats.ApplyStatModifier(new StatModifier(StatType.MaxLife, 5, ModType.Flat));
+        life = stats.maxLife.value;
     }
 
     public void ReceiveDamage(Damage dmg)

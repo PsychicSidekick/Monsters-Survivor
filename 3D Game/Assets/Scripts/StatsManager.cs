@@ -47,6 +47,16 @@ public class StatsManager : MonoBehaviour
         c.animator.SetFloat("AttackSpeed", attackSpeed.value);
     }
 
+    public void ApplyStatModifier(StatModifier mod)
+    {
+        FindStatOfType(mod.statType).AddModifier(mod);
+    }
+
+    public void RemoveStatModifier(StatModifier mod)
+    {
+        FindStatOfType(mod.statType).RemoveModifier(mod);
+    }
+
     public CharacterStat FindStatOfType(StatType type)
     {
         return stats.Find(stat => stat.type == type);

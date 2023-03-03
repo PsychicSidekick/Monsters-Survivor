@@ -8,6 +8,8 @@ public class Enemy : Character
     public float attackRange;
     public List<ItemPrefab> lootPool = new List<ItemPrefab>();
 
+    public int xpYield;
+
     public override void Update()
     {
         base.Update();
@@ -52,6 +54,7 @@ public class Enemy : Character
 
     public override void OnDeath()
     {
+        PlayerControl.instance.ReceiveXp(xpYield);
         SpawnLoot();
     }
 }

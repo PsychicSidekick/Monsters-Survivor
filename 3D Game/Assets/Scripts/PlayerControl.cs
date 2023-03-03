@@ -9,9 +9,6 @@ public class PlayerControl : Character
 {
     public static PlayerControl instance;
 
-    public TMP_Text lifeTxt;
-    public TMP_Text manaTxt;
-
     private Vector3 moveTarget = new Vector3(0, 0, 0);
 
     public bool isAttacking;
@@ -28,9 +25,6 @@ public class PlayerControl : Character
     public override void Update()
     {
         base.Update();
-
-        lifeTxt.text = (int)life + "/" + stats.maxLife.value;
-        manaTxt.text = (int)mana + "/" + stats.maxMana.value;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
