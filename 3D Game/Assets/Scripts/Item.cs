@@ -15,7 +15,6 @@ public class Item
         size = itemPrefab.size;
         type = itemPrefab.type;
 
-        RandomItemGenerator r = new RandomItemGenerator();
-        itemModifiers = r.RandomizeItemMods(itemPrefab);
+        itemModifiers = RandomItemGenerator.RandomizeItemMods(itemPrefab);
     }
 }

@@ -20,12 +20,15 @@ public class DescriptionPanel : MonoBehaviour
 
         List<StatModifier> mods = itemObj.item.itemModifiers;
         itemBaseModTxt.text = mods[0].modString;
-        mods.RemoveAt(0);
 
         string itemModString = null;
 
         foreach (StatModifier mod in itemObj.item.itemModifiers)
         {
+            if (mod.modString == itemBaseModTxt.text)
+            {
+                continue;
+            }
             itemModString += mod.modString + System.Environment.NewLine;
         }
 

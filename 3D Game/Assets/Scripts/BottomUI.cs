@@ -14,8 +14,8 @@ public class BottomUI : MonoBehaviour
 
     private void Update()
     {
-        lifeText.text = (int)player.life + "/" + player.stats.maxLife.value;
-        manaText.text = (int)player.mana + "/" + player.stats.maxMana.value;
+        lifeText.text = (int)player.life + "/" + (int)player.stats.maxLife.value;
+        manaText.text = (int)player.mana + "/" + (int)player.stats.maxMana.value;
 
         int playerLevel = player.GetCurrentLevel();
         levelText.text = "Level: " + playerLevel;

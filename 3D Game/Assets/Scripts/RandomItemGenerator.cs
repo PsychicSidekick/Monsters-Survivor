@@ -2,32 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class RandomItemGenerator
+public static class RandomItemGenerator
 {
-    private int minModCount = 4;
-    private int maxModCount = 6;
+    private static int minModCount = 4;
+    private static int maxModCount = 6;
 
-    private Random random = new Random();
+    private static Random random = new Random();
 
-    private List<int[]> maxModValues = new List<int[]>();
-    
-    public RandomItemGenerator()
-    {
-        maxModValues.Add(new int[] { 100, 15, 10});
-        maxModValues.Add(new int[] { 100, 15, 10 });
-        maxModValues.Add(new int[] { 100, 15, 10 });
-        maxModValues.Add(new int[] { 100, 15, 10 });
-        maxModValues.Add(new int[] { 3, 40, 10 });
-        maxModValues.Add(new int[] { 3, 30, 10 });
-        maxModValues.Add(new int[] { 10, 100, 20 });
-        maxModValues.Add(new int[] { 1000, 100, 20 });
-        maxModValues.Add(new int[] { 1000, 100, 20 });
-        maxModValues.Add(new int[] { 40, 0, 0 });
-        maxModValues.Add(new int[] { 40, 0, 0 });
-        maxModValues.Add(new int[] { 40, 0, 0 });
-    }
-
-    public List<StatModifier> RandomizeItemMods(ItemPrefab itemPrefab)
+    public static List<StatModifier> RandomizeItemMods(ItemPrefab itemPrefab)
     {
         List<StatMaxValues> modPool = itemPrefab.modPool;
 
