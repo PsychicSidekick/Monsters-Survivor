@@ -54,14 +54,6 @@ public class Skills : MonoBehaviour
 
         for (float i = 0; i <= expandTime + 0.1; i+=Time.deltaTime)
         {
-            //sphereCollider.radius = Mathf.Lerp(0.5f, maxBlastArea, i / expandTime);
-            //if (sphereCollider.radius >= maxBlastArea)
-            //{
-            //    Destroy(sphereCollider.gameObject);
-            //    break;
-            //}
-            //yield return null;
-
             float size = Mathf.Lerp(0.5f, maxBlastArea, i / expandTime);
             sphereCollider.transform.localScale = new Vector3(size, size, size);
             if (size >= maxBlastArea)

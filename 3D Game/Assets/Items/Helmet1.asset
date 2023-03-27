@@ -18,25 +18,24 @@ MonoBehaviour:
   itemObjPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
   itemImgPrefab: {fileID: 126991780030651831, guid: 8abefad793bb59541a079c18759f28d6, type: 3}
   modPool:
-  - statType: 0
-    maxValues: 320000000000000000000000
-  - statType: 1
-    maxValues: 320000000a00000000000000
-  - statType: 2
-    maxValues: 320000000a00000000000000
-  - statType: 3
-    maxValues: 320000000a00000000000000
-  - statType: 7
-    maxValues: c80000000a00000000000000
-  - statType: 8
-    maxValues: c80000000a00000000000000
-  - statType: 9
-    maxValues: 140000000000000000000000
-  - statType: 10
-    maxValues: 140000000000000000000000
-  - statType: 11
-    maxValues: 140000000000000000000000
+  - itemModType: 0
+    maxValue: 50
+  - itemModType: 1
+    maxValue: 30
+  - itemModType: 2
+    maxValue: 50
+  - itemModType: 3
+    maxValue: 30
+  - itemModType: 8
+    maxValue: 250
+  - itemModType: 9
+    maxValue: 30
+  - itemModType: 12
+    maxValue: 10
+  - itemModType: 13
+    maxValue: 10
+  - itemModType: 14
+    maxValue: 10
   baseItemMod:
-    statType: 7
-    modType: 0
+    itemModType: 8
     value: {x: 200, y: 500}
