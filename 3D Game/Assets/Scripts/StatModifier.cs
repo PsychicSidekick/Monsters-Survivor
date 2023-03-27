@@ -1,12 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum ModType
 {
-    Flat,
-    Inc,
-    More
+    flat,
+    inc
+}
+
+public enum ItemModType
+{
+    flat_MaxLife,
+    flat_LifeRegen,
+    flat_MaxMana,
+    flat_ManaRegen,
+    inc_MoveSpd,
+    inc_AtkSpd,
+    flat_AtkDmg,
+    inc_AtkDmg,
+    flat_armour,
+    inc_armour,
+    flat_evasion,
+    inc_evasion,
+    flat_fireRes,
+    flat_coldRes,
+    flat_lightningRes
 }
 
 public class StatModifier
@@ -24,6 +43,15 @@ public class StatModifier
         modString = ToString();
     }
 
+    public StatModifier(ItemModType itemModType, float _value)
+    {
+        string[] modType_statType = itemModType.ToString().Split("_");
+        statType = (StatType)Enum.Parse(typeof(StatType), modType_statType[1], true);
+        value = _value;
+        type = (ModType)Enum.Parse(typeof(ModType), modType_statType[0], true);
+        modString = ToString();
+    }
+
     public override string ToString()
     {
         string modifierText = null;
@@ -35,9 +63,6 @@ public class StatModifier
                 break;
             case 1:
                 modifierText += Mathf.Abs(value) + "%" + (value > 0 ? " increased " : " decreased ") + statType.ToString();
-                break;
-            case 2:
-                modifierText += Mathf.Abs(value) + "%" + (value > 0 ? " more " : " less ") + statType.ToString();
                 break;
         }
 

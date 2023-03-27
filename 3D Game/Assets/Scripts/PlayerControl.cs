@@ -32,12 +32,14 @@ public class PlayerControl : Character
         {
             FindMoveTarget(hit);
 
+            // If not attacking, can move by holding or pressing leftClick
             if (!isAttacking && Input.GetMouseButton(0) && !Inventory.instance.lockCursor && !IsMouseOverUI())
             {
                 Inventory.instance.pickingUpLoot = false;
                 Move(moveTarget);
             } 
 
+            // If inside an attack animation, only move when leftClick is pressed
             if (isAttacking && Input.GetMouseButtonDown(0) && !Inventory.instance.lockCursor && !IsMouseOverUI())
             {
                 Inventory.instance.pickingUpLoot = false;

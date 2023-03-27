@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class StatsManager : MonoBehaviour
 {
@@ -45,6 +44,13 @@ public class StatsManager : MonoBehaviour
     {
         c.agent.speed = moveSpeed.value;
         c.animator.SetFloat("AttackSpeed", attackSpeed.value);
+    }
+
+    public IEnumerator ApplyTemporaryBuff(StatModifier mod, float duration)
+    {
+        ApplyStatModifier(mod);
+        yield return new WaitForSeconds(duration);
+        RemoveStatModifier(mod);
     }
 
     public void ApplyStatModifier(StatModifier mod)

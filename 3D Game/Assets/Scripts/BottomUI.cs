@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class BottomUI : MonoBehaviour
@@ -12,10 +13,23 @@ public class BottomUI : MonoBehaviour
     public GameObject xpBar;
     public PlayerControl player;
 
+    float lifeBallOriginalSize;
+    public Image lifeMask;
+    float manaBallOriginalSize;
+    public Image manaMask;
+
+    private void Start()
+    {
+        lifeBallOriginalSize = lifeMask.rectTransform.rect.width;
+        manaBallOriginalSize = manaMask.rectTransform.rect.width;
+    }
+
     private void Update()
     {
         lifeText.text = (int)player.life + "/" + (int)player.stats.maxLife.value;
+        lifeMask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, lifeBallOriginalSize * player.life / (float)player.stats.maxLife.value);
         manaText.text = (int)player.mana + "/" + (int)player.stats.maxMana.value;
+        manaMask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, manaBallOriginalSize * player.mana / (float)player.stats.maxMana.value);
 
         int playerLevel = player.GetCurrentLevel();
         levelText.text = "Level: " + playerLevel;

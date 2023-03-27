@@ -22,6 +22,11 @@ public class Character : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         stats = GetComponent<StatsManager>();
 
+        for (int i = 1; i < GetCurrentLevel(); i++)
+        {
+            OnLevelUp();
+        }
+
         life = stats.maxLife.value;
         mana = stats.maxMana.value;
     }
@@ -41,7 +46,8 @@ public class Character : MonoBehaviour
     {
         if (!GetComponent<Enemy>() && other.CompareTag("AttackHB"))
         {
-            ReceiveDamage(new Damage(50, this, DamageType.Fire));
+            ReceiveDamage(new Damage(10, this, DamageType.Fire));
+            StartCoroutine(stats.ApplyTemporaryBuff(new StatModifier(StatType.MoveSpd, -10, ModType.inc), 5));
         }
     }
 
@@ -90,7 +96,7 @@ public class Character : MonoBehaviour
     public void OnLevelUp()
     {
         Debug.Log("Leveled Up!");
-        stats.ApplyStatModifier(new StatModifier(StatType.MaxLife, 5, ModType.Flat));
+        stats.ApplyStatModifier(new StatModifier(StatType.MaxLife, 5, ModType.flat));
         life = stats.maxLife.value;
     }
 
@@ -130,7 +136,7 @@ public class Character : MonoBehaviour
                     break;
             }
 
-            reduction = (Mathf.Abs(reduction) + (reduction >= 0 ? 0 : 100)) / 100;
+            reduction = (Mathf.Abs(reduction) + (reduction > 0 ? 0 : 100)) / 100;
 
             life -= finalDmg * reduction;
             CheckDeath();
@@ -167,10 +173,11 @@ public class Character : MonoBehaviour
         if (mana < stats.maxMana.value)
         {
             mana += value;
-            if (mana > stats.maxMana.value)
-            {
-                mana = stats.maxMana.value;
-            }
+        }
+
+        if (mana > stats.maxMana.value)
+        {
+            mana = stats.maxMana.value;
         }
     }
 

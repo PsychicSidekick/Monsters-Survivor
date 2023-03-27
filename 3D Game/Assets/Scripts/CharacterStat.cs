@@ -43,13 +43,11 @@ public class CharacterStat
 
     private readonly List<StatModifier> flatModifiers;
     private readonly List<StatModifier> incModifiers;
-    private readonly List<StatModifier> moreModifiers;
 
     public CharacterStat()
     {
         flatModifiers = new List<StatModifier>();
         incModifiers = new List<StatModifier>();
-        moreModifiers = new List<StatModifier>();
     }
 
     public CharacterStat(StatType _type, float _baseValue)
@@ -58,7 +56,6 @@ public class CharacterStat
         baseValue = _baseValue;
         flatModifiers = new List<StatModifier>();
         incModifiers = new List<StatModifier>();
-        moreModifiers = new List<StatModifier>();
     }
 
     public void AddModifier(StatModifier mod)
@@ -72,9 +69,6 @@ public class CharacterStat
             case 1:
                 incModifiers.Add(mod);
                 break;
-            case 2:
-                moreModifiers.Add(mod);
-                break;
         }
     }
 
@@ -87,8 +81,6 @@ public class CharacterStat
                 return flatModifiers.Remove(mod);
             case 1:
                 return incModifiers.Remove(mod);
-            case 2:
-                return moreModifiers.Remove(mod);
         }
 
         return false;
@@ -111,11 +103,6 @@ public class CharacterStat
         }
 
         finalValue *= 1 + totalPercentIncrease;
-
-        foreach (StatModifier mod in moreModifiers)
-        {
-            finalValue *= 1 + mod.value / 100;
-        }
 
         return (float)Mathf.Round(finalValue * 100f) / 100f;
     }
