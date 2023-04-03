@@ -45,29 +45,16 @@ public class ItemObj : MonoBehaviour
 
     private void Update()
     {
-        lootText.GetComponent<RectTransform>().anchoredPosition = WorldToCanvasPos(transform.position);
+        lootText.GetComponent<RectTransform>().anchoredPosition = GameManager.instance.WorldToCanvasPos(lootCanvas, transform.position);
 
         mr.enabled = !isPickedUp;
         lootText.SetActive(!isPickedUp);
         itemImg.SetActive(isPickedUp);
-        //itemImg.transform.SetParent(isPlaced ? Inventory.instance.inventoryUI.transform : Inventory.instance.transform);
     }
 
     public void OnDrop()
     {
         transform.position = PlayerControl.instance.transform.position;
         rb.velocity = Vector3.zero;
-    }
-
-    public Vector2 WorldToCanvasPos(Vector3 worldPos)
-    {
-        RectTransform canvasRect = lootCanvas.GetComponent<RectTransform>();
-
-        Vector2 viewportPos = Camera.main.WorldToViewportPoint(worldPos);
-        Vector2 canvasPos = new Vector2(
-        (viewportPos.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f),
-        (viewportPos.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f));
-
-        return canvasPos;
     }
 }

@@ -17,4 +17,13 @@ public class Item
 
         itemModifiers = RandomItemGenerator.RandomizeItemMods(itemPrefab);
     }
+
+    public Item(ItemPrefab itemPrefab, List<StatModifier> savedModifiers)
+    {
+        name = itemPrefab.itemName;
+        size = itemPrefab.size;
+        type = itemPrefab.type;
+
+        itemModifiers = savedModifiers;
+    }
 }

@@ -17,7 +17,7 @@ public enum ItemType
 }
 
 [Serializable]
-public struct ItemModMaxValues
+public struct ItemModMaxValue
 {
     public ItemModType itemModType;
     public int maxValue;
@@ -38,6 +38,6 @@ public class ItemPrefab : ScriptableObject
     public Vector2Int size;
     public GameObject itemObjPrefab;
     public GameObject itemImgPrefab;
-    public List<ItemModMaxValues> modPool;
+    public List<ItemModMaxValue> modPool;
     public BaseItemMod baseItemMod;
 }

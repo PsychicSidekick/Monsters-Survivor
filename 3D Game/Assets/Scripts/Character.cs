@@ -16,22 +16,17 @@ public class Character : MonoBehaviour
     
     public bool xpIsDirty = true;
 
-    private void Start()
+    protected virtual void Start()
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         stats = GetComponent<StatsManager>();
 
-        for (int i = 1; i < GetCurrentLevel(); i++)
-        {
-            OnLevelUp();
-        }
-
         life = stats.maxLife.value;
         mana = stats.maxMana.value;
     }
 
-    public virtual void Update()
+    protected virtual void Update()
     {
         if (agent.remainingDistance < 0.1)
         {
@@ -40,15 +35,6 @@ public class Character : MonoBehaviour
 
         ReceiveHealing(stats.lifeRegen.value * Time.deltaTime);
         AddMana(stats.manaRegen.value * Time.deltaTime);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!GetComponent<Enemy>() && other.CompareTag("AttackHB"))
-        {
-            ReceiveDamage(new Damage(10, this, DamageType.Fire));
-            StartCoroutine(stats.ApplyTemporaryBuff(new StatModifier(StatType.MoveSpd, -10, ModType.inc), 5));
-        }
     }
 
     public int GetCurrentLevel()
@@ -199,7 +185,7 @@ public class Character : MonoBehaviour
     public void Move(Vector3 targetPosition)
     {
         animator.SetBool("isWalking", true);
-        agent.SetDestination(RefinedPos(targetPosition));
+        agent.SetDestination(targetPosition);
     }
 
     public void StopMoving()
@@ -210,10 +196,5 @@ public class Character : MonoBehaviour
     public virtual void OnDeath()
     {
         Debug.Log("OnDeath() from Character");
-    }
-
-    public Vector3 RefinedPos(Vector3 position)
-    {
-        return new Vector3(position.x, 1, position.z);
     }
 }

@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-        else if (cursorItem != null && lockCursor && Input.GetKeyDown(KeyCode.Mouse0) && !IsMouseOverUI())
+        else if (cursorItem != null && lockCursor && Input.GetKeyDown(KeyCode.Mouse0) && !PlayerControl.IsMouseOverUI())
         {
             DropItem(cursorItem);
         }
@@ -124,6 +124,11 @@ public class Inventory : MonoBehaviour
 
         Debug.Log("No space from FindFirstAvailableCell in Inventory");
         return null;
+    }
+
+    public void PlaceItemInFirstAvailableCell(ItemObj itemObj)
+    {
+        PlaceItemInInventory(itemObj, FindFirstAvailableCell(itemObj.item.size));
     }
 
     public void PlaceItemInInventory(ItemObj itemObj, Cell c)
@@ -233,10 +238,5 @@ public class Inventory : MonoBehaviour
         float yPos = cell.transform.position.y + (itemSize.y - 1) * -30;
 
         return new Vector3(xPos, yPos, 0);
-    }
-
-    public bool IsMouseOverUI()
-    {
-        return EventSystem.current.IsPointerOverGameObject();
     }
 }

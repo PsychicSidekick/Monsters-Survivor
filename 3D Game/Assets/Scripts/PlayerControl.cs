@@ -22,29 +22,40 @@ public class PlayerControl : Character
         instance = this;
     }
 
-    public override void Update()
+    protected override void Update()
     {
         base.Update();
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, moveRayLayer))
+
+        if (IsMouseOverUI())
         {
-            FindMoveTarget(hit);
+            return;
+        }
 
-            // If not attacking, can move by holding or pressing leftClick
-            if (!isAttacking && Input.GetMouseButton(0) && !Inventory.instance.lockCursor && !IsMouseOverUI())
-            {
-                Inventory.instance.pickingUpLoot = false;
-                Move(moveTarget);
-            } 
+        if (Inventory.instance.lockCursor)
+        {
+            return;
+        }
 
-            // If inside an attack animation, only move when leftClick is pressed
-            if (isAttacking && Input.GetMouseButtonDown(0) && !Inventory.instance.lockCursor && !IsMouseOverUI())
+        if ((!isAttacking && Input.GetMouseButton(0)) || (isAttacking && Input.GetMouseButtonDown(0)))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100, moveRayLayer))
             {
+                GetComponent<SkillHandler>().currentSkill = null;
+                FindMoveTarget(hit);
                 Inventory.instance.pickingUpLoot = false;
                 Move(moveTarget);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "AttackHB")
+        {
+            GetComponent<BuffManager>().ApplyBuff(new FreezeBuff(1));
         }
     }
 
@@ -54,11 +65,11 @@ public class PlayerControl : Character
 
         if (hitObj.tag == "Ground")
         {
-            moveTarget = RefinedPos(hit.point);
+            moveTarget = hit.point;
         }
     }
 
-    public bool IsMouseOverUI()
+    public static bool IsMouseOverUI()
     {
         return EventSystem.current.IsPointerOverGameObject();
     }

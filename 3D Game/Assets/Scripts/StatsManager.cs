@@ -19,11 +19,14 @@ public class StatsManager : MonoBehaviour
     public CharacterStat coldRes;
     public CharacterStat lightningRes;
 
-    [HideInInspector]
-    public List<CharacterStat> stats = new List<CharacterStat>();
+
+    [HideInInspector] public List<CharacterStat> stats = new List<CharacterStat>();
+
+    [HideInInspector] public float movementAnimationSpeedMultiplier;
 
     private void Awake()
     {
+        movementAnimationSpeedMultiplier = 1;
         c = GetComponent<Character>();
 
         stats.Add(maxLife);
@@ -42,8 +45,9 @@ public class StatsManager : MonoBehaviour
 
     private void Update()
     {
-        c.agent.speed = moveSpeed.value;
+        c.agent.speed = movementAnimationSpeedMultiplier * moveSpeed.value;
         c.animator.SetFloat("AttackSpeed", attackSpeed.value);
+        c.animator.SetFloat("ActionSpeed", movementAnimationSpeedMultiplier * moveSpeed.value);
     }
 
     public IEnumerator ApplyTemporaryBuff(StatModifier mod, float duration)

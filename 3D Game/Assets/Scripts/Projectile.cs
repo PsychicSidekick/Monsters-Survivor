@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
     public float damage;
     public DamageType dmgType;
 
-    private void Update()
+    protected virtual void Update()
     {
         if(transform.position == targetPos)
         {

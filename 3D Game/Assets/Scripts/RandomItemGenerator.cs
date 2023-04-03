@@ -11,7 +11,7 @@ public static class RandomItemGenerator
 
     public static List<StatModifier> RandomizeItemMods(ItemPrefab itemPrefab)
     {
-        List<ItemModMaxValues> modPool = itemPrefab.modPool;
+        List<ItemModMaxValue> modPool = itemPrefab.modPool;
 
         List<ItemModType> existingMods = new List<ItemModType>();
 

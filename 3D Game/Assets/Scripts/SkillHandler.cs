@@ -2,83 +2,173 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
+
+[Serializable]
+public class SkillHolder
+{
+    public Skill skill;
+    [HideInInspector]public float cooldownTime;
+    [HideInInspector]public float activeTime;
+    [HideInInspector]public SkillState state;
+    public KeyCode key;
+}
+
+public enum SkillState
+{
+    ready,
+    outOfRange,
+    active,
+    cooldown
+}
 
 public class SkillHandler : MonoBehaviour
 {
-    KeyCode skillKey1 = KeyCode.Q;
-    KeyCode skillKey2 = KeyCode.W;
-    KeyCode skillKey3 = KeyCode.E;
-    KeyCode skillKey4 = KeyCode.R;
+    public List<SkillHolder> skills = new List<SkillHolder>();
 
-    public LayerMask layerMask;
+    public Skill currentSkill;
+    public Vector3 groundTarget;
+    public Character characterTarget;
+    public LayerMask mask;
 
-    public Vector3 skillTarget = new Vector3(0, 1, 0);
-
-    public List<KeyCode> keys;
-    public List<string> skills = new List<string>();
-
-    public Dictionary<KeyCode, string> keyBinds = new Dictionary<KeyCode, string>();
-
-    private float lastAttack = 0;
-
-    private void Start()
-    {
-        keys = new List<KeyCode> { skillKey1, skillKey2, skillKey3, skillKey4 };
-
-        keyBinds = keys.Select((k, index) => new { k, v = skills[index] })
-                       .ToDictionary(x => x.k, x => x.v);
-    }
+    public float lastSkillUse;
 
     private void Update()
     {
-        foreach (KeyCode key in keys)
+        foreach (SkillHolder skillHolder in skills)
         {
-            GetSkillKey(key);
-        }
-    }
-
-    public void FindSkillTarget(RaycastHit hit)
-    {
-        GameObject hitObj = hit.transform.gameObject;
-
-        if (hitObj.tag == "Ground")
-        {
-            skillTarget = PlayerControl.instance.RefinedPos(hit.point);
-        }
-
-        if (hitObj.tag == "Enemy")
-        {
-            skillTarget = PlayerControl.instance.RefinedPos(hitObj.transform.position);
-        }
-    }
-
-    private void GetSkillKey(KeyCode key)
-    {
-        if (Input.GetKey(key))
-        {
-            if (Time.time - 1 / GetComponent<StatsManager>().attackSpeed.value > lastAttack)
+            switch (skillHolder.state)
             {
-                UseSkill(keyBinds[key]);
-                lastAttack = Time.time;
+                case SkillState.ready:
+                    if (Input.GetKey(skillHolder.key) && Time.time - 1 / GetComponent<StatsManager>().attackSpeed.value > lastSkillUse && GetComponent<Animator>().GetFloat("ActionSpeed") != 0)
+                    {
+                        if (skillHolder.skill.targetsCharacters)
+                        {
+                            if (FindCharacterTarget() == null)
+                            {
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            FindGroundTarget();
+                        }
+                        currentSkill = skillHolder.skill;
+                        if (Vector3.Distance(groundTarget, transform.position) > skillHolder.skill.useRange)
+                        {
+                            skillHolder.state = SkillState.outOfRange;
+                            GetComponent<Character>().Move(groundTarget);
+                            break;
+                        }
+                        lastSkillUse = Time.time;
+                        
+                        skillHolder.skill.OnUse(GetComponent<Character>());
+                        skillHolder.state = SkillState.active;
+                        skillHolder.activeTime = skillHolder.skill.activeTime;
+                    }
+                    break;
+                case SkillState.outOfRange:
+                    if (currentSkill == skillHolder.skill)
+                    {
+                        if (Vector3.Distance(groundTarget, transform.position) > skillHolder.skill.useRange)
+                        {
+                            break;
+                        }
+                        lastSkillUse = Time.time;
+
+                        skillHolder.skill.OnUse(GetComponent<Character>());
+                        skillHolder.state = SkillState.active;
+                        skillHolder.activeTime = skillHolder.skill.activeTime;
+                    }
+                    else
+                    {
+                        skillHolder.state = SkillState.ready;
+                    }
+                    break;
+                case SkillState.active:
+                    if (skillHolder.activeTime > 0)
+                    {
+                        skillHolder.activeTime -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        skillHolder.state = SkillState.cooldown;
+                        skillHolder.cooldownTime = skillHolder.skill.coolDownTime;
+                    }
+                    break;
+                case SkillState.cooldown:
+                    if (skillHolder.cooldownTime > 0)
+                    {
+                        skillHolder.cooldownTime -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        skillHolder.state = SkillState.ready;
+                    }
+                    break;
             }
         }
     }
 
-    private void UseSkill(string skill)
+    public void FindGroundTarget()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, layerMask))
+        if (Physics.Raycast(ray, out hit, 100, mask))
         {
-            FindSkillTarget(hit);
+            GameObject hitObj = hit.transform.gameObject;
+
+            if (hitObj.tag == "Ground")
+            {
+                groundTarget = GameManager.instance.RefinedPos(hit.point);
+            }
+            else if (hitObj.tag == "Enemy")
+            {
+                groundTarget = GameManager.instance.RefinedPos(hitObj.transform.position);
+            }
         }
-        PlayerControl.instance.animator.Play(skill, -1, 0f);
     }
 
-    public void FaceSkillTarget()
+    public Character FindCharacterTarget()
     {
-        PlayerControl.instance.StopMoving();
-        Vector3 lookDir = Vector3.RotateTowards(transform.forward, skillTarget - transform.position, 10, 0.0f);
+        characterTarget = null;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100, mask))
+        {
+            GameObject hitObj = hit.transform.gameObject;
+
+            if (hitObj.tag == "Enemy")
+            {
+                characterTarget = hitObj.GetComponent<Character>();
+            }
+        }
+
+        return characterTarget;
+    }
+
+    public void FaceGroundTarget()
+    {
+        Vector3 lookDir = Vector3.RotateTowards(transform.forward, groundTarget - transform.position, 10, 0.0f);
         transform.rotation = Quaternion.LookRotation(lookDir);
+    }
+
+    public void FaceCharacterTarget()
+    {
+        if (characterTarget == null)
+        {
+            return;
+        }
+
+        Vector3 lookDir = Vector3.RotateTowards(transform.forward, characterTarget.transform.position - transform.position, 10, 0.0f);
+        transform.rotation = Quaternion.LookRotation(lookDir);
+    }
+
+    public void UseCurrentSkill()
+    {
+        if (currentSkill != null)
+        {
+            currentSkill.UseSkill();
+        }
     }
 }

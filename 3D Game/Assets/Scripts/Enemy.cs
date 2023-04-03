@@ -1,18 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : Character
 {
+    public GameObject healthBarCanvas;
+    public GameObject healthBarPrefab;
+    private GameObject healthBar;
+
     public float detectionRange;
     public float attackRange;
     public List<ItemPrefab> lootPool = new List<ItemPrefab>();
 
     public int xpYield;
 
-    public override void Update()
+    protected override void Start()
+    {
+        base.Start();
+        healthBar = Instantiate(healthBarPrefab, healthBarCanvas.transform);
+    }
+
+    protected override void Update()
     {
         base.Update();
+
+        healthBar.GetComponent<RectTransform>().anchoredPosition = GameManager.instance.WorldToCanvasPos(healthBarCanvas, transform.position);
+        healthBar.GetComponent<Slider>().value = life/stats.maxLife.value;
 
         float distanceFromPlayer = Vector3.Distance(PlayerControl.instance.transform.position, transform.position);
 
@@ -38,11 +52,11 @@ public class Enemy : Character
 
     public void SpawnLoot()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 1; i++)
         {
             // Choose random item from loot pool
             ItemPrefab itemPrefab = lootPool[Random.Range(0, lootPool.Count)];
-            ItemObj itemObj = Instantiate(itemPrefab.itemObjPrefab, transform.position, Quaternion.identity).GetComponent<ItemObj>();
+            ItemObj itemObj = Instantiate(itemPrefab.itemObjPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity).GetComponent<ItemObj>();
             itemObj.itemPrefab = itemPrefab;
             itemObj.item = new Item(itemPrefab);
 
@@ -54,6 +68,7 @@ public class Enemy : Character
 
     public override void OnDeath()
     {
+        Destroy(healthBar);
         PlayerControl.instance.ReceiveXp(xpYield);
         SpawnLoot();
     }

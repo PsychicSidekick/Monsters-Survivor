@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28872c8a941639d4b854f4488b5d47da, type: 3}
+  m_Name: Blast
+  m_EditorClassIdentifier: 
+  skillName: Blast
+  coolDownTime: 5
+  activeTime: 0
+  useRange: 100
+  blastColliderPrefab: {fileID: 2963932199247047362, guid: 7393de6e233c4e7489672ea02833e615, type: 3}
+  maxBlastArea: 10
+  expandTime: 1
+  blastManaCost: 5
+  blastBaseDmg: 20
