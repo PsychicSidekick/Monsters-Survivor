@@ -12,6 +12,7 @@ public class SkillHolder
     [HideInInspector]public float activeTime;
     [HideInInspector]public SkillState state;
     public KeyCode key;
+    public bool triggerSkill;
 }
 
 public enum SkillState
@@ -31,16 +32,20 @@ public class SkillHandler : MonoBehaviour
     public Character characterTarget;
     public LayerMask mask;
 
+    public bool isChannelling;
+
     public float lastSkillUse;
 
     private void Update()
     {
+        bool readyToUseSkill = Time.time - 1 / GetComponent<StatsManager>().attackSpeed.value > lastSkillUse;
+
         foreach (SkillHolder skillHolder in skills)
         {
             switch (skillHolder.state)
             {
                 case SkillState.ready:
-                    if (Input.GetKey(skillHolder.key) && Time.time - 1 / GetComponent<StatsManager>().attackSpeed.value > lastSkillUse && GetComponent<Animator>().GetFloat("ActionSpeed") != 0)
+                    if (skillHolder.triggerSkill && readyToUseSkill && GetComponent<Animator>().GetFloat("ActionSpeed") != 0 && !isChannelling)
                     {
                         if (skillHolder.skill.targetsCharacters)
                         {
@@ -61,7 +66,7 @@ public class SkillHandler : MonoBehaviour
                             break;
                         }
                         lastSkillUse = Time.time;
-                        
+
                         skillHolder.skill.OnUse(GetComponent<Character>());
                         skillHolder.state = SkillState.active;
                         skillHolder.activeTime = skillHolder.skill.activeTime;
@@ -86,15 +91,31 @@ public class SkillHandler : MonoBehaviour
                     }
                     break;
                 case SkillState.active:
-                    if (skillHolder.activeTime > 0)
+                    if (skillHolder.skill.isChannellingSkill)
                     {
-                        skillHolder.activeTime -= Time.deltaTime;
+                        if (skillHolder.triggerSkill)
+                        {
+                            isChannelling = true;
+                            skillHolder.skill.WhileChannelling();
+                            break;
+                        }
+                        else
+                        {
+                            isChannelling = false;
+                        }
                     }
                     else
                     {
-                        skillHolder.state = SkillState.cooldown;
-                        skillHolder.cooldownTime = skillHolder.skill.coolDownTime;
+                        if (skillHolder.activeTime > 0)
+                        {
+                            skillHolder.activeTime -= Time.deltaTime;
+                            break;
+                        }
                     }
+
+                    skillHolder.skill.OnCoolDown();
+                    skillHolder.state = SkillState.cooldown;
+                    skillHolder.cooldownTime = skillHolder.skill.coolDownTime;
                     break;
                 case SkillState.cooldown:
                     if (skillHolder.cooldownTime > 0)
@@ -118,14 +139,14 @@ public class SkillHandler : MonoBehaviour
         {
             GameObject hitObj = hit.transform.gameObject;
 
-            if (hitObj.tag == "Ground")
+            if (hitObj.tag == "Ground" || hitObj.tag == "Enemy")
             {
                 groundTarget = GameManager.instance.RefinedPos(hit.point);
             }
-            else if (hitObj.tag == "Enemy")
-            {
-                groundTarget = GameManager.instance.RefinedPos(hitObj.transform.position);
-            }
+            //else if (hitObj.tag == "Enemy")
+            //{
+            //    groundTarget = GameManager.instance.RefinedPos(hitObj.transform.position);
+            //}
         }
     }
 
@@ -149,7 +170,7 @@ public class SkillHandler : MonoBehaviour
 
     public void FaceGroundTarget()
     {
-        Vector3 lookDir = Vector3.RotateTowards(transform.forward, groundTarget - transform.position, 10, 0.0f);
+        Vector3 lookDir = Vector3.RotateTowards(transform.forward, new Vector3(groundTarget.x, transform.position.y, groundTarget.z) - transform.position, 10, 0.0f);
         transform.rotation = Quaternion.LookRotation(lookDir);
     }
 

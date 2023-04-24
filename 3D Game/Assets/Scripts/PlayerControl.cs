@@ -37,7 +37,7 @@ public class PlayerControl : Character
             return;
         }
 
-        if ((!isAttacking && Input.GetMouseButton(0)) || (isAttacking && Input.GetMouseButtonDown(0)))
+        if (((!isAttacking && Input.GetMouseButton(0)) || (isAttacking && Input.GetMouseButtonDown(0))) && !GetComponent<SkillHandler>().isChannelling)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -55,7 +55,7 @@ public class PlayerControl : Character
     {
         if (other.tag == "AttackHB")
         {
-            GetComponent<BuffManager>().ApplyBuff(new FreezeBuff(1));
+            GetComponent<StatusEffectManager>().ApplyStatusEffect(new FreezeBuff(1, 50));
         }
     }
 

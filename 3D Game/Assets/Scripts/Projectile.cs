@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public Vector3 targetPos;
     public float projSpeed;
-
+    public int pierce;
     public float damage;
     public DamageType dmgType;
 
@@ -24,8 +24,12 @@ public class Projectile : MonoBehaviour
     {
         if(other.GetComponent<Enemy>() != null)
         {
+            pierce--;
             other.GetComponent<Enemy>().ReceiveDamage(new Damage(damage, other.GetComponent<Character>(), dmgType));
-            Destroy(gameObject);
+            if (pierce <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

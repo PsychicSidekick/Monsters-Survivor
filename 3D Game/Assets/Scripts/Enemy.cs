@@ -29,10 +29,9 @@ public class Enemy : Character
         healthBar.GetComponent<Slider>().value = life/stats.maxLife.value;
 
         float distanceFromPlayer = Vector3.Distance(PlayerControl.instance.transform.position, transform.position);
-
         if (distanceFromPlayer < detectionRange)
         {
-            if (distanceFromPlayer < attackRange)
+            if (distanceFromPlayer < attackRange && GetComponent<Animator>().GetFloat("ActionSpeed") != 0)
             {
                 animator.SetBool("isAttacking", true);
             }
@@ -41,12 +40,11 @@ public class Enemy : Character
                 Move(PlayerControl.instance.transform.position);
                 animator.SetBool("isAttacking", false);
             }
-            Vector3 lookDir = Vector3.RotateTowards(transform.forward, PlayerControl.instance.transform.position - transform.position, 3 * Time.deltaTime, 0.0f);
-            transform.rotation = Quaternion.LookRotation(lookDir);
         }
         else
         {
             StopMoving();
+            animator.SetBool("isAttacking", false);
         }
     }
 

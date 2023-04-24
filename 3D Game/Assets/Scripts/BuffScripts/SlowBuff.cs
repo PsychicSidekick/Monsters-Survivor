@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlowBuff : Buff
+public class SlowBuff : StatusEffect
 { 
     private StatModifier slowMod;
     
     public SlowBuff(float slowPercentage, float duration)
     {
-        buffName = "slow";
+        name = "slow";
         slowMod = new StatModifier(ItemModType.inc_MoveSpd, -slowPercentage);
         maxDuration = duration;
         remainingDuration = duration;
@@ -19,7 +19,7 @@ public class SlowBuff : Buff
         character.stats.ApplyStatModifier(slowMod);
     }
 
-    public override void AddStack(Buff buff)
+    public override void AddStack(StatusEffect buff)
     {
         remainingDuration = buff.maxDuration;
     }

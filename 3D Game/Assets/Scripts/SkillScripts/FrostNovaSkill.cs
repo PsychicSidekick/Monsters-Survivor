@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class BlastSkill : Skill
+public class FrostNovaSkill : Skill
 {
-    public GameObject blastColliderPrefab;
-    public float maxBlastArea;
+    public GameObject novaColliderPrefab;
+    public float maxNovaArea;
     public float expandTime;
-    public float blastManaCost;
-    public float blastBaseDmg;
+    public float manaCost;
 
     public override void OnUse(Character _skillUser)
     {
@@ -22,27 +21,26 @@ public class BlastSkill : Skill
 
     public override void UseSkill()
     {
-        if (!skillUser.CheckSkillCost(blastManaCost))
+        if (!skillUser.CheckSkillCost(manaCost))
         {
             return;
         }
 
-        skillUser.ReduceMana(blastManaCost);
+        skillUser.ReduceMana(manaCost);
 
         skillUser.StartCoroutine(ExpandSphereCollider());
     }
 
     IEnumerator ExpandSphereCollider()
     {
-        SphereCollider sphereCollider = Instantiate(blastColliderPrefab, GameManager.instance.RefinedPos(skillUser.transform.position), Quaternion.identity).GetComponent<SphereCollider>();
-        sphereCollider.GetComponent<AreaEffect>().damage += blastBaseDmg + skillUser.GetComponent<StatsManager>().attackDmg.value;
+        SphereCollider sphereCollider = Instantiate(novaColliderPrefab, GameManager.instance.RefinedPos(skillUser.transform.position), Quaternion.identity).GetComponent<SphereCollider>();
         sphereCollider.GetComponent<AreaEffect>().statusEffects.Add(new FreezeBuff(1, 100));
 
         for (float i = 0; i <= expandTime + 0.1; i += Time.deltaTime)
         {
-            float size = Mathf.Lerp(0.5f, maxBlastArea, i / expandTime);
+            float size = Mathf.Lerp(0.5f, maxNovaArea, i / expandTime);
             sphereCollider.transform.localScale = new Vector3(size, size, size);
-            if (size >= maxBlastArea)
+            if (size >= maxNovaArea)
             {
                 Destroy(sphereCollider.gameObject);
                 break;

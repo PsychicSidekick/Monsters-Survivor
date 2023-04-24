@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cac6719658d294aa8097e35b5adb36, type: 3}
+  m_Name: FrozenOrb
+  m_EditorClassIdentifier: 
+  skillName: FrozenOrb
+  coolDownTime: 0
+  activeTime: 0
+  useRange: 100
+  targetsCharacters: 0
+  frozenOrbPrefab: {fileID: 2261200419857535693, guid: 3746e7d0886c48e4cb7ffb77b7ea1dc1, type: 3}
+  iciclePrefab: {fileID: 3120438280565544056, guid: b36f8a78a7a17ab4e967aefb02ff3ccd, type: 3}
+  duration: 4
+  travelSpeed: 0.2
+  orbBaseDamage: 20
+  icicleBaseDamage: 5
+  icicleRange: 5
+  manaCost: 20
+  shootRate: 7
+  numberOfProjectiles: 10
+  projectileSpeed: 3
+  projectilePierce: 3
