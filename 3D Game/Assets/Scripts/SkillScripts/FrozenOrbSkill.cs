@@ -12,7 +12,6 @@ public class FrozenOrbSkill : Skill
     public float orbBaseDamage;
     public float icicleBaseDamage;
     public float icicleRange;
-    public float manaCost;
     public float shootRate;
     public int numberOfProjectiles;
     public float projectileSpeed;
@@ -27,13 +26,6 @@ public class FrozenOrbSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
-        if (!skillUser.CheckSkillCost(manaCost))
-        {
-            return;
-        }
-
-        skillUser.ReduceMana(manaCost);
-
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
         TimedProjectile mainProj = Instantiate(frozenOrbPrefab, startPos, Quaternion.identity).GetComponent<TimedProjectile>();
         mainProj.damage += orbBaseDamage + skillUser.GetComponent<StatsManager>().attackDmg.value;

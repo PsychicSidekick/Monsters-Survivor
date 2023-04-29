@@ -25,6 +25,7 @@ public enum SkillState
 
 public class SkillHandler : MonoBehaviour
 {
+    public Character skillUser;
     public List<SkillHolder> skills = new List<SkillHolder>();
 
     [HideInInspector] public Skill currentSkill;
@@ -34,6 +35,11 @@ public class SkillHandler : MonoBehaviour
 
     [HideInInspector] public bool isChannelling;
     [HideInInspector] public float lastSkillUse;
+
+    private void Start()
+    {
+        skillUser = GetComponent<Character>();
+    }
 
     private void Update()
     {
@@ -48,19 +54,19 @@ public class SkillHandler : MonoBehaviour
                     {
                         if (skillHolder.skill.targetsCharacters)
                         {
-                            if (GetComponent<Character>().FindCharacterTarget() == null)
+                            if (skillUser.FindCharacterTarget() == null)
                             {
                                 break;
                             }
                         }
                         else
                         {
-                            GetComponent<Character>().FindGroundTarget();
+                            skillUser.FindGroundTarget();
                         }
                         currentSkill = skillHolder.skill;
                         lastSkillUse = Time.time;
 
-                        skillHolder.skill.OnUse(GetComponent<Character>());
+                        skillHolder.skill.OnUse(skillUser);
                         skillHolder.state = SkillState.active;
                         skillHolder.activeTime = skillHolder.skill.activeTime;
                     }
@@ -71,7 +77,7 @@ public class SkillHandler : MonoBehaviour
                         if (skillHolder.triggerSkill)
                         {
                             isChannelling = true;
-                            if (skillHolder.skill.WhileChannelling(GetComponent<Character>()))
+                            if (skillHolder.skill.WhileChannelling(skillUser))
                             {
                                 break;
                             }
@@ -86,13 +92,13 @@ public class SkillHandler : MonoBehaviour
                     {
                         if (skillHolder.activeTime > 0)
                         {
-                            skillHolder.skill.WhileActive(GetComponent<Character>());
+                            skillHolder.skill.WhileActive(skillUser);
                             skillHolder.activeTime -= Time.deltaTime;
                             break;
                         }
                     }
 
-                    skillHolder.skill.OnCoolDown(GetComponent<Character>());
+                    skillHolder.skill.OnCoolDown(skillUser);
                     skillHolder.state = SkillState.cooldown;
                     skillHolder.cooldownTime = skillHolder.skill.coolDownTime;
                     break;
@@ -131,7 +137,10 @@ public class SkillHandler : MonoBehaviour
     {
         if (currentSkill != null)
         {
-            currentSkill.UseSkill(GetComponent<Character>());
+            if (currentSkill.TryUseSkill(skillUser))
+            {
+                currentSkill.UseSkill(skillUser);
+            }
         }
     }
 }

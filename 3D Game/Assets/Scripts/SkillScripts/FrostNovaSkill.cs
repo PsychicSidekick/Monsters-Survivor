@@ -8,7 +8,6 @@ public class FrostNovaSkill : Skill
     public GameObject novaColliderPrefab;
     public float maxNovaArea;
     public float expandTime;
-    public float manaCost;
 
     public override void OnUse(Character skillUser)
     {
@@ -20,13 +19,6 @@ public class FrostNovaSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
-        if (!skillUser.CheckSkillCost(manaCost))
-        {
-            return;
-        }
-
-        skillUser.ReduceMana(manaCost);
-
         skillUser.StartCoroutine(ExpandSphereCollider(skillUser));
     }
 

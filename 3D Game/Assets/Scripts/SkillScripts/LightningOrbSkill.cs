@@ -10,7 +10,6 @@ public class LightningOrbSkill : Skill
     public float orbRotationSpeed;
     public float orbRotationRadius;
     public int orbPierce;
-    public float manaCost;
     public float baseDamage;
     public int numberOfOrbs;
     public float orbDuration;
@@ -19,13 +18,6 @@ public class LightningOrbSkill : Skill
     {
         skillUser.StopMoving();
         skillUser.animator.Play("ShootBall");
-
-        if (!skillUser.CheckSkillCost(manaCost))
-        {
-            return;
-        }
-
-        skillUser.ReduceMana(manaCost);
 
         RotationCenter rotationCenter = Instantiate(rotationCenterPrefab, skillUser.transform.position, Quaternion.identity).GetComponent<RotationCenter>();
         rotationCenter.lifeTime = orbDuration;

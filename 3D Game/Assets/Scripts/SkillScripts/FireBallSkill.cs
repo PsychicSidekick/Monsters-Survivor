@@ -8,7 +8,6 @@ public class FireBallSkill : Skill
     public GameObject ballPrefab;
     public float ballRange;
     public float ballSpeed;
-    public float fireBallManaCost;
     public float ballBaseDmg;
     public int numberOfProjectiles;
 
@@ -21,13 +20,6 @@ public class FireBallSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
-        if (!skillUser.CheckSkillCost(fireBallManaCost))
-        {
-            return;
-        }
-
-        skillUser.ReduceMana(fireBallManaCost);
-
         float targetPosOffset = numberOfProjectiles / -2f + 0.5f;
         for (int i = 0; i < numberOfProjectiles; i++)
         {

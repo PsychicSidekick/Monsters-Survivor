@@ -7,7 +7,6 @@ public class ChainLightningSkill : Skill
 {
     public GameObject lightningBoltPrefab;
     public float lightningBoltSpeed;
-    public float manaCost;
     public int numberOfChains;
     public float chainingRange;
     public float chainDamageMultiplier;
@@ -26,13 +25,6 @@ public class ChainLightningSkill : Skill
         {
             return;
         }
-
-        if (!skillUser.CheckSkillCost(manaCost))
-        {
-            return;
-        }
-
-        skillUser.ReduceMana(manaCost);
 
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
         HomingProjectile proj = Instantiate(lightningBoltPrefab, startPos, Quaternion.identity).GetComponent<HomingProjectile>();

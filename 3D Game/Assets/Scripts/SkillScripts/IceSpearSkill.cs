@@ -7,7 +7,6 @@ public class IceSpearSkill : Skill
 {
     public GameObject iceSpearPrefab;
     public float iceSpearSpeed;
-    public float manaCost;
     public float baseDamage;
     public int numberOfProjectiles;
 
@@ -20,13 +19,6 @@ public class IceSpearSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
-        if (!skillUser.CheckSkillCost(manaCost))
-        {
-            return;
-        }
-
-        skillUser.ReduceMana(manaCost);
-
         float spawnPosOffset = -numberOfProjectiles / 2f + 0.5f;
         for (int i = 0; i < numberOfProjectiles; i++)
         {

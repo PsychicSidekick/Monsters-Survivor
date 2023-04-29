@@ -7,7 +7,7 @@ public class Skill : ScriptableObject
     public string skillName;
     public float coolDownTime;
     public float activeTime;
-    public float useRange;
+    public float baseManaCost;
     public bool targetsCharacters;
     public bool isChannellingSkill;
 
@@ -29,6 +29,17 @@ public class Skill : ScriptableObject
     public virtual void OnCoolDown(Character skillUser)
     {
 
+    }
+
+    public bool TryUseSkill(Character skillUser)
+    {
+        if (!skillUser.CheckSkillCost(baseManaCost))
+        {
+            return false;
+        }
+
+        skillUser.ReduceMana(baseManaCost);
+        return true;
     }
 
     public virtual void UseSkill(Character skillUser)

@@ -8,7 +8,6 @@ public class BlastSkill : Skill
     public GameObject blastColliderPrefab;
     public float maxBlastArea;
     public float expandTime;
-    public float blastManaCost;
     public float blastBaseDmg;
 
     public override void OnUse(Character skillUser)
@@ -21,13 +20,6 @@ public class BlastSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
-        if (!skillUser.CheckSkillCost(blastManaCost))
-        {
-            return;
-        }
-
-        skillUser.ReduceMana(blastManaCost);
-
         skillUser.StartCoroutine(ExpandSphereCollider(skillUser));
     }
 

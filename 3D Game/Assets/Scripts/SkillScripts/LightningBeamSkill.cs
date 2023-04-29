@@ -8,7 +8,6 @@ public class LightningBeamSkill : Skill
     public GameObject beamPrefab;
     public GameObject beamObject;
     public float beamRange;
-    public float manaCostPerSecond;
     public float damageTickRate;
     public float beamBaseDamagePerSecond;
 
@@ -32,12 +31,13 @@ public class LightningBeamSkill : Skill
 
     public override bool WhileChannelling(Character skillUser)
     {
-        if (!skillUser.CheckSkillCost(manaCostPerSecond * Time.deltaTime))
+        if (!skillUser.CheckSkillCost(baseManaCost * Time.deltaTime))
         {
             return false;
         }
 
-        skillUser.ReduceMana(manaCostPerSecond * Time.deltaTime);
+        skillUser.ReduceMana(baseManaCost * Time.deltaTime);
+
         skillUser.FindGroundTarget();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
         skillUser.StopMoving();
