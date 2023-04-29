@@ -8,12 +8,12 @@ public class LightningBeamSkill : Skill
     public GameObject beamPrefab;
     public GameObject beamObject;
     public float beamRange;
+    public float manaCostPerSecond;
     public float damageTickRate;
     public float beamBaseDamagePerSecond;
 
-    public override void OnUse(Character _skillUser)
+    public override void OnUse(Character skillUser)
     {
-        base.OnUse(_skillUser);
         skillUser.animator.SetBool("isChannelling", true);
         skillUser.animator.Play("Channel");
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
@@ -30,17 +30,22 @@ public class LightningBeamSkill : Skill
         beamArea.owner = skillUser;
     }
 
-    public override void WhileChannelling()
+    public override bool WhileChannelling(Character skillUser)
     {
-        base.WhileChannelling();
-        skillUser.GetComponent<SkillHandler>().FindGroundTarget();
+        if (!skillUser.CheckSkillCost(manaCostPerSecond * Time.deltaTime))
+        {
+            return false;
+        }
+
+        skillUser.ReduceMana(manaCostPerSecond * Time.deltaTime);
+        skillUser.FindGroundTarget();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
         skillUser.StopMoving();
+        return true;
     }
 
-    public override void OnCoolDown()
+    public override void OnCoolDown(Character skillUser)
     {
-        base.OnCoolDown();
         skillUser.animator.SetBool("isChannelling", false);
         Destroy(beamObject);
     }

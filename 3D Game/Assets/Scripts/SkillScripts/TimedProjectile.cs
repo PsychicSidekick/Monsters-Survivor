@@ -15,6 +15,7 @@ public class TimedProjectile : Projectile
         }
 
         lifeTime -= Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + travelDirection, projSpeed / 100);
+        targetPos = transform.position + travelDirection;
+        base.Update();
     }
 }

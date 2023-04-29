@@ -8,18 +8,17 @@ public class IceSpearSkill : Skill
     public GameObject iceSpearPrefab;
     public float iceSpearSpeed;
     public float manaCost;
-    public float baseDmg;
+    public float baseDamage;
     public int numberOfProjectiles;
 
-    public override void OnUse(Character _skillUser)
+    public override void OnUse(Character skillUser)
     {
-        base.OnUse(_skillUser);
         skillUser.StopMoving();
         skillUser.GetComponent<SkillHandler>().FaceCharacterTarget();
         skillUser.animator.Play("ShootBall");
     }
 
-    public override void UseSkill()
+    public override void UseSkill(Character skillUser)
     {
         if (!skillUser.CheckSkillCost(manaCost))
         {
@@ -36,7 +35,7 @@ public class IceSpearSkill : Skill
             spawnPosOffset++;
             HomingProjectile proj = Instantiate(iceSpearPrefab, startPos, Quaternion.identity).GetComponent<HomingProjectile>();
             proj.targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
-            proj.damage += baseDmg + skillUser.GetComponent<StatsManager>().attackDmg.value;
+            proj.damage += baseDamage + skillUser.GetComponent<StatsManager>().attackDmg.value;
             proj.projSpeed = iceSpearSpeed;
         }
     }

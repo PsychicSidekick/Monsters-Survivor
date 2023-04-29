@@ -16,6 +16,8 @@ public class Character : MonoBehaviour
     
     public bool xpIsDirty = true;
 
+    public static LayerMask targettable = 1 << 7;
+
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
@@ -178,7 +180,6 @@ public class Character : MonoBehaviour
         {
             life = 0;
             OnDeath();
-            Destroy(gameObject);
         }
     }
 
@@ -195,6 +196,17 @@ public class Character : MonoBehaviour
 
     public virtual void OnDeath()
     {
-        Debug.Log("OnDeath() from Character");
+        Debug.Log(gameObject + " has died");
+        gameObject.SetActive(false);
+    }
+
+    public virtual void FindGroundTarget()
+    {
+
+    }
+
+    public virtual Character FindCharacterTarget()
+    {
+        return null;
     }
 }

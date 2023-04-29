@@ -3,31 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class ShootBallSkill : Skill
+public class FireBallSkill : Skill
 {
     public GameObject ballPrefab;
     public float ballRange;
     public float ballSpeed;
-    public float shootBallManaCost;
+    public float fireBallManaCost;
     public float ballBaseDmg;
     public int numberOfProjectiles;
 
-    public override void OnUse(Character _skillUser)
+    public override void OnUse(Character skillUser)
     {
-        base.OnUse(_skillUser);
         skillUser.StopMoving();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
         skillUser.animator.Play("ShootBall");
     }
 
-    public override void UseSkill()
+    public override void UseSkill(Character skillUser)
     {
-        if (!skillUser.CheckSkillCost(shootBallManaCost))
+        if (!skillUser.CheckSkillCost(fireBallManaCost))
         {
             return;
         }
 
-        skillUser.ReduceMana(shootBallManaCost);
+        skillUser.ReduceMana(fireBallManaCost);
 
         float targetPosOffset = numberOfProjectiles / -2f + 0.5f;
         for (int i = 0; i < numberOfProjectiles; i++)
@@ -36,11 +35,13 @@ public class ShootBallSkill : Skill
 
             Projectile proj = Instantiate(ballPrefab, startPos, Quaternion.identity).GetComponent<Projectile>();
             proj.damage += ballBaseDmg + skillUser.GetComponent<StatsManager>().attackDmg.value;
+            proj.dmgType = DamageType.Fire;
             Vector3 targetPos = skillUser.GetComponent<SkillHandler>().groundTarget + skillUser.transform.right * (targetPosOffset + i);
             Vector3 direction = Vector3.Normalize(targetPos - startPos);
 
             proj.targetPos = startPos + direction * ballRange;
             proj.projSpeed = ballSpeed;
+            proj.owner = skillUser;
         }
     }
 }

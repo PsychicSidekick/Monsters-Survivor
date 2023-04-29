@@ -8,11 +8,11 @@ using System;
 public class SkillHolder
 {
     public Skill skill;
-    [HideInInspector]public float cooldownTime;
-    [HideInInspector]public float activeTime;
-    [HideInInspector]public SkillState state;
     public KeyCode key;
-    public bool triggerSkill;
+    [HideInInspector] public float cooldownTime;
+    [HideInInspector] public float activeTime;
+    [HideInInspector] public SkillState state;
+    [HideInInspector] public bool triggerSkill;
 }
 
 public enum SkillState
@@ -27,14 +27,13 @@ public class SkillHandler : MonoBehaviour
 {
     public List<SkillHolder> skills = new List<SkillHolder>();
 
-    public Skill currentSkill;
-    public Vector3 groundTarget;
-    public Character characterTarget;
+    [HideInInspector] public Skill currentSkill;
+    [HideInInspector] public Vector3 groundTarget;
+    [HideInInspector] public Character characterTarget;
     public LayerMask mask;
 
-    public bool isChannelling;
-
-    public float lastSkillUse;
+    [HideInInspector] public bool isChannelling;
+    [HideInInspector] public float lastSkillUse;
 
     private void Update()
     {
@@ -49,45 +48,21 @@ public class SkillHandler : MonoBehaviour
                     {
                         if (skillHolder.skill.targetsCharacters)
                         {
-                            if (FindCharacterTarget() == null)
+                            if (GetComponent<Character>().FindCharacterTarget() == null)
                             {
                                 break;
                             }
                         }
                         else
                         {
-                            FindGroundTarget();
+                            GetComponent<Character>().FindGroundTarget();
                         }
                         currentSkill = skillHolder.skill;
-                        if (Vector3.Distance(groundTarget, transform.position) > skillHolder.skill.useRange)
-                        {
-                            skillHolder.state = SkillState.outOfRange;
-                            GetComponent<Character>().Move(groundTarget);
-                            break;
-                        }
                         lastSkillUse = Time.time;
 
                         skillHolder.skill.OnUse(GetComponent<Character>());
                         skillHolder.state = SkillState.active;
                         skillHolder.activeTime = skillHolder.skill.activeTime;
-                    }
-                    break;
-                case SkillState.outOfRange:
-                    if (currentSkill == skillHolder.skill)
-                    {
-                        if (Vector3.Distance(groundTarget, transform.position) > skillHolder.skill.useRange)
-                        {
-                            break;
-                        }
-                        lastSkillUse = Time.time;
-
-                        skillHolder.skill.OnUse(GetComponent<Character>());
-                        skillHolder.state = SkillState.active;
-                        skillHolder.activeTime = skillHolder.skill.activeTime;
-                    }
-                    else
-                    {
-                        skillHolder.state = SkillState.ready;
                     }
                     break;
                 case SkillState.active:
@@ -96,8 +71,11 @@ public class SkillHandler : MonoBehaviour
                         if (skillHolder.triggerSkill)
                         {
                             isChannelling = true;
-                            skillHolder.skill.WhileChannelling();
-                            break;
+                            if (skillHolder.skill.WhileChannelling(GetComponent<Character>()))
+                            {
+                                break;
+                            }
+                            isChannelling = false;
                         }
                         else
                         {
@@ -108,12 +86,13 @@ public class SkillHandler : MonoBehaviour
                     {
                         if (skillHolder.activeTime > 0)
                         {
+                            skillHolder.skill.WhileActive(GetComponent<Character>());
                             skillHolder.activeTime -= Time.deltaTime;
                             break;
                         }
                     }
 
-                    skillHolder.skill.OnCoolDown();
+                    skillHolder.skill.OnCoolDown(GetComponent<Character>());
                     skillHolder.state = SkillState.cooldown;
                     skillHolder.cooldownTime = skillHolder.skill.coolDownTime;
                     break;
@@ -129,43 +108,6 @@ public class SkillHandler : MonoBehaviour
                     break;
             }
         }
-    }
-
-    public void FindGroundTarget()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, mask))
-        {
-            GameObject hitObj = hit.transform.gameObject;
-
-            if (hitObj.tag == "Ground" || hitObj.tag == "Enemy")
-            {
-                groundTarget = GameManager.instance.RefinedPos(hit.point);
-            }
-            //else if (hitObj.tag == "Enemy")
-            //{
-            //    groundTarget = GameManager.instance.RefinedPos(hitObj.transform.position);
-            //}
-        }
-    }
-
-    public Character FindCharacterTarget()
-    {
-        characterTarget = null;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, mask))
-        {
-            GameObject hitObj = hit.transform.gameObject;
-
-            if (hitObj.tag == "Enemy")
-            {
-                characterTarget = hitObj.GetComponent<Character>();
-            }
-        }
-
-        return characterTarget;
     }
 
     public void FaceGroundTarget()
@@ -189,7 +131,7 @@ public class SkillHandler : MonoBehaviour
     {
         if (currentSkill != null)
         {
-            currentSkill.UseSkill();
+            currentSkill.UseSkill(GetComponent<Character>());
         }
     }
 }

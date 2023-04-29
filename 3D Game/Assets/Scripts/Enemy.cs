@@ -8,16 +8,17 @@ public class Enemy : Character
     public GameObject healthBarCanvas;
     public GameObject healthBarPrefab;
     private GameObject healthBar;
-
-    public float detectionRange;
-    public float attackRange;
+    
     public List<ItemPrefab> lootPool = new List<ItemPrefab>();
 
     public int xpYield;
 
+    public PlayerControl player;
+
     protected override void Start()
     {
         base.Start();
+        player = PlayerControl.instance;
         healthBar = Instantiate(healthBarPrefab, healthBarCanvas.transform);
     }
 
@@ -27,25 +28,6 @@ public class Enemy : Character
 
         healthBar.GetComponent<RectTransform>().anchoredPosition = GameManager.instance.WorldToCanvasPos(healthBarCanvas, transform.position);
         healthBar.GetComponent<Slider>().value = life/stats.maxLife.value;
-
-        float distanceFromPlayer = Vector3.Distance(PlayerControl.instance.transform.position, transform.position);
-        if (distanceFromPlayer < detectionRange)
-        {
-            if (distanceFromPlayer < attackRange && GetComponent<Animator>().GetFloat("ActionSpeed") != 0)
-            {
-                animator.SetBool("isAttacking", true);
-            }
-            else
-            {
-                Move(PlayerControl.instance.transform.position);
-                animator.SetBool("isAttacking", false);
-            }
-        }
-        else
-        {
-            StopMoving();
-            animator.SetBool("isAttacking", false);
-        }
     }
 
     public void SpawnLoot()
@@ -67,7 +49,22 @@ public class Enemy : Character
     public override void OnDeath()
     {
         Destroy(healthBar);
-        PlayerControl.instance.ReceiveXp(xpYield);
+        player.ReceiveXp(xpYield);
         SpawnLoot();
+        base.OnDeath();
+    }
+
+    public override void FindGroundTarget()
+    {
+        if (player == null)
+        {
+            return;
+        }
+        GetComponent<SkillHandler>().groundTarget = GameManager.instance.RefinedPos(player.transform.position);
+    }
+
+    public override Character FindCharacterTarget()
+    {
+        return player;
     }
 }

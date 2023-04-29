@@ -11,16 +11,15 @@ public class BlastSkill : Skill
     public float blastManaCost;
     public float blastBaseDmg;
 
-    public override void OnUse(Character _skillUser)
+    public override void OnUse(Character skillUser)
     {
-        base.OnUse(_skillUser);
         skillUser.StopMoving();
-        skillUser.GetComponent<SkillHandler>().FindGroundTarget();
+        skillUser.FindGroundTarget();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
         skillUser.animator.Play("Blast");
     }
 
-    public override void UseSkill()
+    public override void UseSkill(Character skillUser)
     {
         if (!skillUser.CheckSkillCost(blastManaCost))
         {
@@ -29,10 +28,10 @@ public class BlastSkill : Skill
 
         skillUser.ReduceMana(blastManaCost);
 
-        skillUser.StartCoroutine(ExpandSphereCollider());
+        skillUser.StartCoroutine(ExpandSphereCollider(skillUser));
     }
 
-    IEnumerator ExpandSphereCollider()
+    IEnumerator ExpandSphereCollider(Character skillUser)
     {
         SphereCollider sphereCollider = Instantiate(blastColliderPrefab, GameManager.instance.RefinedPos(skillUser.transform.position), Quaternion.identity).GetComponent<SphereCollider>();
         sphereCollider.GetComponent<AreaEffect>().damage += blastBaseDmg + skillUser.GetComponent<StatsManager>().attackDmg.value;

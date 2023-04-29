@@ -21,5 +21,6 @@ MonoBehaviour:
   beamPrefab: {fileID: 2659395044551760946, guid: ceaa885877c6bb74f9ec0151e503a6f6, type: 3}
   beamObject: {fileID: 0}
   beamRange: 5
+  manaCostPerSecond: 70
   damageTickRate: 0
-  beamBaseDamagePerSecond: 500
+  beamBaseDamagePerSecond: 1000

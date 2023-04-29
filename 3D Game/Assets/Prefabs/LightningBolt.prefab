@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1190708933564332956}
   - component: {fileID: 699339414502045233}
   m_Layer: 0
-  m_Name: Spear
+  m_Name: LightningBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 865b423f740879b4181c5e40c3bf7877, type: 2}
+  - {fileID: 2100000, guid: 98320dd6752f7da4aa36f120bc655d6b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,5 +117,5 @@ MonoBehaviour:
   chainingRange: 0
   chainedCharacters: []
   damage: 0
-  dmgType: 2
+  dmgType: 3
   targetCharacter: {fileID: 0}

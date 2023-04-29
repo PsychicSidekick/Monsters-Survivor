@@ -5,16 +5,14 @@ using UnityEngine;
 [CreateAssetMenu]
 public class DashSkill : Skill
 {
-    public override void OnUse(Character _skillUser)
+    public override void OnUse(Character skillUser)
     {
-        base.OnUse(_skillUser);
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
-        UseSkill();
+        UseSkill(skillUser);
     }
 
-    public override void UseSkill()
+    public override void UseSkill(Character skillUser)
     {
-        //skillUser.GetComponent<BuffManager>().ApplyBuff(new SlowBuff(50, 5));
         skillUser.GetComponent<StatusEffectManager>().ApplyStatusEffect(new FreezeBuff(1, 100));
         Vector3 dashTarget = skillUser.transform.position + skillUser.transform.forward * 5;
         dashTarget.y = 0;

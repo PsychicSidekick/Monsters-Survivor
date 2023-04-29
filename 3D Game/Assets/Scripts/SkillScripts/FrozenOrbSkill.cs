@@ -18,15 +18,14 @@ public class FrozenOrbSkill : Skill
     public float projectileSpeed;
     public int projectilePierce;
 
-    public override void OnUse(Character _skillUser)
+    public override void OnUse(Character skillUser)
     {
-        base.OnUse(_skillUser);
         skillUser.StopMoving();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
         skillUser.animator.Play("ShootBall");
     }
 
-    public override void UseSkill()
+    public override void UseSkill(Character skillUser)
     {
         if (!skillUser.CheckSkillCost(manaCost))
         {
@@ -44,11 +43,12 @@ public class FrozenOrbSkill : Skill
         mainProj.lifeTime = duration;
         mainProj.projSpeed = travelSpeed;
         mainProj.pierce = 100;
+        mainProj.owner = skillUser;
 
-        skillUser.StartCoroutine(ShootIcicles(mainProj));
+        mainProj.StartCoroutine(ShootIcicles(mainProj, skillUser));
     }
 
-    IEnumerator ShootIcicles(TimedProjectile mainProj)
+    IEnumerator ShootIcicles(TimedProjectile mainProj, Character skillUser)
     {
         while (mainProj != null)
         {
@@ -56,13 +56,14 @@ public class FrozenOrbSkill : Skill
             {
                 Vector3 startPos = GameManager.instance.RefinedPos(mainProj.transform.position);
                 Projectile proj = Instantiate(iciclePrefab, startPos, Quaternion.identity).GetComponent<Projectile>();
-                proj.damage += icicleBaseDamage + skillUser.GetComponent<StatsManager>().attackDmg.value;
+                proj.damage = icicleBaseDamage + skillUser.GetComponent<StatsManager>().attackDmg.value;
                 Vector3 targetPos = (Quaternion.AngleAxis(i * 360 / numberOfProjectiles, mainProj.transform.up) * new Vector3(1, 0, 0)) + startPos;
                 Vector3 direction = Vector3.Normalize(targetPos - startPos);
                 proj.targetPos = startPos + direction * icicleRange;
 
                 proj.projSpeed = projectileSpeed;
                 proj.pierce = projectilePierce;
+                proj.owner = skillUser;
             }
 
             yield return new WaitForSeconds(1 / shootRate);

@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-        else if (cursorItem != null && lockCursor && Input.GetKeyDown(KeyCode.Mouse0) && !PlayerControl.IsMouseOverUI())
+        else if (cursorItem != null && lockCursor && Input.GetKeyDown(KeyCode.Mouse0) && !GameManager.IsMouseOverUI())
         {
             DropItem(cursorItem);
         }

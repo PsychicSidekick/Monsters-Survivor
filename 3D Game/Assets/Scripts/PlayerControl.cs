@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.AI;
-using UnityEngine.EventSystems;
+
 
 public class PlayerControl : Character
 {
@@ -26,8 +26,7 @@ public class PlayerControl : Character
     {
         base.Update();
 
-
-        if (IsMouseOverUI())
+        if (GameManager.IsMouseOverUI())
         {
             return;
         }
@@ -51,14 +50,6 @@ public class PlayerControl : Character
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "AttackHB")
-        {
-            GetComponent<StatusEffectManager>().ApplyStatusEffect(new FreezeBuff(1, 50));
-        }
-    }
-
     public void FindMoveTarget(RaycastHit hit)
     {
         GameObject hitObj = hit.transform.gameObject;
@@ -69,8 +60,41 @@ public class PlayerControl : Character
         }
     }
 
-    public static bool IsMouseOverUI()
+    public override void FindGroundTarget()
     {
-        return EventSystem.current.IsPointerOverGameObject();
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100, targettable))
+        {
+            GameObject hitObj = hit.transform.gameObject;
+
+            if (hitObj.tag == "Ground")
+            {
+                GetComponent<SkillHandler>().groundTarget = GameManager.instance.RefinedPos(hit.point);
+            }
+            else if (hitObj.tag == "Enemy")
+            {
+                GetComponent<SkillHandler>().groundTarget = GameManager.instance.RefinedPos(hitObj.transform.position);
+            }
+        }
+    }
+
+    public override Character FindCharacterTarget()
+    {
+        Character characterTarget = null;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100, targettable))
+        {
+            GameObject hitObj = hit.transform.gameObject;
+
+            if (hitObj.tag == "Enemy")
+            {
+                characterTarget = hitObj.GetComponent<Character>();
+            }
+        }
+
+        GetComponent<SkillHandler>().characterTarget = characterTarget;
+        return characterTarget;
     }
 }

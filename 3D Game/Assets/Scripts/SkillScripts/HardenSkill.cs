@@ -5,13 +5,12 @@ using UnityEngine;
 [CreateAssetMenu]
 public class HardenSkill : Skill
 {
-    public override void OnUse(Character _skillUser)
+    public override void OnUse(Character skillUser)
     {
-        base.OnUse(_skillUser);
-        UseSkill();
+        UseSkill(skillUser);
     }
 
-    public override void UseSkill()
+    public override void UseSkill(Character skillUser)
     {
         skillUser.StartCoroutine(skillUser.GetComponent<StatsManager>().ApplyTemporaryBuff(new StatModifier(ItemModType.flat_armour, 1000), 5));
     }

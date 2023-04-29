@@ -10,24 +10,28 @@ public class Skill : ScriptableObject
     public float useRange;
     public bool targetsCharacters;
     public bool isChannellingSkill;
-    protected Character skillUser;
 
-    public virtual void OnUse(Character _skillUser)
-    {
-        skillUser = _skillUser;
-    }
-
-    public virtual void WhileChannelling()
+    public virtual void OnUse(Character skillUser)
     {
 
     }
 
-    public virtual void OnCoolDown()
+    public virtual void WhileActive(Character skillUser)
     {
 
     }
 
-    public virtual void UseSkill()
+    public virtual bool WhileChannelling(Character skillUser)
+    {
+        return false;
+    }
+
+    public virtual void OnCoolDown(Character skillUser)
+    {
+
+    }
+
+    public virtual void UseSkill(Character skillUser)
     {
         skillUser.GetComponent<SkillHandler>().currentSkill = null;
     }

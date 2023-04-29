@@ -15,4 +15,6 @@ MonoBehaviour:
   skillName: Harden
   coolDownTime: 1
   activeTime: 5
-  useRange: 2
+  useRange: 100
+  targetsCharacters: 0
+  isChannellingSkill: 0

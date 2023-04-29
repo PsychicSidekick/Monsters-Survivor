@@ -10,16 +10,15 @@ public class FrostNovaSkill : Skill
     public float expandTime;
     public float manaCost;
 
-    public override void OnUse(Character _skillUser)
+    public override void OnUse(Character skillUser)
     {
-        base.OnUse(_skillUser);
         skillUser.StopMoving();
-        skillUser.GetComponent<SkillHandler>().FindGroundTarget();
+        skillUser.FindGroundTarget();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
         skillUser.animator.Play("Blast");
     }
 
-    public override void UseSkill()
+    public override void UseSkill(Character skillUser)
     {
         if (!skillUser.CheckSkillCost(manaCost))
         {
@@ -28,10 +27,10 @@ public class FrostNovaSkill : Skill
 
         skillUser.ReduceMana(manaCost);
 
-        skillUser.StartCoroutine(ExpandSphereCollider());
+        skillUser.StartCoroutine(ExpandSphereCollider(skillUser));
     }
 
-    IEnumerator ExpandSphereCollider()
+    IEnumerator ExpandSphereCollider(Character skillUser)
     {
         SphereCollider sphereCollider = Instantiate(novaColliderPrefab, GameManager.instance.RefinedPos(skillUser.transform.position), Quaternion.identity).GetComponent<SphereCollider>();
         sphereCollider.GetComponent<AreaEffect>().statusEffects.Add(new FreezeBuff(1, 100));

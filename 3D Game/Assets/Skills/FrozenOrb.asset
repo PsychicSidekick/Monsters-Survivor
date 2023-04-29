@@ -17,15 +17,16 @@ MonoBehaviour:
   activeTime: 0
   useRange: 100
   targetsCharacters: 0
+  isChannellingSkill: 0
   frozenOrbPrefab: {fileID: 2261200419857535693, guid: 3746e7d0886c48e4cb7ffb77b7ea1dc1, type: 3}
   iciclePrefab: {fileID: 3120438280565544056, guid: b36f8a78a7a17ab4e967aefb02ff3ccd, type: 3}
-  duration: 4
-  travelSpeed: 0.2
-  orbBaseDamage: 20
+  duration: 3
+  travelSpeed: 0.5
+  orbBaseDamage: 10
   icicleBaseDamage: 5
-  icicleRange: 5
+  icicleRange: 1.5
   manaCost: 20
-  shootRate: 7
-  numberOfProjectiles: 10
-  projectileSpeed: 3
-  projectilePierce: 3
+  shootRate: 2
+  numberOfProjectiles: 6
+  projectileSpeed: 2
+  projectilePierce: 100

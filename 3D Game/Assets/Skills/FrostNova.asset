@@ -17,7 +17,8 @@ MonoBehaviour:
   activeTime: 0
   useRange: 100
   targetsCharacters: 0
+  isChannellingSkill: 0
   novaColliderPrefab: {fileID: 6373950692678710802, guid: 26a49406a31d85d479826955a055e565, type: 3}
-  maxNovaArea: 5
+  maxNovaArea: 10
   expandTime: 0.1
   manaCost: 5

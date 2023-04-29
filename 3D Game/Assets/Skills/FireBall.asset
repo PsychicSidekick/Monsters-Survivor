@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35b7477c3cb715d4a86ee3a801964b91, type: 3}
-  m_Name: ShootBall
+  m_Name: FireBall
   m_EditorClassIdentifier: 
-  skillName: ShootBall
+  skillName: FireBall
   coolDownTime: 0
   activeTime: 0
   useRange: 100
   targetsCharacters: 0
+  isChannellingSkill: 0
   ballPrefab: {fileID: 3928469377355962383, guid: fb980d06c1c9cbd41a01d6acf6ccb34d, type: 3}
   ballRange: 10
   ballSpeed: 1
-  shootBallManaCost: 10
-  ballBaseDmg: 5
-  numberOfProjectiles: 2
+  fireBallManaCost: 0
+  ballBaseDmg: 100
+  numberOfProjectiles: 1
