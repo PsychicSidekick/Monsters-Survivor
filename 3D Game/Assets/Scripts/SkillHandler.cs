@@ -34,6 +34,7 @@ public class SkillHandler : MonoBehaviour
     public LayerMask mask;
 
     [HideInInspector] public bool isChannelling;
+    [HideInInspector] public GameObject currentChannelingGameObject;
     [HideInInspector] public float lastSkillUse;
 
     private void Start()

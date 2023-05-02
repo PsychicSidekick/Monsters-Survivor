@@ -19,16 +19,18 @@ public class IceSpearSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
+        Character targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
         float spawnPosOffset = -numberOfProjectiles / 2f + 0.5f;
         for (int i = 0; i < numberOfProjectiles; i++)
         {
             Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
             startPos += skillUser.transform.right * spawnPosOffset;
             spawnPosOffset++;
-            HomingProjectile proj = Instantiate(iceSpearPrefab, startPos, Quaternion.identity).GetComponent<HomingProjectile>();
-            proj.targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
-            proj.damage += baseDamage + skillUser.GetComponent<StatsManager>().attackDmg.value;
+            EffectCollider collider = Instantiate(iceSpearPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
+            collider.SetEffects(baseDamage, DamageType.Cold, false, skillUser, targetCharacter);
+            HomingProjectile proj = collider.GetComponent<HomingProjectile>();
             proj.projSpeed = iceSpearSpeed;
+            proj.targetCharacter = targetCharacter;
         }
     }
 }

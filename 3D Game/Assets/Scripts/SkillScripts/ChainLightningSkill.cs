@@ -21,19 +21,16 @@ public class ChainLightningSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
-        if (skillUser.GetComponent<SkillHandler>().characterTarget == null)
-        {
-            return;
-        }
+        Character targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
 
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
-        HomingProjectile proj = Instantiate(lightningBoltPrefab, startPos, Quaternion.identity).GetComponent<HomingProjectile>();
-        proj.targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
-        proj.damage += baseDamage + skillUser.GetComponent<StatsManager>().attackDmg.value;
+        EffectCollider collider = Instantiate(lightningBoltPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
+        collider.SetEffects(baseDamage, DamageType.Lightning, false, skillUser, targetCharacter);
+        HomingProjectile proj = collider.GetComponent<HomingProjectile>();
+        proj.targetCharacter = targetCharacter;
         proj.projSpeed = lightningBoltSpeed;
         proj.chain = numberOfChains;
         proj.chainingRange = chainingRange;
         proj.chainDamageMultiplier = chainDamageMultiplier;
-        proj.owner = skillUser;
     }
 }

@@ -25,17 +25,16 @@ public class BlastSkill : Skill
 
     IEnumerator ExpandSphereCollider(Character skillUser)
     {
-        SphereCollider sphereCollider = Instantiate(blastColliderPrefab, GameManager.instance.RefinedPos(skillUser.transform.position), Quaternion.identity).GetComponent<SphereCollider>();
-        sphereCollider.GetComponent<AreaEffect>().damage += blastBaseDmg + skillUser.GetComponent<StatsManager>().attackDmg.value;
-        sphereCollider.GetComponent<AreaEffect>().statusEffects.Add(new FreezeBuff(1, 100));
+        EffectCollider blastCollider = Instantiate(blastColliderPrefab, GameManager.instance.RefinedPos(skillUser.transform.position), Quaternion.identity).GetComponent<EffectCollider>();
+        blastCollider.SetEffects(blastBaseDmg, DamageType.Fire, false, skillUser, null);
 
         for (float i = 0; i <= expandTime + 0.1; i += Time.deltaTime)
         {
             float size = Mathf.Lerp(0.5f, maxBlastArea, i / expandTime);
-            sphereCollider.transform.localScale = new Vector3(size, size, size);
+            blastCollider.transform.localScale = new Vector3(size, size, size);
             if (size >= maxBlastArea)
             {
-                Destroy(sphereCollider.gameObject);
+                Destroy(blastCollider.gameObject);
                 break;
             }
             yield return null;

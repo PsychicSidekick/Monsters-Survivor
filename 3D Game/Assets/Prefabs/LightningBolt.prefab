@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7322708301244333899}
   - component: {fileID: 1190708933564332956}
   - component: {fileID: 699339414502045233}
+  - component: {fileID: -8480095936774623328}
   m_Layer: 0
   m_Name: LightningBolt
   m_TagString: Untagged
@@ -93,10 +94,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3120438280565544056}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 10, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &699339414502045233
 MonoBehaviour:
@@ -113,9 +114,29 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   projSpeed: 0
   pierce: 0
-  chains: 0
+  chain: 0
   chainingRange: 0
+  chainDamageMultiplier: 0
   chainedCharacters: []
-  damage: 0
-  dmgType: 3
+  effectCollider: {fileID: 0}
   targetCharacter: {fileID: 0}
+--- !u!114 &-8480095936774623328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3120438280565544056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfc9965cd55fb848b7832cdecfadb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  type: 0
+  damageOverTime: 0
+  targetsCharacter: 0
+  statusEffects: []
+  owner: {fileID: 0}
+  target: {fileID: 0}
+  charactersInArea: []

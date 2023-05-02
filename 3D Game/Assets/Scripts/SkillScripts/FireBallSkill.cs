@@ -24,16 +24,13 @@ public class FireBallSkill : Skill
         for (int i = 0; i < numberOfProjectiles; i++)
         {
             Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
-
-            Projectile proj = Instantiate(ballPrefab, startPos, Quaternion.identity).GetComponent<Projectile>();
-            proj.damage += ballBaseDmg + skillUser.GetComponent<StatsManager>().attackDmg.value;
-            proj.dmgType = DamageType.Fire;
+            EffectCollider collider = Instantiate(ballPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
+            collider.SetEffects(ballBaseDmg, DamageType.Fire, false, skillUser, null);
+            Projectile proj = collider.GetComponent<Projectile>();
             Vector3 targetPos = skillUser.GetComponent<SkillHandler>().groundTarget + skillUser.transform.right * (targetPosOffset + i);
             Vector3 direction = Vector3.Normalize(targetPos - startPos);
-
             proj.targetPos = startPos + direction * ballRange;
             proj.projSpeed = ballSpeed;
-            proj.owner = skillUser;
         }
     }
 }

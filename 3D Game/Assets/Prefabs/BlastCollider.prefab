@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 874399525913083}
   - component: {fileID: 775746775}
   - component: {fileID: 775746774}
-  - component: {fileID: 5845522952362123514}
+  - component: {fileID: -7480954956326647508}
   m_Layer: 0
   m_Name: BlastCollider
   m_TagString: Untagged
@@ -98,7 +98,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2963932199247047362}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &5845522952362123514
+--- !u!114 &-7480954956326647508
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,13 +107,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2963932199247047362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79cb1ea70706204eb2ebfedd7f52491, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dfc9965cd55fb848b7832cdecfadb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  dmgType: 0
-  statusEffects:
-  - name: 
-    maxDuration: 0
-    remainingDuration: 0
-    stacks: 0

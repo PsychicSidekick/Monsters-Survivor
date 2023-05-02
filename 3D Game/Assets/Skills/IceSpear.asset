@@ -15,11 +15,10 @@ MonoBehaviour:
   skillName: IceSpear
   coolDownTime: 0
   activeTime: 0
-  useRange: 100
+  baseManaCost: 0
   targetsCharacters: 1
   isChannellingSkill: 0
   iceSpearPrefab: {fileID: 3120438280565544056, guid: cdd0ff3bcbf89414aa7c05e867724303, type: 3}
   iceSpearSpeed: 3
-  manaCost: 10
-  baseDmg: 75
+  baseDamage: 70
   numberOfProjectiles: 1

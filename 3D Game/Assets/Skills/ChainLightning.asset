@@ -15,13 +15,12 @@ MonoBehaviour:
   skillName: ChainLightning
   coolDownTime: 0
   activeTime: 0
-  useRange: 100
+  baseManaCost: 20
   targetsCharacters: 1
   isChannellingSkill: 0
   lightningBoltPrefab: {fileID: 3120438280565544056, guid: e70467d2e7cdc5c459eee70e4da708af, type: 3}
   lightningBoltSpeed: 10
-  manaCost: 20
-  numberOfChains: 30
-  chainingRange: 30
-  chainDamageMultiplier: 0.75
-  baseDamage: 1000
+  numberOfChains: 5
+  chainingRange: 10
+  chainDamageMultiplier: 1
+  baseDamage: 25

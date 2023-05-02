@@ -26,14 +26,11 @@ public class LightningOrbSkill : Skill
         for (int i = 0; i < numberOfOrbs; i++)
         {
             Vector3 spawnOffset = Quaternion.AngleAxis(i * 360 / numberOfOrbs, rotationCenter.transform.up) * new Vector3(orbRotationRadius, 0, 0);
-            Debug.Log(spawnOffset);
-            Projectile lightningOrb = Instantiate(lightningOrbPrefab, rotationCenter.transform).GetComponent<Projectile>();
-            lightningOrb.transform.position = rotationCenter.transform.position + spawnOffset;
-            lightningOrb.pierce = orbPierce;
-            lightningOrb.damage = baseDamage;
-            lightningOrb.dmgType = DamageType.Lightning;
-            lightningOrb.owner = skillUser;
+            EffectCollider collider = Instantiate(lightningOrbPrefab, rotationCenter.transform).GetComponent<EffectCollider>();
+            collider.SetEffects(baseDamage, DamageType.Lightning, false, skillUser, null);
+            collider.transform.position = rotationCenter.transform.position + spawnOffset;
+            Projectile proj = collider.GetComponent<Projectile>();
+            proj.pierce = orbPierce;
         }
-        
     }
 }

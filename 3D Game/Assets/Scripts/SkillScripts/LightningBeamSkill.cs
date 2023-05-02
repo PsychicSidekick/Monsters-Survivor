@@ -6,9 +6,7 @@ using UnityEngine;
 public class LightningBeamSkill : Skill
 {
     public GameObject beamPrefab;
-    public GameObject beamObject;
     public float beamRange;
-    public float damageTickRate;
     public float beamBaseDamagePerSecond;
 
     public override void OnUse(Character skillUser)
@@ -18,15 +16,13 @@ public class LightningBeamSkill : Skill
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
         skillUser.StopMoving();
 
-        beamObject = Instantiate(beamPrefab, skillUser.transform);
-
+        GameObject beamObject = Instantiate(beamPrefab, skillUser.transform);
+        skillUser.GetComponent<SkillHandler>().currentChannelingGameObject = beamObject;
         beamObject.transform.localScale = new Vector3(0.1f, 0.1f, beamRange);
         beamObject.transform.localPosition = new Vector3(0, 1, beamRange / 2f + 0.5f);
 
-        AreaDamageOverTime beamArea = beamObject.GetComponent<AreaDamageOverTime>();
-        beamArea.damagePerSecond = beamBaseDamagePerSecond;
-        beamArea.damageType = DamageType.Lightning;
-        beamArea.owner = skillUser;
+        EffectCollider beamArea = beamObject.GetComponent<EffectCollider>();
+        beamArea.SetEffects(beamBaseDamagePerSecond, DamageType.Lightning, true, skillUser, null);
     }
 
     public override bool WhileChannelling(Character skillUser)
@@ -47,6 +43,6 @@ public class LightningBeamSkill : Skill
     public override void OnCoolDown(Character skillUser)
     {
         skillUser.animator.SetBool("isChannelling", false);
-        Destroy(beamObject);
+        Destroy(skillUser.GetComponent<SkillHandler>().currentChannelingGameObject);
     }
 }

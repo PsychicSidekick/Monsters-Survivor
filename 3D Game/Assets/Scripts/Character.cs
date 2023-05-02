@@ -196,7 +196,7 @@ public class Character : MonoBehaviour
 
     public virtual void OnDeath()
     {
-        Debug.Log(gameObject + " has died");
+        //Debug.Log(gameObject + " has died");
         gameObject.SetActive(false);
     }
 

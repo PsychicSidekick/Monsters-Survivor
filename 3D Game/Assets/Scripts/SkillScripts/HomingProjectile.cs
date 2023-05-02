@@ -8,26 +8,25 @@ public class HomingProjectile : Projectile
 
     protected override void Update()
     {
-        if (targetCharacter != null)
+        if (targetCharacter != null && targetCharacter.gameObject.activeInHierarchy)
         {
             targetPos = GameManager.instance.RefinedPos(targetCharacter.transform.position);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, projSpeed / 100);
         Vector3 lookDir = Vector3.RotateTowards(transform.forward, targetPos - transform.position, 10, 0.0f);
         transform.rotation = Quaternion.LookRotation(lookDir);
-        base.Update();
-    }
 
-    protected override void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Character>() != targetCharacter)
-        {
-            return;
-        }
-        base.OnTriggerEnter(other);
+        //base.Update();
     }
 
     protected override void Chained()
     {
+        Debug.Log("Chained");
         Character nextTarget = null;
         float shortestDistance = Mathf.Infinity;
         
@@ -52,10 +51,15 @@ public class HomingProjectile : Projectile
         }
 
         targetCharacter = nextTarget;
+        effectCollider.target = nextTarget;
+        Debug.Log(effectCollider.charactersInArea.Count);
+        if (effectCollider.charactersInArea.Contains(nextTarget))
+        {
+            effectCollider.ApplyEffects(nextTarget);
+        }
         if (nextTarget != null)
         {
             chainedCharacters.Add(targetCharacter);
         }
-        base.Chained();
     }
 }

@@ -11,9 +11,13 @@ public class Projectile : MonoBehaviour
     public float chainingRange;
     public float chainDamageMultiplier;
     public List<Character> chainedCharacters = new List<Character>();
-    public float damage;
-    public DamageType dmgType;
-    public Character owner;
+
+    public EffectCollider effectCollider;
+
+    private void Start()
+    {
+        effectCollider = GetComponent<EffectCollider>();
+    }
 
     protected virtual void Update()
     {
@@ -32,22 +36,11 @@ public class Projectile : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(lookDir);
     }
 
-    protected virtual void OnTriggerEnter(Collider other)
+    public void OnHit(Character character)
     {
-        Character character = other.GetComponent<Character>();
-        if (other.GetComponent<Character>() == null)
-        {
-            return;
-        }
-
-        if (character.GetType() == owner.GetType())
-        {
-            return;
-        }
-
         pierce--;
         chain--;
-        character.ReceiveDamage(new Damage(damage, owner, dmgType));
+        
         if (pierce < 0 && chain < 0)
         {
             Destroy(gameObject);
@@ -56,7 +49,7 @@ public class Projectile : MonoBehaviour
 
         if (chain >= 0)
         {
-            damage *= chainDamageMultiplier;
+            effectCollider.damage *= chainDamageMultiplier;
             chainedCharacters.Add(character);
             Chained();
         }

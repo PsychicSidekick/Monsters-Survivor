@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: FrozenOrb
   coolDownTime: 0
   activeTime: 0
-  useRange: 100
+  baseManaCost: 30
   targetsCharacters: 0
   isChannellingSkill: 0
   frozenOrbPrefab: {fileID: 2261200419857535693, guid: 3746e7d0886c48e4cb7ffb77b7ea1dc1, type: 3}
@@ -25,7 +25,6 @@ MonoBehaviour:
   orbBaseDamage: 10
   icicleBaseDamage: 5
   icicleRange: 1.5
-  manaCost: 20
   shootRate: 2
   numberOfProjectiles: 6
   projectileSpeed: 2
