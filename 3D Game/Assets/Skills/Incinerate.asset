@@ -9,18 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fef084fcfae7574ab31d43c444e6a40, type: 3}
-  m_Name: ChainLightning
+  m_Script: {fileID: 11500000, guid: fda81fe370e8d45418c15996fb08c381, type: 3}
+  m_Name: Incinerate
   m_EditorClassIdentifier: 
-  skillName: ChainLightning
+  skillName: Incinerate
   coolDownTime: 0
   activeTime: 0
   baseManaCost: 20
   targetsCharacters: 1
   isChannellingSkill: 0
-  lightningBoltPrefab: {fileID: 3120438280565544056, guid: e70467d2e7cdc5c459eee70e4da708af, type: 3}
-  lightningBoltSpeed: 10
-  numberOfChains: 5
-  chainingRange: 5
-  chainDamageMultiplier: 1
-  baseDamage: 25
+  explosionPrefab: {fileID: 2963932199247047362, guid: 7393de6e233c4e7489672ea02833e615, type: 3}
+  explosionRadius: 7
+  explosionDamage: 200

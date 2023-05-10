@@ -7,6 +7,7 @@ public class LightningBeamSkill : Skill
 {
     public GameObject beamPrefab;
     public float beamRange;
+    public float beamWidth;
     public float beamBaseDamagePerSecond;
 
     public override void OnUse(Character skillUser)
@@ -18,7 +19,7 @@ public class LightningBeamSkill : Skill
 
         GameObject beamObject = Instantiate(beamPrefab, skillUser.transform);
         skillUser.GetComponent<SkillHandler>().currentChannelingGameObject = beamObject;
-        beamObject.transform.localScale = new Vector3(0.1f, 0.1f, beamRange);
+        beamObject.transform.localScale = new Vector3(beamWidth, beamWidth, beamRange);
         beamObject.transform.localPosition = new Vector3(0, 1, beamRange / 2f + 0.5f);
 
         EffectCollider beamArea = beamObject.GetComponent<EffectCollider>();

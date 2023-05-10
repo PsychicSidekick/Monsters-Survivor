@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: LightningOrb
   coolDownTime: 5
   activeTime: 0
-  useRange: 100
+  baseManaCost: 30
   targetsCharacters: 0
   isChannellingSkill: 0
   lightningOrbPrefab: {fileID: 1197468199083580458, guid: 35e505d3fd0b15f4eba2c67ffa164242, type: 3}
@@ -23,7 +23,6 @@ MonoBehaviour:
   orbRotationSpeed: 100
   orbRotationRadius: 2
   orbPierce: 100
-  manaCost: 30
-  baseDamage: 100
+  baseDamage: 50
   numberOfOrbs: 3
   orbDuration: 5

@@ -10,6 +10,8 @@ public class FireBallSkill : Skill
     public float ballSpeed;
     public float ballBaseDmg;
     public int numberOfProjectiles;
+    public float explosionRadius;
+    public float explosionDamage;
 
     public override void OnUse(Character skillUser)
     {
@@ -26,11 +28,17 @@ public class FireBallSkill : Skill
             Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
             EffectCollider collider = Instantiate(ballPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
             collider.SetEffects(ballBaseDmg, DamageType.Fire, false, skillUser, null);
+
             Projectile proj = collider.GetComponent<Projectile>();
             Vector3 targetPos = skillUser.GetComponent<SkillHandler>().groundTarget + skillUser.transform.right * (targetPosOffset + i);
             Vector3 direction = Vector3.Normalize(targetPos - startPos);
             proj.targetPos = startPos + direction * ballRange;
             proj.projSpeed = ballSpeed;
+
+            ExplodingProjectile explodingProj = proj.GetComponent<ExplodingProjectile>();
+            explodingProj.explosionRadius = explosionRadius;
+            explodingProj.explosionDamageType = DamageType.Fire;
+            explodingProj.explosionDamage = explosionDamage;
         }
     }
 }

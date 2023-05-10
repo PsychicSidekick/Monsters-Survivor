@@ -26,8 +26,7 @@ public class ChainLightningSkill : Skill
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
         EffectCollider collider = Instantiate(lightningBoltPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
         collider.SetEffects(baseDamage, DamageType.Lightning, false, skillUser, targetCharacter);
-        HomingProjectile proj = collider.GetComponent<HomingProjectile>();
-        proj.targetCharacter = targetCharacter;
+        Projectile proj = collider.GetComponent<Projectile>();
         proj.projSpeed = lightningBoltSpeed;
         proj.chain = numberOfChains;
         proj.chainingRange = chainingRange;

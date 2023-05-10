@@ -872,13 +872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -903,7 +897,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &15909850
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1383,13 +1377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -1414,7 +1402,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &21068420
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2051,13 +2039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -2082,7 +2064,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &28432809
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4805,13 +4787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -4836,7 +4812,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &79962407
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14572,13 +14548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -14603,7 +14573,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &274664120
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -15356,13 +15326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -15387,7 +15351,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &285208914
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -18752,13 +18716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -18783,7 +18741,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &346479267
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19166,13 +19124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -19197,7 +19149,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &353454256
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20831,13 +20783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -20862,7 +20808,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &387154289
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -21343,13 +21289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -21374,7 +21314,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &392128468
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -28218,13 +28158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -28249,7 +28183,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &545790546
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -30882,13 +30816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -30913,7 +30841,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &601264495
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -32496,13 +32424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -32527,7 +32449,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &638680623
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -38758,13 +38680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -38789,7 +38705,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &789403063
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -42402,13 +42318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -42433,7 +42343,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &874714321
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -43857,13 +43767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -43888,7 +43792,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &898567637
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -45681,13 +45585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -45712,7 +45610,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &939090270
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -48407,13 +48305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -48438,7 +48330,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &994466034
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -51669,13 +51561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -51700,7 +51586,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1056658747
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -57930,13 +57816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -57961,7 +57841,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1217305846
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -59496,13 +59376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -59527,7 +59401,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1256016713
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -64702,13 +64576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -64733,7 +64601,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1339584818
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -66398,13 +66266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -66429,7 +66291,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1373777980
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -70801,13 +70663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -70832,7 +70688,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1475950943
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -71089,13 +70945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -71120,7 +70970,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1478763722
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -80636,13 +80486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -80667,7 +80511,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1699019034
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -82340,13 +82184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -82371,7 +82209,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1732805583
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -85925,7 +85763,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1813514019
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -86111,13 +85949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -87638,13 +87470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -87669,7 +87495,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1843786587
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -88372,13 +88198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -88403,7 +88223,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1861461583
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -90190,13 +90010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -90221,7 +90035,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1896412052
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -94651,13 +94465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -94682,7 +94490,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1999767035
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -95038,13 +94846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -95069,7 +94871,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &2006813426
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -101420,13 +101222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -101451,7 +101247,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &2133930186
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -101708,13 +101504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
-  skills:
-  - skill: {fileID: 11400000, guid: 7d8c250f3db34e344a3eda26a4bec567, type: 2}
-    key: 0
-    cooldownTime: 0
-    activeTime: 0
-    state: 0
-    triggerSkill: 0
+  skills: []
   currentSkill: {fileID: 0}
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
@@ -101739,7 +101529,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &2135321873
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -102483,13 +102273,13 @@ MonoBehaviour:
     activeTime: 0
     state: 0
     triggerSkill: 0
-  - skill: {fileID: 11400000, guid: e0944c6b0da8bec49bb7c9d0b18e5161, type: 2}
+  - skill: {fileID: 11400000, guid: 0ee8f642c0717784480ce1fb43ff2ed8, type: 2}
     key: 119
     cooldownTime: 0
     activeTime: 0
     state: 0
     triggerSkill: 0
-  - skill: {fileID: 11400000, guid: 875fc19e970b0de4dad5b8020fb563c1, type: 2}
+  - skill: {fileID: 11400000, guid: 5924f0c94f4e8424c9b3bcc41674664a, type: 2}
     key: 101
     cooldownTime: 0
     activeTime: 0

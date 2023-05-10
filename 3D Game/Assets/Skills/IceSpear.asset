@@ -21,4 +21,4 @@ MonoBehaviour:
   iceSpearPrefab: {fileID: 3120438280565544056, guid: cdd0ff3bcbf89414aa7c05e867724303, type: 3}
   iceSpearSpeed: 3
   baseDamage: 70
-  numberOfProjectiles: 1
+  numberOfProjectiles: 10

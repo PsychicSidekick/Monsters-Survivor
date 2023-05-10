@@ -28,9 +28,8 @@ public class IceSpearSkill : Skill
             spawnPosOffset++;
             EffectCollider collider = Instantiate(iceSpearPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
             collider.SetEffects(baseDamage, DamageType.Cold, false, skillUser, targetCharacter);
-            HomingProjectile proj = collider.GetComponent<HomingProjectile>();
+            Projectile proj = collider.GetComponent<Projectile>();
             proj.projSpeed = iceSpearSpeed;
-            proj.targetCharacter = targetCharacter;
         }
     }
 }

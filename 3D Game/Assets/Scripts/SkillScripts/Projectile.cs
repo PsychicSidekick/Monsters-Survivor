@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        if(Vector3.Distance(transform.position, targetPos) < 0.1f)
+        if (Vector3.Distance(transform.position, targetPos) == 0)
         {
             Destroy(gameObject);
         }
@@ -51,12 +51,45 @@ public class Projectile : MonoBehaviour
         {
             effectCollider.damage *= chainDamageMultiplier;
             chainedCharacters.Add(character);
-            Chained();
+            Chained(character);
         }
     }
 
-    protected virtual void Chained()
+    public void Chained(Character chainedCharacter)
     {
+        Character nextTarget = null;
+        float shortestDistance = Mathf.Infinity;
 
+        Collider[] hits = Physics.OverlapSphere(targetPos, chainingRange);
+
+        foreach (Collider hit in hits)
+        {
+            if (hit.CompareTag("Enemy"))
+            {
+                Character hitCharacter = hit.GetComponent<Character>();
+                if (hitCharacter == chainedCharacter || chainedCharacters.Contains(hitCharacter))
+                {
+                    continue;
+                }
+                float distance = Vector3.Distance(targetPos, hit.transform.position);
+                if (distance < shortestDistance)
+                {
+                    shortestDistance = distance;
+                    nextTarget = hitCharacter;
+                }
+            }
+        }
+
+        effectCollider.target = nextTarget;
+
+        if (effectCollider.charactersInArea.Contains(nextTarget))
+        {
+            effectCollider.ApplyEffects(nextTarget);
+        }
+        else if (nextTarget != null)
+        {
+            chainedCharacters.Add(nextTarget);
+            SendMessage("ChainsTo", nextTarget);
+        }
     }
 }

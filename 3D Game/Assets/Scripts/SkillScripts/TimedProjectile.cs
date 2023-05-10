@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimedProjectile : Projectile
+public class TimedProjectile : MonoBehaviour
 {
     public Vector3 travelDirection;
     public float lifeTime;
+    private Projectile projectile;
 
-    protected override void Update()
+    private void Start()
+    {
+        projectile = GetComponent<Projectile>();
+    }
+
+    private void Update()
     {
         if (lifeTime <= 0)
         {
@@ -15,7 +21,6 @@ public class TimedProjectile : Projectile
         }
 
         lifeTime -= Time.deltaTime;
-        targetPos = transform.position + travelDirection;
-        base.Update();
+        projectile.targetPos = transform.position + travelDirection;
     }
 }

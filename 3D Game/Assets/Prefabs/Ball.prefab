@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6918268372204930382}
   - component: {fileID: 5260999016684750098}
   - component: {fileID: 2618947129925328249}
+  - component: {fileID: 228150778110048141}
   - component: {fileID: -9055727192558780920}
   m_Layer: 0
   m_Name: Ball
@@ -119,8 +120,23 @@ MonoBehaviour:
   chainDamageMultiplier: 0
   chainedCharacters: []
   effectCollider: {fileID: 0}
-  damage: 0
-  dmgType: 0
+--- !u!114 &228150778110048141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3928469377355962383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daaeeb316f0bfc1439c11d230c520225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 2963932199247047362, guid: 7393de6e233c4e7489672ea02833e615, type: 3}
+  explosionRadius: 0
+  explosionDamage: 0
+  explosionDamageType: 0
+  explosionStatusEffects: []
   owner: {fileID: 0}
 --- !u!114 &-9055727192558780920
 MonoBehaviour:
@@ -134,5 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfc9965cd55fb848b7832cdecfadb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  type: 0
+  damageOverTime: 0
+  targetsCharacter: 0
+  statusEffects: []
   owner: {fileID: 0}
+  target: {fileID: 0}
   charactersInArea: []

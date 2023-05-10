@@ -36,6 +36,6 @@ public class Zombie : MonoBehaviour
         //    enemy.StopMoving();
         //    enemy.animator.SetBool("isAttacking", false);
         //}
-        enemySkillHandler.skills[0].triggerSkill = true;
+        //enemySkillHandler.skills[0].triggerSkill = true;
     }
 }

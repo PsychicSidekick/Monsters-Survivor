@@ -127,4 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfc9965cd55fb848b7832cdecfadb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  type: 0
+  damageOverTime: 0
+  targetsCharacter: 0
+  statusEffects: []
+  owner: {fileID: 0}
+  target: {fileID: 0}
   charactersInArea: []

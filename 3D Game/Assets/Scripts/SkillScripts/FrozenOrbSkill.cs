@@ -29,18 +29,18 @@ public class FrozenOrbSkill : Skill
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
         EffectCollider mainCollider = Instantiate(frozenOrbPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
         mainCollider.SetEffects(orbBaseDamage, DamageType.Cold, false, skillUser, null);
-        TimedProjectile mainProj = mainCollider.GetComponent<TimedProjectile>();
+        Projectile mainProj = mainCollider.GetComponent<Projectile>();
         Vector3 targetPos = skillUser.GetComponent<SkillHandler>().groundTarget;
         Vector3 direction = Vector3.Normalize(targetPos - startPos);
-        mainProj.travelDirection = direction;
-        mainProj.lifeTime = duration;
+        mainProj.GetComponent<TimedProjectile>().travelDirection = direction;
+        mainProj.GetComponent<TimedProjectile>().lifeTime = duration;
         mainProj.projSpeed = travelSpeed;
         mainProj.pierce = 100;
 
         mainCollider.StartCoroutine(ShootIcicles(mainProj, skillUser));
     }
 
-    IEnumerator ShootIcicles(TimedProjectile mainProj, Character skillUser)
+    IEnumerator ShootIcicles(Projectile mainProj, Character skillUser)
     {
         while (mainProj != null)
         {
