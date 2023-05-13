@@ -6,9 +6,10 @@ using System;
 [Serializable]
 public class FreezeBuff : StatusEffect
 {
-    public FreezeBuff(float duration, float chance)
+    public FreezeBuff(Character owner, float duration, float chance)
     {
         name = "freeze";
+        this.owner = owner;
         this.chance = chance;
         maxDuration = duration;
         remainingDuration = duration;

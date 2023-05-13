@@ -25,7 +25,7 @@ public class FrostNovaSkill : Skill
     IEnumerator ExpandSphereCollider(Character skillUser)
     {
         EffectCollider novaCollider = Instantiate(novaColliderPrefab, GameManager.instance.RefinedPos(skillUser.transform.position), Quaternion.identity).GetComponent<EffectCollider>();
-        novaCollider.SetEffects(0, DamageType.Cold, false, skillUser, null, new FreezeBuff(1, 100));
+        novaCollider.SetEffects(0, DamageType.Cold, false, skillUser, null, new FreezeBuff(skillUser, 1, 100));
             
         for (float i = 0; i <= expandTime + 0.1; i += Time.deltaTime)
         {

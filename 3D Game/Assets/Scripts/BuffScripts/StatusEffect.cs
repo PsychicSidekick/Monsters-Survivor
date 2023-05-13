@@ -7,6 +7,7 @@ using System;
 public class StatusEffect
 {
     public string name;
+    public Character owner;
     public float maxDuration;
     public float remainingDuration;
     public float chance;

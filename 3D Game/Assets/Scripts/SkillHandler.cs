@@ -138,7 +138,7 @@ public class SkillHandler : MonoBehaviour
     {
         if (currentSkill != null)
         {
-            if (currentSkill.TryUseSkill(skillUser))
+            if (currentSkill.TryUseSkill(skillUser, currentSkill.GetManaCost(skillUser)))
             {
                 currentSkill.UseSkill(skillUser);
             }

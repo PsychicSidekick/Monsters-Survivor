@@ -11,6 +11,11 @@ public class Skill : ScriptableObject
     public bool targetsCharacters;
     public bool isChannellingSkill;
 
+    public virtual float GetManaCost(Character skillUser)
+    {
+        return baseManaCost;
+    }
+
     public virtual void OnUse(Character skillUser)
     {
 
@@ -31,14 +36,14 @@ public class Skill : ScriptableObject
 
     }
 
-    public bool TryUseSkill(Character skillUser)
+    public bool TryUseSkill(Character skillUser, float manaCost)
     {
-        if (!skillUser.CheckSkillCost(baseManaCost))
+        if (!skillUser.CheckSkillCost(manaCost))
         {
             return false;
         }
 
-        skillUser.ReduceMana(baseManaCost);
+        skillUser.ReduceMana(manaCost);
         return true;
     }
 

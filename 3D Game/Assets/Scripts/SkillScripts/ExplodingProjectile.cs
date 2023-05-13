@@ -8,13 +8,13 @@ public class ExplodingProjectile : MonoBehaviour
     public float explosionRadius;
     public float explosionDamage;
     public DamageType explosionDamageType;
-    public StatusEffect[] explosionStatusEffects;
+    public List<StatusEffect> explosionStatusEffects = new List<StatusEffect>();
 
     private void OnDestroy()
     {
         EffectCollider explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<EffectCollider>();
         explosion.transform.localScale = new Vector3(explosionRadius, explosionRadius, explosionRadius);
-        explosion.SetEffects(explosionDamage, explosionDamageType, false, GetComponent<EffectCollider>().owner, null, explosionStatusEffects);
+        explosion.SetEffects(explosionDamage, explosionDamageType, false, GetComponent<EffectCollider>().owner, null, explosionStatusEffects.ToArray());
         GetComponent<EffectCollider>().owner.StartCoroutine(DestroyExplosion(explosion.gameObject));
     }
 
