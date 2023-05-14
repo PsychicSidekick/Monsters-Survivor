@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class IgniteEffect : StatusEffect
 {
-    float totalDamage;
+    public float totalDamage;
+    public float remainingDamage;
 
     public IgniteEffect(Character owner, float damage, float duration, float chance)
     {
@@ -14,10 +15,13 @@ public class IgniteEffect : StatusEffect
         maxDuration = duration;
         remainingDuration = duration;
         totalDamage = damage;
+        remainingDamage = damage;
     }
 
     public override void EffectOverTime(Character character, float deltaTime)
     {
-        character.ReceiveDamage(new Damage(totalDamage/maxDuration * deltaTime, owner, DamageType.Fire));
+        float damageThisFrame = totalDamage / maxDuration * deltaTime;
+        character.ReceiveDamage(new Damage(damageThisFrame, owner, DamageType.Fire));
+        remainingDamage -= damageThisFrame;
     }
 }

@@ -43,14 +43,14 @@ public class FireBallSkill : Skill
 
             if (!skillTree.igniteAppliedByExplosion)
             {
-                float igniteDamage = fireBallDamage * (baseIgniteDamageMultiplier + skillTree.increasedIgniteDamageMultiplier + skillTree.increasedIgniteDuration);
+                float igniteDamage = fireBallDamage * (baseIgniteDamageMultiplier + skillTree.increasedIgniteDamageMultiplier + skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration);
                 IgniteEffect ignite = new IgniteEffect(skillUser, igniteDamage, igniteDuration, igniteChance);
 
                 collider.SetEffects(fireBallDamage, DamageType.Fire, false, skillUser, null, ignite);
             }
             else
             {
-                float igniteDamage = explosionDamage * (baseIgniteDamageMultiplier + skillTree.increasedIgniteDamageMultiplier + skillTree.increasedIgniteDuration);
+                float igniteDamage = explosionDamage * (baseIgniteDamageMultiplier + skillTree.increasedIgniteDamageMultiplier + skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration);
                 IgniteEffect ignite = new IgniteEffect(skillUser, igniteDamage, igniteDuration, igniteChance);
 
                 collider.SetEffects(fireBallDamage, DamageType.Fire, false, skillUser, null);

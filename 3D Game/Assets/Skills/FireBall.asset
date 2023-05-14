@@ -26,5 +26,5 @@ MonoBehaviour:
   explosionRadius: 3
   explosionDamage: 50
   baseIgniteDamageMultiplier: 0.5
-  baseIgniteDuration: 3
-  baseIgniteChance: 50
+  baseIgniteDuration: 5
+  baseIgniteChance: 100
