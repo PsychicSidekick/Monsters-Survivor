@@ -31,10 +31,10 @@ public class IncinerateSkill : Skill
         explosion.SetEffects(explosionDamage, DamageType.Fire, false, skillUser, null);
         float explosionRadius = baseExplosionRadius * (1 + skillTree.increasedRadius);
         explosion.transform.localScale = new Vector3(explosionRadius, explosionRadius, explosionRadius);
-        skillUser.StartCoroutine(DestroyExplosion(skillUser, explosion.gameObject));
+        skillUser.StartCoroutine(DestroyExplosion(skillUser, explosion.gameObject, skillTree.spreadsExplosions));
     }
 
-    private IEnumerator DestroyExplosion(Character skillUser, GameObject explosion)
+    private IEnumerator DestroyExplosion(Character skillUser, GameObject explosion, bool spreadsExplosions)
     {
         yield return new WaitForSeconds(0.05f);
 
@@ -71,7 +71,7 @@ public class IncinerateSkill : Skill
             }
         }
 
-        if (skillTree.spreadsExplosions)
+        if (spreadsExplosions)
         {
             Character targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
             List<Character> spreadTargets = explosion.GetComponent<EffectCollider>().charactersInArea;
@@ -84,7 +84,7 @@ public class IncinerateSkill : Skill
                 newExplosion.SetEffects(explosionDamage, DamageType.Fire, false, skillUser, null);
                 float explosionRadius = baseExplosionRadius * (1 + skillTree.increasedRadius);
                 newExplosion.transform.localScale = new Vector3(explosionRadius, explosionRadius, explosionRadius);
-                skillUser.StartCoroutine(DestroyExplosion(skillUser, newExplosion.gameObject));
+                skillUser.StartCoroutine(DestroyExplosion(skillUser, newExplosion.gameObject, false));
             }
         }
         

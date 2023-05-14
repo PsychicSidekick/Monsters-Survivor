@@ -10,7 +10,6 @@ public class Inventory : MonoBehaviour
     [HideInInspector]
     public static Inventory instance;
 
-    [HideInInspector]
     public PlayerControl player;
 
     [HideInInspector]
@@ -34,7 +33,6 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        player = PlayerControl.instance;
     }
 
     private void Start()
