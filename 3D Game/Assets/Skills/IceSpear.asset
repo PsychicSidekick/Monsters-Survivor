@@ -16,7 +16,7 @@ MonoBehaviour:
   coolDownTime: 0
   activeTime: 0
   baseManaCost: 0
-  targetsCharacters: 1
+  targetsCharacters: 0
   isChannellingSkill: 0
   iceSpearPrefab: {fileID: 3120438280565544056, guid: cdd0ff3bcbf89414aa7c05e867724303, type: 3}
   iceSpearSpeed: 3

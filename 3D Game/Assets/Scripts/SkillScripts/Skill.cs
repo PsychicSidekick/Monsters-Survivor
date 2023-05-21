@@ -31,9 +31,9 @@ public class Skill : ScriptableObject
         return false;
     }
 
-    public virtual void OnCoolDown(Character skillUser)
+    public virtual float OnCoolDown(Character skillUser)
     {
-
+        return coolDownTime;
     }
 
     public bool TryUseSkill(Character skillUser, float manaCost)

@@ -99,9 +99,8 @@ public class SkillHandler : MonoBehaviour
                         }
                     }
 
-                    skillHolder.skill.OnCoolDown(skillUser);
+                    skillHolder.cooldownTime = skillHolder.skill.OnCoolDown(skillUser);
                     skillHolder.state = SkillState.cooldown;
-                    skillHolder.cooldownTime = skillHolder.skill.coolDownTime;
                     break;
                 case SkillState.cooldown:
                     if (skillHolder.cooldownTime > 0)

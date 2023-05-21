@@ -36,7 +36,7 @@ public class StatusEffectManager : MonoBehaviour
         if (Random.Range(1, 101) <= statusEffect.chance)
         {
             StatusEffect dup = FindStatusEffectWithName(statusEffect.name);
-            if (dup != null)
+            if (dup != null && !expiredStatusEffects.Contains(dup))
             {
                 dup.AddStack(statusEffect);
                 return;

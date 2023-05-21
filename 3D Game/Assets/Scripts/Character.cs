@@ -90,6 +90,11 @@ public class Character : MonoBehaviour
 
     public void ReceiveDamage(Damage dmg)
     {
+        if (dmg.value <= 0)
+        {
+            return;
+        }
+
         float armor = stats.armor.value;
         float evasion = stats.evasion.value;
         float fireRes = stats.fireRes.value;
@@ -191,6 +196,10 @@ public class Character : MonoBehaviour
 
     public void StopMoving()
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
         agent.SetDestination(transform.position);
     }
 

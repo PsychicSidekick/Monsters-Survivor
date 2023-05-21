@@ -20,12 +20,16 @@ MonoBehaviour:
   isChannellingSkill: 0
   frozenOrbPrefab: {fileID: 2261200419857535693, guid: 3746e7d0886c48e4cb7ffb77b7ea1dc1, type: 3}
   iciclePrefab: {fileID: 3120438280565544056, guid: b36f8a78a7a17ab4e967aefb02ff3ccd, type: 3}
-  duration: 3
-  travelSpeed: 0.5
-  orbBaseDamage: 10
-  icicleBaseDamage: 5
-  icicleRange: 1.5
-  shootRate: 2
-  numberOfProjectiles: 6
-  projectileSpeed: 2
-  projectilePierce: 100
+  baseOrbDuration: 3
+  baseOrbTravelSpeed: 0.5
+  baseOrbDamage: 200
+  baseOrbFreezeDuration: 1
+  baseOrbFreezeChance: 100
+  baseIcicleDamage: 75
+  baseIcicleRange: 1.5
+  baseIcicleShootRate: 2
+  baseNumberOfIcicles: 6
+  baseIcicleTravelSpeed: 4
+  baseIciclePierce: 1
+  baseIcicleFreezeDuration: 1
+  baseIcicleFreezeChance: 0

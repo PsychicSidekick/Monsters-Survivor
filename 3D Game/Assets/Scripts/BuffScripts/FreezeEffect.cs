@@ -4,9 +4,9 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class FreezeBuff : StatusEffect
+public class FreezeEffect : StatusEffect
 {
-    public FreezeBuff(Character owner, float duration, float chance)
+    public FreezeEffect(Character owner, float duration, float chance)
     {
         name = "freeze";
         this.owner = owner;

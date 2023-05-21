@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28872c8a941639d4b854f4488b5d47da, type: 3}
-  m_Name: Blast
+  m_Name: FireBlast
   m_EditorClassIdentifier: 
-  skillName: Blast
-  coolDownTime: 5
+  skillName: FireBlast
+  coolDownTime: 3
   activeTime: 0
   baseManaCost: 0
   targetsCharacters: 0
   isChannellingSkill: 0
   blastColliderPrefab: {fileID: 2963932199247047362, guid: 7393de6e233c4e7489672ea02833e615, type: 3}
-  maxBlastArea: 10
-  expandTime: 1
-  blastBaseDmg: 100
+  baseExpansionTime: 0.5
+  baseBlastRadius: 5
+  baseBlastDamage: 200
+  baseIgniteChance: 50
+  baseIgniteDuration: 5
+  baseIgniteMultiplier: 0.5

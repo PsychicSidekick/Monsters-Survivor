@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7322708301244333899}
   - component: {fileID: 1190708933564332956}
   - component: {fileID: -476668181739301350}
-  - component: {fileID: 699339414502045233}
   - component: {fileID: -5763001377419535258}
   m_Layer: 0
   m_Name: Spear
@@ -120,19 +119,6 @@ MonoBehaviour:
   chainDamageMultiplier: 0
   chainedCharacters: []
   effectCollider: {fileID: 0}
---- !u!114 &699339414502045233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3120438280565544056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12ee2a2ce867ac844921b61e8770d7f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetCharacter: {fileID: 0}
 --- !u!114 &-5763001377419535258
 MonoBehaviour:
   m_ObjectHideFlags: 0

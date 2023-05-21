@@ -43,7 +43,8 @@ public class IncinerateSkill : Skill
         List<Character> hitTargets = explosion.GetComponent<EffectCollider>().charactersInArea;
         foreach (Character character in hitTargets)
         {
-            IgniteEffect ignite = (IgniteEffect)character.GetComponent<StatusEffectManager>().FindStatusEffectWithName("ignite");
+            StatusEffectManager statusEffectManager = character.GetComponent<StatusEffectManager>();
+            IgniteEffect ignite = (IgniteEffect)statusEffectManager.FindStatusEffectWithName("ignite");
             if (ignite != null)
             {
                 if (!skillTree.doesNotDealExtraIgniteDamage)
@@ -58,8 +59,7 @@ public class IncinerateSkill : Skill
                 }
                 if (!skillTree.doesNotRemoveIgnites)
                 {
-                    character.GetComponent<StatusEffectManager>().RemoveStatusEffect(ignite);
-                    Debug.Log(character.GetComponent<StatusEffectManager>().statusEffectList[0].name);
+                    statusEffectManager.RemoveStatusEffect(statusEffectManager.FindStatusEffectWithName("ignite"));
                 }
             }
             
@@ -67,7 +67,7 @@ public class IncinerateSkill : Skill
             {
                 float newIgniteDamage = baseExplosionDamage * (1 + baseNewIgniteDamageMultiplier + skillTree.increasedDamage + skillTree.increasedIgniteDamage);
                 IgniteEffect newIgnite = new IgniteEffect(skillUser, newIgniteDamage, baseNewIgniteDuration, 100);
-                character.GetComponent<StatusEffectManager>().ApplyStatusEffect(newIgnite);
+                statusEffectManager.ApplyStatusEffect(newIgnite);
             }
         }
 
@@ -89,5 +89,10 @@ public class IncinerateSkill : Skill
         }
         
         Destroy(explosion);
+    }
+
+    public override float GetManaCost(Character skillUser)
+    {
+        return baseManaCost + skillUser.GetComponent<IncinerateSkillTree>().additionalManaCost;
     }
 }

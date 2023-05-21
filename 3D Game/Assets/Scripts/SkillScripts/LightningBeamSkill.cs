@@ -41,9 +41,10 @@ public class LightningBeamSkill : Skill
         return true;
     }
 
-    public override void OnCoolDown(Character skillUser)
+    public override float OnCoolDown(Character skillUser)
     {
         skillUser.animator.SetBool("isChannelling", false);
         Destroy(skillUser.GetComponent<SkillHandler>().currentChannelingGameObject);
+        return coolDownTime;
     }
 }
