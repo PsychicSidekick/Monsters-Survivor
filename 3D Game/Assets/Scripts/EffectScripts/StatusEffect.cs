@@ -15,7 +15,7 @@ public class StatusEffect
 
     public virtual void OnApply(Character character) { }
 
-    public virtual void AddStack(StatusEffect statusEffect) { }
+    public virtual void AddStack(Character character, StatusEffect statusEffect) { }
 
     public virtual void EffectOverTime(Character character, float deltaTime) { }
 

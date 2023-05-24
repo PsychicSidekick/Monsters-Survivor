@@ -6,7 +6,12 @@ using System.Linq;
 public class StatusEffectManager : MonoBehaviour
 {
     [HideInInspector] public List<StatusEffect> statusEffectList = new List<StatusEffect>();
-    private List<StatusEffect> expiredStatusEffects = new List<StatusEffect>();
+    public List<StatusEffect> expiredStatusEffects = new List<StatusEffect>();
+    private Character character;
+    private void Start()
+    {
+        character = GetComponent<Character>();
+    }
 
     private void Update()
     {
@@ -38,18 +43,18 @@ public class StatusEffectManager : MonoBehaviour
             StatusEffect dup = FindStatusEffectWithName(statusEffect.name);
             if (dup != null && !expiredStatusEffects.Contains(dup))
             {
-                dup.AddStack(statusEffect);
+                dup.AddStack(character, statusEffect);
                 return;
             }
             statusEffectList.Add(statusEffect);
-            statusEffect.OnApply(GetComponent<Character>());
+            statusEffect.OnApply(character);
         }
     }
 
     public void RemoveStatusEffect(StatusEffect statusEffect)
     {
         expiredStatusEffects.Add(statusEffect);
-        statusEffect.OnRemove(GetComponent<Character>());
+        statusEffect.OnRemove(character);
     }
 
     public StatusEffect FindStatusEffectWithName(string name)

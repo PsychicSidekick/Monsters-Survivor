@@ -19,7 +19,7 @@ public class SlowBuff : StatusEffect
         character.stats.ApplyStatModifier(slowMod);
     }
 
-    public override void AddStack(StatusEffect buff)
+    public override void AddStack(Character character, StatusEffect buff)
     {
         remainingDuration = buff.maxDuration;
     }

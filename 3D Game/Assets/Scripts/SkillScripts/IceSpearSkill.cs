@@ -6,9 +6,17 @@ using UnityEngine;
 public class IceSpearSkill : Skill
 {
     public GameObject iceSpearPrefab;
-    public float iceSpearSpeed;
+
+    public float baseTravelSpeed;
+    public float baseRange;
+    public float baseSpread;
     public float baseDamage;
-    public int numberOfProjectiles;
+    public int baseNumberOfSpears;
+    public int basePierce;
+    public float baseFreezeChance;
+    public float baseFreezeDuration;
+    public float baseShatterChance;
+    public float baseShatterMultiplier;
 
     public override void OnUse(Character skillUser)
     {
@@ -17,34 +25,40 @@ public class IceSpearSkill : Skill
         skillUser.animator.Play("ShootBall");
     }
 
-    //public override void UseSkill(Character skillUser)
-    //{
-    //    Character targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
-    //    float spawnPosOffset = -numberOfProjectiles / 2f + 0.5f;
-    //    for (int i = 0; i < numberOfProjectiles; i++)
-    //    {
-    //        Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
-    //        startPos += skillUser.transform.right * spawnPosOffset;
-    //        spawnPosOffset++;
-    //        EffectCollider collider = Instantiate(iceSpearPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
-    //        collider.SetEffects(baseDamage, DamageType.Cold, false, skillUser, targetCharacter);
-    //        Projectile proj = collider.GetComponent<Projectile>();
-    //        proj.projSpeed = iceSpearSpeed;
-    //    }
-    //}
-
     public override void UseSkill(Character skillUser)
     {
+        IceSpearSkillTree skillTree = skillUser.GetComponent<IceSpearSkillTree>();
+
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
         Vector3 targetDirection = (skillUser.GetComponent<SkillHandler>().groundTarget - startPos).normalized;
 
-        for (int i = 0; i < numberOfProjectiles; i++)
+        int numberOfSpears = baseNumberOfSpears + skillTree.additionalNumberOfSpears;
+        float spearDamage = baseDamage * (1 + skillTree.increasedSpearDamage);
+        float spearRange = baseRange * (1 + skillTree.increasedSpearRange);
+        float spearSpread = baseSpread * (1 + skillTree.increasedSpearSpread);
+        int pierce = basePierce + skillTree.additionalPierce;
+        float spearTravelSpeed = baseTravelSpeed * (1 + skillTree.increasedSpearSpeed);
+        float freezeChance = baseFreezeChance + skillTree.increasedFreezeChance;
+        float freezeDuration = baseFreezeDuration * (1 + skillTree.increasedFreezeDuration);
+        float shatterChance = baseShatterChance + skillTree.increasedShatterChance;
+        float shatterMultiplier = baseShatterMultiplier + skillTree.increasedShatterMultiplier;
+
+        for (int i = 0; i < numberOfSpears; i++)
         {
             EffectCollider collider = Instantiate(iceSpearPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
-            collider.SetEffects(baseDamage, DamageType.Cold, false, skillUser, null);
+            FreezeEffect freeze = new FreezeEffect(skillUser, freezeDuration, freezeChance);
+            ShatterEffect shatter = new ShatterEffect(skillUser, spearDamage, shatterMultiplier, shatterChance, skillTree.shatterDoesNotRemoveFreeze);
+            collider.SetEffects(spearDamage, DamageType.Cold, false, skillUser, null, freeze, shatter);
+
             Projectile proj = collider.GetComponent<Projectile>();
-            proj.targetPos = startPos + Quaternion.Euler(0, (numberOfProjectiles - 1) * -2.5f + i * 5, 0) * targetDirection * 5;
-            proj.projSpeed = iceSpearSpeed;
+            proj.targetPos = startPos + Quaternion.Euler(0, (numberOfSpears - 1) * -spearSpread + i * 2 * spearSpread, 0) * targetDirection * spearRange;
+            proj.projSpeed = spearTravelSpeed;
+            proj.pierce = pierce;
         }
+    }
+
+    public override float GetManaCost(Character skillUser)
+    {
+        return baseManaCost + skillUser.GetComponent<IceSpearSkillTree>().additionalManaCost;
     }
 }
