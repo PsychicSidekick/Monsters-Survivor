@@ -22,10 +22,10 @@ MonoBehaviour:
   baseTravelSpeed: 6
   baseRange: 3
   baseSpread: 5
-  baseDamage: 100
+  baseDamage: 70
   baseNumberOfSpears: 3
   basePierce: 0
-  baseFreezeChance: 10
+  baseFreezeChance: 20
   baseFreezeDuration: 1
   baseShatterChance: 30
   baseShatterMultiplier: 1.5

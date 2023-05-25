@@ -15,6 +15,15 @@ public class FreezeEffect : StatusEffect
         remainingDuration = duration;
     }
 
+    public FreezeEffect(FreezeEffect freeze)
+    {
+        name = "freeze";
+        owner = freeze.owner;
+        chance = freeze.chance;
+        maxDuration = freeze.maxDuration;
+        remainingDuration = freeze.remainingDuration;
+    }
+
     public override void OnApply(Character character)
     {
         character.StopMoving();
@@ -26,5 +35,10 @@ public class FreezeEffect : StatusEffect
     {
         character.agent.acceleration = 2000;
         character.stats.animationSpeedMultiplier = 1;
+    }
+
+    public override StatusEffect CloneEffect()
+    {
+        return new FreezeEffect(this);
     }
 }

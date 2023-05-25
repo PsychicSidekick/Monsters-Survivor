@@ -2,16 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlowBuff : StatusEffect
+public class SlowEffect : StatusEffect
 { 
-    private StatModifier slowMod;
+    StatModifier slowMod;
     
-    public SlowBuff(float slowPercentage, float duration)
+    public SlowEffect(float slowPercentage, float duration, float chance)
     {
         name = "slow";
-        slowMod = new StatModifier(ItemModType.inc_MoveSpd, -slowPercentage);
+        this.chance = chance;
         maxDuration = duration;
         remainingDuration = duration;
+        slowMod = new StatModifier(ItemModType.inc_MoveSpd, -slowPercentage);
+    }
+
+    public SlowEffect(SlowEffect slow)
+    {
+        name = "slow";
+        chance = slow.chance;
+        maxDuration = slow.maxDuration;
+        remainingDuration = slow.remainingDuration;
+        slowMod = slow.slowMod;
     }
 
     public override void OnApply(Character character)
@@ -19,9 +29,9 @@ public class SlowBuff : StatusEffect
         character.stats.ApplyStatModifier(slowMod);
     }
 
-    public override void AddStack(Character character, StatusEffect buff)
+    public override void AddStack(Character character, StatusEffect statusEffect)
     {
-        remainingDuration = buff.maxDuration;
+        remainingDuration = statusEffect.maxDuration;
     }
 
     public override void EffectOverTime(Character character, float deltaTime)
@@ -34,5 +44,10 @@ public class SlowBuff : StatusEffect
         character.stats.RemoveStatModifier(slowMod);
         character.agent.acceleration = 2000;
         character.animator.SetFloat("ActionSpeed", 1);
+    }
+
+    public override StatusEffect CloneEffect()
+    {
+        return new SlowEffect(this);
     }
 }

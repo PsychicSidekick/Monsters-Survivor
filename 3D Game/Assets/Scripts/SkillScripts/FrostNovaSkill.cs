@@ -6,12 +6,26 @@ using UnityEngine;
 public class FrostNovaSkill : Skill
 {
     public GameObject novaColliderPrefab;
-    public float maxNovaArea;
+
+    public float baseRadius;
     public float expandTime;
+    public float freezeChance;
+    public float baseFreezeDuration;
+    public float slowChance;
+    public float baseSlowDuration;
+    public float baseSlowEffect;
+    public float chillChance;
+    public float baseChillDuration;
+    public float baseChillEffect;
 
     public override void OnUse(Character skillUser)
     {
-        skillUser.StopMoving();
+        FrostNovaSkillTree skillTree = skillUser.GetComponent<FrostNovaSkillTree>();
+        if (!skillTree.doesNotStopMoving)
+        {
+            skillUser.StopMoving();
+        }
+
         skillUser.FindGroundTarget();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
         skillUser.animator.Play("Blast");
@@ -24,19 +38,53 @@ public class FrostNovaSkill : Skill
 
     IEnumerator ExpandSphereCollider(Character skillUser)
     {
+        FrostNovaSkillTree skillTree = skillUser.GetComponent<FrostNovaSkillTree>();
+
         EffectCollider novaCollider = Instantiate(novaColliderPrefab, GameManager.instance.RefinedPos(skillUser.transform.position), Quaternion.identity).GetComponent<EffectCollider>();
-        novaCollider.SetEffects(0, DamageType.Cold, false, skillUser, null, new FreezeEffect(skillUser, 1, 100));
-            
+
+        if (!skillTree.slowsAndChillInstead)
+        {
+            float freezeDuration = baseFreezeDuration * (1 + skillTree.increasedFreezeDuration);
+
+            FreezeEffect freeze = new FreezeEffect(skillUser, freezeDuration, freezeChance);
+
+            novaCollider.SetEffects(0, DamageType.Cold, false, skillUser, null, freeze);
+        }
+        else
+        {
+            float slowDuration = baseSlowDuration * (1 + skillTree.increasedSlowDuration);
+            float slowEffect = baseSlowEffect + skillTree.increasedSlowEffect;
+            float chillDuration = baseChillDuration * (1 + skillTree.increasedChillDuration);
+            float chillEffect = baseChillEffect + skillTree.increasedChillEffect;
+
+            SlowEffect slow = new SlowEffect(slowEffect, slowDuration, slowChance);
+            ChillEffect chill = new ChillEffect(chillEffect, chillDuration, chillChance);
+
+            novaCollider.SetEffects(0, DamageType.Cold, false, skillUser, null, slow, chill);
+        }
+        
         for (float i = 0; i <= expandTime + 0.1; i += Time.deltaTime)
         {
-            float size = Mathf.Lerp(0.5f, maxNovaArea, i / expandTime);
+            float radius = baseRadius * (1 + skillTree.increasedRadius);
+            float size = Mathf.Lerp(0.5f, radius, i / expandTime);
             novaCollider.transform.localScale = new Vector3(size, size, size);
-            if (size >= maxNovaArea)
+            if (size >= baseRadius)
             {
                 Destroy(novaCollider.gameObject);
                 break;
             }
             yield return null;
         }
+    }
+
+    public override float OnCoolDown(Character skillUser)
+    {
+        FrostNovaSkillTree skillTree = skillUser.GetComponent<FrostNovaSkillTree>();
+        return coolDownTime + skillTree.additionalCooldownTime;
+    }
+
+    public override float GetManaCost(Character skillUser)
+    {
+        return baseManaCost + skillUser.GetComponent<FrostNovaSkillTree>().additionalManaCost;
     }
 }

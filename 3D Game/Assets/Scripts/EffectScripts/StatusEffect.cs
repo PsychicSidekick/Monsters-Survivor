@@ -20,4 +20,6 @@ public class StatusEffect
     public virtual void EffectOverTime(Character character, float deltaTime) { }
 
     public virtual void OnRemove(Character character) { }
+
+    public virtual StatusEffect CloneEffect() { return null; }
 }

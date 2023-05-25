@@ -52,7 +52,8 @@ public class EffectCollider : MonoBehaviour
 
         foreach (StatusEffect statusEffect in statusEffects)
         {
-            character.GetComponent<StatusEffectManager>().ApplyStatusEffect(statusEffect);
+            StatusEffect clonedEffect = statusEffect.CloneEffect();
+            character.GetComponent<StatusEffectManager>().ApplyStatusEffect(clonedEffect);
         }
 
         if (GetComponent<Projectile>() != null)

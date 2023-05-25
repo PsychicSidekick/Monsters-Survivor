@@ -18,6 +18,16 @@ public class ShatterEffect : StatusEffect
         this.doesNotRemoveFreeze = doesNotRemoveFreeze;
     }
 
+    public ShatterEffect(ShatterEffect shatter)
+    {
+        name = "shatter";
+        owner = shatter.owner;
+        chance = shatter.chance;
+        baseDamage = shatter.baseDamage;
+        shatterMultiplier = shatter.shatterMultiplier;
+        doesNotRemoveFreeze = shatter.doesNotRemoveFreeze;
+    }
+
     public override void OnApply(Character character)
     {
         StatusEffectManager status = character.GetComponent<StatusEffectManager>();
@@ -33,13 +43,6 @@ public class ShatterEffect : StatusEffect
             }
 
             status.RemoveStatusEffect(freeze);
-            foreach (StatusEffect statusEffect in status.statusEffectList)
-            {
-                if (!status.expiredStatusEffects.Contains(statusEffect))
-                {
-                    Debug.Log(statusEffect.name);
-                }
-            }
         }
     }
 
@@ -48,5 +51,10 @@ public class ShatterEffect : StatusEffect
         StatusEffectManager status = character.GetComponent<StatusEffectManager>();
         status.RemoveStatusEffect(this);
         status.ApplyStatusEffect(statusEffect);
+    }
+
+    public override StatusEffect CloneEffect()
+    {
+        return new ShatterEffect(this);
     }
 }
