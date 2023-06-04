@@ -35,9 +35,4 @@ public class IgniteEffect : StatusEffect
         character.ReceiveDamage(new Damage(damageThisFrame, owner, DamageType.Fire));
         remainingDamage -= damageThisFrame;
     }
-
-    public override StatusEffect CloneEffect()
-    {
-        return new IgniteEffect(this);
-    }
 }

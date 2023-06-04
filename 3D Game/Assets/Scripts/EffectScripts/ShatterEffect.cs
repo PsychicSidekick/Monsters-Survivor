@@ -52,9 +52,4 @@ public class ShatterEffect : StatusEffect
         status.RemoveStatusEffect(this);
         status.ApplyStatusEffect(statusEffect);
     }
-
-    public override StatusEffect CloneEffect()
-    {
-        return new ShatterEffect(this);
-    }
 }

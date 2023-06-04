@@ -19,6 +19,12 @@ MonoBehaviour:
   targetsCharacters: 0
   isChannellingSkill: 1
   beamPrefab: {fileID: 2659395044551760946, guid: ceaa885877c6bb74f9ec0151e503a6f6, type: 3}
-  beamRange: 5
-  beamWidth: 0.1
-  beamBaseDamagePerSecond: 1000
+  baseRange: 5
+  baseWidth: 0.1
+  baseDamagePerSecond: 1000
+  baseDamageRampPerSecond: 1
+  baseTimeUntilOvercharged: 5
+  baseOCDamageIncrease: 0.5
+  baseOCWidthIncrease: 0.5
+  baseOCRangeIncrease: 0.5
+  baseOCManaIncrease: 0.5

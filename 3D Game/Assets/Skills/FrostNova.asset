@@ -22,7 +22,7 @@ MonoBehaviour:
   baseRadius: 5
   expandTime: 0.1
   freezeChance: 100
-  baseFreezeDuration: 1.5
+  baseFreezeDuration: 100
   slowChance: 100
   baseSlowDuration: 1.5
   baseSlowEffect: 20

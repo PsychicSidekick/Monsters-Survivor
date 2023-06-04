@@ -18,6 +18,7 @@ public class StatsManager : MonoBehaviour
     public CharacterStat fireRes;
     public CharacterStat coldRes;
     public CharacterStat lightningRes;
+    public CharacterStat increasedDamageTaken;
 
 
     [HideInInspector] public List<CharacterStat> stats = new List<CharacterStat>();
@@ -41,6 +42,7 @@ public class StatsManager : MonoBehaviour
         stats.Add(fireRes);
         stats.Add(coldRes);
         stats.Add(lightningRes);
+        stats.Add(increasedDamageTaken);
     }
 
     private void Update()

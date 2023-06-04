@@ -21,5 +21,8 @@ public class StatusEffect
 
     public virtual void OnRemove(Character character) { }
 
-    public virtual StatusEffect CloneEffect() { return null; }
+    public StatusEffect CloneEffect() 
+    {
+        return (StatusEffect)Activator.CreateInstance(GetType(), this);
+    }
 }

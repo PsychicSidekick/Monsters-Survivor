@@ -6,9 +6,17 @@ using UnityEngine;
 public class LightningBeamSkill : Skill
 {
     public GameObject beamPrefab;
-    public float beamRange;
-    public float beamWidth;
-    public float beamBaseDamagePerSecond;
+
+    public float baseRange;
+    public float baseWidth;
+    public float baseDamagePerSecond;
+    public float baseDamageRampPerSecond;
+
+    public float baseTimeUntilOvercharged;
+    public float baseOCDamageIncrease;
+    public float baseOCWidthIncrease;
+    public float baseOCRangeIncrease;
+    public float baseOCManaIncrease;
 
     public override void OnUse(Character skillUser)
     {
@@ -17,27 +25,71 @@ public class LightningBeamSkill : Skill
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
         skillUser.StopMoving();
 
+        LightningBeamSkillTree skillTree = skillUser.GetComponent<LightningBeamSkillTree>();
+        float width = baseWidth * (1 + skillTree.increasedWidth);
+        float range = baseRange * (1 + skillTree.increasedRange);
+        float damagePerSecond = baseDamagePerSecond * (1 + skillTree.increasedDamagePerSecond);
+
         GameObject beamObject = Instantiate(beamPrefab, skillUser.transform);
         skillUser.GetComponent<SkillHandler>().currentChannelingGameObject = beamObject;
-        beamObject.transform.localScale = new Vector3(beamWidth, beamWidth, beamRange);
-        beamObject.transform.localPosition = new Vector3(0, 1, beamRange / 2f + 0.5f);
+        beamObject.transform.localScale = new Vector3(width, width, range);
+        beamObject.transform.localPosition = new Vector3(0, 1, range / 2f + 0.5f);
 
         EffectCollider beamArea = beamObject.GetComponent<EffectCollider>();
-        beamArea.SetEffects(beamBaseDamagePerSecond, DamageType.Lightning, true, skillUser, null);
+        beamArea.SetEffects(damagePerSecond, DamageType.Lightning, true, skillUser, null);
     }
 
-    public override bool WhileChannelling(Character skillUser)
+    public override bool WhileChannelling(Character skillUser, SkillHandler skillHandler, float channelledTime)
     {
-        if (!skillUser.CheckSkillCost(baseManaCost * Time.deltaTime))
+        LightningBeamSkillTree skillTree = skillUser.GetComponent<LightningBeamSkillTree>();
+        bool overcharged = false;
+        if ((channelledTime >= baseTimeUntilOvercharged + skillTree.additionalTimeUntilOvercharged && !skillTree.doesNotOvercharge) || (skillTree.startsOvercharged && !skillTree.doesNotOvercharge))
+        {
+            overcharged = true;
+        }
+
+        float manaCost = (baseManaCost + skillTree.additionalManaCostPerSecond) * Time.deltaTime;
+        if (overcharged)
+        {
+            manaCost *= 1 + skillTree.ocIncreasedManaCostPerSecond;
+        }
+
+        if (!skillUser.CheckSkillCost(manaCost))
         {
             return false;
         }
 
-        skillUser.ReduceMana(baseManaCost * Time.deltaTime);
+        skillUser.ReduceMana(manaCost);
+        
+        float damageRamp = baseDamageRampPerSecond + skillTree.increasedDamageRampPerSecond;
+
+        if (!overcharged)
+        {
+            GameObject beamObject = skillHandler.currentChannelingGameObject;
+
+            EffectCollider beamArea = beamObject.GetComponent<EffectCollider>();
+            float damagePerSecond = baseDamagePerSecond * (1 + skillTree.increasedDamagePerSecond + damageRamp * channelledTime);
+            beamArea.SetEffects(damagePerSecond, DamageType.Lightning, true, skillUser, null);
+        } 
+        else if ((channelledTime - baseTimeUntilOvercharged - skillTree.additionalTimeUntilOvercharged) < 0.1f)
+        {
+            GameObject beamObject = skillHandler.currentChannelingGameObject;
+            float width = baseWidth * (1 + skillTree.increasedWidth + baseOCWidthIncrease + skillTree.ocIncreasedWidth);
+            float range = baseRange * (1 + skillTree.increasedRange + baseOCRangeIncrease + skillTree.ocIncreasedRange);
+            beamObject.transform.localScale = new Vector3(width, width, range);
+            beamObject.transform.localPosition = new Vector3(0, 1, range / 2f + 0.5f);
+
+            EffectCollider beamArea = beamObject.GetComponent<EffectCollider>();
+            float timeUntilOvercharged = baseTimeUntilOvercharged + skillTree.additionalTimeUntilOvercharged;
+            float ocDamageIncrease = baseOCDamageIncrease + skillTree.ocIncreasedDamagePerSecond;
+            float damagePerSecond = baseDamagePerSecond * (1 + skillTree.increasedDamagePerSecond + damageRamp * timeUntilOvercharged + ocDamageIncrease);
+            beamArea.SetEffects(damagePerSecond, DamageType.Lightning, true, skillUser, null);
+        }
 
         skillUser.FindGroundTarget();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
         skillUser.StopMoving();
+
         return true;
     }
 

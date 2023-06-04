@@ -25,7 +25,8 @@ public enum ItemModType
     inc_evasion,
     flat_fireRes,
     flat_coldRes,
-    flat_lightningRes
+    flat_lightningRes,
+    flat_increasedDamageTaken
 }
 
 public class StatModifier

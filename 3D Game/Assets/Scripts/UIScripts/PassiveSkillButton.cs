@@ -28,6 +28,10 @@ public class PassiveSkillButton : MonoBehaviour
     {
         if (preRequisite == null)
         {
+            if (timesAllocated < maxAllocation)
+            {
+                button.interactable = true;
+            }
             return;
         }
 
@@ -49,6 +53,7 @@ public class PassiveSkillButton : MonoBehaviour
     public void ResetButton()
     {
         timesAllocated = 0;
+        UpdateGUI();
     }
 
     public void OnClick()

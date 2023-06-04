@@ -95,6 +95,8 @@ public class Character : MonoBehaviour
             return;
         }
 
+        dmg.value *= 1 + stats.increasedDamageTaken.value/100;
+
         float armor = stats.armor.value;
         float evasion = stats.evasion.value;
         float fireRes = stats.fireRes.value;

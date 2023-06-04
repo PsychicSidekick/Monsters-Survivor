@@ -31,23 +31,17 @@ public class ChillEffect : StatusEffect
 
     public override void AddStack(Character character, StatusEffect statusEffect)
     {
-        remainingDuration = statusEffect.maxDuration;
-    }
-
-    public override void EffectOverTime(Character character, float deltaTime)
-    {
-        character.ReceiveDamage(new Damage(10 * deltaTime, character, DamageType.Fire));
+        if (((ChillEffect)statusEffect).chillMod.value <= chillMod.value)
+        {
+            character.stats.RemoveStatModifier(chillMod);
+            chillMod = ((ChillEffect)statusEffect).chillMod;
+            remainingDuration = statusEffect.maxDuration;
+            character.stats.ApplyStatModifier(chillMod);
+        }
     }
 
     public override void OnRemove(Character character)
     {
         character.stats.RemoveStatModifier(chillMod);
-        character.agent.acceleration = 2000;
-        character.animator.SetFloat("ActionSpeed", 1);
-    }
-
-    public override StatusEffect CloneEffect()
-    {
-        return new ChillEffect(this);
     }
 }

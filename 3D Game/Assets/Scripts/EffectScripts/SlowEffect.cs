@@ -31,23 +31,17 @@ public class SlowEffect : StatusEffect
 
     public override void AddStack(Character character, StatusEffect statusEffect)
     {
-        remainingDuration = statusEffect.maxDuration;
-    }
-
-    public override void EffectOverTime(Character character, float deltaTime)
-    {
-        character.ReceiveDamage(new Damage(10 * deltaTime, character, DamageType.Fire));
+        if (((SlowEffect)statusEffect).slowMod.value <= slowMod.value)
+        {
+            character.stats.RemoveStatModifier(slowMod);
+            slowMod = ((SlowEffect)statusEffect).slowMod;
+            remainingDuration = statusEffect.maxDuration;
+            character.stats.ApplyStatModifier(slowMod);
+        }
     }
 
     public override void OnRemove(Character character)
     {
         character.stats.RemoveStatModifier(slowMod);
-        character.agent.acceleration = 2000;
-        character.animator.SetFloat("ActionSpeed", 1);
-    }
-
-    public override StatusEffect CloneEffect()
-    {
-        return new SlowEffect(this);
     }
 }

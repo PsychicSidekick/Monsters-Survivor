@@ -36,9 +36,4 @@ public class FreezeEffect : StatusEffect
         character.agent.acceleration = 2000;
         character.stats.animationSpeedMultiplier = 1;
     }
-
-    public override StatusEffect CloneEffect()
-    {
-        return new FreezeEffect(this);
-    }
 }

@@ -18,7 +18,7 @@ public class StatusEffectManager : MonoBehaviour
         foreach (StatusEffect statusEffect in statusEffectList)
         {
             statusEffect.remainingDuration -= Time.deltaTime;
-            Debug.Log(statusEffect.remainingDuration);
+
             if (statusEffect.remainingDuration <= 0)
             {
                 RemoveStatusEffect(statusEffect);

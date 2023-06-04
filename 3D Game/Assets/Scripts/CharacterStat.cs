@@ -16,7 +16,8 @@ public enum StatType
     Evasion,
     FireRes,
     ColdRes,
-    LightningRes
+    LightningRes,
+    IncreasedDamageTaken
 }
 
 [Serializable]

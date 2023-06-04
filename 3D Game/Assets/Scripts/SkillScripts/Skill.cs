@@ -26,7 +26,7 @@ public class Skill : ScriptableObject
 
     }
 
-    public virtual bool WhileChannelling(Character skillUser)
+    public virtual bool WhileChannelling(Character skillUser, SkillHandler skillHandler, float channelledTime)
     {
         return false;
     }

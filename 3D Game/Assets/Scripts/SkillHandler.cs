@@ -11,6 +11,7 @@ public class SkillHolder
     public KeyCode key;
     [HideInInspector] public float cooldownTime;
     [HideInInspector] public float activeTime;
+    [HideInInspector] public float channelledTime;
     [HideInInspector] public SkillState state;
     [HideInInspector] public bool triggerSkill;
 }
@@ -75,10 +76,11 @@ public class SkillHandler : MonoBehaviour
                 case SkillState.active:
                     if (skillHolder.skill.isChannellingSkill)
                     {
+                        skillHolder.channelledTime += Time.deltaTime;
                         if (skillHolder.triggerSkill)
                         {
                             isChannelling = true;
-                            if (skillHolder.skill.WhileChannelling(skillUser))
+                            if (skillHolder.skill.WhileChannelling(skillUser, this, skillHolder.channelledTime))
                             {
                                 break;
                             }
@@ -99,6 +101,7 @@ public class SkillHandler : MonoBehaviour
                         }
                     }
 
+                    skillHolder.channelledTime = 0;
                     skillHolder.cooldownTime = skillHolder.skill.OnCoolDown(skillUser);
                     skillHolder.state = SkillState.cooldown;
                     break;

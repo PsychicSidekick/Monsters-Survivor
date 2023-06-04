@@ -80,16 +80,21 @@ public class Projectile : MonoBehaviour
             }
         }
 
-        effectCollider.target = nextTarget;
-
-        if (effectCollider.charactersInArea.Contains(nextTarget))
+        //effectCollider.target = nextTarget;
+        
+        //if (effectCollider.charactersInArea.Contains(nextTarget))
+        //{
+        //    effectCollider.ApplyEffects(nextTarget);
+        //}
+        if (nextTarget != null)
         {
-            effectCollider.ApplyEffects(nextTarget);
-        }
-        else if (nextTarget != null)
-        {
+            targetPos = nextTarget.transform.position;
             chainedCharacters.Add(nextTarget);
             SendMessage("ChainsTo", nextTarget);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }
