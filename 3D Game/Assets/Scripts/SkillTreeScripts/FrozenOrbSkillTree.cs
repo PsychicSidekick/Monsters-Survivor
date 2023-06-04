@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrozenOrbSkillTree : MonoBehaviour
+public class FrozenOrbSkillTree : SkillTree
 {
     public int additionalManaCost;
 
@@ -84,5 +84,25 @@ public class FrozenOrbSkillTree : MonoBehaviour
     public void IncreaseFreezeDuration(float value)
     {
         increasedFreezeDuration += value;
+    }
+
+    public override void ResetSkillTree()
+    {
+        additionalManaCost = 0;
+
+        increasedOrbDamage = 0;
+        increasedOrbDuration = 0;
+        increasedOrbTravelSpeed = 0;
+        increasedOrbFreezeChance = 0;
+
+        additionalIcicles = 0;
+        additionalIciclePierce = 0;
+        increasedIcicleDamage = 0;
+        increasedIcicleRange = 0;
+        increasedIcicleTravelSpeed = 0;
+        increasedIcicleShootRate = 0;
+        increasedIcicleFreezeChance = 0;
+
+        increasedFreezeDuration = 0;
     }
 }

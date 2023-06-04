@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChainLightningSkillTree : MonoBehaviour
+public class ChainLightningSkillTree : SkillTree
 {
     public int additionalManaCost;
 
@@ -71,4 +71,20 @@ public class ChainLightningSkillTree : MonoBehaviour
     {
         increasedShockEffect += value;
     }
+
+    public override void ResetSkillTree()
+    {
+        additionalManaCost = 0;
+
+        increasedDamage = 0;
+        increasedSpread = 0;
+        increasedRange = 0;
+        additionalNumberOfProjectiles = 0;
+        additionalNumberOfChains = 0;
+        increasedChainingRange = 0;
+        increasedChainingDamageMultiplier = 0;
+        increasedShockChance = 0;
+        increasedShockDuration = 0;
+        increasedShockEffect = 0;
+}
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrostNovaSkillTree : MonoBehaviour
+public class FrostNovaSkillTree :SkillTree
 {
     public int additionalManaCost;
 
@@ -64,5 +64,20 @@ public class FrostNovaSkillTree : MonoBehaviour
     public void ToggleDoesNotStopMoving()
     {
         doesNotStopMoving = true;
+    }
+
+    public override void ResetSkillTree()
+    {
+        additionalManaCost = 0;
+
+        additionalCooldownTime = 0;
+        increasedRadius = 0;
+        increasedFreezeDuration = 0;
+        increasedSlowDuration = 0;
+        increasedChillDuration = 0;
+        increasedSlowEffect = 0;
+        increasedChillEffect = 0;
+        slowsAndChillInstead =  false;
+        doesNotStopMoving = false;
     }
 }

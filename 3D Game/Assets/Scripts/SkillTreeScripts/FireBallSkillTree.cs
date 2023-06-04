@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBallSkillTree : MonoBehaviour
+public class FireBallSkillTree : SkillTree
 {
     public int additionalManaCost;
     public float increasedRange;
@@ -78,5 +78,24 @@ public class FireBallSkillTree : MonoBehaviour
     public void ToggleIgniteAppliedByExplosion()
     {
         igniteAppliedByExplosion = true;
+    }
+
+    public override void ResetSkillTree()
+    {
+        additionalManaCost = 0;
+        increasedRange = 0;
+        increasedSpeed = 0;
+        increasedDamage = 0;
+        additionalFireBalls = 0;
+
+        increasedExplosionRadius = 0;
+        increasedExplosionDamage = 0;
+
+        increasedIgniteDamageMultiplier = 0;
+        increasedIgniteDamage = 0;
+        increasedIgniteDuration = 0;
+        increasedIgniteChance = 0;
+
+        igniteAppliedByExplosion = false;
     }
 }

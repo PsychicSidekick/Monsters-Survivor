@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IncinerateSkillTree : MonoBehaviour
+public class IncinerateSkillTree : SkillTree
 {
     public int additionalManaCost;
     public float increasedDamage;
@@ -64,5 +64,20 @@ public class IncinerateSkillTree : MonoBehaviour
     public void ToggleAppliesNewIgnite()
     {
         appliesNewIgnite = true;
+    }
+
+    public override void ResetSkillTree()
+    {
+        additionalManaCost = 0;
+        increasedDamage = 0;
+        increasedRadius = 0;
+        increasedExtraIgniteMulti = 0;
+
+        increasedIgniteDamage = 0;
+        spreadsExplosions = false;
+        doesNotRemoveIgnites = false;
+        receivesHealingFromRemovedIgnites = false;
+        doesNotDealExtraIgniteDamage = false;
+        appliesNewIgnite = false;
     }
 }

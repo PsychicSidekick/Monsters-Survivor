@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBlastSkillTree : MonoBehaviour
+public class FireBlastSkillTree : SkillTree
 {
     public int additionalManaCost;
     public float additionalCooldownTime;
@@ -75,5 +75,21 @@ public class FireBlastSkillTree : MonoBehaviour
     public void ToggleDoesNotStopToUseSkill()
     {
         doesNotStopToUseSkill = true;
+    }
+
+    public override void ResetSkillTree()
+    {
+        additionalManaCost = 0;
+        additionalCooldownTime = 0;
+        increasedDamage = 0;
+        increasedRadius = 0;
+        increasedExpansionTime = 0;
+        increasedIgniteDamageMultiplier = 0;
+        increasedIgniteDuration = 0;
+        increasedIgniteChance = 0;
+        increasedIgniteDamageDealingSpeed = 0;
+        doesNotDealDirectDamage = false;
+        doesNotDestroyProjectiles = false;
+        doesNotStopToUseSkill = false;
     }
 }

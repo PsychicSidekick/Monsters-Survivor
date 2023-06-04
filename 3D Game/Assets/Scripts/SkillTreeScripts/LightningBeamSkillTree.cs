@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightningBeamSkillTree : MonoBehaviour
+public class LightningBeamSkillTree : SkillTree
 {
     public int additionalManaCostPerSecond;
 
@@ -79,4 +79,23 @@ public class LightningBeamSkillTree : MonoBehaviour
     {
         doesNotOvercharge = true;
     }
+
+    public override void ResetSkillTree()
+    {
+        additionalManaCostPerSecond = 0;
+
+        increasedDamagePerSecond = 0;
+        increasedWidth = 0;
+        increasedRange = 0;
+        increasedDamageRampPerSecond = 0;
+
+        additionalTimeUntilOvercharged = 0;
+        ocIncreasedManaCostPerSecond = 0;
+        ocIncreasedDamagePerSecond = 0;
+        ocIncreasedWidth = 0;
+        ocIncreasedRange = 0;
+
+        startsOvercharged = false;
+        doesNotOvercharge = false;
+}
 }

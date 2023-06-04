@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceSpearSkillTree : MonoBehaviour
+public class IceSpearSkillTree : SkillTree
 {
     public int additionalManaCost;
 
@@ -76,5 +76,22 @@ public class IceSpearSkillTree : MonoBehaviour
     public void ToggleShatterDoesNotRemoveFreeze()
     {
         shatterDoesNotRemoveFreeze = true;
+    }
+
+    public override void ResetSkillTree()
+    {
+        additionalManaCost = 0;
+
+        increasedSpearDamage = 0;
+        additionalPierce = 0;
+        increasedSpearSpread = 0;
+        additionalNumberOfSpears = 0;
+        increasedFreezeChance = 0;
+        increasedFreezeDuration = 0;
+        increasedShatterChance = 0;
+        increasedShatterMultiplier = 0;
+        increasedSpearSpeed = 0;
+        increasedSpearRange = 0;
+        shatterDoesNotRemoveFreeze = false;
     }
 }
