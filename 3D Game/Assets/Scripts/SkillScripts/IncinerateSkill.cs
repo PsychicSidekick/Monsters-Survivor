@@ -54,7 +54,7 @@ public class IncinerateSkill : Skill
                 }
                 else if (skillTree.receivesHealingFromRemovedIgnites)
                 {
-                    float extraIgniteDamage = ignite.remainingDamage * (1 + baseIgniteDamageMultiplier + skillTree.increasedExtraIgniteMulti);
+                    float extraIgniteDamage = ignite.remainingDamage * baseIgniteDamageMultiplier * (1 + skillTree.increasedExtraIgniteMulti);
                     skillUser.ReceiveHealing(extraIgniteDamage);
                 }
                 if (!skillTree.doesNotRemoveIgnites)

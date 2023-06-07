@@ -28,4 +28,4 @@ MonoBehaviour:
   baseSlowEffect: 20
   chillChance: 100
   baseChillDuration: 1.5
-  baseChillEffect: 60
+  baseChillEffect: 20
