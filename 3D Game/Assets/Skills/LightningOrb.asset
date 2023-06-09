@@ -25,6 +25,6 @@ MonoBehaviour:
   baseDuration: 5
   baseDamage: 50
   baseNumberOfOrbs: 3
-  baseShockChance: 5
+  baseShockChance: 10
   baseShockDuration: 2
   baseShockEffect: 50

@@ -47,7 +47,7 @@ public class LightningOrbSkill : Skill
             float damage = baseDamage * (1 + skillTree.increasedDamage);
             float shockChance = baseShockChance + skillTree.increasedShockChance;
             float shockDuration = baseShockDuration * (1 + skillTree.increasedShockDuration);
-            float shockEffect = baseShockEffect * (1 + skillTree.increasedShockEffect);
+            float shockEffect = baseShockEffect + skillTree.increasedShockEffect;
             ShockEffect shock = new ShockEffect(shockEffect, shockDuration, shockChance);
             collider.SetEffects(damage, DamageType.Lightning, false, skillUser, null, shock);
             collider.transform.position = rotationCenter.transform.position + spawnOffset;
