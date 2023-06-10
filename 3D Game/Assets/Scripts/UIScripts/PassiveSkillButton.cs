@@ -17,6 +17,8 @@ public class PassiveSkillButton : MonoBehaviour
     public PassiveSkillButton preRequisite;
     public int requiredAllocation;
 
+    public TMP_Text pointCounter;
+
     private void Start()
     {
         button = GetComponent<Button>();
@@ -56,11 +58,17 @@ public class PassiveSkillButton : MonoBehaviour
         UpdateGUI();
     }
 
+    public void IncrementSkillTreePointCounter()
+    {
+        pointCounter.text = (int.Parse(pointCounter.text) + 1).ToString();
+    }
+
     public void OnClick()
     {
         if (timesAllocated < maxAllocation)
         {
             timesAllocated++;
+            IncrementSkillTreePointCounter();
 
             if (timesAllocated == maxAllocation)
             {
