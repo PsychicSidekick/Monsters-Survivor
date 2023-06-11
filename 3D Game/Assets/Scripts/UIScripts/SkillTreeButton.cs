@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SkillTreeButton : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class SkillTreeButton : MonoBehaviour
     {
         foreach(Transform child in transform.parent)
         {
-            if (!child.GetComponent<Button>())
+            if (!child.GetComponent<Button>() && !child.GetComponent<TMP_Text>())
             {
                 child.gameObject.SetActive(false);
             }

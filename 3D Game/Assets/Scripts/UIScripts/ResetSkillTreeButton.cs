@@ -12,6 +12,7 @@ public class ResetSkillTreeButton : MonoBehaviour
     public void OnClick()
     {
         targetSkillTree.ResetSkillTree();
+        PlayerControl.instance.AddToAvailableSkillPoints(int.Parse(pointCounter.text));
         pointCounter.text = "0";
 
         foreach (Transform child in transform.parent)

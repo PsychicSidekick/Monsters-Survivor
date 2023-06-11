@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class BottomUI : MonoBehaviour
+public class PlayerUI : MonoBehaviour
 {
     public TMP_Text lifeText;
     public TMP_Text manaText;
@@ -34,7 +34,7 @@ public class BottomUI : MonoBehaviour
         int playerLevel = player.GetCurrentLevel();
         levelText.text = "Level: " + playerLevel;
 
-        if (playerLevel >= 10)
+        if (playerLevel >= 100)
         {
             xpText.text = "MAX LEVEL";
             xpBar.transform.localScale = new Vector3(1, 1, 1);

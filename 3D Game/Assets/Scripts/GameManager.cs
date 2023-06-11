@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         SaveGame();
+        PlayerPrefs.SetInt("PlayerXp", 0);
     }
 
     public Vector3 RefinedPos(Vector3 position)
@@ -43,6 +45,11 @@ public class GameManager : MonoBehaviour
         (viewportPos.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f));
 
         return canvasPos;
+    }
+
+    public void AddIntToStringNumber(int value, TMP_Text text)
+    {
+        text.text = (int.Parse(text.text) + value).ToString();
     }
 
     public static bool IsMouseOverUI()

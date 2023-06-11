@@ -49,7 +49,7 @@ public class Character : MonoBehaviour
             requiredXp += (level + 1) * 1000;
             level++;
 
-            if (level >= 10)
+            if (level >= 100)
             {
                 return level;
             }
@@ -81,7 +81,7 @@ public class Character : MonoBehaviour
         xpIsDirty = true;
     }
 
-    public void OnLevelUp()
+    public virtual void OnLevelUp()
     {
         Debug.Log("Leveled Up!");
         stats.ApplyStatModifier(new StatModifier(StatType.MaxLife, 5, ModType.flat));

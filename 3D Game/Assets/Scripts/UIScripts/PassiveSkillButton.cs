@@ -58,17 +58,18 @@ public class PassiveSkillButton : MonoBehaviour
         UpdateGUI();
     }
 
-    public void IncrementSkillTreePointCounter()
-    {
-        pointCounter.text = (int.Parse(pointCounter.text) + 1).ToString();
-    }
-
     public void OnClick()
     {
+        if (PlayerControl.instance.availableSkillPoints <= 0)
+        {
+            return;
+        }
+
         if (timesAllocated < maxAllocation)
         {
+            PlayerControl.instance.AddToAvailableSkillPoints(-1);
             timesAllocated++;
-            IncrementSkillTreePointCounter();
+            GameManager.instance.AddIntToStringNumber(1, pointCounter);
 
             if (timesAllocated == maxAllocation)
             {

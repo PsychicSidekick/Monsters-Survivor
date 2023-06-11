@@ -9,13 +9,16 @@ public class PlayerControl : Character
 {
     public static PlayerControl instance;
 
-    private Vector3 moveTarget = new Vector3(0, 0, 0);
+    [HideInInspector] private Vector3 moveTarget = new Vector3(0, 0, 0);
 
-    public bool isAttacking;
+    [HideInInspector] public bool isAttacking;
 
     public GameObject targetItem;
 
     public LayerMask moveRayLayer;
+
+    [HideInInspector] public int availableSkillPoints;
+    public TMP_Text availableSkillPointsText;
 
     private void Awake()
     {
@@ -48,6 +51,18 @@ public class PlayerControl : Character
                 Move(moveTarget);
             }
         }
+    }
+
+    public override void OnLevelUp()
+    {
+        base.OnLevelUp();
+        AddToAvailableSkillPoints(1);
+    }
+
+    public void AddToAvailableSkillPoints(int value)
+    {
+        availableSkillPoints += value;
+        availableSkillPointsText.text = availableSkillPoints.ToString();
     }
 
     public void FindMoveTarget(RaycastHit hit)
