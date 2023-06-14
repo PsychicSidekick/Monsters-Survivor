@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Incinerate
   m_EditorClassIdentifier: 
   skillName: Incinerate
+  skillIcon: {fileID: 21300000, guid: df1c55e989b1a9b4e90f8f70b576b1b8, type: 3}
   coolDownTime: 0
   activeTime: 0
   baseManaCost: 20

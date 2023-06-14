@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FrozenOrb
   m_EditorClassIdentifier: 
   skillName: FrozenOrb
+  skillIcon: {fileID: 21300000, guid: b365586f6e410d047823d59a867812fc, type: 3}
   coolDownTime: 0
   activeTime: 0
   baseManaCost: 30

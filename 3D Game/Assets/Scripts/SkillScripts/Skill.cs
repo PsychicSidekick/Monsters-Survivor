@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Skill : ScriptableObject
 {
     public string skillName;
+    public Sprite skillIcon;
+
     public float coolDownTime;
     public float activeTime;
     public float baseManaCost;

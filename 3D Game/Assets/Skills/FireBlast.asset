@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FireBlast
   m_EditorClassIdentifier: 
   skillName: FireBlast
+  skillIcon: {fileID: 21300000, guid: 474ff77d6193a994abb7398bad0506c0, type: 3}
   coolDownTime: 3
   activeTime: 0
   baseManaCost: 30

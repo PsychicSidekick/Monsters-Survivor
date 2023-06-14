@@ -17,7 +17,7 @@ public class PlayerControl : Character
 
     public LayerMask moveRayLayer;
 
-    [HideInInspector] public int availableSkillPoints;
+    public int availableSkillPoints;
     public TMP_Text availableSkillPointsText;
 
     private void Awake()
