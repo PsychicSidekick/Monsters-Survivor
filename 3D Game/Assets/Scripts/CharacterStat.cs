@@ -17,7 +17,24 @@ public enum StatType
     FireRes,
     ColdRes,
     LightningRes,
-    IncreasedDamageTaken
+    IncreasedDamageTaken,
+    CooldownReduction,
+    FireDamage,
+    ColdDamage,
+    LightningDamage,
+    AreaDamage,
+    AreaEffect,
+    ProjDamage,
+    ProjSpeed,
+    NoOfProj,
+    IgniteDamage,
+    IgniteChance,
+    IgniteDuration,
+    FreezeChance,
+    FreezeDuration,
+    ShockEffect,
+    ShockChance,
+    ShockDuration
 }
 
 [Serializable]

@@ -7,7 +7,7 @@ public class PassiveDescription : MonoBehaviour
     void Start()
     {
         ShowDescription showDescription = GetComponent<ShowDescription>();
-        PassiveSkillButton passiveSkillButton = GetComponent<PassiveSkillButton>();
+        SkillPassiveButton passiveSkillButton = GetComponent<SkillPassiveButton>();
 
         showDescription.title = passiveSkillButton.passiveName;
         if (passiveSkillButton.requiredAllocation > 0)

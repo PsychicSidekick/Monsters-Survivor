@@ -12,7 +12,7 @@ public class ChillEffect : StatusEffect
         this.chance = chance;
         maxDuration = duration;
         remainingDuration = duration;
-        chillMod = new StatModifier(ItemModType.inc_AtkSpd, -chillPercentage);
+        chillMod = new StatModifier(StatModType.inc_AtkSpd, -chillPercentage);
     }
 
     public ChillEffect(ChillEffect chill)

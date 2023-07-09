@@ -12,6 +12,6 @@ public class HardenSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
-        skillUser.StartCoroutine(skillUser.GetComponent<StatsManager>().ApplyTemporaryBuff(new StatModifier(ItemModType.flat_armour, 1000), 5));
+        skillUser.StartCoroutine(skillUser.GetComponent<StatsManager>().ApplyTemporaryBuff(new StatModifier(StatModType.flat_armour, 1000), 5));
     }
 }

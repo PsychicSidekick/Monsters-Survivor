@@ -17,9 +17,9 @@ public class ResetSkillTreeButton : MonoBehaviour
 
         foreach (Transform child in transform.parent)
         {
-            if (child.GetComponent<PassiveSkillButton>())
+            if (child.GetComponent<SkillPassiveButton>())
             {
-                child.GetComponent<PassiveSkillButton>().ResetButton();
+                child.GetComponent<SkillPassiveButton>().ResetButton();
             }
         }
     }    

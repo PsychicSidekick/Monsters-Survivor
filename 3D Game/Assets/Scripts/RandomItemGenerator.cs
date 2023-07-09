@@ -13,7 +13,7 @@ public static class RandomItemGenerator
     {
         List<ItemModMaxValue> modPool = itemPrefab.modPool;
 
-        List<ItemModType> existingMods = new List<ItemModType>();
+        List<StatModType> existingMods = new List<StatModType>();
 
         List<StatModifier> mods = new List<StatModifier>();
 

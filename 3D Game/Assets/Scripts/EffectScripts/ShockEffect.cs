@@ -12,7 +12,7 @@ public class ShockEffect : StatusEffect
         this.chance = chance;
         maxDuration = duration;
         remainingDuration = duration;
-        shockMod = new StatModifier(ItemModType.flat_increasedDamageTaken, shockPercentage);
+        shockMod = new StatModifier(StatModType.flat_increasedDamageTaken, shockPercentage);
     }
 
     public ShockEffect(ShockEffect shock)

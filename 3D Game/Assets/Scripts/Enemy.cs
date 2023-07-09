@@ -54,6 +54,11 @@ public class Enemy : Character
         base.OnDeath();
     }
 
+    public void FacePlayer()
+    {
+        FacePosition(player.transform.position);
+    }
+
     public override void FindGroundTarget()
     {
         if (player == null)

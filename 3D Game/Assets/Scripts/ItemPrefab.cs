@@ -19,14 +19,14 @@ public enum ItemType
 [Serializable]
 public struct ItemModMaxValue
 {
-    public ItemModType itemModType;
+    public StatModType itemModType;
     public int maxValue;
 }
 
 [Serializable]
 public struct BaseItemMod
 {
-    public ItemModType itemModType;
+    public StatModType itemModType;
     public Vector2Int value;
 }
 

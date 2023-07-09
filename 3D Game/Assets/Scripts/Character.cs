@@ -205,6 +205,12 @@ public class Character : MonoBehaviour
         agent.SetDestination(transform.position);
     }
 
+    public void FacePosition(Vector3 position)
+    {
+        Vector3 lookDir = Vector3.RotateTowards(transform.forward, position - transform.position, 10, 0.0f);
+        transform.rotation = Quaternion.LookRotation(lookDir);
+    }
+
     public virtual void OnDeath()
     {
         //Debug.Log(gameObject + " has died");

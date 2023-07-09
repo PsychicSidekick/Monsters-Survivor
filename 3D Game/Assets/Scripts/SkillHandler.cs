@@ -54,6 +54,10 @@ public class SkillHandler : MonoBehaviour
                 case SkillState.ready:
                     if (skillHolder.triggerSkill && readyToUseSkill && GetComponent<Animator>().GetFloat("ActionSpeed") != 0 && !isChannelling)
                     {
+                        if (!skillHolder.skill)
+                        {
+                            return;
+                        }
                         if (skillHolder.skill.targetsCharacters)
                         {
                             if (skillUser.FindCharacterTarget() == null)

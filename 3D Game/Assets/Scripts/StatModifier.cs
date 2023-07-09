@@ -9,12 +9,23 @@ public enum ModType
     inc
 }
 
-public enum ItemModType
+[Serializable]
+public class StatMod
+{
+    public StatModType statModType;
+    public float value;
+}
+
+public enum StatModType
 {
     flat_MaxLife,
+    inc_MaxLife,
     flat_LifeRegen,
+    inc_LifeRegen,
     flat_MaxMana,
+    inc_MaxMana,
     flat_ManaRegen,
+    inc_ManaRegen,
     inc_MoveSpd,
     inc_AtkSpd,
     flat_AtkDmg,
@@ -26,7 +37,24 @@ public enum ItemModType
     flat_fireRes,
     flat_coldRes,
     flat_lightningRes,
-    flat_increasedDamageTaken
+    flat_increasedDamageTaken,
+    flat_CooldownReduction,
+    inc_FireDamage,
+    inc_ColdDamage,
+    inc_LightningDamage,
+    inc_AreaDamage,
+    inc_AreaEffect,
+    inc_ProjDamage,
+    inc_ProjSpeed,
+    flat_NoOfProj,
+    inc_IgniteDamage,
+    inc_IgniteChance,
+    inc_IgniteDuration,
+    inc_FreezeChance,
+    inc_FreezeDuration,
+    inc_ShockEffect,
+    inc_ShockChance,
+    inc_ShockDuration
 }
 
 public class StatModifier
@@ -44,7 +72,7 @@ public class StatModifier
         modString = ToString();
     }
 
-    public StatModifier(ItemModType itemModType, float _value)
+    public StatModifier(StatModType itemModType, float _value)
     {
         string[] modType_statType = itemModType.ToString().Split("_");
         statType = (StatType)Enum.Parse(typeof(StatType), modType_statType[1], true);
