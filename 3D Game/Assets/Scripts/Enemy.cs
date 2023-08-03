@@ -15,6 +15,9 @@ public class Enemy : Character
 
     public PlayerControl player;
 
+    public float detectionRange;
+    public float attackRange;
+
     protected override void Start()
     {
         base.Start();

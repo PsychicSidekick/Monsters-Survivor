@@ -11,7 +11,7 @@ public class PlayerUI : MonoBehaviour
     public TMP_Text xpText;
     public TMP_Text levelText;
     public GameObject xpBar;
-    public PlayerControl player;
+    private PlayerControl player;
 
     float lifeBallOriginalSize;
     public Image lifeMask;
@@ -20,6 +20,7 @@ public class PlayerUI : MonoBehaviour
 
     private void Start()
     {
+        player = PlayerControl.instance;
         lifeBallOriginalSize = lifeMask.rectTransform.rect.width;
         manaBallOriginalSize = manaMask.rectTransform.rect.width;
     }

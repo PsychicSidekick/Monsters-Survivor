@@ -207,8 +207,11 @@ public class Character : MonoBehaviour
 
     public void FacePosition(Vector3 position)
     {
-        Vector3 lookDir = Vector3.RotateTowards(transform.forward, position - transform.position, 10, 0.0f);
-        transform.rotation = Quaternion.LookRotation(lookDir);
+        if (animator.GetFloat("ActionSpeed") != 0)
+        {
+            Vector3 lookDir = Vector3.RotateTowards(transform.forward, position - transform.position, 10, 0.0f);
+            transform.rotation = Quaternion.LookRotation(lookDir);
+        }
     }
 
     public virtual void OnDeath()

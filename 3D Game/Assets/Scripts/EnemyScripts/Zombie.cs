@@ -14,8 +14,9 @@ public class Zombie : MonoBehaviour
 
     private void Start()
     {
-       enemySkillHandler = GetComponent<SkillHandler>();
-       enemy = GetComponent<Enemy>();
+        enemySkillHandler = GetComponent<SkillHandler>();
+        enemy = GetComponent<Enemy>();
+        enemySkillHandler.characterTarget = enemy.FindCharacterTarget();
     }
     
     private void Update()
@@ -23,6 +24,7 @@ public class Zombie : MonoBehaviour
         float distanceFromPlayer = Vector3.Distance(PlayerControl.instance.transform.position, transform.position);
         if (distanceFromPlayer < detectionRange)
         {
+            enemy.FacePlayer();
             // if not attacking, follow target
             if (!inAttackAnimation)
             {
@@ -30,7 +32,6 @@ public class Zombie : MonoBehaviour
             }
             else
             {
-                enemy.FacePlayer();
                 enemy.StopMoving();
             }
 
@@ -39,36 +40,19 @@ public class Zombie : MonoBehaviour
             {
                 if (GetComponent<Animator>().GetFloat("ActionSpeed") != 0)
                 {
-                    enemy.StopMoving();
-                    enemy.animator.SetBool("isAttacking", true);
+                     
+                    enemySkillHandler.skills[0].triggerSkill = true;
                 }
             }
             else
             {
-                enemy.animator.SetBool("isAttacking", false);
+                enemySkillHandler.skills[0].triggerSkill = false;
             }
-
-
-
-
-
-
-            //if (distanceFromPlayer < attackRange && GetComponent<Animator>().GetFloat("ActionSpeed") != 0)
-            //{
-            //    enemy.StopMoving();
-            //    enemy.animator.SetBool("isAttacking", true);
-            //}
-            //else if (!enemy.animator.GetBool("isAttacking"))
-            //{
-            //    enemy.Move(PlayerControl.instance.transform.position);
-            //    enemy.animator.SetBool("isAttacking", false);
-            //}
         }
         else
         {
             enemy.StopMoving();
-            enemy.animator.SetBool("isAttacking", false);
+            enemySkillHandler.skills[0].triggerSkill = false;
         }
-        //enemySkillHandler.skills[0].triggerSkill = true;
     }
 }

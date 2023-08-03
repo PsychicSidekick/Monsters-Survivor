@@ -20,6 +20,11 @@ public class CharacterUI : MonoBehaviour
 
     public PlayerControl player;
 
+    private void Start()
+    {
+        player = PlayerControl.instance;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))

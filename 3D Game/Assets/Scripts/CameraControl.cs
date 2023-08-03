@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
+
+    private void Start()
+    {
+        player = PlayerControl.instance.gameObject;
+    }
 
     void Update()
     {

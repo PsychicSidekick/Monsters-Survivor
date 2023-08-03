@@ -31,6 +31,8 @@ public class IceSpearSkill : Skill
 
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
         Vector3 targetDirection = (skillUser.GetComponent<SkillHandler>().groundTarget - startPos).normalized;
+        // make start pos in front of the skillUser instead of right in the center
+        startPos += targetDirection;
 
         int numberOfSpears = baseNumberOfSpears + skillTree.additionalNumberOfSpears;
         float spearDamage = baseDamage * (1 + skillTree.increasedSpearDamage);
