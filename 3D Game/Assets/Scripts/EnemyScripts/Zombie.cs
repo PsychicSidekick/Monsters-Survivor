@@ -38,14 +38,16 @@ public class Zombie : MonoBehaviour
             // if in attack range, start attacking
             if (distanceFromPlayer <= attackRange)
             {
+                enemy.animator.SetBool("isAttacking", true);
                 if (GetComponent<Animator>().GetFloat("ActionSpeed") != 0)
                 {
-                     
+                    enemy.StopMoving();
                     enemySkillHandler.skills[0].triggerSkill = true;
                 }
             }
             else
             {
+                enemy.animator.SetBool("isAttacking", false);
                 enemySkillHandler.skills[0].triggerSkill = false;
             }
         }

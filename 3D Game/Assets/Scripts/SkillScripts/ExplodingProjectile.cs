@@ -12,10 +12,21 @@ public class ExplodingProjectile : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (!gameObject.scene.isLoaded)
+        {
+            return;
+        }
         EffectCollider explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<EffectCollider>();
         explosion.transform.localScale = new Vector3(explosionRadius, explosionRadius, explosionRadius);
         explosion.SetEffects(explosionDamage, explosionDamageType, false, GetComponent<EffectCollider>().owner, null, explosionStatusEffects.ToArray());
-        GetComponent<EffectCollider>().owner.StartCoroutine(DestroyExplosion(explosion.gameObject));
+        if (GetComponent<EffectCollider>().owner.gameObject.activeInHierarchy)
+        {
+            GetComponent<EffectCollider>().owner.StartCoroutine(DestroyExplosion(explosion.gameObject));
+        }
+        else
+        {
+            Destroy(explosion.gameObject);
+        }
     }
 
     public IEnumerator DestroyExplosion(GameObject explosion)

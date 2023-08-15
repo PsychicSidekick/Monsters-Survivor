@@ -22,7 +22,7 @@ public class FireBallSkill : Skill
     {
         skillUser.StopMoving();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
-        skillUser.animator.Play("ShootBall");
+        skillUser.animator.Play("Throw");
     }
 
     public override void UseSkill(Character skillUser)
@@ -33,6 +33,7 @@ public class FireBallSkill : Skill
         for (int i = 0; i < (numberOfProjectiles + skillTree.additionalFireBalls); i++)
         {
             Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
+            startPos += (skillUser.GetComponent<SkillHandler>().groundTarget - startPos).normalized;
             EffectCollider collider = Instantiate(ballPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
             Projectile proj = collider.GetComponent<Projectile>();
             ExplodingProjectile explodingProj = proj.GetComponent<ExplodingProjectile>();

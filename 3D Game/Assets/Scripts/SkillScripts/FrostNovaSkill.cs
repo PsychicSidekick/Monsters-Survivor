@@ -28,7 +28,7 @@ public class FrostNovaSkill : Skill
 
         skillUser.FindGroundTarget();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
-        skillUser.animator.Play("Blast");
+        skillUser.animator.Play("AreaCast");
     }
 
     public override void UseSkill(Character skillUser)

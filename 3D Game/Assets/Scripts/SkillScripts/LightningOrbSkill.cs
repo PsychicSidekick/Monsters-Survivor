@@ -24,7 +24,7 @@ public class LightningOrbSkill : Skill
         if (!skillTree.doesNotStopMoving)
         {
             skillUser.StopMoving();
-            skillUser.animator.Play("ShootBall");
+            skillUser.animator.Play("Throw");
         }
         
         RotationCenter rotationCenter = Instantiate(rotationCenterPrefab, skillUser.transform.position, Quaternion.identity).GetComponent<RotationCenter>();

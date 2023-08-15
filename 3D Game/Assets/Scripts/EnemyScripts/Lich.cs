@@ -37,6 +37,7 @@ public class Lich : MonoBehaviour
             // if in attack range, start attacking
             if (distanceFromPlayer <= attackRange)
             {
+                enemy.animator.SetBool("isAttacking", true);
                 enemy.FindGroundTarget();
                 enemy.StopMoving();
                 if (GetComponent<Animator>().GetFloat("ActionSpeed") != 0)
@@ -46,6 +47,7 @@ public class Lich : MonoBehaviour
             }
             else
             {
+                enemy.animator.SetBool("isAttacking", false);
                 enemySkillHandler.skills[0].triggerSkill = false;
             }
         }

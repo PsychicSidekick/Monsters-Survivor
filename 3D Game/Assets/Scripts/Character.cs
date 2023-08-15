@@ -5,16 +5,16 @@ using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
-    public Animator animator;
-    public NavMeshAgent agent;
-    public StatsManager stats;
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public NavMeshAgent agent;
+    [HideInInspector] public StatsManager stats;
 
     public float life;
     public float mana;
     public int xp;
     public int level;
-    
-    public bool xpIsDirty = true;
+
+    [HideInInspector] public bool xpIsDirty = true;
 
     public static LayerMask targettable = 1 << 7;
 

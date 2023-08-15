@@ -41,6 +41,14 @@ public class EffectCollider : MonoBehaviour
                 character.ReceiveDamage(new Damage(damage * Time.deltaTime, owner, type));
             }
         }
+
+        if (GetComponent<Projectile>() == null)
+        {
+            if (!owner.gameObject.activeInHierarchy)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     public void ApplyEffects(Character character)

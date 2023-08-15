@@ -22,7 +22,7 @@ public class IceSpearSkill : Skill
     {
         skillUser.StopMoving();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
-        skillUser.animator.Play("ShootBall");
+        skillUser.animator.Play("Throw");
     }
 
     public override void UseSkill(Character skillUser)

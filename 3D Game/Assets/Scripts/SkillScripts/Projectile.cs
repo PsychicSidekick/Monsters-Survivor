@@ -14,6 +14,8 @@ public class Projectile : MonoBehaviour
 
     public EffectCollider effectCollider;
 
+    public Vector3 lastFramePosition;
+
     private void Start()
     {
         effectCollider = GetComponent<EffectCollider>();
@@ -31,9 +33,11 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
         
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, projSpeed/100);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, projSpeed * Time.deltaTime * 1.5f);
         Vector3 lookDir = Vector3.RotateTowards(transform.forward, targetPos - transform.position, 10, 0.0f);
         transform.rotation = Quaternion.LookRotation(lookDir);
+
+        lastFramePosition = transform.position;
     }
 
     public void OnHit(Character character)

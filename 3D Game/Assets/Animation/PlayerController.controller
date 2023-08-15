@@ -337,7 +337,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blast
+  m_Name: AreaCast
   m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
@@ -449,7 +449,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShootBall
+  m_Name: Throw
   m_Speed: 4
   m_CycleOffset: 0
   m_Transitions:
