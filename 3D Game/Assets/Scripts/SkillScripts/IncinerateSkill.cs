@@ -16,8 +16,10 @@ public class IncinerateSkill : Skill
 
     public override void OnUse(Character skillUser)
     {
+        SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
+        skillHandler.SetCurrentAttackSpeedMod(0);
         skillUser.StopMoving();
-        skillUser.GetComponent<SkillHandler>().FaceCharacterTarget();
+        skillHandler.FaceCharacterTarget();
         skillUser.animator.Play("AreaCast");
     }
 

@@ -20,6 +20,8 @@ public class IceSpearSkill : Skill
 
     public override void OnUse(Character skillUser)
     {
+        SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
+        skillHandler.SetCurrentAttackSpeedMod(0);
         skillUser.StopMoving();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
         skillUser.animator.Play("Throw");
@@ -28,9 +30,9 @@ public class IceSpearSkill : Skill
     public override void UseSkill(Character skillUser)
     {
         IceSpearSkillTree skillTree = skillUser.GetComponent<IceSpearSkillTree>();
-
+        SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
-        Vector3 targetDirection = (skillUser.GetComponent<SkillHandler>().groundTarget - startPos).normalized;
+        Vector3 targetDirection = (skillHandler.groundTarget - startPos).normalized;
         // make start pos in front of the skillUser instead of right in the center
         startPos += targetDirection;
 

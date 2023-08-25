@@ -30,22 +30,25 @@ public class SkillHandler : MonoBehaviour
     public List<SkillHolder> skills = new List<SkillHolder>();
 
     [HideInInspector] public Skill currentSkill;
+    [HideInInspector] public StatModifier currentSkillAttackSpeedMod;
     [HideInInspector] public Vector3 groundTarget;
     [HideInInspector] public Character characterTarget;
     public LayerMask mask;
 
     [HideInInspector] public bool isChannelling;
     [HideInInspector] public GameObject currentChannelingGameObject;
-    [HideInInspector] public float lastSkillUse;
+    [HideInInspector] public float lastSkillUseTime;
 
     private void Start()
     {
         skillUser = GetComponent<Character>();
+        currentSkillAttackSpeedMod = new StatModifier(StatModType.inc_AtkSpd, 0);
+        skillUser.stats.ApplyStatModifier(currentSkillAttackSpeedMod);
     }
 
     private void Update()
     {
-        bool readyToUseSkill = Time.time - 1 / GetComponent<StatsManager>().attackSpeed.value > lastSkillUse;
+        bool readyToUseSkill = Time.time - 1 / skillUser.stats.attackSpeed.value > lastSkillUseTime;
 
         foreach (SkillHolder skillHolder in skills)
         {
@@ -70,7 +73,7 @@ public class SkillHandler : MonoBehaviour
                             skillUser.FindGroundTarget();
                         }
                         currentSkill = skillHolder.skill;
-                        lastSkillUse = Time.time;
+                        lastSkillUseTime = Time.time;
 
                         skillHolder.skill.OnUse(skillUser);
                         skillHolder.state = SkillState.active;
@@ -149,5 +152,12 @@ public class SkillHandler : MonoBehaviour
                 currentSkill.UseSkill(skillUser);
             }
         }
+    }
+
+    public void SetCurrentAttackSpeedMod(float value)
+    {
+        skillUser.stats.RemoveStatModifier(currentSkillAttackSpeedMod);
+        currentSkillAttackSpeedMod = new StatModifier(StatModType.inc_AtkSpd, value);
+        skillUser.stats.ApplyStatModifier(currentSkillAttackSpeedMod);
     }
 }

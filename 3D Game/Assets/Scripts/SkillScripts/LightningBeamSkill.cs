@@ -20,9 +20,11 @@ public class LightningBeamSkill : Skill
 
     public override void OnUse(Character skillUser)
     {
+        SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
+        skillHandler.SetCurrentAttackSpeedMod(1000);
         skillUser.animator.SetBool("isChannelling", true);
         skillUser.animator.Play("Channel");
-        skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
+        skillHandler.FaceGroundTarget();
         skillUser.StopMoving();
 
         LightningBeamSkillTree skillTree = skillUser.GetComponent<LightningBeamSkillTree>();
@@ -31,7 +33,7 @@ public class LightningBeamSkill : Skill
         float damagePerSecond = baseDamagePerSecond * (1 + skillTree.increasedDamagePerSecond);
 
         GameObject beamObject = Instantiate(beamPrefab, skillUser.transform);
-        skillUser.GetComponent<SkillHandler>().currentChannelingGameObject = beamObject;
+        skillHandler.currentChannelingGameObject = beamObject;
         beamObject.transform.localScale = new Vector3(width, width, range);
         beamObject.transform.localPosition = new Vector3(0, 1, range / 2f + 0.5f);
 

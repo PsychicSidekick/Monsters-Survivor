@@ -20,8 +20,9 @@ public class PlayerControl : Character
     public int availableSkillPoints;
     public TMP_Text availableSkillPointsText;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         instance = this;
     }
 

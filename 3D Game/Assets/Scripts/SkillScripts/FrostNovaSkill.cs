@@ -20,14 +20,15 @@ public class FrostNovaSkill : Skill
 
     public override void OnUse(Character skillUser)
     {
+        SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
         FrostNovaSkillTree skillTree = skillUser.GetComponent<FrostNovaSkillTree>();
+        skillHandler.SetCurrentAttackSpeedMod(0);
         if (!skillTree.doesNotStopMoving)
         {
             skillUser.StopMoving();
         }
-
         skillUser.FindGroundTarget();
-        skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
+        skillHandler.FaceGroundTarget();
         skillUser.animator.Play("AreaCast");
     }
 

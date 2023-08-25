@@ -20,6 +20,8 @@ public class LightningOrbSkill : Skill
     public override void OnUse(Character skillUser)
     {
         LightningOrbSkillTree skillTree = skillUser.GetComponent<LightningOrbSkillTree>();
+        SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
+        skillHandler.SetCurrentAttackSpeedMod(0);
 
         if (!skillTree.doesNotStopMoving)
         {

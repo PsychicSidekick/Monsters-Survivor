@@ -13,6 +13,9 @@ public class Mutant : MonoBehaviour
 
     public bool inAttackAnimation;
 
+    public int timesOfMeleeUsed;
+    [HideInInspector] public int timesOfFrozenOrbUsed;
+
     private void Start()
     {
         enemySkillHandler = GetComponent<SkillHandler>();
@@ -22,6 +25,7 @@ public class Mutant : MonoBehaviour
 
     private void Update()
     {
+        enemy.FindGroundTarget();
         float distanceFromPlayer = Vector3.Distance(PlayerControl.instance.transform.position, transform.position);
         if (distanceFromPlayer < detectionRange)
         {
@@ -36,26 +40,54 @@ public class Mutant : MonoBehaviour
                 enemy.StopMoving();
             }
 
+            int currentSkillId;
+            float currentSkillRange;
+
+            if (timesOfMeleeUsed < 2)
+            {
+                currentSkillId = 0;
+                currentSkillRange = meleeAttackRange;
+            }
+            else
+            {
+                enemySkillHandler.skills[0].triggerSkill = false;
+                currentSkillId = 1;
+                currentSkillRange = frozenOrbRange;
+            }
+
             // if in attack range, start attacking
-            if (distanceFromPlayer <= meleeAttackRange)
+            if (distanceFromPlayer <= currentSkillRange)
             {
                 enemy.animator.SetBool("isAttacking", true);
+
                 if (GetComponent<Animator>().GetFloat("ActionSpeed") != 0)
                 {
                     enemy.StopMoving();
-                    enemySkillHandler.skills[0].triggerSkill = true;
+                    enemySkillHandler.skills[currentSkillId].triggerSkill = true;
                 }
             }
             else
             {
                 enemy.animator.SetBool("isAttacking", false);
-                enemySkillHandler.skills[0].triggerSkill = false;
-            }
+                enemySkillHandler.skills[currentSkillId].triggerSkill = false;
+            }   
         }
         else
         {
             enemy.StopMoving();
             enemySkillHandler.skills[0].triggerSkill = false;
+            enemySkillHandler.skills[1].triggerSkill = false;
         }
     }
+
+    public void IncrementTimesOfMeleeUsed()
+    {
+        timesOfMeleeUsed++;
+    }
+
+    public void ResetTimesOfMeleeUsed()
+    {
+        timesOfMeleeUsed = 0;
+        enemySkillHandler.skills[1].triggerSkill = false;
+    }    
 }

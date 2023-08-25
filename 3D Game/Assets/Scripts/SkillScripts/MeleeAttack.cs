@@ -9,6 +9,8 @@ public class MeleeAttack : Skill
 
     public override void OnUse(Character skillUser)
     {
+        SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
+        skillHandler.SetCurrentAttackSpeedMod(0);
         skillUser.StopMoving();
         skillUser.animator.Play("MeleeAttack");
     }

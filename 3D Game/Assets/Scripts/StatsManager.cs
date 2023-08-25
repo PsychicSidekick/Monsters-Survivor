@@ -20,7 +20,6 @@ public class StatsManager : MonoBehaviour
     public CharacterStat lightningRes;
     public CharacterStat increasedDamageTaken;
 
-
     [HideInInspector] public List<CharacterStat> stats = new List<CharacterStat>();
 
     [HideInInspector] public float animationSpeedMultiplier;

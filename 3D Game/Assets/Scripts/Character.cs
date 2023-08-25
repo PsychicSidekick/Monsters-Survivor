@@ -18,12 +18,15 @@ public class Character : MonoBehaviour
 
     public static LayerMask targettable = 1 << 7;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         stats = GetComponent<StatsManager>();
+    }
 
+    protected virtual void Start()
+    {
         life = stats.maxLife.value;
         mana = stats.maxMana.value;
     }

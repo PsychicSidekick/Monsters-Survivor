@@ -1,22 +1,12 @@
 fileFormatVersion: 2
-guid: 7c1501a46e23be545b1305bf08f36db9
+guid: 551e8ec5f69c0af418b6b324481c478a
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
     second: mixamo.com
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Mutant_diffuse
-    second: {fileID: 2800000, guid: a0f9b0988568e7146889be95ca74e3a8, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Mutant_normal
-    second: {fileID: 2800000, guid: 5d037dfce32582449b647722760ea4ef, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -88,12 +78,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - e519b07dbe63a7340b861aae3519864e
-  - c7907f27afbb36646b90865a278cba6a
-  - 529fc2984b5310c44907c9740e2a73e7
-  - 1c73e0a8ffd0ad446a1d0f4204e70bc9
-  - 551e8ec5f69c0af418b6b324481c478a
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3

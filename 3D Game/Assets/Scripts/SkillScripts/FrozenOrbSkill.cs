@@ -25,25 +25,33 @@ public class FrozenOrbSkill : Skill
 
     public override void OnUse(Character skillUser)
     {
+        SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
+        skillHandler.SetCurrentAttackSpeedMod(0);
         skillUser.StopMoving();
-        skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
+        skillHandler.FaceGroundTarget();
         skillUser.animator.Play("Throw");
     }
 
     public override void UseSkill(Character skillUser)
     {
         FrozenOrbSkillTree skillTree = skillUser.GetComponent<FrozenOrbSkillTree>();
+        SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
 
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
+        startPos += (skillHandler.groundTarget - startPos).normalized;
+
         EffectCollider orbCollider = Instantiate(frozenOrbPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
+
         float orbDamage = baseOrbDamage * (1 + skillTree.increasedOrbDamage);
         float orbFreezeDuration = baseOrbFreezeDuration * (1 + skillTree.increasedFreezeDuration);
         float orbFreezeChance = baseOrbFreezeChance + skillTree.increasedOrbFreezeChance;
         FreezeEffect freeze = new FreezeEffect(skillUser, orbFreezeDuration, orbFreezeChance);
+
         orbCollider.SetEffects(orbDamage, DamageType.Cold, false, skillUser, null, freeze);
 
         Projectile orbProj = orbCollider.GetComponent<Projectile>();
-        Vector3 targetPos = skillUser.GetComponent<SkillHandler>().groundTarget;
+
+        Vector3 targetPos = skillHandler.groundTarget;
         Vector3 direction = Vector3.Normalize(targetPos - startPos);
         orbProj.GetComponent<TimedProjectile>().travelDirection = direction;
         orbProj.GetComponent<TimedProjectile>().lifeTime = baseOrbDuration * (1 + skillTree.increasedOrbDuration);
