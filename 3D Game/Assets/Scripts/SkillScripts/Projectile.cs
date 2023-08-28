@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     public float projSpeed;
     public int pierce;
     public int chain;
+    public bool chainsToUser;
     public float chainingRange;
     public float chainDamageMultiplier;
     public List<Character> chainedCharacters = new List<Character>();
@@ -45,12 +46,14 @@ public class Projectile : MonoBehaviour
         pierce--;
         chain--;
         
+        // destroy projectile if cannot pierce or chain anymore
         if (pierce < 0 && chain < 0)
         {
             Destroy(gameObject);
             return;
         }
 
+        // chain to new target
         if (chain >= 0)
         {
             effectCollider.damage *= chainDamageMultiplier;
@@ -68,28 +71,36 @@ public class Projectile : MonoBehaviour
 
         foreach (Collider hit in hits)
         {
-            if (hit.CompareTag("Enemy"))
+            Character hitCharacter = hit.GetComponent<Character>();
+
+            // if hit is not a character
+            if (!hitCharacter)
             {
-                Character hitCharacter = hit.GetComponent<Character>();
-                if (hitCharacter == chainedCharacter || chainedCharacters.Contains(hitCharacter))
-                {
-                    continue;
-                }
-                float distance = Vector3.Distance(targetPos, hit.transform.position);
-                if (distance < shortestDistance)
-                {
-                    shortestDistance = distance;
-                    nextTarget = hitCharacter;
-                }
+                continue;
+            }
+
+            // if projecile does not chain to user and the hit character is friendly
+            if (!chainsToUser && hitCharacter.GetType() == effectCollider.owner.GetType())
+            {
+                continue;
+            }
+
+            // if hit character has already been chained
+            if (hitCharacter == chainedCharacter || chainedCharacters.Contains(hitCharacter))
+            {
+                continue;
+            }
+
+            // update shortest distance each interation to find nearest possible chain target
+            float distance = Vector3.Distance(targetPos, hit.transform.position);
+            if (distance < shortestDistance)
+            {
+                shortestDistance = distance;
+                nextTarget = hitCharacter;
             }
         }
 
-        //effectCollider.target = nextTarget;
-        
-        //if (effectCollider.charactersInArea.Contains(nextTarget))
-        //{
-        //    effectCollider.ApplyEffects(nextTarget);
-        //}
+        // set chain target if one is found
         if (nextTarget != null)
         {
             targetPos = nextTarget.transform.position;

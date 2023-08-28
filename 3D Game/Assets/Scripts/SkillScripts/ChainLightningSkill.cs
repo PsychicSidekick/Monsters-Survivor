@@ -51,7 +51,7 @@ public class ChainLightningSkill : Skill
         {
             EffectCollider collider = Instantiate(lightningBoltPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
             ShockEffect shock = new ShockEffect(shockEffect, shockDuration, shockChance);
-            collider.SetEffects(damage, DamageType.Lightning, false, skillUser, null, shock);
+            collider.SetHostileEffects(damage, DamageType.Lightning, false, skillUser, null, shock);
 
             Projectile proj = collider.GetComponent<Projectile>();
             proj.targetPos = startPos + Quaternion.Euler(0, (numberOfProjectiles - 1) * -projectileSpread + i * 2 * projectileSpread, 0) * targetDirection * range;

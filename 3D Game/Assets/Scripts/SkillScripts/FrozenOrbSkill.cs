@@ -47,7 +47,7 @@ public class FrozenOrbSkill : Skill
         float orbFreezeChance = baseOrbFreezeChance + skillTree.increasedOrbFreezeChance;
         FreezeEffect freeze = new FreezeEffect(skillUser, orbFreezeDuration, orbFreezeChance);
 
-        orbCollider.SetEffects(orbDamage, DamageType.Cold, false, skillUser, null, freeze);
+        orbCollider.SetHostileEffects(orbDamage, DamageType.Cold, false, skillUser, null, freeze);
 
         Projectile orbProj = orbCollider.GetComponent<Projectile>();
 
@@ -75,7 +75,7 @@ public class FrozenOrbSkill : Skill
                 float icicleFreezeDuration = baseIcicleFreezeDuration * (1 + skillTree.increasedFreezeDuration);
                 float icicleFreezeChance = baseIcicleFreezeChance + skillTree.increasedIcicleFreezeChance;
                 FreezeEffect freeze = new FreezeEffect(skillUser, icicleFreezeDuration, icicleFreezeChance);
-                icicleCollider.SetEffects(icicleDamage, DamageType.Cold, false, skillUser, null, freeze);
+                icicleCollider.SetHostileEffects(icicleDamage, DamageType.Cold, false, skillUser, null, freeze);
 
                 Projectile icicleProj = icicleCollider.GetComponent<Projectile>();
                 Vector3 targetPos = (Quaternion.AngleAxis(i * 360 / (baseNumberOfIcicles + skillTree.additionalIcicles), orbProj.transform.up) * new Vector3(1, 0, 0)) + startPos;

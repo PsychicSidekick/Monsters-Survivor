@@ -59,18 +59,16 @@ public class FireBallSkill : Skill
                 float igniteDamage = fireBallDamage * igniteDamageMultiplier;
                 IgniteEffect ignite = new IgniteEffect(skillUser, igniteDamage, igniteDuration, igniteChance);
 
-                collider.SetEffects(fireBallDamage, DamageType.Fire, false, skillUser, null, ignite);
+                collider.SetHostileEffects(fireBallDamage, DamageType.Fire, false, skillUser, null, ignite);
             }
             else
             {
                 float igniteDamage = explodingProj.explosionDamage * igniteDamageMultiplier;
                 IgniteEffect ignite = new IgniteEffect(skillUser, igniteDamage, igniteDuration, igniteChance);
 
-                collider.SetEffects(fireBallDamage, DamageType.Fire, false, skillUser, null);
+                collider.SetHostileEffects(fireBallDamage, DamageType.Fire, false, skillUser, null);
                 explodingProj.explosionStatusEffects.Add(ignite);
             }
-          
-            
         }
     }
 

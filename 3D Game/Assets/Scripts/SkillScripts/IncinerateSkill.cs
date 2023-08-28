@@ -30,7 +30,7 @@ public class IncinerateSkill : Skill
         Character targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
         EffectCollider explosion = Instantiate(explosionPrefab, targetCharacter.transform.position, Quaternion.identity).GetComponent<EffectCollider>();
         float explosionDamage = baseExplosionDamage * (1 + skillTree.increasedDamage);
-        explosion.SetEffects(explosionDamage, DamageType.Fire, false, skillUser, null);
+        explosion.SetHostileEffects(explosionDamage, DamageType.Fire, false, skillUser, null);
         float explosionRadius = baseExplosionRadius * (1 + skillTree.increasedRadius);
         explosion.transform.localScale = new Vector3(explosionRadius, explosionRadius, explosionRadius);
         skillUser.StartCoroutine(DestroyExplosion(skillUser, explosion.gameObject, skillTree.spreadsExplosions));
@@ -83,7 +83,7 @@ public class IncinerateSkill : Skill
             {
                 EffectCollider newExplosion = Instantiate(explosionPrefab, character.transform.position, Quaternion.identity).GetComponent<EffectCollider>();
                 float explosionDamage = baseExplosionDamage * (1 + skillTree.increasedDamage);
-                newExplosion.SetEffects(explosionDamage, DamageType.Fire, false, skillUser, null);
+                newExplosion.SetHostileEffects(explosionDamage, DamageType.Fire, false, skillUser, null);
                 float explosionRadius = baseExplosionRadius * (1 + skillTree.increasedRadius);
                 newExplosion.transform.localScale = new Vector3(explosionRadius, explosionRadius, explosionRadius);
                 skillUser.StartCoroutine(DestroyExplosion(skillUser, newExplosion.gameObject, false));

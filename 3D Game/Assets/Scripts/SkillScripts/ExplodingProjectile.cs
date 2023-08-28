@@ -18,7 +18,7 @@ public class ExplodingProjectile : MonoBehaviour
         }
         EffectCollider explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<EffectCollider>();
         explosion.transform.localScale = new Vector3(explosionRadius, explosionRadius, explosionRadius);
-        explosion.SetEffects(explosionDamage, explosionDamageType, false, GetComponent<EffectCollider>().owner, null, explosionStatusEffects.ToArray());
+        explosion.SetHostileEffects(explosionDamage, explosionDamageType, false, GetComponent<EffectCollider>().owner, null, explosionStatusEffects.ToArray());
         if (GetComponent<EffectCollider>().owner.gameObject.activeInHierarchy)
         {
             GetComponent<EffectCollider>().owner.StartCoroutine(DestroyExplosion(explosion.gameObject));

@@ -53,7 +53,7 @@ public class FireBlastSkill : Skill
         {
             blastDamage = 0;
         }
-        blastCollider.SetEffects(blastDamage, DamageType.Fire, false, skillUser, null, ignite);
+        blastCollider.SetHostileEffects(blastDamage, DamageType.Fire, false, skillUser, null, ignite);
         if (!skillTree.doesNotDestroyProjectiles)
         {
             blastCollider.gameObject.AddComponent<DestroyProjectiles>();

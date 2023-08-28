@@ -52,7 +52,7 @@ public class IceSpearSkill : Skill
             EffectCollider collider = Instantiate(iceSpearPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
             FreezeEffect freeze = new FreezeEffect(skillUser, freezeDuration, freezeChance);
             ShatterEffect shatter = new ShatterEffect(skillUser, spearDamage, shatterMultiplier, shatterChance, skillTree.shatterDoesNotRemoveFreeze);
-            collider.SetEffects(spearDamage, DamageType.Cold, false, skillUser, null, freeze, shatter);
+            collider.SetHostileEffects(spearDamage, DamageType.Cold, false, skillUser, null, freeze, shatter);
 
             Projectile proj = collider.GetComponent<Projectile>();
             proj.targetPos = startPos + Quaternion.Euler(0, (numberOfSpears - 1) * -spearSpread + i * 2 * spearSpread, 0) * targetDirection * spearRange;

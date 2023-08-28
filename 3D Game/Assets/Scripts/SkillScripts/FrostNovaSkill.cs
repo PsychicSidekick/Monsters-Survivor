@@ -49,7 +49,7 @@ public class FrostNovaSkill : Skill
 
             FreezeEffect freeze = new FreezeEffect(skillUser, freezeDuration, freezeChance);
 
-            novaCollider.SetEffects(0, DamageType.Cold, false, skillUser, null, freeze);
+            novaCollider.SetHostileEffects(0, DamageType.Cold, false, skillUser, null, freeze);
         }
         else
         {
@@ -61,7 +61,7 @@ public class FrostNovaSkill : Skill
             SlowEffect slow = new SlowEffect(slowEffect, slowDuration, slowChance);
             ChillEffect chill = new ChillEffect(chillEffect, chillDuration, chillChance);
 
-            novaCollider.SetEffects(0, DamageType.Cold, false, skillUser, null, slow, chill);
+            novaCollider.SetHostileEffects(0, DamageType.Cold, false, skillUser, null, slow, chill);
         }
         
         for (float i = 0; i <= expandTime + 0.1; i += Time.deltaTime)

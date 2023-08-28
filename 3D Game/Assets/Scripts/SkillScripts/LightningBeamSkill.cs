@@ -38,7 +38,7 @@ public class LightningBeamSkill : Skill
         beamObject.transform.localPosition = new Vector3(0, 1, range / 2f + 0.5f);
 
         EffectCollider beamArea = beamObject.GetComponent<EffectCollider>();
-        beamArea.SetEffects(damagePerSecond, DamageType.Lightning, true, skillUser, null);
+        beamArea.SetHostileEffects(damagePerSecond, DamageType.Lightning, true, skillUser, null);
     }
 
     public override bool WhileChannelling(Character skillUser, SkillHandler skillHandler, float channelledTime)
@@ -71,7 +71,7 @@ public class LightningBeamSkill : Skill
 
             EffectCollider beamArea = beamObject.GetComponent<EffectCollider>();
             float damagePerSecond = baseDamagePerSecond * (1 + skillTree.increasedDamagePerSecond + damageRamp * channelledTime);
-            beamArea.SetEffects(damagePerSecond, DamageType.Lightning, true, skillUser, null);
+            beamArea.SetHostileEffects(damagePerSecond, DamageType.Lightning, true, skillUser, null);
         } 
         else if ((channelledTime - baseTimeUntilOvercharged - skillTree.additionalTimeUntilOvercharged) < 0.1f)
         {
@@ -85,7 +85,7 @@ public class LightningBeamSkill : Skill
             float timeUntilOvercharged = baseTimeUntilOvercharged + skillTree.additionalTimeUntilOvercharged;
             float ocDamageIncrease = baseOCDamageIncrease + skillTree.ocIncreasedDamagePerSecond;
             float damagePerSecond = baseDamagePerSecond * (1 + skillTree.increasedDamagePerSecond + damageRamp * timeUntilOvercharged + ocDamageIncrease);
-            beamArea.SetEffects(damagePerSecond, DamageType.Lightning, true, skillUser, null);
+            beamArea.SetHostileEffects(damagePerSecond, DamageType.Lightning, true, skillUser, null);
         }
 
         skillUser.FindGroundTarget();
