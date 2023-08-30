@@ -16,6 +16,7 @@ public class ChainLightningSkillTree : SkillTree
     public float increasedShockChance;
     public float increasedShockDuration;
     public float increasedShockEffect;
+    public bool chainsToUser;
 
     public void IncreaseManaCost(int value)
     {
@@ -72,6 +73,11 @@ public class ChainLightningSkillTree : SkillTree
         increasedShockEffect += value;
     }
 
+    public void ToggleChainsToUser()
+    {
+        chainsToUser = true;
+    }
+
     public override void ResetSkillTree()
     {
         additionalManaCost = 0;
@@ -86,5 +92,6 @@ public class ChainLightningSkillTree : SkillTree
         increasedShockChance = 0;
         increasedShockDuration = 0;
         increasedShockEffect = 0;
-}
+        chainsToUser = false;
+    }
 }

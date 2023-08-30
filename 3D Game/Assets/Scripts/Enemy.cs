@@ -73,6 +73,6 @@ public class Enemy : Character
 
     public override Character FindCharacterTarget()
     {
-        return player;
+        return PlayerControl.instance;
     }
 }

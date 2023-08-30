@@ -45,7 +45,7 @@ public class ChainLightningSkill : Skill
 
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
         Vector3 targetDirection = (skillUser.GetComponent<SkillHandler>().groundTarget - startPos).normalized;
-        startPos = startPos + targetDirection * 0.5f;
+        startPos = startPos + targetDirection * 1.5f;
 
         for (int i = 0; i < numberOfProjectiles; i++)
         {
@@ -59,6 +59,13 @@ public class ChainLightningSkill : Skill
             proj.chain = chains;
             proj.chainingRange = chainingRange;
             proj.chainDamageMultiplier = chainingDamageMultiplier;
+
+            if (skillTree.chainsToUser)
+            {
+                collider.SetFriendlyEffects(20, false, skillUser);
+                collider.affectsOwner = true;
+                proj.chainsToUser = true;
+            }
         }
     }
 

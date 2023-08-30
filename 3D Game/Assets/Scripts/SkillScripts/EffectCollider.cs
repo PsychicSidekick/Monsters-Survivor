@@ -122,18 +122,26 @@ public class EffectCollider : MonoBehaviour
                 return;
             }
         }
+
+        Projectile proj = GetComponent<Projectile>();
+        if (proj)
+        {
+            if (character == owner && proj.chain == proj.remainingChains)
+            {
+                return;
+            }
+        }
         
         charactersInArea.Add(character);
 
-        if (targetsCharacter && character != target)
-        {
-            //Debug.Log("Not target");
-            return;
-        }
-
+        //if (targetsCharacter && character != target)
+        //{
+        //    //Debug.Log("Not target");
+        //    return;
+        //}
+        
         if (character.GetType() == owner.GetType())
         {
-            Debug.Log("HI");
             ApplyFriendlyEffects(character);
         }
         else

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class LootText : MonoBehaviour, IPointerDownHandler
+public class LootText : MonoBehaviour, IPointerClickHandler
 {
     public TMP_Text itemNameTxt;
     public ItemObj itemObj;
@@ -14,7 +14,7 @@ public class LootText : MonoBehaviour, IPointerDownHandler
         itemNameTxt.text = itemObj.item.name;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.pointerId == -1)
         {

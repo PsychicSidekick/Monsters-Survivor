@@ -17,6 +17,7 @@ public class Zombie : MonoBehaviour
         enemySkillHandler = GetComponent<SkillHandler>();
         enemy = GetComponent<Enemy>();
         enemySkillHandler.characterTarget = enemy.FindCharacterTarget();
+        Debug.Log("zombie");
     }
     
     private void Update()

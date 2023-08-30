@@ -7,7 +7,9 @@ public class Projectile : MonoBehaviour
     public Vector3 targetPos;
     public float projSpeed;
     public int pierce;
+    public int remainingPierces;
     public int chain;
+    public int remainingChains;
     public bool chainsToUser;
     public float chainingRange;
     public float chainDamageMultiplier;
@@ -19,6 +21,8 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
+        remainingPierces = pierce;
+        remainingChains = chain;
         effectCollider = GetComponent<EffectCollider>();
     }
 
@@ -29,6 +33,7 @@ public class Projectile : MonoBehaviour
             return;
         }
 
+        // destroy if arrived at targetPos
         if (Vector3.Distance(transform.position, targetPos) == 0)
         {
             Destroy(gameObject);
@@ -43,18 +48,18 @@ public class Projectile : MonoBehaviour
 
     public void OnHit(Character character)
     {
-        pierce--;
-        chain--;
+        remainingPierces--;
+        remainingChains--;
         
         // destroy projectile if cannot pierce or chain anymore
-        if (pierce < 0 && chain < 0)
+        if (remainingPierces < 0 && remainingChains < 0)
         {
             Destroy(gameObject);
             return;
         }
 
         // chain to new target
-        if (chain >= 0)
+        if (remainingChains >= 0)
         {
             effectCollider.damage *= chainDamageMultiplier;
             chainedCharacters.Add(character);
@@ -67,7 +72,7 @@ public class Projectile : MonoBehaviour
         Character nextTarget = null;
         float shortestDistance = Mathf.Infinity;
 
-        Collider[] hits = Physics.OverlapSphere(targetPos, chainingRange);
+        Collider[] hits = Physics.OverlapSphere(chainedCharacter.transform.position, chainingRange);
 
         foreach (Collider hit in hits)
         {
@@ -92,7 +97,7 @@ public class Projectile : MonoBehaviour
             }
 
             // update shortest distance each interation to find nearest possible chain target
-            float distance = Vector3.Distance(targetPos, hit.transform.position);
+            float distance = Vector3.Distance(transform.position, hit.transform.position);
             if (distance < shortestDistance)
             {
                 shortestDistance = distance;
@@ -103,7 +108,7 @@ public class Projectile : MonoBehaviour
         // set chain target if one is found
         if (nextTarget != null)
         {
-            targetPos = nextTarget.transform.position;
+            targetPos = GameManager.instance.RefinedPos(nextTarget.transform.position);
             chainedCharacters.Add(nextTarget);
             SendMessage("ChainsTo", nextTarget);
         }

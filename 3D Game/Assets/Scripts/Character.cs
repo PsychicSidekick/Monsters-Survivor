@@ -195,8 +195,11 @@ public class Character : MonoBehaviour
 
     public void Move(Vector3 targetPosition)
     {
+        Debug.Log("startMove");
+        Debug.Log(animator.GetBool("isWalking"));
         animator.SetBool("isWalking", true);
         agent.SetDestination(targetPosition);
+        Debug.Log("moving");
     }
 
     public void StopMoving()

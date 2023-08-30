@@ -209,6 +209,7 @@ public class Inventory : MonoBehaviour
         pickingUpLoot = true;
         player.targetItem = itemObj;
         player.Move(itemObj.transform.position);
+        Debug.Log(player.animator.GetBool("isWalking"));
     }
 
     public void ResetCellsColour()
