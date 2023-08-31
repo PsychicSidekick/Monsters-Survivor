@@ -25,8 +25,8 @@ public class Inventory : MonoBehaviour
     public GameObject inventoryAnchor;
     public GameObject descriptionHolder;
 
-    [HideInInspector]
-    public bool pickingUpLoot;
+    // defines whether the player's current action is to pick up loot
+    [HideInInspector] public bool pickingUpLoot;
     [HideInInspector]
     public bool lockCursor;
 
@@ -56,6 +56,7 @@ public class Inventory : MonoBehaviour
 
         if (pickingUpLoot)
         {
+            // if player has arrived at the position of the target loot
             if (Vector3.Distance(player.transform.position, player.targetItem.transform.position) < 0.1f)
             {
                 if (inventoryUI.activeInHierarchy)
@@ -209,7 +210,6 @@ public class Inventory : MonoBehaviour
         pickingUpLoot = true;
         player.targetItem = itemObj;
         player.Move(itemObj.transform.position);
-        Debug.Log(player.animator.GetBool("isWalking"));
     }
 
     public void ResetCellsColour()

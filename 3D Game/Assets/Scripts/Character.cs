@@ -37,6 +37,10 @@ public class Character : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
+        else
+        {
+            animator.SetBool("isWalking", true);
+        }
 
         ReceiveHealing(stats.lifeRegen.value * Time.deltaTime);
         AddMana(stats.manaRegen.value * Time.deltaTime);
@@ -195,11 +199,7 @@ public class Character : MonoBehaviour
 
     public void Move(Vector3 targetPosition)
     {
-        Debug.Log("startMove");
-        Debug.Log(animator.GetBool("isWalking"));
-        animator.SetBool("isWalking", true);
         agent.SetDestination(targetPosition);
-        Debug.Log("moving");
     }
 
     public void StopMoving()

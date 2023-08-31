@@ -52,8 +52,6 @@ public class PlayerControl : Character
                 Move(moveTarget);
             }
         }
-
-        //Debug.Log(animator.GetBool("isWalking"));
     }
 
     public override void OnLevelUp()
