@@ -199,6 +199,10 @@ public class Character : MonoBehaviour
 
     public void Move(Vector3 targetPosition)
     {
+        if (Vector3.Distance(transform.position, targetPosition) < 0.2)
+        {
+            return;
+        }
         agent.SetDestination(targetPosition);
     }
 
