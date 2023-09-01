@@ -31,11 +31,12 @@ public class IceSpearSkill : Skill
     {
         IceSpearSkillTree skillTree = skillUser.GetComponent<IceSpearSkillTree>();
         SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
+
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
         Vector3 targetDirection = (skillHandler.groundTarget - startPos).normalized;
-        // make start pos in front of the skillUser instead of right in the center
         startPos += targetDirection;
 
+        // set skill values from skillTree
         int numberOfSpears = baseNumberOfSpears + skillTree.additionalNumberOfSpears;
         float spearDamage = baseDamage * (1 + skillTree.increasedSpearDamage);
         float spearRange = baseRange * (1 + skillTree.increasedSpearRange);
