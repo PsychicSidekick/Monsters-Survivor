@@ -22,10 +22,11 @@ MonoBehaviour:
   ballPrefab: {fileID: 3928469377355962383, guid: fb980d06c1c9cbd41a01d6acf6ccb34d, type: 3}
   ballRange: 10
   ballSpeed: 3
+  baseSpread: 7
   ballBaseDmg: 100
   numberOfProjectiles: 1
-  explosionRadius: 3
-  explosionDamage: 50
+  baseExplosionRadius: 3
+  baseExplosionDamage: 50
   baseIgniteDamageMultiplier: 0.5
   baseIgniteDuration: 5
   baseIgniteChance: 25
