@@ -7,13 +7,12 @@ public class Devil : MonoBehaviour
     SkillHandler enemySkillHandler;
     Enemy enemy;
 
-    public float detectionRange;
     public float fireballRange;
     public float blastRange;
-    public bool inAttackAnimation;
 
-    public float timeSpentCastingFireballs;
-    private bool enraged = false;
+    [HideInInspector] public bool inAttackAnimation;
+    [HideInInspector] public float timeSpentCastingFireballs;
+    [HideInInspector] private bool enraged = false;
 
     void Start()
     {
@@ -26,50 +25,44 @@ public class Devil : MonoBehaviour
     {
         float distanceFromPlayer = Vector3.Distance(PlayerControl.instance.transform.position, transform.position);
 
-        if (distanceFromPlayer < detectionRange)
-        {
-            enemy.FacePlayer();
-            // if not attacking, follow target
-            if (!inAttackAnimation)
-            {
-                enemy.Move(PlayerControl.instance.transform.position);
-            }
-            else
-            {
-                enemy.StopMoving();
-            }
+        enemy.FacePlayer();
+        enemy.FindGroundTarget();
 
-            if (distanceFromPlayer <= fireballRange)
-            {
-                enemy.animator.SetBool("isAttacking", true);
-                enemy.FindGroundTarget();
-                enemy.StopMoving();
-                if (enemy.animator.GetFloat("ActionSpeed") != 0)
-                {
-                    if (timeSpentCastingFireballs >= 5)
-                    {
-                        enemySkillHandler.skills[0].triggerSkill = false;
-                        enemySkillHandler.skills[1].triggerSkill = true;
-                    }
-                    else
-                    {
-                        timeSpentCastingFireballs += Time.deltaTime;
-                        enemySkillHandler.skills[1].triggerSkill = false;
-                        enemySkillHandler.skills[0].triggerSkill = true;
-                    }
-                }
-            }
-            else
-            {
-                enemy.animator.SetBool("isAttacking", false);
-                enemySkillHandler.skills[0].triggerSkill = false;
-                enemySkillHandler.skills[1].triggerSkill = false;
-            }
+        // if not attacking, follow target
+        if (!inAttackAnimation)
+        {
+            enemy.Move(PlayerControl.instance.transform.position);
         }
         else
         {
             enemy.StopMoving();
+        }
+
+        if (distanceFromPlayer <= fireballRange)
+        {
+            enemy.animator.SetBool("isAttacking", true);
+            enemy.FindGroundTarget();
+            enemy.StopMoving();
+            if (enemy.animator.GetFloat("ActionSpeed") != 0)
+            {
+                if (timeSpentCastingFireballs >= 5)
+                {
+                    enemySkillHandler.skills[0].triggerSkill = false;
+                    enemySkillHandler.skills[1].triggerSkill = true;
+                }
+                else
+                {
+                    timeSpentCastingFireballs += Time.deltaTime;
+                    enemySkillHandler.skills[1].triggerSkill = false;
+                    enemySkillHandler.skills[0].triggerSkill = true;
+                }
+            }
+        }
+        else
+        {
+            enemy.animator.SetBool("isAttacking", false);
             enemySkillHandler.skills[0].triggerSkill = false;
+            enemySkillHandler.skills[1].triggerSkill = false;
         }
 
         if (!enraged && enemy.life <= enemy.stats.maxLife.value * 0.3f)

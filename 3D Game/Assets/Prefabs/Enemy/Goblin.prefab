@@ -2401,8 +2401,8 @@ GameObject:
   - component: {fileID: 8288051841000086849}
   - component: {fileID: 8288051841000086848}
   - component: {fileID: 8288051841000086851}
-  - component: {fileID: 8288051841000086850}
   - component: {fileID: 8288051841000086853}
+  - component: {fileID: 6728906170057925653}
   m_Layer: 7
   m_Name: Goblin
   m_TagString: Enemy
@@ -2633,21 +2633,6 @@ MonoBehaviour:
   isChannelling: 0
   currentChannelingGameObject: {fileID: 0}
   lastSkillUseTime: 0
---- !u!114 &8288051841000086850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8288051841000086852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5db608a4c6837349a0c4677e6037d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRange: 100
-  attackRange: 1.2
-  inAttackAnimation: 0
 --- !u!114 &8288051841000086853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2662,6 +2647,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageType: 1
   increasedRange: 0.5
+--- !u!114 &6728906170057925653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288051841000086852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a56df1599cd2e459ed17c7f9334a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 1.2
+  inAttackAnimation: 0
 --- !u!1 &8457375958580378139
 GameObject:
   m_ObjectHideFlags: 0

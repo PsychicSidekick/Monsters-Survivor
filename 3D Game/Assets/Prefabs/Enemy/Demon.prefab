@@ -2427,7 +2427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   additionalManaCost: 0
   increasedRange: 0
-  increasedSpeed: 0
+  increasedSpeed: 0.3
   increasedDamage: 0
   additionalFireBalls: 0
   increasedExplosionRadius: 0
@@ -2449,7 +2449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a56df1599cd2e459ed17c7f9334a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 100
   attackRange: 5
   inAttackAnimation: 0
 --- !u!1 &5390186903128566244

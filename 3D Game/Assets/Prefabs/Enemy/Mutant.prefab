@@ -1245,7 +1245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLife:
     type: 0
-    baseValue: 500
+    baseValue: 1000
   lifeRegen:
     type: 1
     baseValue: 0

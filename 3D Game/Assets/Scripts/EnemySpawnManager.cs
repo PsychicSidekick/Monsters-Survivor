@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefabs;
 
     private void Start()
     {
-        Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        foreach (GameObject enemyPrefab in enemyPrefabs)
+        {
+            Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        }
     }
 }

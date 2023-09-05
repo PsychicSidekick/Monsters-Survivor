@@ -785,8 +785,8 @@ GameObject:
   - component: {fileID: 1882591495079538878}
   - component: {fileID: 1882591495079538879}
   - component: {fileID: 1882591495079538872}
-  - component: {fileID: 1882591495079538873}
   - component: {fileID: 1882591495079538874}
+  - component: {fileID: 7111855284402048050}
   m_Layer: 7
   m_Name: Assassin
   m_TagString: Enemy
@@ -1016,21 +1016,6 @@ MonoBehaviour:
   isChannelling: 0
   currentChannelingGameObject: {fileID: 0}
   lastSkillUseTime: 0
---- !u!114 &1882591495079538873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1882591495079538875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5db608a4c6837349a0c4677e6037d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRange: 100
-  attackRange: 1.2
-  inAttackAnimation: 0
 --- !u!114 &1882591495079538874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,6 +1030,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageType: 3
   increasedRange: 0.5
+--- !u!114 &7111855284402048050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882591495079538875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a56df1599cd2e459ed17c7f9334a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 1.2
+  inAttackAnimation: 0
 --- !u!1 &1941059292046293355
 GameObject:
   m_ObjectHideFlags: 0
