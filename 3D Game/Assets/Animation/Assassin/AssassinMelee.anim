@@ -9126,7 +9126,7 @@ AnimationClip:
     attribute: inAttackAnimation
     path: 
     classID: 114
-    script: {fileID: 11500000, guid: f5db608a4c6837349a0c4677e6037d35, type: 3}
+    script: {fileID: 11500000, guid: 11a56df1599cd2e459ed17c7f9334a7f, type: 3}
   m_PPtrCurves: []
   m_SampleRate: 30
   m_WrapMode: 0
@@ -9397,7 +9397,7 @@ AnimationClip:
     - serializedVersion: 2
       path: 0
       attribute: 2191388307
-      script: {fileID: 11500000, guid: f5db608a4c6837349a0c4677e6037d35, type: 3}
+      script: {fileID: 11500000, guid: 11a56df1599cd2e459ed17c7f9334a7f, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
@@ -46431,7 +46431,7 @@ AnimationClip:
     attribute: inAttackAnimation
     path: 
     classID: 114
-    script: {fileID: 11500000, guid: f5db608a4c6837349a0c4677e6037d35, type: 3}
+    script: {fileID: 11500000, guid: 11a56df1599cd2e459ed17c7f9334a7f, type: 3}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2
