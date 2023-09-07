@@ -27,10 +27,10 @@ public class CharacterUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            characterUI.SetActive(!characterUI.activeInHierarchy);
-        }
+        //if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    characterUI.SetActive(!characterUI.activeInHierarchy);
+        //}
 
         lifeRegenTxt.text = "Life regen per second: " + player.stats.lifeRegen.value;
         manaRegenTxt.text = "Mana regen per second: " + player.stats.manaRegen.value;

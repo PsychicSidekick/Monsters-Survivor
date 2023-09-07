@@ -14,20 +14,27 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
+    // call to pause/unpause game
+    public void ToggleGamePause()
     {
-        PlayerControl.instance.xp = PlayerPrefs.GetInt("PlayerXp");
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = 0;
+        }
     }
 
-    public void SaveGame()
+    public void PauseGame()
     {
-        PlayerPrefs.SetInt("PlayerXp", PlayerControl.instance.xp);
+        Time.timeScale = 0;
     }
 
-    private void OnApplicationQuit()
+    public void UnpauseGame()
     {
-        SaveGame();
-        PlayerPrefs.SetInt("PlayerXp", 0);
+        Time.timeScale = 1;
     }
 
     public Vector3 RefinedPos(Vector3 position)

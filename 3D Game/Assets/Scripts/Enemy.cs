@@ -24,12 +24,13 @@ public class Enemy : Character
         healthBarCanvas = GameObject.Find("EnemyHealthCanvas");
         player = PlayerControl.instance;
         healthBar = Instantiate(healthBarPrefab, healthBarCanvas.transform);
+        healthBar.GetComponent<RectTransform>().anchoredPosition = GameManager.instance.WorldToCanvasPos(healthBarCanvas, transform.position);
+
     }
 
     protected override void Update()
     {
         base.Update();
-
         healthBar.GetComponent<RectTransform>().anchoredPosition = GameManager.instance.WorldToCanvasPos(healthBarCanvas, transform.position);
         healthBar.GetComponent<Slider>().value = life/stats.maxLife.value;
     }

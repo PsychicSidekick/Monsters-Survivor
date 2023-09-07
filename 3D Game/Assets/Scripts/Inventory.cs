@@ -49,10 +49,10 @@ public class Inventory : MonoBehaviour
         }
 
         // Toggle inventory UI
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            inventoryUI.SetActive(!inventoryUI.activeInHierarchy);
-        }
+        //if (Input.GetKeyDown(KeyCode.I))
+        //{
+        //    inventoryUI.SetActive(!inventoryUI.activeInHierarchy);
+        //}
 
         if (pickingUpLoot)
         {
