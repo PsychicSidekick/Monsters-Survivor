@@ -5,14 +5,13 @@ using UnityEngine;
 public class EnemySpawnManager : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
+    public TextAsset spawnDataJson;
+    public SpawnData spawnData;
 
     private void Start()
     {
-        //foreach (GameObject enemyPrefab in enemyPrefabs)
-        //{
-        //    Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-        //}
-        StartCoroutine(Spawn());
+        spawnData = JsonUtility.FromJson<SpawnData>(spawnDataJson.text);
+        StartCoroutine(SpawnSequence());
     }
 
     private Vector3 RandomSpawnPositionAroundPlayer(float distanceFromPlayer)
@@ -31,13 +30,71 @@ public class EnemySpawnManager : MonoBehaviour
         return PlayerControl.instance.transform.position + randomDirection * distanceFromPlayer;
     }
 
-    public IEnumerator Spawn()
+    public IEnumerator SpawnSequence()
     {
-        for (int i = 0; i < 100; i++)
+        // repeat for every wave
+        for (int i = 0; i < spawnData.waves.Length; i++)
         {
-            Vector3 spawnPosition = RandomSpawnPositionAroundPlayer(15);
-            Instantiate(enemyPrefabs[0], spawnPosition, Quaternion.identity);
-            yield return new WaitForSeconds(3f);
+            // repeat for every specialJob
+            for (int j = 0; j < spawnData.waves[i].specialJobs.Length; j++)
+            {
+                StartCoroutine(SpecialSpawnJob(spawnData.waves[i].specialJobs[j]));
+            }
+
+            // repeat for every job
+            for (int k = 0; k < spawnData.waves[i].jobs.Length; k++)
+            {
+                StartCoroutine(SpawnJob(spawnData.waves[i].jobs[k], spawnData.waves[i].duration));
+            }
+
+            yield return new WaitForSeconds(spawnData.waves[i].duration);
         }
     }
+
+    public IEnumerator SpawnJob(Job job, float duration)
+    {
+        for (int i = 0; i < job.amount; i++)
+        {
+            Vector3 spawnPosition = RandomSpawnPositionAroundPlayer(12);
+            Instantiate(enemyPrefabs[job.enemyTypeID], spawnPosition, Quaternion.identity);
+            yield return new WaitForSeconds(duration/job.amount);
+        }
+    }
+
+    public IEnumerator SpecialSpawnJob(SpecialJob specialJob)
+    {
+        yield return new WaitForSeconds(specialJob.startTime);
+        for (int i = 0; i < specialJob.amount; i++)
+        {
+            Vector3 spawnPosition = RandomSpawnPositionAroundPlayer(12);
+            Instantiate(enemyPrefabs[specialJob.enemyTypeID], spawnPosition, Quaternion.identity);
+        }
+    }
+}
+
+[System.Serializable]
+public class SpawnData
+{
+    public Wave[] waves;
+}
+
+[System.Serializable]
+public class Wave
+{
+    public float duration;
+    public Job[] jobs;
+    public SpecialJob[] specialJobs; 
+}
+
+[System.Serializable]
+public class Job
+{
+    public int enemyTypeID;
+    public int amount;
+}
+
+[System.Serializable]
+public class SpecialJob : Job
+{
+    public float startTime;
 }

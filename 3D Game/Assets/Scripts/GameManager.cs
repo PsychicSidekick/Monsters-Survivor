@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    private void Update()
+    {
+        Debug.Log(Time.time);
+    }
+
     // call to pause/unpause game
     public void ToggleGamePause()
     {
