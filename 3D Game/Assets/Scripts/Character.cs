@@ -102,31 +102,16 @@ public class Character : MonoBehaviour
             return;
         }
 
-        dmg.value *= 1 + stats.increasedDamageTaken.value/100;
-
-        float armor = stats.armor.value;
-        float evasion = stats.evasion.value;
         float fireRes = stats.fireRes.value;
         float coldRes = stats.coldRes.value;
         float lightningRes = stats.lightningRes.value;
 
         if (life > 0)
         {
-            float evasionChance = (float)(1 - 500 * 1.25 / (500 + Mathf.Pow(evasion / 5, 0.9f)));
-            if (Random.Range(1f, 100f) < evasionChance * 100)
-            {
-                Debug.Log("Evaded");
-                return;
-            }
-
-            float finalDmg = dmg.value;
-            float reduction = 100;
+            float reduction = 0;
 
             switch(dmg.type)
             {
-                case DamageType.Physical:
-                    reduction = (1 - armor / (armor + 5 * finalDmg)) * 100;
-                    break;
                 case DamageType.Fire:
                     reduction = Mathf.Clamp(fireRes, float.MinValue, 75);
                     break;
@@ -140,7 +125,7 @@ public class Character : MonoBehaviour
 
             reduction = (Mathf.Abs(reduction) + (reduction > 0 ? 0 : 100)) / 100;
 
-            life -= finalDmg * reduction;
+            life -= dmg.value * reduction;
             CheckDeath();
         }
     }

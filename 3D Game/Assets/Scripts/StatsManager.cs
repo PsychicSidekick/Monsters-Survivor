@@ -13,12 +13,9 @@ public class StatsManager : MonoBehaviour
     public CharacterStat moveSpeed;
     public CharacterStat attackSpeed;
     public CharacterStat attackDmg;
-    public CharacterStat armor;
-    public CharacterStat evasion;
     public CharacterStat fireRes;
     public CharacterStat coldRes;
     public CharacterStat lightningRes;
-    public CharacterStat increasedDamageTaken;
 
     [HideInInspector] public List<CharacterStat> stats = new List<CharacterStat>();
 
@@ -36,12 +33,9 @@ public class StatsManager : MonoBehaviour
         stats.Add(moveSpeed);
         stats.Add(attackSpeed);
         stats.Add(attackDmg);
-        stats.Add(armor);
-        stats.Add(evasion);
         stats.Add(fireRes);
         stats.Add(coldRes);
         stats.Add(lightningRes);
-        stats.Add(increasedDamageTaken);
     }
 
     private void Update()
@@ -63,9 +57,25 @@ public class StatsManager : MonoBehaviour
         FindStatOfType(mod.statType).AddModifier(mod);
     }
 
+    public void ApplyStatModifiers(List<StatModifier> mods)
+    {
+        foreach (StatModifier mod in mods)
+        {
+            ApplyStatModifier(mod);
+        }
+    }
+
     public void RemoveStatModifier(StatModifier mod)
     {
         FindStatOfType(mod.statType).RemoveModifier(mod);
+    }
+
+    public void RemoveStatModifiers(List<StatModifier> mods)
+    {
+        foreach (StatModifier mod in mods)
+        {
+            RemoveStatModifier(mod);
+        }
     }
 
     public CharacterStat FindStatOfType(StatType type)

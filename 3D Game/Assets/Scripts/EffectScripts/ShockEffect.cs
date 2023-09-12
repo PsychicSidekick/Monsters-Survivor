@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShockEffect : StatusEffect
 {
-    StatModifier shockMod;
+    List<StatModifier> shockMods;
 
     public ShockEffect(float shockPercentage, float duration, float chance)
     {
@@ -12,7 +12,10 @@ public class ShockEffect : StatusEffect
         this.chance = chance;
         maxDuration = duration;
         remainingDuration = duration;
-        shockMod = new StatModifier(StatModType.flat_increasedDamageTaken, shockPercentage);
+        StatModifier fireResMod = new StatModifier(StatModType.flat_fireRes, -shockPercentage);
+        StatModifier coldResMod = new StatModifier(StatModType.flat_coldRes, -shockPercentage);
+        StatModifier lightningResMod = new StatModifier(StatModType.flat_lightningRes, -shockPercentage);
+        shockMods = new List<StatModifier> { fireResMod, coldResMod, lightningResMod};
     }
 
     public ShockEffect(ShockEffect shock)
@@ -21,27 +24,27 @@ public class ShockEffect : StatusEffect
         chance = shock.chance;
         maxDuration = shock.maxDuration;
         remainingDuration = shock.remainingDuration;
-        shockMod = shock.shockMod;
+        shockMods = shock.shockMods;
     }
 
     public override void OnApply(Character character)
     {
-        character.stats.ApplyStatModifier(shockMod);
+        character.stats.ApplyStatModifiers(shockMods);
     }
 
     public override void AddStack(Character character, StatusEffect statusEffect)
     {
-        if (((ShockEffect)statusEffect).shockMod.value >= shockMod.value)
+        if (((ShockEffect)statusEffect).shockMods[0].value <= shockMods[0].value)
         {
-            character.stats.RemoveStatModifier(shockMod);
-            shockMod = ((ShockEffect)statusEffect).shockMod;
+            character.stats.RemoveStatModifiers(shockMods);
+            shockMods = ((ShockEffect)statusEffect).shockMods;
             remainingDuration = statusEffect.maxDuration;
-            character.stats.ApplyStatModifier(shockMod);
+            character.stats.ApplyStatModifiers(shockMods);
         }
     }
 
     public override void OnRemove(Character character)
     {
-        character.stats.RemoveStatModifier(shockMod);
+        character.stats.RemoveStatModifiers(shockMods);
     }
 }

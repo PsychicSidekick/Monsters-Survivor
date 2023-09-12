@@ -12,8 +12,6 @@ public class CharacterUI : MonoBehaviour
     public TMP_Text moveSpeedTxt;
     public TMP_Text atkSpeedTxt;
     public TMP_Text atkDamageTxt;
-    public TMP_Text armourTxt;
-    public TMP_Text evasionTxt;
     public TMP_Text fireResTxt;
     public TMP_Text coldResTxt;
     public TMP_Text lightningResTxt;
@@ -37,8 +35,6 @@ public class CharacterUI : MonoBehaviour
         moveSpeedTxt.text = "Movement Speed: " + player.stats.moveSpeed.value;
         atkSpeedTxt.text = "Attacks per second: " + player.stats.attackSpeed.value;
         atkDamageTxt.text = "Bonus Attack Damage: " + player.stats.attackDmg.value;
-        armourTxt.text = "Armour: " + player.stats.armor.value;
-        evasionTxt.text = "Evasion: " + player.stats.evasion.value;
         fireResTxt.text = "Fire Resistance: " + player.stats.fireRes.value + "%";
         coldResTxt.text = "Cold Resistance: " + player.stats.coldRes.value + "%";
         lightningResTxt.text = "Lightning Resistance: " + player.stats.lightningRes.value + "%";
