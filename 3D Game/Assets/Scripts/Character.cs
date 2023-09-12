@@ -123,9 +123,7 @@ public class Character : MonoBehaviour
                     break;
             }
 
-            reduction = (Mathf.Abs(reduction) + (reduction > 0 ? 0 : 100)) / 100;
-
-            life -= dmg.value * reduction;
+            life -= dmg.value * (1 - reduction / 100);
             CheckDeath();
         }
     }

@@ -2460,7 +2460,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 58f32ba312da65e4ab410fbb5a35afb3, type: 2}
   - {fileID: 11400000, guid: 1571d0fd26bb4b2479abf05690a5de47, type: 2}
   - {fileID: 11400000, guid: a2d572f5e427d2b4f9623dc9bf243cf8, type: 2}
-  xpYield: 10000
+  xpYield: 100
   player: {fileID: 0}
   detectionRange: 0
   attackRange: 0
@@ -2490,30 +2490,21 @@ MonoBehaviour:
     baseValue: 10000
   moveSpeed:
     type: 4
-    baseValue: 2.5
+    baseValue: 1.5
   attackSpeed:
     type: 5
     baseValue: 1
   attackDmg:
     type: 6
     baseValue: 0
-  armor:
+  fireRes:
     type: 7
-    baseValue: 0
-  evasion:
+    baseValue: 20
+  coldRes:
     type: 8
     baseValue: 0
-  fireRes:
-    type: 9
-    baseValue: 0
-  coldRes:
-    type: 10
-    baseValue: 0
   lightningRes:
-    type: 11
-    baseValue: 0
-  increasedDamageTaken:
-    type: 12
+    type: 9
     baseValue: 0
   stats: []
   animationSpeedMultiplier: 0
@@ -2645,7 +2636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba7c2c07d75aed418e2db3d20c83874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageType: 1
+  damageType: 0
   increasedRange: 0.5
 --- !u!114 &6728906170057925653
 MonoBehaviour:

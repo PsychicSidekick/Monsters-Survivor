@@ -20,3 +20,12 @@ MonoBehaviour:
   targetsCharacters: 1
   isChannellingSkill: 0
   baseRange: 1
+  baseDamage: 20
+  baseIgniteDuration: 2
+  baseIgniteChance: 20
+  baseSlowEffect: 50
+  baseSlowDuration: 0.5
+  baseSlowChance: 30
+  baseShockEffect: 10
+  baseShockDuration: 2
+  baseShockChance: 50

@@ -16,7 +16,7 @@ MonoBehaviour:
   skillIcon: {fileID: 21300000, guid: 5d3f65ce0671b8c48ad1e7d133d3618d, type: 3}
   coolDownTime: 0
   activeTime: 0
-  baseManaCost: 10
+  baseManaCost: 15
   targetsCharacters: 0
   isChannellingSkill: 0
   ballPrefab: {fileID: 3928469377355962383, guid: fb980d06c1c9cbd41a01d6acf6ccb34d, type: 3}

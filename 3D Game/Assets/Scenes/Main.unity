@@ -40288,8 +40288,6 @@ MonoBehaviour:
   moveSpeedTxt: {fileID: 1211064553}
   atkSpeedTxt: {fileID: 1010815658}
   atkDamageTxt: {fileID: 1901346649}
-  armourTxt: {fileID: 125014625}
-  evasionTxt: {fileID: 271354123}
   fireResTxt: {fileID: 999216386}
   coldResTxt: {fileID: 2075245580}
   lightningResTxt: {fileID: 834978180}
@@ -48403,23 +48401,14 @@ MonoBehaviour:
   attackDmg:
     type: 6
     baseValue: 0
-  armor:
+  fireRes:
     type: 7
     baseValue: 0
-  evasion:
+  coldRes:
     type: 8
     baseValue: 0
-  fireRes:
-    type: 9
-    baseValue: 0
-  coldRes:
-    type: 10
-    baseValue: 0
   lightningRes:
-    type: 11
-    baseValue: 0
-  increasedDamageTaken:
-    type: 12
+    type: 9
     baseValue: 0
   stats: []
   animationSpeedMultiplier: 0
@@ -49457,10 +49446,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7729415333450674985, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
-      propertyPath: maxLife.baseValue
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 7729415333450674986, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
       propertyPath: healthBarCanvas
       value: 
@@ -50356,10 +50341,6 @@ PrefabInstance:
     - target: {fileID: 8288051841000087227, guid: 1535d35eb837a8247a9b0ffd7fae32e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8288051841000087229, guid: 1535d35eb837a8247a9b0ffd7fae32e5, type: 3}
-      propertyPath: moveSpeed.baseValue
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8676329035993707272, guid: 1535d35eb837a8247a9b0ffd7fae32e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

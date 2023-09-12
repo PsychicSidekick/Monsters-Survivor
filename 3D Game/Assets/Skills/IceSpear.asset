@@ -16,7 +16,7 @@ MonoBehaviour:
   skillIcon: {fileID: 21300000, guid: 624648df63c1b9446947943b3f58c0e0, type: 3}
   coolDownTime: 0
   activeTime: 0
-  baseManaCost: 25
+  baseManaCost: 10
   targetsCharacters: 0
   isChannellingSkill: 0
   iceSpearPrefab: {fileID: 3120438280565544056, guid: cdd0ff3bcbf89414aa7c05e867724303, type: 3}

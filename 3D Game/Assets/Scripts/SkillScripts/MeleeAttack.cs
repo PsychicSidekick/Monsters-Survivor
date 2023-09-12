@@ -6,6 +6,18 @@ using UnityEngine;
 public class MeleeAttack : Skill
 {
     public float baseRange;
+    public float baseDamage;
+
+    public float baseIgniteDuration;
+    public float baseIgniteChance;
+
+    public float baseSlowEffect;
+    public float baseSlowDuration;
+    public float baseSlowChance;
+
+    public float baseShockEffect;
+    public float baseShockDuration;
+    public float baseShockChance;
 
     public override void OnUse(Character skillUser)
     {
@@ -18,9 +30,35 @@ public class MeleeAttack : Skill
     public override void UseSkill(Character skillUser)
     {
         Character targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
-        if (Vector3.Distance(skillUser.transform.position, targetCharacter.transform.position) <= baseRange + skillUser.GetComponent<MeleeSkillTree>().increasedRange + 1)
+        MeleeSkillTree skillTree = skillUser.GetComponent<MeleeSkillTree>();
+        if (Vector3.Distance(skillUser.transform.position, targetCharacter.transform.position) <= baseRange + skillTree.increasedRange + 1)
         {
-            targetCharacter.ReceiveDamage(new Damage(500, skillUser, DamageType.Fire));
+            float damage = (baseDamage + skillUser.stats.attackDmg.value) * (1 + skillTree.increasedDamage);
+            targetCharacter.ReceiveDamage(new Damage(baseDamage + skillUser.stats.attackDmg.value, skillUser, skillTree.damageType));
+
+            StatusEffect statusEffect = new StatusEffect();
+            switch (skillTree.damageType)
+            {
+                case DamageType.Fire:
+                    float igniteDamage = damage * 0.5f * (1 + skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration);
+                    float igniteDuration = baseIgniteDuration * (1 + skillTree.increasedIgniteDuration);
+                    float igniteChance = baseIgniteChance + skillTree.increasedIgniteChance;
+                    statusEffect = new IgniteEffect(skillUser, igniteDamage, igniteDuration, igniteChance);
+                    break;
+                case DamageType.Cold:
+                    float slowEffect = baseSlowEffect + skillTree.increasedSlowEffect;
+                    float slowDuration = baseSlowDuration * (1 + skillTree.increasedSlowDuration);
+                    float slowChance = baseSlowChance + skillTree.increasedSlowChance;
+                    statusEffect = new SlowEffect(slowEffect, slowDuration, slowChance);
+                    break;
+                case DamageType.Lightning:
+                    float shockEffect = baseShockEffect + skillTree.increasedShockEffect;
+                    float shockDuration = baseShockDuration * (1 + skillTree.increasedShockDuration);
+                    float shockChance = baseShockChance + skillTree.increasedShockChance;
+                    statusEffect = new ShockEffect(shockEffect, shockDuration, shockChance);
+                    break;
+            }
+            targetCharacter.GetComponent<StatusEffectManager>().ApplyStatusEffect(statusEffect);
         }
     }
 }

@@ -1264,23 +1264,14 @@ MonoBehaviour:
   attackDmg:
     type: 6
     baseValue: 0
-  armor:
+  fireRes:
     type: 7
     baseValue: 0
-  evasion:
+  coldRes:
     type: 8
     baseValue: 0
-  fireRes:
-    type: 9
-    baseValue: 0
-  coldRes:
-    type: 10
-    baseValue: 0
   lightningRes:
-    type: 11
-    baseValue: 0
-  increasedDamageTaken:
-    type: 12
+    type: 9
     baseValue: 0
   stats: []
   animationSpeedMultiplier: 0
@@ -1419,12 +1410,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3725b2003fcc54d84bca06ba6e0e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 10
   meleeAttackRange: 1.5
   frozenOrbRange: 3
   inAttackAnimation: 0
   timesOfMeleeUsed: 0
-  timesOfFrozenOrbUsed: 0
 --- !u!114 &8835673344882010418
 MonoBehaviour:
   m_ObjectHideFlags: 0

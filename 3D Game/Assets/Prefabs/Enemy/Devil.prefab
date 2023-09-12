@@ -2837,7 +2837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLife:
     type: 0
-    baseValue: 50000
+    baseValue: 1000
   lifeRegen:
     type: 1
     baseValue: 0
@@ -2856,23 +2856,14 @@ MonoBehaviour:
   attackDmg:
     type: 6
     baseValue: 0
-  armor:
+  fireRes:
     type: 7
     baseValue: 0
-  evasion:
+  coldRes:
     type: 8
     baseValue: 0
-  fireRes:
-    type: 9
-    baseValue: 0
-  coldRes:
-    type: 10
-    baseValue: 0
   lightningRes:
-    type: 11
-    baseValue: 0
-  increasedDamageTaken:
-    type: 12
+    type: 9
     baseValue: 0
   stats: []
   animationSpeedMultiplier: 0
@@ -3018,7 +3009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4149327fbfcf9f4cae6a3e4409da4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 9
   fireballRange: 5
   blastRange: 0
   inAttackAnimation: 0
