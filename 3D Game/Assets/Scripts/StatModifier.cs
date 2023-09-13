@@ -33,7 +33,6 @@ public enum StatModType
     flat_fireRes,
     flat_coldRes,
     flat_lightningRes,
-    flat_CooldownReduction,
     inc_FireDamage,
     inc_ColdDamage,
     inc_LightningDamage,
@@ -45,9 +44,10 @@ public enum StatModType
     inc_IgniteDamage,
     inc_IgniteChance,
     inc_IgniteDuration,
-    inc_FreezeChance,
-    inc_FreezeDuration,
-    inc_ShockEffect,
+    flat_SlowEffect,
+    inc_SlowChance,
+    inc_SlowDuration,
+    flat_ShockEffect,
     inc_ShockChance,
     inc_ShockDuration
 }

@@ -16,6 +16,23 @@ public class StatsManager : MonoBehaviour
     public CharacterStat fireRes;
     public CharacterStat coldRes;
     public CharacterStat lightningRes;
+    public CharacterStat fireDamage;
+    public CharacterStat coldDamage;
+    public CharacterStat lightningDamage;
+    public CharacterStat areaDamage;
+    public CharacterStat areaEffect;
+    public CharacterStat projDamage;
+    public CharacterStat projSpeed;
+    public CharacterStat noOfProj;
+    public CharacterStat igniteDamage;
+    public CharacterStat igniteChance;
+    public CharacterStat igniteDuration;
+    public CharacterStat slowEffect;
+    public CharacterStat slowChance;
+    public CharacterStat slowDuration;
+    public CharacterStat shockEffect;
+    public CharacterStat shockChance;
+    public CharacterStat shockDuration;
 
     [HideInInspector] public List<CharacterStat> stats = new List<CharacterStat>();
 
@@ -36,6 +53,23 @@ public class StatsManager : MonoBehaviour
         stats.Add(fireRes);
         stats.Add(coldRes);
         stats.Add(lightningRes);
+        stats.Add(fireDamage);
+        stats.Add(coldDamage);
+        stats.Add(lightningDamage);
+        stats.Add(areaDamage);
+        stats.Add(areaEffect);
+        stats.Add(projDamage);
+        stats.Add(projSpeed);
+        stats.Add(noOfProj);
+        stats.Add(igniteDamage);
+        stats.Add(igniteChance);
+        stats.Add(igniteDuration);
+        stats.Add(slowEffect);
+        stats.Add(slowChance);
+        stats.Add(slowDuration);
+        stats.Add(shockEffect);
+        stats.Add(shockChance);
+        stats.Add(shockDuration);
     }
 
     private void Update()

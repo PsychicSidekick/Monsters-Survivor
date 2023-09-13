@@ -27311,7 +27311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1409478795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48410,6 +48410,57 @@ MonoBehaviour:
   lightningRes:
     type: 9
     baseValue: 0
+  fireDamage:
+    type: 10
+    baseValue: 1
+  coldDamage:
+    type: 11
+    baseValue: 1
+  lightningDamage:
+    type: 12
+    baseValue: 1
+  areaDamage:
+    type: 13
+    baseValue: 1
+  areaEffect:
+    type: 14
+    baseValue: 1
+  projDamage:
+    type: 15
+    baseValue: 1
+  projSpeed:
+    type: 16
+    baseValue: 1
+  noOfProj:
+    type: 17
+    baseValue: 0
+  igniteDamage:
+    type: 18
+    baseValue: 1
+  igniteChance:
+    type: 19
+    baseValue: 0
+  igniteDuration:
+    type: 20
+    baseValue: 1
+  slowEffect:
+    type: 21
+    baseValue: 0
+  slowChance:
+    type: 22
+    baseValue: 0
+  slowDuration:
+    type: 23
+    baseValue: 1
+  shockEffect:
+    type: 24
+    baseValue: 0
+  shockChance:
+    type: 25
+    baseValue: 0
+  shockDuration:
+    type: 26
+    baseValue: 1
   stats: []
   animationSpeedMultiplier: 0
 --- !u!114 &7330022531779653763

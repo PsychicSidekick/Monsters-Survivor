@@ -40,7 +40,7 @@ public class FireBallSkill : Skill
         float fireBallDamage = ballBaseDmg * (1 + skillTree.increasedDamage);
         float igniteDuration = baseIgniteDuration * (1 + skillTree.increasedIgniteDuration);
         float igniteChance = baseIgniteChance + skillTree.increasedIgniteChance;
-        float igniteDamageMultiplier = baseIgniteDamageMultiplier + skillTree.increasedIgniteDamageMultiplier + skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration;
+        float igniteDamageMultiplier = baseIgniteDamageMultiplier + skillTree.increasedIgniteDamageMultiplier;
         int numberOfFireBalls = numberOfProjectiles + skillTree.additionalFireBalls;
         float fireBallRange = ballRange * (1 + skillTree.increasedRange);
         float fireBallSpeed = ballSpeed * (1 + skillTree.increasedSpeed);
@@ -63,7 +63,7 @@ public class FireBallSkill : Skill
 
             if (!skillTree.igniteAppliedByExplosion)
             {
-                float igniteDamage = fireBallDamage * igniteDamageMultiplier;
+                float igniteDamage = fireBallDamage * igniteDamageMultiplier * (1 + +skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration);
                 IgniteEffect ignite = new IgniteEffect(skillUser, igniteDamage, igniteDuration, igniteChance);
 
                 collider.SetHostileEffects(fireBallDamage, DamageType.Fire, false, skillUser, null, ignite);
