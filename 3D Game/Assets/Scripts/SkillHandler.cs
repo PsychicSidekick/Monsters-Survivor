@@ -42,7 +42,7 @@ public class SkillHandler : MonoBehaviour
     private void Start()
     {
         skillUser = GetComponent<Character>();
-        currentSkillAttackSpeedMod = new StatModifier(StatModType.inc_AtkSpd, 0);
+        currentSkillAttackSpeedMod = new StatModifier(StatModType.inc_AttackSpeed, 0);
         skillUser.stats.ApplyStatModifier(currentSkillAttackSpeedMod);
     }
 
@@ -157,7 +157,7 @@ public class SkillHandler : MonoBehaviour
     public void SetCurrentAttackSpeedMod(float value)
     {
         skillUser.stats.RemoveStatModifier(currentSkillAttackSpeedMod);
-        currentSkillAttackSpeedMod = new StatModifier(StatModType.inc_AtkSpd, value);
+        currentSkillAttackSpeedMod = new StatModifier(StatModType.inc_AttackSpeed, value);
         skillUser.stats.ApplyStatModifier(currentSkillAttackSpeedMod);
     }
 }

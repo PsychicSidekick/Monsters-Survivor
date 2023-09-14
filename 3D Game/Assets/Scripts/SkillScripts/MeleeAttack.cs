@@ -33,8 +33,8 @@ public class MeleeAttack : Skill
         MeleeSkillTree skillTree = skillUser.GetComponent<MeleeSkillTree>();
         if (Vector3.Distance(skillUser.transform.position, targetCharacter.transform.position) <= baseRange + skillTree.increasedRange + 1)
         {
-            float damage = (baseDamage + skillUser.stats.attackDmg.value) * (1 + skillTree.increasedDamage);
-            targetCharacter.ReceiveDamage(new Damage(baseDamage + skillUser.stats.attackDmg.value, skillUser, skillTree.damageType));
+            float damage = (baseDamage + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedDamage);
+            targetCharacter.ReceiveDamage(new Damage(baseDamage + skillUser.stats.attackDamage.value, skillUser, skillTree.damageType));
 
             StatusEffect statusEffect = new StatusEffect();
             switch (skillTree.damageType)

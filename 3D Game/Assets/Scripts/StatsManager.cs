@@ -6,33 +6,33 @@ public class StatsManager : MonoBehaviour
 {
     private Character c;
 
-    public CharacterStat maxLife;
-    public CharacterStat lifeRegen;
-    public CharacterStat maxMana;
-    public CharacterStat manaRegen;
-    public CharacterStat moveSpeed;
+    public CharacterStat maximumLife;
+    public CharacterStat lifeRegeneration;
+    public CharacterStat maximumMana;
+    public CharacterStat manaRegeneration;
+    public CharacterStat movementSpeed;
     public CharacterStat attackSpeed;
-    public CharacterStat attackDmg;
-    public CharacterStat fireRes;
-    public CharacterStat coldRes;
-    public CharacterStat lightningRes;
-    public CharacterStat fireDamage;
-    public CharacterStat coldDamage;
-    public CharacterStat lightningDamage;
-    public CharacterStat areaDamage;
-    public CharacterStat areaEffect;
-    public CharacterStat projDamage;
-    public CharacterStat projSpeed;
-    public CharacterStat noOfProj;
-    public CharacterStat igniteDamage;
-    public CharacterStat igniteChance;
-    public CharacterStat igniteDuration;
-    public CharacterStat slowEffect;
-    public CharacterStat slowChance;
-    public CharacterStat slowDuration;
-    public CharacterStat shockEffect;
-    public CharacterStat shockChance;
-    public CharacterStat shockDuration;
+    public CharacterStat attackDamage;
+    public CharacterStat fireResistance;
+    public CharacterStat coldResistance;
+    public CharacterStat lightningResistance;
+    public CharacterStat increasedFireDamage;
+    public CharacterStat increasedColdDamage;
+    public CharacterStat increasedLightningDamage;
+    public CharacterStat increasedAreaDamage;
+    public CharacterStat increasedAreaEffect;
+    public CharacterStat increasedProjectileDamage;
+    public CharacterStat increasedProjectileSpeed;
+    public CharacterStat additionalNumberOfProjectiles;
+    public CharacterStat increasedIgniteDamage;
+    public CharacterStat additionalIgniteChance;
+    public CharacterStat increasedIgniteDuration;
+    public CharacterStat increasedSlowEffect;
+    public CharacterStat additionalSlowChance;
+    public CharacterStat increasedSlowDuration;
+    public CharacterStat increasedShockEffect;
+    public CharacterStat additionalShockChance;
+    public CharacterStat increasedShockDuration;
 
     [HideInInspector] public List<CharacterStat> stats = new List<CharacterStat>();
 
@@ -43,40 +43,40 @@ public class StatsManager : MonoBehaviour
         animationSpeedMultiplier = 1;
         c = GetComponent<Character>();
 
-        stats.Add(maxLife);
-        stats.Add(lifeRegen);
-        stats.Add(maxMana);
-        stats.Add(manaRegen);
-        stats.Add(moveSpeed);
+        stats.Add(maximumLife);
+        stats.Add(lifeRegeneration);
+        stats.Add(maximumMana);
+        stats.Add(manaRegeneration);
+        stats.Add(movementSpeed);
         stats.Add(attackSpeed);
-        stats.Add(attackDmg);
-        stats.Add(fireRes);
-        stats.Add(coldRes);
-        stats.Add(lightningRes);
-        stats.Add(fireDamage);
-        stats.Add(coldDamage);
-        stats.Add(lightningDamage);
-        stats.Add(areaDamage);
-        stats.Add(areaEffect);
-        stats.Add(projDamage);
-        stats.Add(projSpeed);
-        stats.Add(noOfProj);
-        stats.Add(igniteDamage);
-        stats.Add(igniteChance);
-        stats.Add(igniteDuration);
-        stats.Add(slowEffect);
-        stats.Add(slowChance);
-        stats.Add(slowDuration);
-        stats.Add(shockEffect);
-        stats.Add(shockChance);
-        stats.Add(shockDuration);
+        stats.Add(attackDamage);
+        stats.Add(fireResistance);
+        stats.Add(coldResistance);
+        stats.Add(lightningResistance);
+        stats.Add(increasedFireDamage);
+        stats.Add(increasedColdDamage);
+        stats.Add(increasedLightningDamage);
+        stats.Add(increasedAreaDamage);
+        stats.Add(increasedAreaEffect);
+        stats.Add(increasedProjectileDamage);
+        stats.Add(increasedProjectileSpeed);
+        stats.Add(additionalNumberOfProjectiles);
+        stats.Add(increasedIgniteDamage);
+        stats.Add(additionalIgniteChance);
+        stats.Add(increasedIgniteDuration);
+        stats.Add(increasedSlowEffect);
+        stats.Add(additionalSlowChance);
+        stats.Add(increasedSlowDuration);
+        stats.Add(increasedShockEffect);
+        stats.Add(additionalShockChance);
+        stats.Add(increasedShockDuration);
     }
 
     private void Update()
     {
-        c.agent.speed = animationSpeedMultiplier * moveSpeed.value;
+        c.agent.speed = animationSpeedMultiplier * movementSpeed.value;
         c.animator.SetFloat("AttackSpeed", animationSpeedMultiplier * attackSpeed.value);
-        c.animator.SetFloat("ActionSpeed", animationSpeedMultiplier * moveSpeed.value);
+        c.animator.SetFloat("ActionSpeed", animationSpeedMultiplier * movementSpeed.value);
     }
 
     public IEnumerator ApplyTemporaryBuff(StatModifier mod, float duration)

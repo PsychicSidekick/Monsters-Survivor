@@ -12,9 +12,9 @@ public class ShockEffect : StatusEffect
         this.chance = chance;
         maxDuration = duration;
         remainingDuration = duration;
-        StatModifier fireResMod = new StatModifier(StatModType.flat_fireRes, -shockPercentage);
-        StatModifier coldResMod = new StatModifier(StatModType.flat_coldRes, -shockPercentage);
-        StatModifier lightningResMod = new StatModifier(StatModType.flat_lightningRes, -shockPercentage);
+        StatModifier fireResMod = new StatModifier(StatModType.flat_FireResistance, -shockPercentage);
+        StatModifier coldResMod = new StatModifier(StatModType.flat_ColdResistance, -shockPercentage);
+        StatModifier lightningResMod = new StatModifier(StatModType.flat_LightningResistance, -shockPercentage);
         shockMods = new List<StatModifier> { fireResMod, coldResMod, lightningResMod};
     }
 

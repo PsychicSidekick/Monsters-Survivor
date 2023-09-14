@@ -65,10 +65,10 @@ public class Devil : MonoBehaviour
             enemySkillHandler.skills[1].triggerSkill = false;
         }
 
-        if (!enraged && enemy.life <= enemy.stats.maxLife.value * 0.3f)
+        if (!enraged && enemy.life <= enemy.stats.maximumLife.value * 0.3f)
         {
             enraged = true;
-            enemy.stats.ApplyStatModifier(new StatModifier(StatType.AtkSpd, 50, ModType.inc));
+            enemy.stats.ApplyStatModifier(new StatModifier(StatType.AttackSpeed, 50, ModType.inc));
         }
     }
 

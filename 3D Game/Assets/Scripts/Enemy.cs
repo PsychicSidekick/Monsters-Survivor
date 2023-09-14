@@ -32,12 +32,12 @@ public class Enemy : Character
     {
         base.Update();
         healthBar.GetComponent<RectTransform>().anchoredPosition = GameManager.instance.WorldToCanvasPos(healthBarCanvas, transform.position);
-        healthBar.GetComponent<Slider>().value = life/stats.maxLife.value;
+        healthBar.GetComponent<Slider>().value = life/stats.maximumLife.value;
     }
 
     public void SpawnLoot()
     {
-        for (int i = 0; i < 0; i++)
+        for (int i = 0; i < 1; i++)
         {
             // Choose random item from loot pool
             ItemPrefab itemPrefab = lootPool[Random.Range(0, lootPool.Count)];

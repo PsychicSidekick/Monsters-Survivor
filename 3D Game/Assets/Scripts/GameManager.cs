@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Time.time);
+        //Debug.Log(Time.time);
     }
 
     // call to pause/unpause game

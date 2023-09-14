@@ -30,13 +30,13 @@ public class CharacterUI : MonoBehaviour
         //    characterUI.SetActive(!characterUI.activeInHierarchy);
         //}
 
-        lifeRegenTxt.text = "Life regen per second: " + player.stats.lifeRegen.value;
-        manaRegenTxt.text = "Mana regen per second: " + player.stats.manaRegen.value;
-        moveSpeedTxt.text = "Movement Speed: " + player.stats.moveSpeed.value;
+        lifeRegenTxt.text = "Life regen per second: " + player.stats.lifeRegeneration.value;
+        manaRegenTxt.text = "Mana regen per second: " + player.stats.manaRegeneration.value;
+        moveSpeedTxt.text = "Movement Speed: " + player.stats.movementSpeed.value;
         atkSpeedTxt.text = "Attacks per second: " + player.stats.attackSpeed.value;
-        atkDamageTxt.text = "Bonus Attack Damage: " + player.stats.attackDmg.value;
-        fireResTxt.text = "Fire Resistance: " + player.stats.fireRes.value + "%";
-        coldResTxt.text = "Cold Resistance: " + player.stats.coldRes.value + "%";
-        lightningResTxt.text = "Lightning Resistance: " + player.stats.lightningRes.value + "%";
+        atkDamageTxt.text = "Bonus Attack Damage: " + player.stats.attackDamage.value;
+        fireResTxt.text = "Fire Resistance: " + player.stats.fireResistance.value + "%";
+        coldResTxt.text = "Cold Resistance: " + player.stats.coldResistance.value + "%";
+        lightningResTxt.text = "Lightning Resistance: " + player.stats.lightningResistance.value + "%";
     }
 }

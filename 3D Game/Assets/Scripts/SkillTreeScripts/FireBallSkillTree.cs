@@ -13,7 +13,6 @@ public class FireBallSkillTree : SkillTree
     public float increasedExplosionRadius;
     public float increasedExplosionDamage;
 
-    public float increasedIgniteDamageMultiplier;
     public float increasedIgniteDamage;
     public float increasedIgniteDuration;
     public float increasedIgniteChance;
@@ -55,11 +54,6 @@ public class FireBallSkillTree : SkillTree
         increasedExplosionDamage += value;
     }
 
-    public void IncreaseIgniteDamageMultiplier(float value)
-    {
-        increasedIgniteDamageMultiplier += value;
-    }
-
     public void IncreaseIgniteDamage(float value)
     {
         increasedIgniteDamage += value;
@@ -91,7 +85,6 @@ public class FireBallSkillTree : SkillTree
         increasedExplosionRadius = 0;
         increasedExplosionDamage = 0;
 
-        increasedIgniteDamageMultiplier = 0;
         increasedIgniteDamage = 0;
         increasedIgniteDuration = 0;
         increasedIgniteChance = 0;

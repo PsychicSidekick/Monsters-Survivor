@@ -27,10 +27,10 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        lifeText.text = (int)player.life + "/" + (int)player.stats.maxLife.value;
-        lifeMask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, lifeBallOriginalSize * player.life / (float)player.stats.maxLife.value);
-        manaText.text = (int)player.mana + "/" + (int)player.stats.maxMana.value;
-        manaMask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, manaBallOriginalSize * player.mana / (float)player.stats.maxMana.value);
+        lifeText.text = (int)player.life + "/" + (int)player.stats.maximumLife.value;
+        lifeMask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, lifeBallOriginalSize * player.life / (float)player.stats.maximumLife.value);
+        manaText.text = (int)player.mana + "/" + (int)player.stats.maximumMana.value;
+        manaMask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, manaBallOriginalSize * player.mana / (float)player.stats.maximumMana.value);
 
         int playerLevel = player.GetCurrentLevel();
         levelText.text = "Level: " + playerLevel;

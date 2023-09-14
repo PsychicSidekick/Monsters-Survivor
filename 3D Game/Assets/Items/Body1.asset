@@ -37,5 +37,5 @@ MonoBehaviour:
   - itemModType: 14
     maxValue: 10
   baseItemMod:
-    itemModType: 8
+    itemModType: 22
     value: {x: 500, y: 1000}

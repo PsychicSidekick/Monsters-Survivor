@@ -5,33 +5,33 @@ using UnityEngine;
 
 public enum StatType
 {
-    MaxLife,
-    LifeRegen,
-    MaxMana,
-    ManaRegen,
-    MoveSpd,
-    AtkSpd,
-    AtkDmg,
-    FireRes,
-    ColdRes,
-    LightningRes,
-    FireDamage,
-    ColdDamage,
-    LightningDamage,
-    AreaDamage,
-    AreaEffect,
-    ProjDamage,
-    ProjSpeed,
-    NoOfProj,
-    IgniteDamage,
-    IgniteChance,
-    IgniteDuration,
-    SlowEffect,
-    SlowChance,
-    SlowDuration,
-    ShockEffect,
-    ShockChance,
-    ShockDuration
+    MaximumLife,
+    LifeRegeneration,
+    MaximumMana,
+    ManaRegeneration,
+    MovementSpeed,
+    AttackSpeed,
+    AttackDamage,
+    FireResistance,
+    ColdResistance,
+    LightningResistance,
+    IncreasedFireDamage,
+    IncreasedColdDamage,
+    IncreasedLightningDamage,
+    IncreasedAreaDamage,
+    IncreasedAreaEffect,
+    IncreasedProjectileDamage,
+    IncreasedProjectileSpeed,
+    AdditionalNumberOfProjectiles,
+    IncreasedIgniteDamage,
+    AdditionalIgniteChance,
+    IncreasedIgniteDuration,
+    IncreasedSlowEffect,
+    AdditionalSlowChance,
+    IncreasedSlowDuration,
+    IncreasedShockEffect,
+    AdditionalShockChance,
+    IncreasedShockDuration
 }
 
 [Serializable]
@@ -119,6 +119,13 @@ public class CharacterStat
 
         finalValue *= 1 + totalPercentIncrease;
 
-        return (float)Mathf.Round(finalValue * 100f) / 100f;
+        float roundedFinalValue = (float)Mathf.Round(finalValue * 100f) / 100f;
+
+        if (type.ToString().Contains("Increased"))
+        {
+            roundedFinalValue /= 100f;
+        }
+
+        return roundedFinalValue;
     }
 }

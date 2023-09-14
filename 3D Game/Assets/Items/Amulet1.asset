@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
   m_Name: Amulet1
   m_EditorClassIdentifier: 
-  itemName: Amulet1
+  itemName: Amulet
   type: 7
   size: {x: 1, y: 1}
   itemObjPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}

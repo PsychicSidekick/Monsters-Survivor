@@ -27,8 +27,8 @@ public class Character : MonoBehaviour
 
     protected virtual void Start()
     {
-        life = stats.maxLife.value;
-        mana = stats.maxMana.value;
+        life = stats.maximumLife.value;
+        mana = stats.maximumMana.value;
     }
 
     protected virtual void Update()
@@ -42,8 +42,8 @@ public class Character : MonoBehaviour
             animator.SetBool("isWalking", true);
         }
 
-        ReceiveHealing(stats.lifeRegen.value * Time.deltaTime);
-        AddMana(stats.manaRegen.value * Time.deltaTime);
+        ReceiveHealing(stats.lifeRegeneration.value * Time.deltaTime);
+        AddMana(stats.manaRegeneration.value * Time.deltaTime);
     }
 
     public int GetCurrentLevel()
@@ -91,8 +91,8 @@ public class Character : MonoBehaviour
     public virtual void OnLevelUp()
     {
         Debug.Log("Leveled Up!");
-        stats.ApplyStatModifier(new StatModifier(StatType.MaxLife, 5, ModType.flat));
-        life = stats.maxLife.value;
+        stats.ApplyStatModifier(new StatModifier(StatType.MaximumLife, 5, ModType.flat));
+        life = stats.maximumLife.value;
     }
 
     public void ReceiveDamage(Damage dmg)
@@ -102,9 +102,9 @@ public class Character : MonoBehaviour
             return;
         }
 
-        float fireRes = stats.fireRes.value;
-        float coldRes = stats.coldRes.value;
-        float lightningRes = stats.lightningRes.value;
+        float fireRes = stats.fireResistance.value;
+        float coldRes = stats.coldResistance.value;
+        float lightningRes = stats.lightningResistance.value;
 
         if (life > 0)
         {
@@ -130,14 +130,14 @@ public class Character : MonoBehaviour
 
     public void ReceiveHealing(float healing)
     {
-        if (life < stats.maxLife.value)
+        if (life < stats.maximumLife.value)
         {
             life += healing;
         }
 
-        if (life > stats.maxLife.value)
+        if (life > stats.maximumLife.value)
         {
-            life = stats.maxLife.value;
+            life = stats.maximumLife.value;
         }
     }
 
@@ -155,14 +155,14 @@ public class Character : MonoBehaviour
 
     public void AddMana(float value)
     {
-        if (mana < stats.maxMana.value)
+        if (mana < stats.maximumMana.value)
         {
             mana += value;
         }
 
-        if (mana > stats.maxMana.value)
+        if (mana > stats.maximumMana.value)
         {
-            mana = stats.maxMana.value;
+            mana = stats.maximumMana.value;
         }
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Text;
 
 public enum ModType
 {
@@ -18,38 +19,38 @@ public class StatMod
 
 public enum StatModType
 {
-    flat_MaxLife,
-    inc_MaxLife,
-    flat_LifeRegen,
-    inc_LifeRegen,
-    flat_MaxMana,
-    inc_MaxMana,
-    flat_ManaRegen,
-    inc_ManaRegen,
-    inc_MoveSpd,
-    inc_AtkSpd,
-    flat_AtkDmg,
-    inc_AtkDmg,
-    flat_fireRes,
-    flat_coldRes,
-    flat_lightningRes,
-    inc_FireDamage,
-    inc_ColdDamage,
-    inc_LightningDamage,
-    inc_AreaDamage,
-    inc_AreaEffect,
-    inc_ProjDamage,
-    inc_ProjSpeed,
-    flat_NoOfProj,
-    inc_IgniteDamage,
-    inc_IgniteChance,
-    inc_IgniteDuration,
-    flat_SlowEffect,
-    inc_SlowChance,
-    inc_SlowDuration,
-    flat_ShockEffect,
-    inc_ShockChance,
-    inc_ShockDuration
+    flat_MaximumLife,
+    inc_MaximumLife,
+    flat_LifeRegeneration,
+    inc_LifeRegeneration,
+    flat_MaximumMana,
+    inc_MaximumMana,
+    flat_ManaRegeneration,
+    inc_ManaRegeneration,
+    inc_MovementSpeed,
+    inc_AttackSpeed,
+    flat_AttackDamage,
+    inc_AttackDamage,
+    flat_FireResistance,
+    flat_ColdResistance,
+    flat_LightningResistance,
+    flat_IncreasedFireDamage,
+    flat_IncreasedColdDamage,
+    flat_IncreasedLightningDamage,
+    flat_IncreasedAreaDamage,
+    flat_IncreasedAreaEffect,
+    flat_IncreasedProjectileDamage,
+    flat_IncreasedProjectileSpeed,
+    flat_AdditionalNumberOfProjectiles,
+    flat_IncreasedIgniteDamage,
+    flat_AdditionalIgniteChance,
+    flat_IncreasedIgniteDuration,
+    flat_IncreasedSlowEffect,
+    flat_AdditionalSlowChance,
+    flat_IncreasedSlowDuration,
+    flat_IncreasedShockEffect,
+    flat_AdditionalShockChance,
+    flat_IncreasedShockDuration
 }
 
 public class StatModifier
@@ -83,13 +84,49 @@ public class StatModifier
         switch((int)type)
         {
             case 0:
-                modifierText += (value > 0 ? "+" : "-") + Mathf.Abs(value) + " to " + statType.ToString();
+                if (statType.ToString().Contains("Increased"))
+                {
+                    modifierText += Mathf.Abs(value) + "% " + StatTypeToString(statType);
+                }
+                else if (statType.ToString().Contains("Additional"))
+                {
+                    if (statType.ToString().Contains("Chance"))
+                    {
+                        modifierText += Mathf.Abs(value) + "% " + StatTypeToString(statType);
+                    }
+                    else
+                    {
+                        modifierText += "+" + Mathf.Abs(value) + " " + StatTypeToString(statType);
+                    }
+                }
+                else
+                {
+                    modifierText += "+" + Mathf.Abs(value) + " to " + StatTypeToString(statType);
+                }
+                
                 break;
             case 1:
-                modifierText += Mathf.Abs(value) + "%" + (value > 0 ? " increased " : " decreased ") + statType.ToString();
+                modifierText += Mathf.Abs(value) + "% " + "increased " + StatTypeToString(statType);
                 break;
         }
 
         return modifierText;
+    }
+
+    public string StatTypeToString(StatType statType)
+    {
+        var result = new StringBuilder();
+
+        string statTypeString = statType.ToString();
+        foreach (char ch in statTypeString)
+        {
+            if (char.IsUpper(ch) && result.Length > 0)
+            {
+                result.Append(' ');
+            }
+            result.Append(ch);
+        }
+
+        return result.ToString();
     }
 }
