@@ -31,7 +31,7 @@ public class ExplodingProjectile : MonoBehaviour
 
     public IEnumerator DestroyExplosion(GameObject explosion)
     {
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.12f);
         Destroy(explosion);
     }
 }

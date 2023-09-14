@@ -2476,87 +2476,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e3405eb41756746a490ab69dd64fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife:
+  maximumLife:
     type: 0
     baseValue: 500
-  lifeRegen:
+  lifeRegeneration:
     type: 1
     baseValue: 0
-  maxMana:
+  maximumMana:
     type: 2
     baseValue: 10000
-  manaRegen:
+  manaRegeneration:
     type: 3
     baseValue: 10000
-  moveSpeed:
+  movementSpeed:
     type: 4
-    baseValue: 1.5
+    baseValue: 0
   attackSpeed:
     type: 5
     baseValue: 1
-  attackDmg:
+  attackDamage:
     type: 6
     baseValue: 0
-  fireRes:
+  fireResistance:
     type: 7
-    baseValue: 20
-  coldRes:
+    baseValue: 0
+  coldResistance:
     type: 8
     baseValue: 0
-  lightningRes:
+  lightningResistance:
     type: 9
     baseValue: 0
-  fireDamage:
+  increasedFireDamage:
     type: 10
-    baseValue: 1
-  coldDamage:
+    baseValue: 0
+  increasedColdDamage:
     type: 11
-    baseValue: 1
-  lightningDamage:
+    baseValue: 0
+  increasedLightningDamage:
     type: 12
-    baseValue: 1
-  areaDamage:
+    baseValue: 0
+  increasedAreaDamage:
     type: 13
-    baseValue: 1
-  areaEffect:
+    baseValue: 0
+  increasedAreaEffect:
     type: 14
-    baseValue: 1
-  projDamage:
+    baseValue: 0
+  increasedProjectileDamage:
     type: 15
-    baseValue: 1
-  projSpeed:
+    baseValue: 0
+  increasedProjectileSpeed:
     type: 16
-    baseValue: 1
-  noOfProj:
+    baseValue: 0
+  additionalNumberOfProjectiles:
     type: 17
     baseValue: 0
-  igniteDamage:
+  increasedIgniteDamage:
     type: 18
-    baseValue: 1
-  igniteChance:
+    baseValue: 0
+  additionalIgniteChance:
     type: 19
     baseValue: 0
-  igniteDuration:
+  increasedIgniteDuration:
     type: 20
-    baseValue: 1
-  slowEffect:
+    baseValue: 0
+  increasedSlowEffect:
     type: 21
     baseValue: 0
-  slowChance:
+  additionalSlowChance:
     type: 22
     baseValue: 0
-  slowDuration:
+  increasedSlowDuration:
     type: 23
-    baseValue: 1
-  shockEffect:
+    baseValue: 0
+  increasedShockEffect:
     type: 24
     baseValue: 0
-  shockChance:
+  additionalShockChance:
     type: 25
     baseValue: 0
-  shockDuration:
+  increasedShockDuration:
     type: 26
-    baseValue: 1
+    baseValue: 0
   stats: []
   animationSpeedMultiplier: 0
 --- !u!114 &8288051841000087228

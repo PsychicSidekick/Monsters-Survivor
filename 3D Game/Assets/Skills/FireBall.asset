@@ -20,13 +20,12 @@ MonoBehaviour:
   targetsCharacters: 0
   isChannellingSkill: 0
   ballPrefab: {fileID: 3928469377355962383, guid: fb980d06c1c9cbd41a01d6acf6ccb34d, type: 3}
-  ballRange: 10
+  ballRange: 4
   ballSpeed: 3
-  baseSpread: 7
+  baseSpread: 10
   ballBaseDmg: 100
   numberOfProjectiles: 1
   baseExplosionRadius: 3
   baseExplosionDamage: 50
-  baseIgniteDamageMultiplier: 0.5
   baseIgniteDuration: 5
   baseIgniteChance: 25
