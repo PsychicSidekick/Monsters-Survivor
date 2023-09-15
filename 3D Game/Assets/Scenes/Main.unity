@@ -47969,8 +47969,16 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5261373780234897714, guid: 9f6beda30ca2cac4e8fd23a72e9b2c08, type: 3}
+      propertyPath: maximumLife.baseValue
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261373780234897714, guid: 9f6beda30ca2cac4e8fd23a72e9b2c08, type: 3}
       propertyPath: maximumMana.baseValue
       value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261373780234897714, guid: 9f6beda30ca2cac4e8fd23a72e9b2c08, type: 3}
+      propertyPath: movementSpeed.baseValue
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5261373780234897714, guid: 9f6beda30ca2cac4e8fd23a72e9b2c08, type: 3}
       propertyPath: increasedAreaDamage.type
@@ -49353,7 +49361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
   skills:
-  - skill: {fileID: 0}
+  - skill: {fileID: 11400000, guid: 1ea44d53a6bef694795dae552278bec9, type: 2}
     key: 113
     cooldownTime: 0
     activeTime: 0
@@ -49424,6 +49432,7 @@ GameObject:
   - component: {fileID: 7599843586163216814}
   - component: {fileID: 7599843586163216815}
   - component: {fileID: 3788069805871406466}
+  - component: {fileID: 7599843586163216823}
   - component: {fileID: 7599843586163216816}
   - component: {fileID: 7599843586163216817}
   - component: {fileID: 7599843586163216818}
@@ -49490,10 +49499,9 @@ MonoBehaviour:
   increasedDamage: 0
   increasedRadius: 0
   increasedExpansionTime: 0
-  increasedIgniteDamageMultiplier: 0
+  increasedIgniteDamage: 0
   increasedIgniteDuration: 0
   increasedIgniteChance: 0
-  increasedIgniteDamageDealingSpeed: 0
   doesNotDealDirectDamage: 0
   doesNotDestroyProjectiles: 0
   doesNotStopToUseSkill: 0
@@ -49641,6 +49649,25 @@ MonoBehaviour:
   doesNotStopMoving: 0
   randomRadius: 0
   doesNotPierce: 0
+--- !u!114 &7599843586163216823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7599843586163216811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b4798457ce0744797cac84d74cd9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalManaCost: 0
+  increasedDamage: 0
+  increasedRadius: 0
+  increasedDuration: 0
+  increasedIgniteDamage: 0
+  increasedIgniteDuration: 0
+  increasedIgniteChance: 0
 --- !u!4 &7666680085093108268
 Transform:
   m_ObjectHideFlags: 0

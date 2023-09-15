@@ -19,16 +19,16 @@ public class IncinerateSkill : Skill
         SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
         skillHandler.SetCurrentAttackSpeedMod(0);
         skillUser.StopMoving();
-        skillHandler.FaceCharacterTarget();
+        skillHandler.FaceGroundTarget();
         skillUser.animator.Play("AreaCast");
     }
 
     public override void UseSkill(Character skillUser)
     {
         IncinerateSkillTree skillTree = skillUser.GetComponent<IncinerateSkillTree>();
+        SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
 
-        Character targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
-        EffectCollider explosion = Instantiate(explosionPrefab, targetCharacter.transform.position, Quaternion.identity).GetComponent<EffectCollider>();
+        EffectCollider explosion = Instantiate(explosionPrefab, skillHandler.groundTarget, Quaternion.identity).GetComponent<EffectCollider>();
         float explosionDamage = baseExplosionDamage * (1 + skillTree.increasedDamage);
         explosion.SetHostileEffects(explosionDamage, DamageType.Fire, false, skillUser, null);
         float explosionRadius = baseExplosionRadius * (1 + skillTree.increasedRadius);
@@ -38,8 +38,6 @@ public class IncinerateSkill : Skill
 
     private IEnumerator DestroyExplosion(Character skillUser, GameObject explosion, bool spreadsExplosions)
     {
-        yield return new WaitForSeconds(0.05f);
-
         IncinerateSkillTree skillTree = skillUser.GetComponent<IncinerateSkillTree>();
 
         List<Character> hitTargets = explosion.GetComponent<EffectCollider>().charactersInArea;
@@ -89,7 +87,8 @@ public class IncinerateSkill : Skill
                 skillUser.StartCoroutine(DestroyExplosion(skillUser, newExplosion.gameObject, false));
             }
         }
-        
+
+        yield return new WaitForSeconds(0.05f);
         Destroy(explosion);
     }
 

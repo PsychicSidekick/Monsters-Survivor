@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8166946713415886855}
   - component: {fileID: 8166946713415886854}
   - component: {fileID: -3163835290674460562}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FrostNovaCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,3 +110,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfc9965cd55fb848b7832cdecfadb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  affectsOwner: 0
+  owner: {fileID: 0}
+  target: {fileID: 0}
+  charactersInArea: []
+  damage: 0
+  type: 0
+  damageOverTime: 0
+  targetsCharacter: 0
+  hostileStatusEffects: []
+  healing: 0
+  healingOverTime: 0
+  friendlyStatusEffects: []

@@ -2490,7 +2490,7 @@ MonoBehaviour:
     baseValue: 10000
   movementSpeed:
     type: 4
-    baseValue: 0
+    baseValue: 1.5
   attackSpeed:
     type: 5
     baseValue: 1

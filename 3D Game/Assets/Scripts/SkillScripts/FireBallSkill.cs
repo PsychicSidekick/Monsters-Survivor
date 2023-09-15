@@ -37,6 +37,7 @@ public class FireBallSkill : Skill
         startPos += targetDirection;
 
         float fireBallDamage = (ballBaseDmg + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedProjectileDamage.value);
+        float increasedIgniteDamage = 1 + skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedIgniteDamage.value + skillUser.stats.increasedIgniteDuration.value;
         float igniteDuration = baseIgniteDuration * (1 + skillTree.increasedIgniteDuration + skillUser.stats.increasedIgniteDuration.value);
         float igniteChance = baseIgniteChance + skillTree.increasedIgniteChance + skillUser.stats.additionalIgniteChance.value;
         int numberOfFireBalls = numberOfProjectiles + skillTree.additionalFireBalls + (int)skillUser.stats.additionalNumberOfProjectiles.value;
@@ -44,7 +45,7 @@ public class FireBallSkill : Skill
         float fireBallSpeed = ballSpeed * (1 + skillTree.increasedSpeed + skillUser.stats.increasedProjectileSpeed.value);
 
         float explosionRadius = baseExplosionRadius * (1 + skillTree.increasedExplosionRadius + skillUser.stats.increasedAreaEffect.value);
-        float explosionDamage = baseExplosionDamage * (1 + skillTree.increasedExplosionDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedAreaDamage.value);
+        float explosionDamage = (baseExplosionDamage + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedExplosionDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedAreaDamage.value);
 
         for (int i = 0; i < numberOfFireBalls; i++)
         {
@@ -61,14 +62,14 @@ public class FireBallSkill : Skill
 
             if (!skillTree.igniteAppliedByExplosion)
             {
-                float igniteDamage = fireBallDamage * 0.5f * (1 + skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration);
+                float igniteDamage = fireBallDamage * 0.5f * increasedIgniteDamage;
                 IgniteEffect ignite = new IgniteEffect(skillUser, igniteDamage, igniteDuration, igniteChance);
 
                 collider.SetHostileEffects(fireBallDamage, DamageType.Fire, false, skillUser, null, ignite);
             }
             else
             {
-                float igniteDamage = explosionDamage * 0.5f * (1 + skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration);
+                float igniteDamage = explosionDamage * 0.5f * increasedIgniteDamage;
                 IgniteEffect ignite = new IgniteEffect(skillUser, igniteDamage, igniteDuration, igniteChance);
 
                 collider.SetHostileEffects(fireBallDamage, DamageType.Fire, false, skillUser, null);

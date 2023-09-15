@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3511817931921077653}
   - component: {fileID: 5189362843640264934}
   - component: {fileID: 5263838422327715962}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lightning Orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,14 +114,15 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   projSpeed: 0
   pierce: 0
+  remainingPierces: 0
   chain: 0
+  remainingChains: 0
+  chainsToUser: 0
   chainingRange: 0
   chainDamageMultiplier: 0
   chainedCharacters: []
   effectCollider: {fileID: 0}
-  damage: 0
-  dmgType: 0
-  owner: {fileID: 0}
+  lastFramePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &5263838422327715962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,5 +135,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfc9965cd55fb848b7832cdecfadb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  affectsOwner: 0
   owner: {fileID: 0}
+  target: {fileID: 0}
   charactersInArea: []
+  damage: 0
+  type: 0
+  damageOverTime: 0
+  targetsCharacter: 0
+  hostileStatusEffects: []
+  healing: 0
+  healingOverTime: 0
+  friendlyStatusEffects: []

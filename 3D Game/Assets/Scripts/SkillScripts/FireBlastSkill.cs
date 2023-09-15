@@ -12,7 +12,6 @@ public class FireBlastSkill : Skill
     public float baseBlastDamage;
     public float baseIgniteChance;
     public float baseIgniteDuration;
-    public float baseIgniteMultiplier;
 
     public override void OnUse(Character skillUser)
     {
@@ -43,24 +42,26 @@ public class FireBlastSkill : Skill
     {
         FireBlastSkillTree skillTree = skillUser.GetComponent<FireBlastSkillTree>();
 
-        EffectCollider blastCollider = Instantiate(blastColliderPrefab, GameManager.instance.RefinedPos(skillUser.transform.position), Quaternion.identity).GetComponent<EffectCollider>();
-        float blastDamage = baseBlastDamage * (1 + skillTree.increasedDamage);
-        float igniteDamage = baseBlastDamage * (baseIgniteMultiplier + skillTree.increasedIgniteDamageMultiplier) * (1 + skillTree.increasedIgniteDuration);
-        float igniteDuration = baseIgniteDuration * (1 + skillTree.increasedIgniteDuration - skillTree.increasedIgniteDamageDealingSpeed);
-        float igniteChance = baseIgniteChance + skillTree.increasedIgniteChance;
+        float blastDamage = (baseBlastDamage + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedAreaDamage.value);
+        float igniteDamage = blastDamage * 0.5f * (1 + skillTree.increasedIgniteDuration + skillTree.increasedIgniteDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedIgniteDamage.value + skillUser.stats.increasedIgniteDuration.value);
+        float igniteDuration = baseIgniteDuration * (1 + skillTree.increasedIgniteDuration + skillUser.stats.increasedIgniteDuration.value);
+        float igniteChance = baseIgniteChance + skillTree.increasedIgniteChance + skillUser.stats.additionalIgniteChance.value;
+        float blastRadius = baseBlastRadius * (1 + skillTree.increasedRadius + skillUser.stats.increasedAreaEffect.value);
+        float expansionTime = baseExpansionTime + skillTree.increasedExpansionTime;
         IgniteEffect ignite = new IgniteEffect(skillUser, igniteDamage, igniteDuration, igniteChance);
+
         if (skillTree.doesNotDealDirectDamage)
         {
             blastDamage = 0;
         }
+
+        EffectCollider blastCollider = Instantiate(blastColliderPrefab, GameManager.instance.RefinedPos(skillUser.transform.position), Quaternion.identity).GetComponent<EffectCollider>();
         blastCollider.SetHostileEffects(blastDamage, DamageType.Fire, false, skillUser, null, ignite);
         if (!skillTree.doesNotDestroyProjectiles)
         {
             blastCollider.gameObject.AddComponent<DestroyProjectiles>();
         }
 
-        float blastRadius = baseBlastRadius * (1 + skillTree.increasedRadius);
-        float expansionTime = baseExpansionTime + skillTree.increasedExpansionTime;
         for (float i = 0; i <= expansionTime + 0.1; i += Time.deltaTime)
         {
             float size = Mathf.Lerp(0.5f, blastRadius, i / expansionTime);

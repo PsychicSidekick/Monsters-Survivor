@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 200438354066376141}
   - component: {fileID: 2499439814141572108}
   - component: {fileID: 7792603038964865409}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FrozenOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,11 +129,15 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   projSpeed: 0
   pierce: 0
+  remainingPierces: 0
   chain: 0
+  remainingChains: 0
+  chainsToUser: 0
   chainingRange: 0
   chainDamageMultiplier: 0
   chainedCharacters: []
   effectCollider: {fileID: 0}
+  lastFramePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &7792603038964865409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,11 +150,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfc9965cd55fb848b7832cdecfadb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  affectsOwner: 0
+  owner: {fileID: 0}
+  target: {fileID: 0}
+  charactersInArea: []
   damage: 0
   type: 0
   damageOverTime: 0
   targetsCharacter: 0
-  statusEffects: []
-  owner: {fileID: 0}
-  target: {fileID: 0}
-  charactersInArea: []
+  hostileStatusEffects: []
+  healing: 0
+  healingOverTime: 0
+  friendlyStatusEffects: []
