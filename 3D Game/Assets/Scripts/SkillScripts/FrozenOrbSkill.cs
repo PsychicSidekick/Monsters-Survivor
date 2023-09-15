@@ -38,7 +38,8 @@ public class FrozenOrbSkill : Skill
         SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
 
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
-        startPos += (skillHandler.groundTarget - startPos).normalized;
+        Vector3 targetDirection = (skillHandler.groundTarget - startPos).normalized;
+        startPos += targetDirection;
 
         EffectCollider orbCollider = Instantiate(frozenOrbPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
 
@@ -51,9 +52,7 @@ public class FrozenOrbSkill : Skill
 
         Projectile orbProj = orbCollider.GetComponent<Projectile>();
 
-        Vector3 targetPos = skillHandler.groundTarget;
-        Vector3 direction = Vector3.Normalize(targetPos - startPos);
-        orbProj.GetComponent<TimedProjectile>().travelDirection = direction;
+        orbProj.GetComponent<TimedProjectile>().travelDirection = targetDirection;
         orbProj.GetComponent<TimedProjectile>().lifeTime = baseOrbDuration * (1 + skillTree.increasedOrbDuration);
         orbProj.projSpeed = baseOrbTravelSpeed * (1 + skillTree.increasedOrbTravelSpeed);
         orbProj.pierce = 100;
