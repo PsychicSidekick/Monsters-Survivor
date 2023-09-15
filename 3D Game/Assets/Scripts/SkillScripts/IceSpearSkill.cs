@@ -21,7 +21,7 @@ public class IceSpearSkill : Skill
     public override void OnUse(Character skillUser)
     {
         SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
-        skillHandler.SetCurrentAttackSpeedMod(0);
+        skillHandler.SetCurrentAttackSpeedMod(200);
         skillUser.StopMoving();
         skillUser.GetComponent<SkillHandler>().FaceGroundTarget();
         skillUser.animator.Play("Throw");

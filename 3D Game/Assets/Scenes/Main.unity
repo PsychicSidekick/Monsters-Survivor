@@ -13307,6 +13307,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e0944c6b0da8bec49bb7c9d0b18e5161, type: 2}
   - {fileID: 11400000, guid: 5924f0c94f4e8424c9b3bcc41674664a, type: 2}
   - {fileID: 11400000, guid: 688adf8f67a76f84ab75d53c7d184c49, type: 2}
+  - {fileID: 11400000, guid: 1ea44d53a6bef694795dae552278bec9, type: 2}
   chosenSkills: []
   availableSkills: []
   chooseSkillButtonPrefab: {fileID: 7687191465901343052, guid: 6556813d63cb56349a63b9fccb2573db, type: 3}
@@ -48977,7 +48978,7 @@ Transform:
   - {fileID: 5237924676959187636}
   - {fileID: 5465940246253150491}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7078722786634375161
 Transform:
@@ -50201,7 +50202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729415333450674976, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7729415333450674985, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
       propertyPath: attackSpeed.type
@@ -50234,6 +50235,10 @@ PrefabInstance:
     - target: {fileID: 7729415333450674985, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
       propertyPath: manaRegeneration.type
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729415333450674985, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
+      propertyPath: maximumLife.baseValue
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 7729415333450674985, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
       propertyPath: maximumMana.baseValue
@@ -50284,6 +50289,10 @@ PrefabInstance:
       value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 7729415333450674985, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
+      propertyPath: lifeRegeneration.baseValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729415333450674985, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
       propertyPath: manaRegeneration.baseValue
       value: 10000
       objectReference: {fileID: 0}
@@ -50321,7 +50330,7 @@ PrefabInstance:
       objectReference: {fileID: 1359316889}
     - target: {fileID: 7729415333450674987, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7729415333450674987, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
       propertyPath: m_LocalPosition.x
