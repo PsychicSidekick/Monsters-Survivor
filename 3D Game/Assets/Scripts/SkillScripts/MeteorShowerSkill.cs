@@ -46,7 +46,9 @@ public class MeteorShowerSkill : Skill
 
     private IEnumerator DisableMeteorShowerArea(GameObject meteorShowerArea, float lifeTime)
     {
+        Debug.Log(Time.time);
         yield return new WaitForSeconds(lifeTime);
+        Debug.Log(Time.time);
         Destroy(meteorShowerArea);
     }
 }

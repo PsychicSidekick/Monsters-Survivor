@@ -62,8 +62,8 @@ public class ChainLightningSkill : Skill
 
             if (skillTree.chainsToUser)
             {
-                collider.SetFriendlyEffects(20, false, skillUser);
-                collider.affectsOwner = true;
+                collider.SetFriendlyEffects(20, false, skillUser, null);
+                collider.affectsFriendlyCharacters = true;
                 proj.chainsToUser = true;
             }
         }

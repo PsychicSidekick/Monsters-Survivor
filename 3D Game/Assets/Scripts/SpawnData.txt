@@ -5,7 +5,7 @@
       "jobs": [
         {
           "enemyTypeID": "0",
-          "amount": "40"
+          "amount": "400"
         }
       ],
       "specialJobs": [

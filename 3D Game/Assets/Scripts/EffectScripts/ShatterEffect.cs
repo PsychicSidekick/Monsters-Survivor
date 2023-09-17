@@ -31,7 +31,7 @@ public class ShatterEffect : StatusEffect
     public override void OnApply(Character character)
     {
         StatusEffectManager status = character.GetComponent<StatusEffectManager>();
-        FreezeEffect freeze = (FreezeEffect)status.FindStatusEffectWithName("freeze");
+        FreezeEffect freeze = (FreezeEffect)status.FindStatusEffectsWithName("freeze")[0];
         if (freeze != null)
         {
             Damage damage = new Damage(baseDamage * shatterMultiplier, owner, DamageType.Cold);

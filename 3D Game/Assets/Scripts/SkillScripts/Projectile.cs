@@ -110,7 +110,7 @@ public class Projectile : MonoBehaviour
         {
             targetPos = GameManager.instance.RefinedPos(nextTarget.transform.position);
             chainedCharacters.Add(nextTarget);
-            SendMessage("ChainsTo", nextTarget);
+            //SendMessage("ChainsTo", nextTarget);
         }
         else
         {

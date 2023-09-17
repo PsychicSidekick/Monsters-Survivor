@@ -5,45 +5,44 @@ using UnityEngine;
 // Applies damage and status effects to colliding characters
 public class EffectCollider : MonoBehaviour
 {
-    public bool affectsOwner;
+    public bool affectsFriendlyCharacters;
 
     public Character owner;
-    public Character target;
-    public List<Character> charactersInArea;
+    public Dictionary<Character, List<StatusEffect>> charactersStatusEffects = new Dictionary<Character, List<StatusEffect>>();
 
     public float damage;
     public DamageType type;
     public bool damageOverTime;
-    public bool targetsCharacter;
-    public List<StatusEffect> hostileStatusEffects = new List<StatusEffect>();
+    public List<StatusEffect> hostileInAreaStatusEffects = new List<StatusEffect>();
+    public List<StatusEffect> hostileOneTimeStatusEffects = new List<StatusEffect>();
 
     public float healing;
     public bool healingOverTime;
-    public List<StatusEffect> friendlyStatusEffects = new List<StatusEffect>();
+    public List<StatusEffect> friendlyInAreaStatusEffects = new List<StatusEffect>();
+    public List<StatusEffect> friendlyOneTimeStatusEffects = new List<StatusEffect>();
 
-    public void SetHostileEffects(float _damage, DamageType _type, bool _damageOverTime, Character _owner, Character _target, params StatusEffect[] _hostileStatusEffects)
+    public void SetHostileEffects(float _damage, DamageType _type, bool _damageOverTime, Character _owner, StatusEffect[] _hostileInAreaStatusEffects, params StatusEffect[] _hostileOneTimeStatusEffects)
     {
         damage = _damage;
         type = _type;
         damageOverTime = _damageOverTime;
-        hostileStatusEffects.AddRange(_hostileStatusEffects);
+        if (_hostileInAreaStatusEffects != null)
+        {
+            hostileInAreaStatusEffects.AddRange(_hostileInAreaStatusEffects);
+        }
+        hostileOneTimeStatusEffects.AddRange(_hostileOneTimeStatusEffects);
         owner = _owner;
-        target = _target;
-        if (target == null)
-        {
-            targetsCharacter = false;
-        }
-        else
-        {
-            targetsCharacter = true;
-        }
     }
 
-    public void SetFriendlyEffects(float _healing, bool _healingOverTime, Character _owner, params StatusEffect[] _friendlyStatusEffects)
+    public void SetFriendlyEffects(float _healing, bool _healingOverTime, Character _owner, StatusEffect[] _friendlyInAreaStatusEffects, params StatusEffect[] _friendlyOneTimeStatusEffects)
     {
         healing = _healing;
         healingOverTime = _healingOverTime;
-        friendlyStatusEffects.AddRange(_friendlyStatusEffects);
+        if (_friendlyInAreaStatusEffects != null)
+        {
+            friendlyInAreaStatusEffects.AddRange(_friendlyInAreaStatusEffects);
+        }
+        friendlyOneTimeStatusEffects.AddRange(_friendlyOneTimeStatusEffects);
         owner = _owner;
     }
 
@@ -51,7 +50,7 @@ public class EffectCollider : MonoBehaviour
     {
         if (damageOverTime)
         {
-            foreach (Character character in charactersInArea)
+            foreach (Character character in charactersStatusEffects.Keys)
             {
                 character.ReceiveDamage(new Damage(damage * Time.deltaTime, owner, type));
             }
@@ -73,7 +72,13 @@ public class EffectCollider : MonoBehaviour
             character.ReceiveDamage(new Damage(damage, owner, type));
         }
 
-        foreach (StatusEffect statusEffect in hostileStatusEffects)
+        foreach(StatusEffect statusEffect in hostileInAreaStatusEffects)
+        {
+            character.status.ApplyStatusEffect(statusEffect);
+            charactersStatusEffects[character].Add(statusEffect);
+        }
+
+        foreach (StatusEffect statusEffect in hostileOneTimeStatusEffects)
         {
             StatusEffect clonedEffect = statusEffect.CloneEffect();
             character.GetComponent<StatusEffectManager>().ApplyStatusEffect(clonedEffect);
@@ -92,7 +97,13 @@ public class EffectCollider : MonoBehaviour
             character.ReceiveHealing(healing);
         }
 
-        foreach (StatusEffect statusEffect in friendlyStatusEffects)
+        foreach (StatusEffect statusEffect in friendlyInAreaStatusEffects)
+        {
+            character.status.ApplyStatusEffect(statusEffect);
+            charactersStatusEffects[character].Add(statusEffect);
+        }
+
+        foreach (StatusEffect statusEffect in friendlyOneTimeStatusEffects)
         {
             StatusEffect clonedEffect = statusEffect.CloneEffect();
             character.GetComponent<StatusEffectManager>().ApplyStatusEffect(clonedEffect);
@@ -104,21 +115,30 @@ public class EffectCollider : MonoBehaviour
         }
     }
 
+    private void CleanInAreaStatusEffectsOnCharacter(Character character)
+    {
+        if (charactersStatusEffects.ContainsKey(character))
+        {
+            foreach (StatusEffect statusEffect in charactersStatusEffects[character])
+            {
+                character.status.RemoveStatusEffect(statusEffect);
+            }
+        }
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         Character character = other.GetComponent<Character>();
 
         if (character == null)
         {
-            //Debug.Log("Not character");
             return;
         }
 
-        if (!affectsOwner)
+        if (!affectsFriendlyCharacters)
         {
             if (character.GetType() == owner.GetType())
             {
-                //Debug.Log("Not enemy");
                 return;
             }
         }
@@ -132,13 +152,7 @@ public class EffectCollider : MonoBehaviour
             }
         }
         
-        charactersInArea.Add(character);
-
-        //if (targetsCharacter && character != target)
-        //{
-        //    //Debug.Log("Not target");
-        //    return;
-        //}
+        charactersStatusEffects.Add(character, new List<StatusEffect>());
         
         if (character.GetType() == owner.GetType())
         {
@@ -155,7 +169,26 @@ public class EffectCollider : MonoBehaviour
         Character character = other.GetComponent<Character>();
         if (character != null)
         {
-            charactersInArea.Remove(character);
+            CleanInAreaStatusEffectsOnCharacter(character);
+            charactersStatusEffects.Remove(character);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (charactersStatusEffects.Count == 0)
+        {
+            return;
+        }
+
+        if (hostileInAreaStatusEffects.Count == 0 && friendlyInAreaStatusEffects.Count == 0)
+        {
+            return;
+        }
+
+        foreach (Character character in charactersStatusEffects.Keys)
+        {
+            CleanInAreaStatusEffectsOnCharacter(character);
         }
     }
 }

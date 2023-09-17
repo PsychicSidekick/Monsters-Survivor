@@ -40,11 +40,12 @@ public class IncinerateSkill : Skill
     {
         IncinerateSkillTree skillTree = skillUser.GetComponent<IncinerateSkillTree>();
 
-        List<Character> hitTargets = explosion.GetComponent<EffectCollider>().charactersInArea;
+        List<Character> hitTargets = new List<Character>();
+        hitTargets.AddRange(explosion.GetComponent<EffectCollider>().charactersStatusEffects.Keys);
         foreach (Character character in hitTargets)
         {
             StatusEffectManager statusEffectManager = character.GetComponent<StatusEffectManager>();
-            IgniteEffect ignite = (IgniteEffect)statusEffectManager.FindStatusEffectWithName("ignite");
+            IgniteEffect ignite = (IgniteEffect)statusEffectManager.FindStatusEffectsWithName("ignite")[0];
             if (ignite != null)
             {
                 if (!skillTree.doesNotDealExtraIgniteDamage)
@@ -59,7 +60,7 @@ public class IncinerateSkill : Skill
                 }
                 if (!skillTree.doesNotRemoveIgnites)
                 {
-                    statusEffectManager.RemoveStatusEffect(statusEffectManager.FindStatusEffectWithName("ignite"));
+                    statusEffectManager.RemoveStatusEffect(statusEffectManager.FindStatusEffectsWithName("ignite")[0]);
                 }
             }
             
@@ -74,7 +75,8 @@ public class IncinerateSkill : Skill
         if (spreadsExplosions)
         {
             Character targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
-            List<Character> spreadTargets = explosion.GetComponent<EffectCollider>().charactersInArea;
+            List<Character> spreadTargets = new List<Character>();
+            spreadTargets.AddRange(explosion.GetComponent<EffectCollider>().charactersStatusEffects.Keys);
             spreadTargets.Remove(targetCharacter);
 
             foreach (Character character in spreadTargets)

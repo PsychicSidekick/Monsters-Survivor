@@ -27312,7 +27312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1409478795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45328,122 +45328,6 @@ PrefabInstance:
       propertyPath: healthBarCanvas
       value: 
       objectReference: {fileID: 1359316889}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: attackSpeed.type
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: maximumMana.type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: attackDamage.type
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: movementSpeed.type
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: coldResistance.type
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: fireResistance.type
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: lifeRegeneration.type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: manaRegeneration.type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: maximumLife.baseValue
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: maximumMana.baseValue
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedAreaDamage.type
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedAreaEffect.type
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedColdDamage.type
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedFireDamage.type
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedSlowEffect.type
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: lightningResistance.type
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: additionalSlowChance.type
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedShockEffect.type
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: additionalShockChance.type
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedIgniteDamage.type
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedSlowDuration.type
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: manaRegeneration.baseValue
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: additionalIgniteChance.type
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedShockDuration.type
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedIgniteDuration.type
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedLightningDamage.type
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedProjectileSpeed.type
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: increasedProjectileDamage.type
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882591495079538850, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
-      propertyPath: additionalNumberOfProjectiles.type
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 1882591495079538875, guid: 517be3319e8690b47a29d4bdb7c9246b, type: 3}
       propertyPath: m_Name
       value: Assassin
@@ -46699,122 +46583,6 @@ PrefabInstance:
     - target: {fileID: 3358042974457620874, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: attackSpeed.type
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: maximumMana.type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: attackDamage.type
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: movementSpeed.type
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: coldResistance.type
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: fireResistance.type
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: lifeRegeneration.type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: manaRegeneration.type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: maximumLife.baseValue
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: maximumMana.baseValue
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedAreaDamage.type
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedAreaEffect.type
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedColdDamage.type
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedFireDamage.type
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedSlowEffect.type
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: lightningResistance.type
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: additionalSlowChance.type
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedShockEffect.type
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: additionalShockChance.type
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedIgniteDamage.type
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedSlowDuration.type
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: manaRegeneration.baseValue
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: additionalIgniteChance.type
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedShockDuration.type
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedIgniteDuration.type
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedLightningDamage.type
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedProjectileSpeed.type
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: increasedProjectileDamage.type
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358042974457620876, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
-      propertyPath: additionalNumberOfProjectiles.type
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3358042974460725910, guid: e6a3a885bbc7f824aac6a866bf200a0e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -49071,10 +48839,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumLife:
     type: 0
-    baseValue: 200
+    baseValue: 100000
   lifeRegeneration:
     type: 1
-    baseValue: 1
+    baseValue: 100000
   maximumMana:
     type: 2
     baseValue: 10000
@@ -49122,7 +48890,7 @@ MonoBehaviour:
     baseValue: 0
   additionalNumberOfProjectiles:
     type: 17
-    baseValue: 0
+    baseValue: 10
   increasedIgniteDamage:
     type: 18
     baseValue: 0
@@ -49167,6 +48935,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   agent: {fileID: 0}
   stats: {fileID: 0}
+  status: {fileID: 0}
   life: 0
   mana: 0
   xp: 0
@@ -49362,7 +49131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillUser: {fileID: 0}
   skills:
-  - skill: {fileID: 11400000, guid: 1ea44d53a6bef694795dae552278bec9, type: 2}
+  - skill: {fileID: 11400000, guid: f2f2b6b761e455742bd6b04ca808cb1c, type: 2}
     key: 113
     cooldownTime: 0
     activeTime: 0
@@ -49438,6 +49207,7 @@ GameObject:
   - component: {fileID: 7599843586163216817}
   - component: {fileID: 7599843586163216818}
   - component: {fileID: 7599843586163216819}
+  - component: {fileID: 7599843586163216824}
   - component: {fileID: 7599843586163216820}
   - component: {fileID: 7599843586163216821}
   - component: {fileID: 7599843586163216822}
@@ -49669,6 +49439,23 @@ MonoBehaviour:
   increasedIgniteDamage: 0
   increasedIgniteDuration: 0
   increasedIgniteChance: 0
+--- !u!114 &7599843586163216824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7599843586163216811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c8b61764669604497efd3e9ddfc1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalManaCost: 0
+  increasedDamage: 0
+  increasedRadius: 0
+  increasedDuration: 0
+  increasedSlowEffect: 0
 --- !u!4 &7666680085093108268
 Transform:
   m_ObjectHideFlags: 0
@@ -50202,7 +49989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729415333450674976, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7729415333450674985, guid: 89b2403339b3d6d448df1fc43ff40302, type: 3}
       propertyPath: attackSpeed.type
@@ -51166,7 +50953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8288051841000086852, guid: 1535d35eb837a8247a9b0ffd7fae32e5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8288051841000087226, guid: 1535d35eb837a8247a9b0ffd7fae32e5, type: 3}
       propertyPath: xpYield
@@ -51227,6 +51014,10 @@ PrefabInstance:
     - target: {fileID: 8288051841000087227, guid: 1535d35eb837a8247a9b0ffd7fae32e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288051841000087228, guid: 1535d35eb837a8247a9b0ffd7fae32e5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8676329035993707272, guid: 1535d35eb837a8247a9b0ffd7fae32e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

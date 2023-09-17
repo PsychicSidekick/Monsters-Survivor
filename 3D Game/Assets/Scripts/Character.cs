@@ -8,6 +8,7 @@ public class Character : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public StatsManager stats;
+    [HideInInspector] public StatusEffectManager status;
 
     public float life;
     public float mana;
@@ -23,6 +24,7 @@ public class Character : MonoBehaviour
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         stats = GetComponent<StatsManager>();
+        status = GetComponent<StatusEffectManager>();
     }
 
     protected virtual void Start()
