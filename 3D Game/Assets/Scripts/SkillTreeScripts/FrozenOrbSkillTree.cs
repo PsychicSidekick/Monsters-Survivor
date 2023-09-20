@@ -1,54 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class FrozenOrbSkillTree : SkillTree
 {
     public int additionalManaCost;
+    public float additionalCooldownTime;
 
-    public float increasedOrbDamage;
-    public float increasedOrbDuration;
-    public float increasedOrbTravelSpeed;
-    public float increasedOrbFreezeChance;
+    public float increasedFrozenOrbDuration;
+    public float increasedFrozenOrbSpeed;
 
-    public int additionalIcicles;
+    public float increasedFrozenOrbSlowEffect;
+
+    public int additionalNumberOfIcicles;
     public int additionalIciclePierce;
     public float increasedIcicleDamage;
+    public float increasedBaseIcicleDamage;
     public float increasedIcicleRange;
-    public float increasedIcicleTravelSpeed;
+    public float increasedIcicleSpeed;
     public float increasedIcicleShootRate;
-    public float increasedIcicleFreezeChance;
 
-    public float increasedFreezeDuration;
+    public float increasedIcicleSlowEffect;
+    public float increasedIcicleSlowChance;
+    public float increasedIcicleSlowDuration;
 
     public void IncreaseManaCost(int value)
     {
         additionalManaCost += value;
     }
 
-    public void IncreaseOrbDamage(float value)
+    public void IncreaseCoolDownTime(float value)
     {
-        increasedOrbDamage += value;
+        additionalCooldownTime += value;
     }
 
-    public void IncreaseOrbDuration(float value)
+    public void IncreaseFrozenOrbDuration(float value)
     {
-        increasedOrbDuration += value;
+        increasedFrozenOrbDuration += value;
     }
 
-    public void IncreaseOrbTravelSpeed(float value)
+    public void IncreaseFrozenOrbSpeed(float value)
     {
-        increasedOrbTravelSpeed += value;
+        increasedFrozenOrbSpeed += value;
     }
 
-    public void IncreaseOrbFreezeChance(float value)
+    public void IncreaseFrozenOrbSlowEffect(float value)
     {
-        increasedOrbFreezeChance += value;
+        increasedFrozenOrbSlowEffect += value;
     }
 
     public void IncreaseNumberOfIcicles(int value)
     {
-        additionalIcicles += value;
+        additionalNumberOfIcicles += value;
     }
 
     public void IncreaseIciclePierce(int value)
@@ -61,14 +60,19 @@ public class FrozenOrbSkillTree : SkillTree
         increasedIcicleDamage += value;
     }
 
+    public void IncreaseBaseIcicleDamage(float value)
+    {
+        increasedBaseIcicleDamage += value;
+    }
+
     public void IncreaseIcicleRange(float value)
     {
         increasedIcicleRange += value;
     }
 
-    public void IncreaseIcicleTravelSpeed(float value)
+    public void IncreaseIcicleSpeed(float value)
     {
-        increasedIcicleTravelSpeed += value;
+        increasedIcicleSpeed += value;
     }
 
     public void IncreaseIcicleShootRate(float value)
@@ -76,33 +80,41 @@ public class FrozenOrbSkillTree : SkillTree
         increasedIcicleShootRate += value;
     }
 
-    public void IncreaseIcicleFreezeChance(float value)
+    public void IncreaseIcicleSlowEffect(float value)
     {
-        increasedIcicleFreezeChance += value;
+        increasedIcicleSlowEffect += value;
     }
 
-    public void IncreaseFreezeDuration(float value)
+    public void IncreaseIcicleSlowChance(float value)
     {
-        increasedFreezeDuration += value;
+        increasedIcicleSlowChance += value;
+    }
+
+    public void IncreaseIcicleSlowDuration(float value)
+    {
+        increasedIcicleSlowDuration += value;
     }
 
     public override void ResetSkillTree()
     {
         additionalManaCost = 0;
+        additionalCooldownTime = 0;
 
-        increasedOrbDamage = 0;
-        increasedOrbDuration = 0;
-        increasedOrbTravelSpeed = 0;
-        increasedOrbFreezeChance = 0;
+        increasedFrozenOrbDuration = 0;
+        increasedFrozenOrbSpeed = 0;
 
-        additionalIcicles = 0;
+        increasedFrozenOrbSlowEffect = 0;
+
+        additionalNumberOfIcicles = 0;
         additionalIciclePierce = 0;
         increasedIcicleDamage = 0;
+        increasedBaseIcicleDamage = 0;
         increasedIcicleRange = 0;
-        increasedIcicleTravelSpeed = 0;
+        increasedIcicleSpeed = 0;
         increasedIcicleShootRate = 0;
-        increasedIcicleFreezeChance = 0;
 
-        increasedFreezeDuration = 0;
+        increasedIcicleSlowEffect = 0;
+        increasedIcicleSlowChance = 0;
+        increasedIcicleSlowDuration = 0;
     }
 }

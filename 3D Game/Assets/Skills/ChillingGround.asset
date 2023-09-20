@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: ChillingGround
   skillIcon: {fileID: 0}
-  coolDownTime: 0
+  coolDownTime: 5
   activeTime: 0
-  baseManaCost: 0
+  baseManaCost: 20
   targetsCharacters: 0
   isChannellingSkill: 0
   chillingAreaPrefab: {fileID: 5133095757849603393, guid: 45b73c4772ffea144a21017d39c77b89, type: 3}
-  baseRadius: 10
-  baseDamagePerSecond: 0
-  baseDuration: 5
-  baseSlowEffect: 30
+  baseChillingGroundDamagePerSecond: 50
+  baseChillingGroundHealingPerSecond: 10
+  baseChillingGroundRadius: 6
+  baseChillingGroundDuration: 4
+  baseSlowEffect: 40

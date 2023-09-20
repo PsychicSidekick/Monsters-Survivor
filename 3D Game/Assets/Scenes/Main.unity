@@ -27312,7 +27312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1409478795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49246,9 +49246,11 @@ MonoBehaviour:
   increasedAttackSpeed: 0
   additionalNumberOfFireBalls: 0
   increasedFireBallDamage: 0
+  increasedBaseFireBallDamage: 0
   increasedFireBallRange: 0
   increasedFireBallSpeed: 0
   increasedExplosionDamage: 0
+  increasedBaseExplosionDamage: 0
   increasedExplosionRadius: 0
   increasedIgniteDamage: 0
   increasedIgniteChance: 0
@@ -49291,18 +49293,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalManaCost: 0
-  increasedOrbDamage: 0
-  increasedOrbDuration: 0
-  increasedOrbTravelSpeed: 0
-  increasedOrbFreezeChance: 0
-  additionalIcicles: 0
+  additionalCooldownTime: 0
+  increasedFrozenOrbDuration: 0
+  increasedFrozenOrbSpeed: 0
+  increasedFrozenOrbSlowEffect: 0
+  additionalNumberOfIcicles: 0
   additionalIciclePierce: 0
   increasedIcicleDamage: 0
+  increasedBaseIcicleDamage: 0
   increasedIcicleRange: 0
-  increasedIcicleTravelSpeed: 0
+  increasedIcicleSpeed: 0
   increasedIcicleShootRate: 0
-  increasedIcicleFreezeChance: 0
-  increasedFreezeDuration: 0
+  increasedIcicleSlowEffect: 0
+  increasedIcicleSlowChance: 0
+  increasedIcicleSlowDuration: 0
 --- !u!114 &7599843586163216818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49316,12 +49320,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalManaCost: 0
-  additionalPierce: 0
-  additionalNumberOfSpears: 0
-  increasedDamage: 0
-  increasedSpread: 0
-  increasedSpeed: 0
-  increasedRange: 0
+  increasedAttackSpeed: 0
+  additionalNumberOfIceSpears: 0
+  additionalIceSpearPierce: 0
+  increasedIceSpearDamage: 0
+  increasedBaseIceSpearDamage: 0
+  increasedIceSpearSpread: 0
+  increasedIceSpearSpeed: 0
+  increasedIceSpearRange: 0
   increasedSlowEffect: 0
   increasedSlowChance: 0
   increasedSlowDuration: 0
@@ -49436,6 +49442,7 @@ MonoBehaviour:
   increasedAttackSpeed: 0
   additionalCooldownTime: 0
   increasedMeteorShowerDamage: 0
+  increasedBaseMeteorShowerDamage: 0
   increasedMeteorShowerRadius: 0
   increasedMeteorShowerDuration: 0
   increasedIgniteDamage: 0
@@ -49454,10 +49461,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalManaCost: 0
-  increasedDamage: 0
-  increasedRadius: 0
-  increasedDuration: 0
+  additionalCooldownTime: 0
+  increasedChillingGroundDamage: 0
+  increasedBaseChillingGroundDamage: 0
+  increasedChillingGroundHealing: 0
+  increasedChillingGroundRadius: 0
+  increasedChillingGroundDuration: 0
   increasedSlowEffect: 0
+  damageModifiersAffectHealing: 0
 --- !u!4 &7666680085093108268
 Transform:
   m_ObjectHideFlags: 0
@@ -51020,6 +51031,10 @@ PrefabInstance:
     - target: {fileID: 8288051841000087228, guid: 1535d35eb837a8247a9b0ffd7fae32e5, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288051841000087229, guid: 1535d35eb837a8247a9b0ffd7fae32e5, type: 3}
+      propertyPath: lifeRegeneration.baseValue
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8676329035993707272, guid: 1535d35eb837a8247a9b0ffd7fae32e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

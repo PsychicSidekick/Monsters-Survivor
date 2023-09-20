@@ -8,20 +8,21 @@ public class FrozenOrbSkill : Skill
     public GameObject frozenOrbPrefab;
     public GameObject iciclePrefab;
 
-    public float baseOrbDuration;
-    public float baseOrbTravelSpeed;
-    public float baseOrbDamage;
-    public float baseOrbFreezeDuration;
-    public float baseOrbFreezeChance;
+    public float baseFrozenOrbDuration;
+    public float baseFrozenOrbSpeed;
 
+    public float baseFrozenOrbSlowEffect;
+
+    public int baseNumberOfIcicles;
+    public int baseIciclePierce;
     public float baseIcicleDamage;
     public float baseIcicleRange;
+    public float baseIcicleSpeed;
     public float baseIcicleShootRate;
-    public int baseNumberOfIcicles;
-    public float baseIcicleTravelSpeed;
-    public int baseIciclePierce;
-    public float baseIcicleFreezeDuration;
-    public float baseIcicleFreezeChance;
+
+    public float baseIcicleSlowEffect;
+    public float baseIcicleSlowChance;
+    public float baseIcicleSlowDuration;
 
     public override void OnUse(Character skillUser)
     {
@@ -41,53 +42,69 @@ public class FrozenOrbSkill : Skill
         Vector3 targetDirection = (skillHandler.groundTarget - startPos).normalized;
         startPos += targetDirection;
 
-        EffectCollider orbCollider = Instantiate(frozenOrbPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
+        EffectCollider frozenOrbCollider = Instantiate(frozenOrbPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
 
-        float orbDamage = baseOrbDamage * (1 + skillTree.increasedOrbDamage);
-        float orbFreezeDuration = baseOrbFreezeDuration * (1 + skillTree.increasedFreezeDuration);
-        float orbFreezeChance = baseOrbFreezeChance + skillTree.increasedOrbFreezeChance;
-        FreezeEffect freeze = new FreezeEffect(skillUser, orbFreezeDuration, orbFreezeChance);
+        float frozenOrbDuration = baseFrozenOrbDuration * (1 + skillTree.increasedFrozenOrbDuration);
+        float frozenOrbSpeed = baseFrozenOrbSpeed * (1 + skillTree.increasedFrozenOrbSpeed);
 
-        orbCollider.SetHostileEffects(orbDamage, DamageType.Cold, false, skillUser, null, freeze);
+        float frozenOrbSlowEffect = baseFrozenOrbSlowEffect + skillUser.stats.increasedSlowEffect.value;
 
-        Projectile orbProj = orbCollider.GetComponent<Projectile>();
+        SlowEffect slow = new SlowEffect(frozenOrbSlowEffect, 10000, 100);
+        StatusEffect[] inAreaStatusEffects = { slow };
+        frozenOrbCollider.SetHostileEffects(0, DamageType.Cold, false, skillUser, inAreaStatusEffects);
 
-        orbProj.GetComponent<TimedProjectile>().travelDirection = targetDirection;
-        orbProj.GetComponent<TimedProjectile>().lifeTime = baseOrbDuration * (1 + skillTree.increasedOrbDuration);
-        orbProj.projSpeed = baseOrbTravelSpeed * (1 + skillTree.increasedOrbTravelSpeed);
-        orbProj.pierce = 100;
+        Projectile frozenOrbProjectile = frozenOrbCollider.GetComponent<Projectile>();
+        TimedProjectile frozenOrbTimedProjectile = frozenOrbCollider.GetComponent<TimedProjectile>();
 
-        orbCollider.StartCoroutine(ShootIcicles(orbProj, skillUser));
+        frozenOrbTimedProjectile.travelDirection = targetDirection;
+        frozenOrbTimedProjectile.lifeTime = frozenOrbDuration;
+        frozenOrbProjectile.projSpeed = frozenOrbSpeed;
+        frozenOrbProjectile.pierce = 10000;
+
+        frozenOrbCollider.StartCoroutine(ShootIcicles(frozenOrbProjectile, skillUser));
     }
 
-    IEnumerator ShootIcicles(Projectile orbProj, Character skillUser)
+    IEnumerator ShootIcicles(Projectile frozenOrbProjectile, Character skillUser)
     {
         FrozenOrbSkillTree skillTree = skillUser.GetComponent<FrozenOrbSkillTree>();
 
-        while (orbProj != null)
-        {
-            for (int i = 0; i < baseNumberOfIcicles + skillTree.additionalIcicles; i++)
-            {
-                Vector3 startPos = GameManager.instance.RefinedPos(orbProj.transform.position);
-                EffectCollider icicleCollider = Instantiate(iciclePrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
-                float icicleDamage = baseIcicleDamage * (1 + skillTree.increasedIcicleDamage);
-                float icicleFreezeDuration = baseIcicleFreezeDuration * (1 + skillTree.increasedFreezeDuration);
-                float icicleFreezeChance = baseIcicleFreezeChance + skillTree.increasedIcicleFreezeChance;
-                FreezeEffect freeze = new FreezeEffect(skillUser, icicleFreezeDuration, icicleFreezeChance);
-                icicleCollider.SetHostileEffects(icicleDamage, DamageType.Cold, false, skillUser, null, freeze);
+        int numberOfIcicles = baseNumberOfIcicles + skillTree.additionalNumberOfIcicles + (int)skillUser.stats.additionalNumberOfProjectiles.value;
+        int iciclePierce = baseIciclePierce + skillTree.additionalIciclePierce;
+        float icicleDamage = (baseIcicleDamage * (1 + skillTree.increasedBaseIcicleDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedIcicleDamage + skillUser.stats.increasedColdDamage.value + skillUser.stats.increasedProjectileDamage.value);
+        float icicleRange = baseIcicleRange * (1 + skillTree.increasedIcicleRange);
+        float icicleSpeed = baseIcicleSpeed * (1 + skillTree.increasedIcicleSpeed + skillUser.stats.increasedProjectileSpeed.value);
+        float icicleShootRate = baseIcicleShootRate * (1 + skillTree.increasedIcicleShootRate);
 
-                Projectile icicleProj = icicleCollider.GetComponent<Projectile>();
-                Vector3 targetPos = (Quaternion.AngleAxis(i * 360 / (baseNumberOfIcicles + skillTree.additionalIcicles), orbProj.transform.up) * new Vector3(1, 0, 0)) + startPos;
+        float icicleSlowEffect = baseIcicleSlowEffect + skillTree.increasedIcicleSlowEffect + skillUser.stats.increasedSlowEffect.value;
+        float icicleSlowChance = baseIcicleSlowChance + skillTree.increasedIcicleSlowChance + skillUser.stats.additionalSlowChance.value;
+        float icicleSlowDuration = baseIcicleSlowDuration + skillTree.increasedIcicleSlowDuration + skillUser.stats.increasedSlowDuration.value;
+
+        while (frozenOrbProjectile != null)
+        {
+            for (int i = 0; i < numberOfIcicles; i++)
+            {
+                Vector3 startPos = GameManager.instance.RefinedPos(frozenOrbProjectile.transform.position);
+                EffectCollider icicleCollider = Instantiate(iciclePrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
+
+                SlowEffect slow = new SlowEffect(icicleSlowEffect, icicleSlowDuration, icicleSlowChance);
+                icicleCollider.SetHostileEffects(icicleDamage, DamageType.Cold, false, skillUser, null, slow);
+
+                Projectile icicleProjectile = icicleCollider.GetComponent<Projectile>();
+                Vector3 targetPos = (Quaternion.AngleAxis(i * 360 / numberOfIcicles, frozenOrbProjectile.transform.up) * new Vector3(1, 0, 0)) + startPos;
                 Vector3 direction = Vector3.Normalize(targetPos - startPos);
-                icicleProj.targetPos = startPos + direction * baseIcicleRange * (1 + skillTree.increasedIcicleRange);
-                icicleProj.projSpeed = baseIcicleTravelSpeed * (1 + skillTree.increasedIcicleTravelSpeed);
-                icicleProj.pierce = baseIciclePierce + skillTree.additionalIciclePierce;
+
+                icicleProjectile.targetPos = startPos + direction * icicleRange;
+                icicleProjectile.projSpeed = icicleSpeed;
+                icicleProjectile.pierce = iciclePierce;
             }
 
-            yield return new WaitForSeconds(1 / (baseIcicleShootRate * (1 + skillTree.increasedIcicleShootRate)));
+            yield return new WaitForSeconds(1 / icicleShootRate);
         }
+    }
 
-        yield return null;
+    public override float OnCoolDown(Character skillUser)
+    {
+        return coolDownTime + skillUser.GetComponent<FrozenOrbSkillTree>().additionalCooldownTime;
     }
 
     public override float GetManaCost(Character skillUser)

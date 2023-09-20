@@ -14,23 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: FrozenOrb
   skillIcon: {fileID: 21300000, guid: b365586f6e410d047823d59a867812fc, type: 3}
-  coolDownTime: 0
+  coolDownTime: 3
   activeTime: 0
   baseManaCost: 30
   targetsCharacters: 0
   isChannellingSkill: 0
   frozenOrbPrefab: {fileID: 2261200419857535693, guid: 3746e7d0886c48e4cb7ffb77b7ea1dc1, type: 3}
   iciclePrefab: {fileID: 3120438280565544056, guid: b36f8a78a7a17ab4e967aefb02ff3ccd, type: 3}
-  baseOrbDuration: 3
-  baseOrbTravelSpeed: 0.5
-  baseOrbDamage: 200
-  baseOrbFreezeDuration: 1
-  baseOrbFreezeChance: 100
-  baseIcicleDamage: 75
-  baseIcicleRange: 1.5
-  baseIcicleShootRate: 2
+  baseFrozenOrbDuration: 3
+  baseFrozenOrbSpeed: 0.6
+  baseFrozenOrbSlowEffect: 50
   baseNumberOfIcicles: 6
-  baseIcicleTravelSpeed: 4
   baseIciclePierce: 1
-  baseIcicleFreezeDuration: 1
-  baseIcicleFreezeChance: 0
+  baseIcicleDamage: 100
+  baseIcicleRange: 1.5
+  baseIcicleSpeed: 5
+  baseIcicleShootRate: 1
+  baseIcicleSlowEffect: 20
+  baseIcicleSlowChance: 30
+  baseIcicleSlowDuration: 3

@@ -20,13 +20,12 @@ MonoBehaviour:
   targetsCharacters: 0
   isChannellingSkill: 0
   iceSpearPrefab: {fileID: 3120438280565544056, guid: cdd0ff3bcbf89414aa7c05e867724303, type: 3}
-  baseTravelSpeed: 6
-  baseRange: 3
-  baseSpread: 5
-  baseDamage: 70
-  baseNumberOfSpears: 3
-  basePierce: 0
-  baseFreezeChance: 20
-  baseFreezeDuration: 1
-  baseShatterChance: 30
-  baseShatterMultiplier: 1.5
+  baseNumberOfIceSpears: 3
+  baseIceSpearPierce: 1
+  baseIceSpearDamage: 75
+  baseIceSpearRange: 5
+  baseIceSpearSpeed: 6
+  baseIceSpearSpread: 7
+  baseSlowEffect: 30
+  baseSlowChance: 10
+  baseSlowDuration: 5

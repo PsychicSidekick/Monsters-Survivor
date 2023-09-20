@@ -1,33 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ChillingGroundSkillTree : SkillTree
 {
     public int additionalManaCost;
-    public float increasedDamage;
-    public float increasedRadius;
-    public float increasedDuration;
+    public float additionalCooldownTime;
+
+    public float increasedChillingGroundDamage;
+    public float increasedBaseChillingGroundDamage;
+    public float increasedChillingGroundHealing;
+    public float increasedChillingGroundRadius;
+    public float increasedChillingGroundDuration;
+
     public float increasedSlowEffect;
+
+    public bool damageModifiersAffectHealing;
 
     public void IncreaseManaCost(int value)
     {
         additionalManaCost += value;
     }
 
-    public void IncreaseDamage(float value)
+    public void IncreaseCooldownTime(float value)
     {
-        increasedDamage += value;
+        additionalCooldownTime += value;
     }
 
-    public void IncreaseRadius(float value)
+    public void IncreaseChillingGroundDamage(float value)
     {
-        increasedRadius += value;
+        increasedChillingGroundDamage += value;
     }
 
-    public void IncreaseDuration(float value)
+    public void IncreaseBaseChillingGroundDamage(float value)
     {
-        increasedDuration += value;
+        increasedBaseChillingGroundDamage += value;
+    }
+
+    public void IncreaseChillingGroundHealing(float value)
+    {
+        increasedChillingGroundHealing += value;
+    }
+
+    public void IncreaseChillingGroundRadius(float value)
+    {
+        increasedChillingGroundRadius += value;
+    }
+
+    public void IncreaseChillingGroundDuration(float value)
+    {
+        increasedChillingGroundDuration += value;
     }
 
     public void IncreaseSlowEffect(float value)
@@ -35,12 +53,24 @@ public class ChillingGroundSkillTree : SkillTree
         increasedSlowEffect += value;
     }
 
+    public void ToggleDamageModifiersAffectHealing()
+    {
+        damageModifiersAffectHealing = true;
+    }
+
     public override void ResetSkillTree()
     {
         additionalManaCost = 0;
-        increasedDamage = 0;
-        increasedRadius = 0;
-        increasedDuration = 0;
+        additionalCooldownTime = 0;
+
+        increasedChillingGroundDamage = 0;
+        increasedChillingGroundDamage = 0;
+        increasedChillingGroundHealing = 0;
+        increasedChillingGroundRadius = 0;
+        increasedChillingGroundDuration = 0;
+
         increasedSlowEffect = 0;
+
+        damageModifiersAffectHealing = false;
     }
 }

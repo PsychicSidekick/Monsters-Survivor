@@ -151,18 +151,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfc9965cd55fb848b7832cdecfadb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  affectsOwner: 0
+  affectsFriendlyCharacters: 0
   owner: {fileID: 0}
-  target: {fileID: 0}
-  charactersInArea: []
   damage: 0
   type: 0
   damageOverTime: 0
-  targetsCharacter: 0
-  hostileStatusEffects: []
+  hostileInAreaStatusEffects: []
+  hostileOneTimeStatusEffects: []
   healing: 0
   healingOverTime: 0
-  friendlyStatusEffects: []
+  friendlyInAreaStatusEffects: []
+  friendlyOneTimeStatusEffects: []
 --- !u!1 &9029919352599519142
 GameObject:
   m_ObjectHideFlags: 0
@@ -15021,7 +15020,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1

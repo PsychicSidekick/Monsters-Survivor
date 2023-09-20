@@ -48,8 +48,7 @@ public class ShatterEffect : StatusEffect
 
     public override void AddStack(Character character, StatusEffect statusEffect)
     {
-        StatusEffectManager status = character.GetComponent<StatusEffectManager>();
-        status.RemoveStatusEffect(this);
-        status.ApplyStatusEffect(statusEffect);
+        character.status.RemoveStatusEffect(this);
+        character.status.ApplyStatusEffect(statusEffect);
     }
 }

@@ -78,6 +78,10 @@ public class SlowEffect : StatusEffect
         if (!disabled && character.status.FindStatusEffectsWithName("slow").Count > 1)
         {
             SlowEffect nextBestSlowEffect = FindNextBestSlowEffect(character, this);
+            if (nextBestSlowEffect.disabled == false)
+            {
+                return;
+            }
             nextBestSlowEffect.disabled = false;
             nextBestSlowEffect.OnApply(character);
         }

@@ -6,9 +6,11 @@ using UnityEngine;
 public class ChillingGroundSkill : Skill
 {
     public GameObject chillingAreaPrefab;
-    public float baseRadius;
-    public float baseDamagePerSecond;
-    public float baseDuration;
+
+    public float baseChillingGroundDamagePerSecond;
+    public float baseChillingGroundHealingPerSecond;
+    public float baseChillingGroundRadius;
+    public float baseChillingGroundDuration;
 
     public float baseSlowEffect;
 
@@ -25,21 +27,31 @@ public class ChillingGroundSkill : Skill
     {
         ChillingGroundSkillTree skillTree = skillUser.GetComponent<ChillingGroundSkillTree>();
 
-        float damagePerSecond = (baseDamagePerSecond + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedDamage + skillUser.stats.increasedColdDamage.value + skillUser.stats.increasedAreaDamage.value);
-        float radius = baseRadius * (1 + skillTree.increasedRadius + skillUser.stats.increasedAreaEffect.value);
-        float duration = baseDuration * (1 + skillTree.increasedDuration);
+        float chillingGroundDamagePerSecond = (baseChillingGroundDamagePerSecond * (1 + skillTree.increasedBaseChillingGroundDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedChillingGroundDamage + skillUser.stats.increasedColdDamage.value + skillUser.stats.increasedAreaDamage.value);
+        float increasedChillingGroundHealingPerSecond = 1 + skillTree.increasedChillingGroundHealing;
+
+        if (skillTree.damageModifiersAffectHealing)
+        {
+            increasedChillingGroundHealingPerSecond += skillTree.increasedChillingGroundDamage + skillUser.stats.increasedColdDamage.value + skillUser.stats.increasedAreaDamage.value;
+        }
+
+        float chillingGroundHealingPerSecond = baseChillingGroundHealingPerSecond * increasedChillingGroundHealingPerSecond;
+        float chillingGroundRadius = baseChillingGroundRadius * (1 + skillTree.increasedChillingGroundRadius + skillUser.stats.increasedAreaEffect.value);
+        float chillingGroundDuration = baseChillingGroundDuration * (1 + skillTree.increasedChillingGroundDuration);
 
         float slowEffect = baseSlowEffect + skillTree.increasedSlowEffect + skillUser.stats.increasedSlowEffect.value;
         SlowEffect slow = new SlowEffect(slowEffect, 1000, 100);
         StatusEffect[] inAreaStatusEffects = { slow };
 
         EffectCollider chillingArea = Instantiate(chillingAreaPrefab, skillUser.transform.position, Quaternion.identity).GetComponent<EffectCollider>();
-        chillingArea.SetHostileEffects(damagePerSecond, DamageType.Cold, true, skillUser, inAreaStatusEffects);
-        skillUser.StartCoroutine(DisableChillingArea(chillingArea.gameObject, duration));
-        chillingArea.transform.localScale = new Vector3(radius, 1, radius);
+        chillingArea.SetHostileEffects(chillingGroundDamagePerSecond, DamageType.Cold, true, skillUser, inAreaStatusEffects);
+        chillingArea.SetFriendlyEffects(chillingGroundHealingPerSecond, true, skillUser, null);
+
+        skillUser.StartCoroutine(DestroyChillingArea(chillingArea.gameObject, chillingGroundDuration));
+        chillingArea.transform.localScale = new Vector3(chillingGroundRadius, 1, chillingGroundRadius);
     }
 
-    private IEnumerator DisableChillingArea(GameObject chillingArea, float lifeTime)
+    private IEnumerator DestroyChillingArea(GameObject chillingArea, float lifeTime)
     {
         yield return new WaitForSeconds(lifeTime);
         Destroy(chillingArea);
