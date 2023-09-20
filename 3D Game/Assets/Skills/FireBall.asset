@@ -19,13 +19,13 @@ MonoBehaviour:
   baseManaCost: 15
   targetsCharacters: 0
   isChannellingSkill: 0
-  ballPrefab: {fileID: 3928469377355962383, guid: fb980d06c1c9cbd41a01d6acf6ccb34d, type: 3}
-  ballRange: 4
-  ballSpeed: 3
-  baseSpread: 10
-  ballBaseDmg: 100
-  numberOfProjectiles: 1
-  baseExplosionRadius: 3
+  fireBallPrefab: {fileID: 3928469377355962383, guid: fb980d06c1c9cbd41a01d6acf6ccb34d, type: 3}
+  baseNumberOfFireBalls: 1
+  baseFireBallDamage: 100
+  baseFireBallRange: 8
+  baseFireBallSpeed: 6
+  baseFireBallSpread: 10
   baseExplosionDamage: 50
-  baseIgniteDuration: 5
+  baseExplosionRadius: 3
   baseIgniteChance: 25
+  baseIgniteDuration: 5

@@ -5,31 +5,46 @@ using UnityEngine;
 public class MeteorShowerSkillTree : SkillTree
 {
     public int additionalManaCost;
-    public float increasedDamage;
-    public float increasedRadius;
-    public float increasedDuration;
+    public float increasedAttackSpeed;
+    public float additionalCooldownTime;
+
+    public float increasedMeteorShowerDamage;
+    public float increasedBaseMeteorShowerDamage;
+    public float increasedMeteorShowerRadius;
+    public float increasedMeteorShowerDuration;
+
     public float increasedIgniteDamage;
-    public float increasedIgniteDuration;
     public float increasedIgniteChance;
+    public float increasedIgniteDuration;
 
     public void IncreaseManaCost(int value)
     {
         additionalManaCost += value;
     }
 
-    public void IncreaseDamage(float value)
+    public void IncreaseAttackSpeed(float value)
     {
-        increasedDamage += value;
+        increasedAttackSpeed += value;
     }
 
-    public void IncreaseRadius(float value)
+    public void IncreaseCooldownTime(float value)
     {
-        increasedRadius += value;
+        additionalCooldownTime += value;
     }
 
-    public void IncreaseDuration(float value)
+    public void IncreaseMeteorShowerDamage(float value)
     {
-        increasedDuration += value;
+        increasedMeteorShowerDamage += value;
+    }
+
+    public void IncreaseMeteorShowerRadius(float value)
+    {
+        increasedMeteorShowerRadius += value;
+    }
+
+    public void IncreaseMeteorShowerDuration(float value)
+    {
+        increasedMeteorShowerDuration += value;
     }
 
     public void IncreaseIgniteDamage(float value)
@@ -50,11 +65,16 @@ public class MeteorShowerSkillTree : SkillTree
     public override void ResetSkillTree()
     {
         additionalManaCost = 0;
-        increasedDamage = 0;
-        increasedRadius = 0;
-        increasedDuration = 0;
+        increasedAttackSpeed = 0;
+        additionalCooldownTime = 0;
+
+        increasedMeteorShowerDamage = 0;
+        increasedBaseMeteorShowerDamage = 0;
+        increasedMeteorShowerRadius = 0;
+        increasedMeteorShowerDuration = 0;
+
         increasedIgniteDamage = 0;
-        increasedIgniteDuration = 0;
         increasedIgniteChance = 0;
-}
+        increasedIgniteDuration = 0;
+    }
 }

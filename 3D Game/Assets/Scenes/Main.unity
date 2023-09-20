@@ -27312,7 +27312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1409478795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48890,7 +48890,7 @@ MonoBehaviour:
     baseValue: 0
   additionalNumberOfProjectiles:
     type: 17
-    baseValue: 10
+    baseValue: 0
   increasedIgniteDamage:
     type: 18
     baseValue: 0
@@ -49243,15 +49243,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalManaCost: 0
-  increasedRange: 0
-  increasedSpeed: 0
-  increasedDamage: 0
-  additionalFireBalls: 0
-  increasedExplosionRadius: 0
+  increasedAttackSpeed: 0
+  additionalNumberOfFireBalls: 0
+  increasedFireBallDamage: 0
+  increasedFireBallRange: 0
+  increasedFireBallSpeed: 0
   increasedExplosionDamage: 0
+  increasedExplosionRadius: 0
   increasedIgniteDamage: 0
-  increasedIgniteDuration: 0
   increasedIgniteChance: 0
+  increasedIgniteDuration: 0
   igniteAppliedByExplosion: 0
 --- !u!114 &7599843586163216816
 MonoBehaviour:
@@ -49266,15 +49267,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalManaCost: 0
+  increasedAttackSpeed: 0
   additionalCooldownTime: 0
-  increasedDamage: 0
-  increasedRadius: 0
-  increasedExpansionTime: 0
+  increasedFireBlastDamage: 0
+  increasedFireBlastRadius: 0
+  increasedFireBlastExpansionTime: 0
   increasedIgniteDamage: 0
-  increasedIgniteDuration: 0
   increasedIgniteChance: 0
-  doesNotDealDirectDamage: 0
-  doesNotDestroyProjectiles: 0
+  increasedIgniteDuration: 0
+  doesNotDealDamageOnHit: 0
+  destroysProjectiles: 0
   doesNotStopToUseSkill: 0
 --- !u!114 &7599843586163216817
 MonoBehaviour:
@@ -49314,17 +49316,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalManaCost: 0
-  increasedSpearDamage: 0
   additionalPierce: 0
-  increasedSpearSpread: 0
   additionalNumberOfSpears: 0
-  increasedFreezeChance: 0
-  increasedFreezeDuration: 0
-  increasedShatterChance: 0
-  increasedShatterMultiplier: 0
-  increasedSpearSpeed: 0
-  increasedSpearRange: 0
-  shatterDoesNotRemoveFreeze: 0
+  increasedDamage: 0
+  increasedSpread: 0
+  increasedSpeed: 0
+  increasedRange: 0
+  increasedSlowEffect: 0
+  increasedSlowChance: 0
+  increasedSlowDuration: 0
 --- !u!114 &7599843586163216819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49433,12 +49433,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalManaCost: 0
-  increasedDamage: 0
-  increasedRadius: 0
-  increasedDuration: 0
+  increasedAttackSpeed: 0
+  additionalCooldownTime: 0
+  increasedMeteorShowerDamage: 0
+  increasedMeteorShowerRadius: 0
+  increasedMeteorShowerDuration: 0
   increasedIgniteDamage: 0
-  increasedIgniteDuration: 0
   increasedIgniteChance: 0
+  increasedIgniteDuration: 0
 --- !u!114 &7599843586163216824
 MonoBehaviour:
   m_ObjectHideFlags: 0

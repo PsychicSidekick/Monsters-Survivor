@@ -19,7 +19,8 @@ MonoBehaviour:
   baseManaCost: 40
   targetsCharacters: 0
   isChannellingSkill: 0
-  meteorShowerAreaPrefab: {fileID: 3532440917268783606, guid: 6a8a7c0b68f869a45bb6f346de597aed, type: 3}
+  meteorShowerColliderPrefab: {fileID: 3532440917268783606, guid: 6a8a7c0b68f869a45bb6f346de597aed, type: 3}
+  meteorShowerParticlesPrefab: {fileID: 1578278915059731184, guid: a78f89c0573064446b23cee9cc21f306, type: 3}
   baseRadius: 5
   baseDamagePerSecond: 100
   baseDuration: 5

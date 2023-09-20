@@ -19,9 +19,9 @@ MonoBehaviour:
   baseManaCost: 30
   targetsCharacters: 0
   isChannellingSkill: 0
-  blastColliderPrefab: {fileID: 2963932199247047362, guid: 7393de6e233c4e7489672ea02833e615, type: 3}
-  baseExpansionTime: 0.2
-  baseBlastRadius: 5
-  baseBlastDamage: 200
+  fireBlastPrefab: {fileID: 2963932199247047362, guid: 7393de6e233c4e7489672ea02833e615, type: 3}
+  baseFireBlastDamage: 150
+  baseFireBlastRadius: 5
+  baseFireBlastExpansionTime: 0.25
   baseIgniteChance: 50
   baseIgniteDuration: 5

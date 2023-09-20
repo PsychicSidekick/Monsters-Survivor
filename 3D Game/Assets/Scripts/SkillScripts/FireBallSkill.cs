@@ -5,23 +5,26 @@ using UnityEngine;
 [CreateAssetMenu]
 public class FireBallSkill : Skill
 {
-    public GameObject ballPrefab;
-    public float ballRange;
-    public float ballSpeed;
-    public float baseSpread;
-    public float ballBaseDmg;
-    public int numberOfProjectiles;
+    public GameObject fireBallPrefab;
 
-    public float baseExplosionRadius;
+    public int baseNumberOfFireBalls;
+    public float baseFireBallDamage;
+    public float baseFireBallRange;
+    public float baseFireBallSpeed;
+    public float baseFireBallSpread;
+
     public float baseExplosionDamage;
+    public float baseExplosionRadius;
 
-    public float baseIgniteDuration;
     public float baseIgniteChance;
+    public float baseIgniteDuration;
 
     public override void OnUse(Character skillUser)
     {
+        FireBallSkillTree skillTree = skillUser.GetComponent<FireBallSkillTree>();
         SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
-        skillHandler.SetCurrentAttackSpeedMod(0);
+
+        skillHandler.SetCurrentAttackSpeedMod(skillTree.increasedAttackSpeed);
         skillUser.StopMoving();
         skillHandler.FaceGroundTarget();
         skillUser.animator.Play("Throw");
@@ -36,29 +39,30 @@ public class FireBallSkill : Skill
         Vector3 targetDirection = (skillHandler.groundTarget - startPos).normalized;
         startPos += targetDirection;
 
-        float fireBallDamage = (ballBaseDmg + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedProjectileDamage.value);
-        float increasedIgniteDamage = 1 + skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedIgniteDamage.value + skillUser.stats.increasedIgniteDuration.value;
-        float igniteDuration = baseIgniteDuration * (1 + skillTree.increasedIgniteDuration + skillUser.stats.increasedIgniteDuration.value);
-        float igniteChance = baseIgniteChance + skillTree.increasedIgniteChance + skillUser.stats.additionalIgniteChance.value;
-        int numberOfFireBalls = numberOfProjectiles + skillTree.additionalFireBalls + (int)skillUser.stats.additionalNumberOfProjectiles.value;
-        float fireBallRange = ballRange * (1 + skillTree.increasedRange);
-        float fireBallSpeed = ballSpeed * (1 + skillTree.increasedSpeed + skillUser.stats.increasedProjectileSpeed.value);
+        int numberOfFireBalls = baseNumberOfFireBalls + skillTree.additionalNumberOfFireBalls + (int)skillUser.stats.additionalNumberOfProjectiles.value;
+        float fireBallDamage = (baseFireBallDamage * (1 + skillTree.increasedBaseFireBallDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedFireBallDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedProjectileDamage.value);
+        float fireBallRange = baseFireBallRange * (1 + skillTree.increasedFireBallRange);
+        float fireBallSpeed = baseFireBallSpeed * (1 + skillTree.increasedFireBallSpeed + skillUser.stats.increasedProjectileSpeed.value);
 
+        float explosionDamage = (baseExplosionDamage * (1 + skillTree.increasedBaseExplosionDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedExplosionDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedAreaDamage.value);
         float explosionRadius = baseExplosionRadius * (1 + skillTree.increasedExplosionRadius + skillUser.stats.increasedAreaEffect.value);
-        float explosionDamage = (baseExplosionDamage + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedExplosionDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedAreaDamage.value);
+
+        float increasedIgniteDamage = 1 + skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedIgniteDamage.value + skillUser.stats.increasedIgniteDuration.value;
+        float igniteChance = baseIgniteChance + skillTree.increasedIgniteChance + skillUser.stats.additionalIgniteChance.value;
+        float igniteDuration = baseIgniteDuration * (1 + skillTree.increasedIgniteDuration + skillUser.stats.increasedIgniteDuration.value);
 
         for (int i = 0; i < numberOfFireBalls; i++)
         {
-            EffectCollider collider = Instantiate(ballPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
-            Projectile proj = collider.GetComponent<Projectile>();
-            ExplodingProjectile explodingProj = proj.GetComponent<ExplodingProjectile>();
+            EffectCollider collider = Instantiate(fireBallPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
+            Projectile projectile = collider.GetComponent<Projectile>();
+            ExplodingProjectile explodingProjectile = projectile.GetComponent<ExplodingProjectile>();
 
-            proj.targetPos = startPos + Quaternion.Euler(0, (numberOfFireBalls - 1) * -baseSpread + i * 2 * baseSpread, 0) * targetDirection * fireBallRange;
-            proj.projSpeed = fireBallSpeed;
+            projectile.targetPos = startPos + Quaternion.Euler(0, (numberOfFireBalls - 1) * -baseFireBallSpread + i * 2 * baseFireBallSpread, 0) * targetDirection * fireBallRange;
+            projectile.projSpeed = fireBallSpeed;
 
-            explodingProj.explosionRadius = explosionRadius;
-            explodingProj.explosionDamageType = DamageType.Fire;
-            explodingProj.explosionDamage = explosionDamage;
+            explodingProjectile.explosionRadius = explosionRadius;
+            explodingProjectile.explosionDamageType = DamageType.Fire;
+            explodingProjectile.explosionDamage = explosionDamage;
 
             if (!skillTree.igniteAppliedByExplosion)
             {
@@ -73,7 +77,7 @@ public class FireBallSkill : Skill
                 IgniteEffect ignite = new IgniteEffect(skillUser, igniteDamage, igniteDuration, igniteChance);
 
                 collider.SetHostileEffects(fireBallDamage, DamageType.Fire, false, skillUser, null);
-                explodingProj.explosionStatusEffects.Add(ignite);
+                explodingProjectile.explosionStatusEffects.Add(ignite);
             }
         }
     }

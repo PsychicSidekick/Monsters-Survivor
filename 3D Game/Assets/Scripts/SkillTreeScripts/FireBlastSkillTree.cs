@@ -5,15 +5,19 @@ using UnityEngine;
 public class FireBlastSkillTree : SkillTree
 {
     public int additionalManaCost;
+    public float increasedAttackSpeed;
     public float additionalCooldownTime;
-    public float increasedDamage;
-    public float increasedRadius;
-    public float increasedExpansionTime;
+
+    public float increasedFireBlastDamage;
+    public float increasedFireBlastRadius;
+    public float increasedFireBlastExpansionTime;
+
     public float increasedIgniteDamage;
-    public float increasedIgniteDuration;
     public float increasedIgniteChance;
-    public bool doesNotDealDirectDamage;
-    public bool doesNotDestroyProjectiles;
+    public float increasedIgniteDuration;
+
+    public bool doesNotDealDamageOnHit;
+    public bool destroysProjectiles;
     public bool doesNotStopToUseSkill;
 
     public void IncreaseManaCost(int value)
@@ -21,24 +25,29 @@ public class FireBlastSkillTree : SkillTree
         additionalManaCost += value;
     }
 
+    public void IncreaseAttackSpeed(float value)
+    {
+        increasedAttackSpeed += value;
+    }
+
     public void IncreaseCooldownTime(float value)
     {
         additionalCooldownTime += value;
     }
 
-    public void IncreaseDamage(float value)
+    public void IncreaseFireBlastDamage(float value)
     {
-        increasedDamage += value;
+        increasedFireBlastDamage += value;
     }
 
-    public void IncreaseRadius(float value)
+    public void IncreaseFireBlastRadius(float value)
     {
-        increasedRadius += value;
+        increasedFireBlastRadius += value;
     }
 
-    public void IncreaseExpansionTime(float value)
+    public void IncreaseFireBlastExpansionTime(float value)
     {
-        increasedExpansionTime += value;
+        increasedFireBlastExpansionTime += value;
     }
 
     public void IncreaseIgniteDamage(float value)
@@ -46,24 +55,24 @@ public class FireBlastSkillTree : SkillTree
         increasedIgniteDamage += value;
     }
 
-    public void IncreaseIgniteDuration(float value)
-    {
-        increasedIgniteDuration += value;
-    }
-
     public void IncreaseIgniteChance(float value)
     {
         increasedIgniteChance += value;
     }
 
-    public void ToggleDoesNotDealDirectDamage()
+    public void IncreaseIgniteDuration(float value)
     {
-        doesNotDealDirectDamage = true;
+        increasedIgniteDuration += value;
     }
 
-    public void ToggleDoesNotDestroyProjectiles()
+    public void ToggleDoesNotDealDamageOnHit()
     {
-        doesNotDestroyProjectiles = true;
+        doesNotDealDamageOnHit = true;
+    }
+
+    public void ToggleDestroysProjectiles()
+    {
+        destroysProjectiles = true;
     }
 
     public void ToggleDoesNotStopToUseSkill()
@@ -74,15 +83,19 @@ public class FireBlastSkillTree : SkillTree
     public override void ResetSkillTree()
     {
         additionalManaCost = 0;
+        increasedAttackSpeed = 0;
         additionalCooldownTime = 0;
-        increasedDamage = 0;
-        increasedRadius = 0;
-        increasedExpansionTime = 0;
+
+        increasedFireBlastDamage = 0;
+        increasedFireBlastRadius = 0;
+        increasedFireBlastExpansionTime = 0;
+
         increasedIgniteDamage = 0;
-        increasedIgniteDuration = 0;
         increasedIgniteChance = 0;
-        doesNotDealDirectDamage = false;
-        doesNotDestroyProjectiles = false;
+        increasedIgniteDuration = 0;
+
+        doesNotDealDamageOnHit = false;
+        destroysProjectiles = false;
         doesNotStopToUseSkill = false;
     }
 }
