@@ -126,7 +126,7 @@ public class EffectCollider : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnCollide(Collider other)
     {
         Character character = other.GetComponent<Character>();
 
@@ -150,10 +150,18 @@ public class EffectCollider : MonoBehaviour
             {
                 return;
             }
+
+            if (proj.chain > 0)
+            {
+                if (proj.chainedCharacters.Contains(character) && !proj.chainsToSameCharacters)
+                {
+                    return;
+                }
+            }
         }
-        
+
         charactersStatusEffects.Add(character, new List<StatusEffect>());
-        
+
         if (character.GetType() == owner.GetType())
         {
             ApplyFriendlyEffects(character);
@@ -162,6 +170,11 @@ public class EffectCollider : MonoBehaviour
         {
             ApplyHostileEffects(character);
         }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        OnCollide(other);
     }
 
     private void OnTriggerExit(Collider other)

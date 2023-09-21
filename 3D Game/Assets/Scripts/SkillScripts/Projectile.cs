@@ -11,13 +11,13 @@ public class Projectile : MonoBehaviour
     public int chain;
     public int remainingChains;
     public bool chainsToUser;
+    public bool chainsToSameCharacters;
     public float chainingRange;
     public float chainDamageMultiplier;
+    public Character chainTarget;
     public List<Character> chainedCharacters = new List<Character>();
 
     public EffectCollider effectCollider;
-
-    public Vector3 lastFramePosition;
 
     private void Start()
     {
@@ -33,17 +33,30 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        // destroy if arrived at targetPos
+        // destroy when arrived at targetPos
         if (Vector3.Distance(transform.position, targetPos) == 0)
         {
-            Destroy(gameObject);
+            // only if projectile does not chain
+            if (remainingChains == chain)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        // becomes a homing projectile if projectile started chaining
+        if (remainingChains < chain)
+        {
+            // which is destroyed when the chain target is no longer in the scene
+            if (!chainTarget.gameObject.activeInHierarchy)
+            {
+                Destroy(gameObject);
+            }
+            targetPos = chainTarget.transform.position;
         }
         
         transform.position = Vector3.MoveTowards(transform.position, targetPos, projSpeed * Time.deltaTime * 1.5f);
         Vector3 lookDir = Vector3.RotateTowards(transform.forward, targetPos - transform.position, 10, 0.0f);
         transform.rotation = Quaternion.LookRotation(lookDir);
-
-        lastFramePosition = transform.position;
     }
 
     public void OnHit(Character character)
@@ -69,6 +82,7 @@ public class Projectile : MonoBehaviour
 
     public void Chained(Character chainedCharacter)
     {
+        Debug.Log(remainingChains);
         Character nextTarget = null;
         float shortestDistance = Mathf.Infinity;
 
@@ -78,20 +92,26 @@ public class Projectile : MonoBehaviour
         {
             Character hitCharacter = hit.GetComponent<Character>();
 
-            // if hit is not a character
+            // ignore if not a character
             if (!hitCharacter)
             {
                 continue;
             }
 
-            // if projecile does not chain to user and the hit character is friendly
+            // ignore if projecile does not chain to user and the hit character is friendly
             if (!chainsToUser && hitCharacter.GetType() == effectCollider.owner.GetType())
             {
                 continue;
             }
 
-            // if hit character has already been chained
-            if (hitCharacter == chainedCharacter || chainedCharacters.Contains(hitCharacter))
+            // ignore last chained character
+            if (hitCharacter == chainedCharacter)
+            {
+                continue;
+            }
+
+            // ignore if hit character has already been chained
+            if (chainedCharacters.Contains(hitCharacter))
             {
                 continue;
             }
@@ -109,8 +129,15 @@ public class Projectile : MonoBehaviour
         if (nextTarget != null)
         {
             targetPos = GameManager.instance.RefinedPos(nextTarget.transform.position);
-            chainedCharacters.Add(nextTarget);
-            //SendMessage("ChainsTo", nextTarget);
+            chainTarget = nextTarget;
+            EffectCollider collider = GetComponent<EffectCollider>();
+            // manually call OnTriggerEnter through OnCollide if the nextTarget is already in the collider
+            // this only happens when the next target is too close to the last chained character
+            if (collider.charactersStatusEffects.ContainsKey(nextTarget))
+            {
+                collider.charactersStatusEffects.Remove(nextTarget);
+                collider.OnCollide(nextTarget.GetComponent<Collider>());
+            }
         }
         else
         {

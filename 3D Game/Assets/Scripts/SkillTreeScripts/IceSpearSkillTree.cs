@@ -4,7 +4,7 @@ public class IceSpearSkillTree : SkillTree
     public float increasedAttackSpeed;
 
     public int additionalNumberOfIceSpears;
-    public int additionalIceSpearPierce;
+    public int additionalIceSpearPierces;
     public float increasedIceSpearDamage;
     public float increasedBaseIceSpearDamage;
     public float increasedIceSpearSpread;
@@ -32,7 +32,7 @@ public class IceSpearSkillTree : SkillTree
 
     public void IncreaseIceSpearPierce(int value)
     {
-        additionalIceSpearPierce += value;
+        additionalIceSpearPierces += value;
     }
 
     public void IncreaseIceSpearDamage(float value)
@@ -80,7 +80,7 @@ public class IceSpearSkillTree : SkillTree
         additionalManaCost = 0;
         increasedAttackSpeed = 0;
 
-        additionalIceSpearPierce = 0;
+        additionalIceSpearPierces = 0;
         additionalNumberOfIceSpears = 0;
         increasedIceSpearDamage = 0;
         increasedBaseIceSpearDamage = 0;
