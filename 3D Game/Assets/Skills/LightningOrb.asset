@@ -21,11 +21,11 @@ MonoBehaviour:
   isChannellingSkill: 0
   lightningOrbPrefab: {fileID: 1197468199083580458, guid: 35e505d3fd0b15f4eba2c67ffa164242, type: 3}
   rotationCenterPrefab: {fileID: 6695515515904180748, guid: e3db36753258e4a489f988e86242c6e2, type: 3}
-  baseRotationSpeed: 100
-  baseRotationRadius: 2
-  baseDuration: 5
-  baseDamage: 50
-  baseNumberOfOrbs: 3
+  baseNumberOfLightningOrbs: 3
+  baseLightningOrbDamage: 170
+  baseLightningOrbRotationRadius: 1.5
+  baseLightningOrbSpeed: 100
+  baseLightningOrbDuration: 5
+  baseShockEffect: 50
   baseShockChance: 10
   baseShockDuration: 2
-  baseShockEffect: 50

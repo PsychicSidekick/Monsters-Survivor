@@ -37,14 +37,14 @@ public class Projectile : MonoBehaviour
         if (Vector3.Distance(transform.position, targetPos) == 0)
         {
             // only if projectile does not chain
-            if (remainingChains == chain)
+            if (remainingChains == chain || remainingChains <= 0)
             {
                 Destroy(gameObject);
             }
         }
 
         // becomes a homing projectile if projectile started chaining
-        if (remainingChains < chain)
+        if (remainingChains < chain && chain > 0)
         {
             // which is destroyed when the chain target is no longer in the scene
             if (!chainTarget.gameObject.activeInHierarchy)
@@ -82,7 +82,6 @@ public class Projectile : MonoBehaviour
 
     public void Chained(Character chainedCharacter)
     {
-        Debug.Log(remainingChains);
         Character nextTarget = null;
         float shortestDistance = Mathf.Infinity;
 

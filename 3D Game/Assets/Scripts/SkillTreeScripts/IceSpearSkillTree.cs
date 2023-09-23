@@ -4,12 +4,12 @@ public class IceSpearSkillTree : SkillTree
     public float increasedAttackSpeed;
 
     public int additionalNumberOfIceSpears;
-    public int additionalIceSpearPierces;
+    public int additionalNumberOfIceSpearPierces;
     public float increasedIceSpearDamage;
     public float increasedBaseIceSpearDamage;
-    public float increasedIceSpearSpread;
-    public float increasedIceSpearSpeed;
     public float increasedIceSpearRange;
+    public float increasedIceSpearSpeed;
+    public float increasedIceSpearSpread;
 
     public float increasedSlowEffect;
     public float increasedSlowChance;
@@ -32,7 +32,7 @@ public class IceSpearSkillTree : SkillTree
 
     public void IncreaseIceSpearPierce(int value)
     {
-        additionalIceSpearPierces += value;
+        additionalNumberOfIceSpearPierces += value;
     }
 
     public void IncreaseIceSpearDamage(float value)
@@ -45,9 +45,9 @@ public class IceSpearSkillTree : SkillTree
         increasedBaseIceSpearDamage += value;
     }
 
-    public void IncreaseIceSpearSpread(float value)
+    public void IncreaseIceSpearRange(float value)
     {
-        increasedIceSpearSpread += value;
+        increasedIceSpearRange += value;
     }
 
     public void IncreaseIceSpearSpeed(float value)
@@ -55,9 +55,9 @@ public class IceSpearSkillTree : SkillTree
         increasedIceSpearSpeed += value;
     }
 
-    public void IncreaseIceSpearRange(float value)
+    public void IncreaseIceSpearSpread(float value)
     {
-        increasedIceSpearRange += value;
+        increasedIceSpearSpread += value;
     }
 
     public void IncreaseSlowEffect(float value)
@@ -80,7 +80,7 @@ public class IceSpearSkillTree : SkillTree
         additionalManaCost = 0;
         increasedAttackSpeed = 0;
 
-        additionalIceSpearPierces = 0;
+        additionalNumberOfIceSpearPierces = 0;
         additionalNumberOfIceSpears = 0;
         increasedIceSpearDamage = 0;
         increasedBaseIceSpearDamage = 0;

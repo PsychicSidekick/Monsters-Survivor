@@ -4893,7 +4893,7 @@ GameObject:
   - component: {fileID: 1666833113800771819}
   - component: {fileID: -3565497820311160250}
   m_Layer: 9
-  m_Name: Small Spear
+  m_Name: Icicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

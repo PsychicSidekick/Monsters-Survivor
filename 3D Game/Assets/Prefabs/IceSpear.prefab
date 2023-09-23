@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -476668181739301350}
   - component: {fileID: -5763001377419535258}
   m_Layer: 9
-  m_Name: Spear
+  m_Name: IceSpear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,55 +8,60 @@ public class LightningOrbSkill : Skill
     public GameObject lightningOrbPrefab;
     public GameObject rotationCenterPrefab;
 
-    public float baseRotationSpeed;
-    public float baseRotationRadius;
-    public float baseDuration;
-    public float baseDamage;
-    public int baseNumberOfOrbs;
+    public int baseNumberOfLightningOrbs;
+    public float baseLightningOrbDamage;
+    public float baseLightningOrbRotationRadius;
+    public float baseLightningOrbSpeed;
+    public float baseLightningOrbDuration;
+
+    public float baseShockEffect;
     public float baseShockChance;
     public float baseShockDuration;
-    public float baseShockEffect;
 
     public override void OnUse(Character skillUser)
     {
         LightningOrbSkillTree skillTree = skillUser.GetComponent<LightningOrbSkillTree>();
         SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
-        skillHandler.SetCurrentAttackSpeedMod(0);
+        skillHandler.SetCurrentAttackSpeedMod(skillTree.increasedAttackSpeed);
 
         if (!skillTree.doesNotStopMoving)
         {
             skillUser.StopMoving();
-            skillUser.animator.Play("Throw");
+            skillUser.animator.Play("AreaCast");
         }
-        
+
+        int numberOfLightningOrbs = baseNumberOfLightningOrbs + skillTree.additionalNumberOfLightningOrbs + (int)skillUser.stats.additionalNumberOfProjectiles.value;
+        float lightningOrbDamage = (baseLightningOrbDamage * (1 + skillTree.increasedBaseLightningOrbDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedLightningOrbDamage + skillUser.stats.increasedLightningDamage.value + skillUser.stats.increasedProjectileDamage.value);
+        float lightningOrbSpeed = baseLightningOrbSpeed * (1 + skillTree.increasedLightningOrbSpeed + skillUser.stats.increasedProjectileSpeed.value);
+        float lightningOrbDuration = baseLightningOrbDuration * (1 + skillTree.increasedLightningOrbDuration);
+
+        float shockEffect = baseShockEffect + skillTree.increasedShockEffect + skillUser.stats.increasedShockEffect.value;
+        float shockChance = baseShockChance + skillTree.increasedShockChance + skillUser.stats.additionalShockChance.value;
+        float shockDuration = baseShockDuration * (1 + skillTree.increasedShockDuration + skillUser.stats.increasedShockDuration.value);
+
         RotationCenter rotationCenter = Instantiate(rotationCenterPrefab, skillUser.transform.position, Quaternion.identity).GetComponent<RotationCenter>();
-        float duration = baseDuration * (1 + skillTree.increasedDuration);
-        float speed = baseRotationSpeed * (1 + skillTree.increasedSpeed);
-        rotationCenter.lifeTime = duration;
-        rotationCenter.rotationSpeed = speed;
+        rotationCenter.lifeTime = lightningOrbDuration;
+        rotationCenter.rotationSpeed = lightningOrbSpeed;
         rotationCenter.movingTarget = skillUser.transform;
 
-        int numberOfOrbs = baseNumberOfOrbs + skillTree.additionalNumberOfProjectiles;
-        for (int i = 0; i < numberOfOrbs; i++)
+        for (int i = 0; i < numberOfLightningOrbs; i++)
         {
-            float radius = baseRotationRadius * (1 + skillTree.increasedRadius);
-            if (skillTree.randomRadius)
+            float lightningOrbRotationRadius = baseLightningOrbRotationRadius * (1 + skillTree.increasedLightningOrbRotationRadius);
+            if (skillTree.randomRotationRadius)
             {
-                radius *= Random.Range(0.5f, 1.5f);
+                lightningOrbRotationRadius *= Random.Range(0.7f, 1.3f);
             }
-            Vector3 spawnOffset = Quaternion.AngleAxis(i * 360 / numberOfOrbs, rotationCenter.transform.up) * new Vector3(radius, 0, 0);
-            EffectCollider collider = Instantiate(lightningOrbPrefab, rotationCenter.transform).GetComponent<EffectCollider>();
-            float damage = baseDamage * (1 + skillTree.increasedDamage);
-            float shockChance = baseShockChance + skillTree.increasedShockChance;
-            float shockDuration = baseShockDuration * (1 + skillTree.increasedShockDuration);
-            float shockEffect = baseShockEffect + skillTree.increasedShockEffect;
+
+            Vector3 spawnOffset = Quaternion.AngleAxis(i * 360 / numberOfLightningOrbs, rotationCenter.transform.up) * new Vector3(lightningOrbRotationRadius, 0, 0);
             ShockEffect shock = new ShockEffect(shockEffect, shockDuration, shockChance);
-            collider.SetHostileEffects(damage, DamageType.Lightning, false, skillUser, null, shock);
+
+            EffectCollider collider = Instantiate(lightningOrbPrefab, rotationCenter.transform).GetComponent<EffectCollider>();
+            collider.SetHostileEffects(lightningOrbDamage, DamageType.Lightning, false, skillUser, null, shock);
             collider.transform.position = rotationCenter.transform.position + spawnOffset;
-            Projectile proj = collider.GetComponent<Projectile>();
+
             if (!skillTree.doesNotPierce)
             {
-                proj.pierce = 10000;
+                collider.GetComponent<Projectile>().pierce = 10000;
             }
         }
     }

@@ -160,7 +160,10 @@ public class EffectCollider : MonoBehaviour
             }
         }
 
-        charactersStatusEffects.Add(character, new List<StatusEffect>());
+        if (!charactersStatusEffects.ContainsKey(character))
+        {
+            charactersStatusEffects.Add(character, new List<StatusEffect>());
+        }
 
         if (character.GetType() == owner.GetType())
         {

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eab9098cb53e37c40a66a8361e0bef30, type: 3}
+  m_Name: LightningStrike
+  m_EditorClassIdentifier: 
+  skillName: LightningStrike
+  skillIcon: {fileID: 0}
+  coolDownTime: 0
+  activeTime: 0
+  baseManaCost: 0
+  targetsCharacters: 0
+  isChannellingSkill: 0
+  lightningStrikeAreaPrefab: {fileID: 6512507329015173101, guid: ef85d401959c25843bee4c80cfee792b, type: 3}
+  baseNumberOfLightningStrikes: 10
+  baseLightningStrikeDamage: 300
+  baseLightningStrikeRadius: 1
+  baseMaximumLightningStrikeRange: 6
+  baseShockEffect: 30
+  baseShockChance: 50
+  baseShockDuration: 5

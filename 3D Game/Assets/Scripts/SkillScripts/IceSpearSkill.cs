@@ -39,7 +39,7 @@ public class IceSpearSkill : Skill
         startPos += targetDirection;
 
         int numberOfSpears = baseNumberOfIceSpears + skillTree.additionalNumberOfIceSpears + (int)skillUser.stats.additionalNumberOfProjectiles.value;
-        int spearPierce = baseIceSpearPierce + skillTree.additionalIceSpearPierces;
+        int spearPierce = baseIceSpearPierce + skillTree.additionalNumberOfIceSpearPierces;
         float spearDamage = (baseIceSpearDamage * (1 + skillTree.increasedBaseIceSpearDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedIceSpearDamage + skillUser.stats.increasedColdDamage.value + skillUser.stats.increasedProjectileDamage.value);
         float spearRange = baseIceSpearRange * (1 + skillTree.increasedIceSpearRange);
         float spearSpread = baseIceSpearSpread * (1 + skillTree.increasedIceSpearSpread);

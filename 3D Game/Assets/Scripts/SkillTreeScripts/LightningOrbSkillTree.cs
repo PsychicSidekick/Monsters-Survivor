@@ -6,16 +6,21 @@ public class LightningOrbSkillTree : SkillTree
 {
     public int additionalManaCost;
     public float additionalCooldownTime;
-    public float increasedDamage;
-    public float increasedRadius;
-    public float increasedSpeed;
-    public float increasedDuration;
-    public int additionalNumberOfProjectiles;
+    public float increasedAttackSpeed;
+
+    public int additionalNumberOfLightningOrbs;
+    public float increasedLightningOrbDamage;
+    public float increasedBaseLightningOrbDamage;
+    public float increasedLightningOrbRotationRadius;
+    public float increasedLightningOrbSpeed;
+    public float increasedLightningOrbDuration;
+
+    public float increasedShockEffect;
     public float increasedShockChance;
     public float increasedShockDuration;
-    public float increasedShockEffect;
+
     public bool doesNotStopMoving;
-    public bool randomRadius;
+    public bool randomRotationRadius;
     public bool doesNotPierce;
 
     public void IncreaseManaCost(int value)
@@ -28,29 +33,44 @@ public class LightningOrbSkillTree : SkillTree
         additionalCooldownTime += value;
     }
 
-    public void IncreaseDamage(float value)
+    public void IncreaseAttackSpeed(float value)
     {
-        increasedDamage += value;
+        increasedAttackSpeed += value;
     }
 
-    public void IncreaseRadius(float value)
+    public void IncreaseNumberOfLightningOrbs(int value)
     {
-        increasedRadius += value;
+        additionalNumberOfLightningOrbs += value;
     }
 
-    public void IncreaseSpeed(float value)
+    public void IncreaseLightningOrbDamage(float value)
     {
-        increasedSpeed += value;
+        increasedLightningOrbDamage += value;
     }
 
-    public void IncreaseDuration(float value)
+    public void IncreaseBaseLightningOrbDamage(float value)
     {
-        increasedDuration += value;
+        increasedBaseLightningOrbDamage += value;
     }
 
-    public void IncreaseNumberOfProjectiles(int value)
+    public void IncreaseLightningOrbRotationRadius(float value)
     {
-        additionalNumberOfProjectiles += value;
+        increasedLightningOrbRotationRadius += value;
+    }
+
+    public void IncreaseLightningOrbSpeed(float value)
+    {
+        increasedLightningOrbSpeed += value;
+    }
+
+    public void IncreaseLightningOrbDuration(float value)
+    {
+        increasedLightningOrbDuration += value;
+    }
+
+    public void IncreaseShockEffect(float value)
+    {
+        increasedShockEffect += value;
     }
 
     public void IncreaseShockChance(float value)
@@ -63,19 +83,14 @@ public class LightningOrbSkillTree : SkillTree
         increasedShockDuration += value;
     }
 
-    public void IncreaseShockEffect(float value)
-    {
-        increasedShockEffect += value;
-    }
-
     public void ToggleDoesNotStopMoving()
     {
         doesNotStopMoving = true;
     }
 
-    public void ToggleRandomRadius()
+    public void ToggleRandomRotationRadius()
     {
-        randomRadius = true;
+        randomRotationRadius = true;
     }
 
     public void ToggleDoesNotPierce()
@@ -87,16 +102,21 @@ public class LightningOrbSkillTree : SkillTree
     {
         additionalManaCost = 0;
         additionalCooldownTime = 0;
-        increasedDamage = 0;
-        increasedRadius = 0;
-        increasedSpeed = 0;
-        increasedDuration = 0;
-        additionalNumberOfProjectiles = 0;
+        increasedAttackSpeed = 0;
+
+        additionalNumberOfLightningOrbs = 0;
+        increasedLightningOrbDamage = 0;
+        increasedBaseLightningOrbDamage = 0;
+        increasedLightningOrbRotationRadius = 0;
+        increasedLightningOrbSpeed = 0;
+        increasedLightningOrbDuration = 0;
+
+        increasedShockEffect = 0;
         increasedShockChance = 0;
         increasedShockDuration = 0;
-        increasedShockEffect = 0;
+
         doesNotStopMoving = false;
-        randomRadius = false;
+        randomRotationRadius = false;
         doesNotPierce = false;
 }
 }
