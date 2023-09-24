@@ -4997,11 +4997,12 @@ MonoBehaviour:
   chain: 0
   remainingChains: 0
   chainsToUser: 0
+  chainsToSameCharacters: 0
   chainingRange: 0
   chainDamageMultiplier: 0
+  chainTarget: {fileID: 0}
   chainedCharacters: []
   effectCollider: {fileID: 0}
-  lastFramePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &-3565497820311160250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5014,15 +5015,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfc9965cd55fb848b7832cdecfadb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  affectsOwner: 0
+  affectsFriendlyCharacters: 0
   owner: {fileID: 0}
-  target: {fileID: 0}
-  charactersInArea: []
   damage: 0
   type: 0
   damageOverTime: 0
-  targetsCharacter: 0
-  hostileStatusEffects: []
+  hostileInAreaStatusEffects: []
+  hostileOneTimeStatusEffects: []
   healing: 0
   healingOverTime: 0
-  friendlyStatusEffects: []
+  friendlyInAreaStatusEffects: []
+  friendlyOneTimeStatusEffects: []
+  onHitVFX: {fileID: 4924508274929071776, guid: 5e391de203a5c4a4ba51a42c64bf73f4, type: 3}

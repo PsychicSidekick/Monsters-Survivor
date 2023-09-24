@@ -1192,6 +1192,7 @@ Transform:
   m_Children:
   - {fileID: 3358857187471566087}
   - {fileID: 8953519495295834517}
+  - {fileID: 1632258492624020943}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1210,6 +1211,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   agent: {fileID: 0}
   stats: {fileID: 0}
+  status: {fileID: 0}
   life: 0
   mana: 0
   xp: 0
@@ -1243,87 +1245,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e3405eb41756746a490ab69dd64fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife:
+  maximumLife:
     type: 0
-    baseValue: 1000
-  lifeRegen:
-    type: 1
     baseValue: 0
-  maxMana:
-    type: 2
-    baseValue: 10000
-  manaRegen:
-    type: 3
-    baseValue: 10000
-  moveSpeed:
-    type: 4
-    baseValue: 4
+  lifeRegeneration:
+    type: 0
+    baseValue: 0
+  maximumMana:
+    type: 0
+    baseValue: 0
+  manaRegeneration:
+    type: 0
+    baseValue: 0
+  movementSpeed:
+    type: 0
+    baseValue: 0
   attackSpeed:
     type: 5
     baseValue: 1.5
-  attackDmg:
-    type: 6
+  attackDamage:
+    type: 0
     baseValue: 0
-  fireRes:
-    type: 7
+  fireResistance:
+    type: 0
     baseValue: 0
-  coldRes:
-    type: 8
+  coldResistance:
+    type: 0
     baseValue: 0
-  lightningRes:
-    type: 9
+  lightningResistance:
+    type: 0
     baseValue: 0
-  fireDamage:
-    type: 10
-    baseValue: 1
-  coldDamage:
-    type: 11
-    baseValue: 1
-  lightningDamage:
-    type: 12
-    baseValue: 1
-  areaDamage:
-    type: 13
-    baseValue: 1
-  areaEffect:
-    type: 14
-    baseValue: 1
-  projDamage:
-    type: 15
-    baseValue: 1
-  projSpeed:
-    type: 16
-    baseValue: 1
-  noOfProj:
-    type: 17
+  increasedFireDamage:
+    type: 0
     baseValue: 0
-  igniteDamage:
-    type: 18
-    baseValue: 1
-  igniteChance:
-    type: 19
+  increasedColdDamage:
+    type: 0
     baseValue: 0
-  igniteDuration:
-    type: 20
-    baseValue: 1
-  slowEffect:
-    type: 21
+  increasedLightningDamage:
+    type: 0
     baseValue: 0
-  slowChance:
-    type: 22
+  increasedAreaDamage:
+    type: 0
     baseValue: 0
-  slowDuration:
-    type: 23
-    baseValue: 1
-  shockEffect:
-    type: 24
+  increasedAreaEffect:
+    type: 0
     baseValue: 0
-  shockChance:
-    type: 25
+  increasedProjectileDamage:
+    type: 0
     baseValue: 0
-  shockDuration:
-    type: 26
-    baseValue: 1
+  increasedProjectileSpeed:
+    type: 0
+    baseValue: 0
+  additionalNumberOfProjectiles:
+    type: 0
+    baseValue: 0
+  increasedIgniteDamage:
+    type: 0
+    baseValue: 0
+  additionalIgniteChance:
+    type: 0
+    baseValue: 0
+  increasedIgniteDuration:
+    type: 0
+    baseValue: 0
+  increasedSlowEffect:
+    type: 0
+    baseValue: 0
+  additionalSlowChance:
+    type: 0
+    baseValue: 0
+  increasedSlowDuration:
+    type: 0
+    baseValue: 0
+  increasedShockEffect:
+    type: 0
+    baseValue: 0
+  additionalShockChance:
+    type: 0
+    baseValue: 0
+  increasedShockDuration:
+    type: 0
+    baseValue: 0
   stats: []
   animationSpeedMultiplier: 0
 --- !u!114 &8835673344882010377
@@ -1478,18 +1480,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalManaCost: 0
-  increasedOrbDamage: 0
-  increasedOrbDuration: 0
-  increasedOrbTravelSpeed: 5
-  increasedOrbFreezeChance: -100
-  additionalIcicles: -6
+  additionalCooldownTime: 0
+  increasedFrozenOrbDuration: 0
+  increasedFrozenOrbSpeed: 0
+  increasedFrozenOrbSlowEffect: 0
+  additionalNumberOfIcicles: 0
   additionalIciclePierce: 0
   increasedIcicleDamage: 0
+  increasedBaseIcicleDamage: 0
   increasedIcicleRange: 0
-  increasedIcicleTravelSpeed: 0
+  increasedIcicleSpeed: 0
   increasedIcicleShootRate: 0
-  increasedIcicleFreezeChance: 0
-  increasedFreezeDuration: 0
+  increasedIcicleSlowEffect: 0
+  increasedIcicleSlowChance: 0
+  increasedIcicleSlowDuration: 0
 --- !u!114 &8835673344882010419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1668,3 +1672,65 @@ Transform:
   m_Father: {fileID: 9003339605643779504}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -24.011904, y: 8.689315, z: 34.931145}
+--- !u!1001 &935426926530832635
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8835673344882010420}
+    m_Modifications:
+    - target: {fileID: 1899885337896586548, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899885337896586548, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899885337896586548, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899885337896586548, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899885337896586548, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899885337896586548, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899885337896586548, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899885337896586548, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899885337896586548, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899885337896586548, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899885337896586548, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899885337896586551, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+      propertyPath: m_Name
+      value: StatusVFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+--- !u!4 &1632258492624020943 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1899885337896586548, guid: fa8fe3ec16b2761478ea3e0e4dbaecd6, type: 3}
+  m_PrefabInstance: {fileID: 935426926530832635}
+  m_PrefabAsset: {fileID: 0}

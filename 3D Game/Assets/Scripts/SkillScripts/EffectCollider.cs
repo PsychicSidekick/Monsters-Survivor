@@ -21,6 +21,8 @@ public class EffectCollider : MonoBehaviour
     public List<StatusEffect> friendlyInAreaStatusEffects = new List<StatusEffect>();
     public List<StatusEffect> friendlyOneTimeStatusEffects = new List<StatusEffect>();
 
+    public GameObject onHitVFX;
+
     public void SetHostileEffects(float _damage, DamageType _type, bool _damageOverTime, Character _owner, StatusEffect[] _hostileInAreaStatusEffects, params StatusEffect[] _hostileOneTimeStatusEffects)
     {
         damage = _damage;
@@ -158,6 +160,11 @@ public class EffectCollider : MonoBehaviour
                     return;
                 }
             }
+        }
+
+        if (onHitVFX != null)
+        {
+            Instantiate(onHitVFX, other.ClosestPointOnBounds(transform.position), Quaternion.identity);
         }
 
         if (!charactersStatusEffects.ContainsKey(character))

@@ -8,6 +8,7 @@ public class StatusEffectManager : MonoBehaviour
     public List<StatusEffect> statusEffectList = new List<StatusEffect>();
     public List<StatusEffect> expiredStatusEffects = new List<StatusEffect>();
     private Character character;
+
     private void Start()
     {
         character = GetComponent<Character>();
