@@ -31,8 +31,13 @@ public class MeleeAttack : Skill
     {
         Character targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
         MeleeSkillTree skillTree = skillUser.GetComponent<MeleeSkillTree>();
+
+        skillTree.meleeVFX.GetComponent<ParticleSystem>().Play();
+
         if (Vector3.Distance(skillUser.transform.position, targetCharacter.transform.position) <= baseRange + skillTree.increasedRange + 1)
         {
+            Instantiate(skillTree.onHitVFX, GameManager.instance.RefinedPos(targetCharacter.transform.position), Quaternion.identity);
+
             float damage = (baseDamage + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedDamage);
             targetCharacter.ReceiveDamage(new Damage(baseDamage + skillUser.stats.attackDamage.value, skillUser, skillTree.damageType));
 

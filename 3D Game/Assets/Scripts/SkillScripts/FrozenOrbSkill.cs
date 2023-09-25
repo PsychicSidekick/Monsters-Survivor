@@ -47,7 +47,7 @@ public class FrozenOrbSkill : Skill
         float frozenOrbDuration = baseFrozenOrbDuration * (1 + skillTree.increasedFrozenOrbDuration);
         float frozenOrbSpeed = baseFrozenOrbSpeed * (1 + skillTree.increasedFrozenOrbSpeed);
 
-        float frozenOrbSlowEffect = baseFrozenOrbSlowEffect + skillUser.stats.increasedSlowEffect.value;
+        float frozenOrbSlowEffect = baseFrozenOrbSlowEffect + skillTree.increasedFrozenOrbSlowEffect + skillUser.stats.increasedSlowEffect.value;
 
         SlowEffect slow = new SlowEffect(frozenOrbSlowEffect, 10000, 100);
         StatusEffect[] inAreaStatusEffects = { slow };

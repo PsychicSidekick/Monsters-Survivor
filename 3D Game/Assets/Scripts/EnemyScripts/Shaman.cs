@@ -10,7 +10,10 @@ public class Shaman : MonoBehaviour
     public float meleeAttackRange;
 
     [HideInInspector] public bool inAttackAnimation;
-    [HideInInspector] public int timesOfMeleeUsed;
+    public int timesOfMeleeUsed;
+
+    public GameObject meleeVFX1;
+    public GameObject meleeVFX2;
 
     private void Start()
     {
@@ -36,7 +39,7 @@ public class Shaman : MonoBehaviour
             enemy.StopMoving();
         }
 
-        if (timesOfMeleeUsed < 4)
+        if (timesOfMeleeUsed < 8)
         {
             if (distanceFromPlayer <= meleeAttackRange)
             {
@@ -69,6 +72,15 @@ public class Shaman : MonoBehaviour
     public void IncrementTimesOfMeleeUsed()
     {
         timesOfMeleeUsed++;
+
+        if (timesOfMeleeUsed % 2 == 0)
+        {
+            GetComponent<MeleeSkillTree>().meleeVFX = meleeVFX1;
+        }
+        else
+        {
+            GetComponent<MeleeSkillTree>().meleeVFX = meleeVFX2;
+        }
     }
 
     public void ResetTimesOfMeleeUsed()

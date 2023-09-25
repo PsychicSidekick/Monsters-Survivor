@@ -20,6 +20,9 @@ public class MeleeSkillTree : SkillTree
     public float increasedShockDuration;
     public float increasedShockChance;
 
+    public GameObject meleeVFX;
+    public GameObject onHitVFX;
+
     public override void ResetSkillTree()
     {
         Debug.Log("Not player skill");
