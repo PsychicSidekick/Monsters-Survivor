@@ -23,5 +23,5 @@ MonoBehaviour:
   baseFireBlastDamage: 150
   baseFireBlastRadius: 6
   baseFireBlastExpansionTime: 0.25
-  baseIgniteChance: 50
+  baseIgniteChance: 25
   baseIgniteDuration: 4

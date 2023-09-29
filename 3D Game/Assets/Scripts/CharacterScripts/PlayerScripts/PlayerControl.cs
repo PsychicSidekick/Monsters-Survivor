@@ -46,7 +46,7 @@ public class PlayerControl : Character
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100, moveRayLayer))
             {
-                GetComponent<SkillHandler>().currentSkill = null;
+                GetComponent<SkillHandler>().currentSkillHolder = null;
                 FindMoveTarget(hit);
                 Inventory.instance.pickingUpLoot = false;
                 Move(moveTarget);

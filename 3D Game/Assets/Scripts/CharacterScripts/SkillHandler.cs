@@ -29,7 +29,7 @@ public class SkillHandler : MonoBehaviour
     public Character skillUser;
     public List<SkillHolder> skills = new List<SkillHolder>();
 
-    [HideInInspector] public Skill currentSkill;
+    [HideInInspector] public SkillHolder currentSkillHolder;
     [HideInInspector] public StatModifier currentSkillAttackSpeedMod;
     [HideInInspector] public Vector3 groundTarget;
     [HideInInspector] public Character characterTarget;
@@ -72,12 +72,11 @@ public class SkillHandler : MonoBehaviour
                         {
                             skillUser.FindGroundTarget();
                         }
-                        currentSkill = skillHolder.skill;
+                        currentSkillHolder = skillHolder;
                         lastSkillUseTime = Time.time;
 
                         skillHolder.skill.OnUse(skillUser);
-                        skillHolder.state = SkillState.active;
-                        skillHolder.activeTime = skillHolder.skill.activeTime;
+                        
                     }
                     break;
                 case SkillState.active:
@@ -145,11 +144,13 @@ public class SkillHandler : MonoBehaviour
 
     public void UseCurrentSkill()
     {
-        if (currentSkill != null)
+        if (currentSkillHolder != null)
         {
-            if (currentSkill.TryUseSkill(skillUser, currentSkill.GetManaCost(skillUser)))
+            if (currentSkillHolder.skill.TryUseSkill(skillUser, currentSkillHolder.skill.GetManaCost(skillUser)))
             {
-                currentSkill.UseSkill(skillUser);
+                currentSkillHolder.skill.UseSkill(skillUser);
+                currentSkillHolder.state = SkillState.active;
+                currentSkillHolder.activeTime = currentSkillHolder.skill.activeTime;
             }
         }
     }

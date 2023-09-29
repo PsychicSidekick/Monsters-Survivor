@@ -52,6 +52,6 @@ public class Skill : ScriptableObject
 
     public virtual void UseSkill(Character skillUser)
     {
-        skillUser.GetComponent<SkillHandler>().currentSkill = null;
+        skillUser.GetComponent<SkillHandler>().currentSkillHolder = null;
     }
 }
