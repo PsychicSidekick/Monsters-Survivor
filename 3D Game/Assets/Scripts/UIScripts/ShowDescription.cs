@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ShowDescription : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -22,13 +23,10 @@ public class ShowDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         if (mouseOvered)
         {
-            float xPos = FindDescriptionXPos();
-            float yPos = FindDescriptionYPos();
-
-            descriptionPanel.transform.position = new Vector2(xPos, yPos);
+            SetDescriptionPos();
         }
 
-        if (Input.GetKey("s"))
+        if (mouseOvered && Input.GetKey("s"))
         {
             descriptionPanel.SetActive(false);
         }
@@ -36,14 +34,13 @@ public class ShowDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        SetDescriptionText();
         mouseOvered = true;
+        SetDescriptionText();
         descriptionPanel.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        ResetDescriptionText();
         mouseOvered = false;
         descriptionPanel.SetActive(false);
     }
@@ -55,11 +52,12 @@ public class ShowDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
         texts[1].text = description;
     }
 
-    private void ResetDescriptionText()
+    private void SetDescriptionPos()
     {
-        TMP_Text[] texts = descriptionPanel.GetComponentsInChildren<TMP_Text>();
-        texts[0].text = "";
-        texts[1].text = "";
+        float xPos = FindDescriptionXPos();
+        float yPos = FindDescriptionYPos();
+
+        descriptionPanel.transform.position = new Vector2(xPos, yPos);
     }
 
     private float FindDescriptionXPos()

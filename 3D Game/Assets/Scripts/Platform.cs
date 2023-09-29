@@ -7,7 +7,6 @@ public class Platform : MonoBehaviour
 {
     public static List<Vector2Int> listOfExistingPlatforms = new List<Vector2Int>();
 
-
     public Vector2Int pos;
 
     public GameObject platformPrefab;
