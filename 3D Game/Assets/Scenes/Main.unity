@@ -51046,22 +51046,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumLife:
     type: 0
-    baseValue: 200
+    baseValue: 10000
   lifeRegeneration:
     type: 1
-    baseValue: 1
+    baseValue: 10000
   maximumMana:
     type: 2
     baseValue: 100
   manaRegeneration:
     type: 3
-    baseValue: 10
+    baseValue: 1000
   movementSpeed:
     type: 4
     baseValue: 3
   attackSpeed:
     type: 5
-    baseValue: 1
+    baseValue: 10
   attackDamage:
     type: 6
     baseValue: 0
@@ -51415,10 +51415,10 @@ GameObject:
   - component: {fileID: 7330022531779653763}
   - component: {fileID: 7599843586163216814}
   - component: {fileID: 7599843586163216815}
-  - component: {fileID: 7599843586163216823}
   - component: {fileID: 7599843586163216816}
-  - component: {fileID: 7599843586163216817}
+  - component: {fileID: 7599843586163216823}
   - component: {fileID: 7599843586163216818}
+  - component: {fileID: 7599843586163216817}
   - component: {fileID: 7599843586163216824}
   - component: {fileID: 7599843586163216820}
   - component: {fileID: 7599843586163216822}
@@ -51537,9 +51537,9 @@ MonoBehaviour:
   additionalNumberOfIceSpearPierces: 0
   increasedIceSpearDamage: 0
   increasedBaseIceSpearDamage: 0
-  increasedIceSpearRange: 0
+  increasedIceSpearRange: 0.4
   increasedIceSpearSpeed: 0
-  increasedIceSpearSpread: 0
+  increasedIceSpearSpread: 2
   increasedSlowEffect: 0
   increasedSlowChance: 0
   increasedSlowDuration: 0
@@ -51609,13 +51609,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b4798457ce0744797cac84d74cd9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  additionalManaCost: -40
-  increasedAttackSpeed: 80
-  additionalCooldownTime: -5
+  additionalManaCost: 0
+  increasedAttackSpeed: 0
+  additionalCooldownTime: 0
   increasedMeteorShowerDamage: 0
   increasedBaseMeteorShowerDamage: 0
   increasedMeteorShowerRadius: 0
-  increasedMeteorShowerDuration: 0.6
+  increasedMeteorShowerDuration: 0
   increasedIgniteDamage: 0
   increasedIgniteChance: 0
   increasedIgniteDuration: 0
@@ -51662,7 +51662,7 @@ MonoBehaviour:
   increasedShockEffect: 0
   increasedShockChance: 0
   increasedShockDuration: 0
-  doesNotStopMoving: 0
+  doesNotStopMoving: 1
 --- !u!4 &7666680085093108268
 Transform:
   m_ObjectHideFlags: 0
