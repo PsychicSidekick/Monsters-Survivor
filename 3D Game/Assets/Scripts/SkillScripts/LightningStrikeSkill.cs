@@ -27,6 +27,20 @@ public class LightningStrikeSkill : Skill
             skillUser.StopMoving();
             skillUser.animator.Play("AreaCast");
         }
+        else
+        {
+            if (TryUseSkill(skillUser, GetManaCost(skillUser)))
+            {
+                UseSkill(skillUser);
+                skillHandler.currentSkillHolder.state = SkillState.active;
+                skillHandler.currentSkillHolder.activeTime = activeTime;
+            }
+        }
+    }
+
+    public override void UseSkill(Character skillUser)
+    {
+        LightningStrikeSkillTree skillTree = skillUser.GetComponent<LightningStrikeSkillTree>();
 
         int numberOfLightningStrikes = baseNumberOfLightningStrikes + skillTree.additionalNumberOfLightningStrikes + (int)skillUser.stats.additionalNumberOfProjectiles.value;
         float lightningStrikeDamage = (baseLightningStrikeDamage * (1 + skillTree.increasedbaseLightningStrikeDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedLightningStrikeDamage + skillUser.stats.increasedLightningDamage.value + skillUser.stats.increasedAreaDamage.value);

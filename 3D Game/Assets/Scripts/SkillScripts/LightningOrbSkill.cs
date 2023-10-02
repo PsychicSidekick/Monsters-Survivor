@@ -29,6 +29,20 @@ public class LightningOrbSkill : Skill
             skillUser.StopMoving();
             skillUser.animator.Play("AreaCast");
         }
+        else
+        {
+            if (TryUseSkill(skillUser, GetManaCost(skillUser)))
+            {
+                UseSkill(skillUser);
+                skillHandler.currentSkillHolder.state = SkillState.active;
+                skillHandler.currentSkillHolder.activeTime = activeTime;
+            }
+        }
+    }
+
+    public override void UseSkill(Character skillUser)
+    {
+        LightningOrbSkillTree skillTree = skillUser.GetComponent<LightningOrbSkillTree>();
 
         int numberOfLightningOrbs = baseNumberOfLightningOrbs + skillTree.additionalNumberOfLightningOrbs + (int)skillUser.stats.additionalNumberOfProjectiles.value;
         float lightningOrbDamage = (baseLightningOrbDamage * (1 + skillTree.increasedBaseLightningOrbDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedLightningOrbDamage + skillUser.stats.increasedLightningDamage.value + skillUser.stats.increasedProjectileDamage.value);

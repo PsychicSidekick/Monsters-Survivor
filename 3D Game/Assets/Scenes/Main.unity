@@ -39248,7 +39248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1846992365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51061,7 +51061,7 @@ MonoBehaviour:
     baseValue: 3
   attackSpeed:
     type: 5
-    baseValue: 10
+    baseValue: 1
   attackDamage:
     type: 6
     baseValue: 0
@@ -51504,15 +51504,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81aa550f3f10bca44897bae71a4dbcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  additionalManaCost: 0
-  additionalCooldownTime: 0
+  additionalManaCost: -10
+  additionalCooldownTime: -3
   increasedFrozenOrbDuration: 0
   increasedFrozenOrbSpeed: 0
   increasedFrozenOrbSlowEffect: 0
-  additionalNumberOfIcicles: 0
+  additionalNumberOfIcicles: 13
   additionalIciclePierce: 0
-  increasedIcicleDamage: 0
-  increasedBaseIcicleDamage: 0
+  increasedIcicleDamage: 0.9
+  increasedBaseIcicleDamage: 1
   increasedIcicleRange: 0
   increasedIcicleSpeed: 0
   increasedIcicleShootRate: 0
@@ -51533,13 +51533,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   additionalManaCost: 0
   increasedAttackSpeed: 0
-  additionalNumberOfIceSpears: 0
+  additionalNumberOfIceSpears: 2
   additionalNumberOfIceSpearPierces: 0
   increasedIceSpearDamage: 0
   increasedBaseIceSpearDamage: 0
-  increasedIceSpearRange: 0.4
+  increasedIceSpearRange: 0
   increasedIceSpearSpeed: 0
-  increasedIceSpearSpread: 2
+  increasedIceSpearSpread: -0.4
   increasedSlowEffect: 0
   increasedSlowChance: 0
   increasedSlowDuration: 0
@@ -51558,9 +51558,9 @@ MonoBehaviour:
   additionalManaCost: 0
   increasedAttackSpeed: 0
   additionalNumberOfLightningBolts: 0
-  additionalNumberOfLightningBoltChains: 0
+  additionalNumberOfLightningBoltChains: 3
   increasedLightningBoltChainingRange: 0
-  increasedLightningBoltDamage: 0
+  increasedLightningBoltDamage: 0.9
   increasedBaseLightningBoltDamage: 0
   increasedLightningBoltRange: 0
   increasedLightningBoltSpeed: 0
@@ -51583,18 +51583,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalManaCost: 0
-  additionalCooldownTime: 0
-  increasedAttackSpeed: 0
+  additionalCooldownTime: -5
+  increasedAttackSpeed: 60
   additionalNumberOfLightningOrbs: 0
   increasedLightningOrbDamage: 0
   increasedBaseLightningOrbDamage: 0
   increasedLightningOrbRotationRadius: 0
-  increasedLightningOrbSpeed: 0
-  increasedLightningOrbDuration: 0
+  increasedLightningOrbSpeed: 0.9
+  increasedLightningOrbDuration: 0.6
   increasedShockEffect: 0
   increasedShockChance: 0
   increasedShockDuration: 0
-  doesNotStopMoving: 0
+  doesNotStopMoving: 1
   randomRotationRadius: 0
   doesNotPierce: 0
 --- !u!114 &7599843586163216823
@@ -51657,12 +51657,12 @@ MonoBehaviour:
   additionalNumberOfLightningStrikes: 0
   increasedLightningStrikeDamage: 0
   increasedbaseLightningStrikeDamage: 0
-  increasedLightningStrikeRadius: 0
-  increasedMaximumLightningStrikeRange: 0
+  increasedLightningStrikeRadius: 0.6
+  increasedMaximumLightningStrikeRange: -0.5
   increasedShockEffect: 0
   increasedShockChance: 0
   increasedShockDuration: 0
-  doesNotStopMoving: 1
+  doesNotStopMoving: 0
 --- !u!4 &7666680085093108268
 Transform:
   m_ObjectHideFlags: 0

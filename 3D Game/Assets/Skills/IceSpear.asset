@@ -26,6 +26,6 @@ MonoBehaviour:
   baseIceSpearRange: 5
   baseIceSpearSpeed: 6
   baseIceSpearSpread: 7
-  baseSlowEffect: 30
+  baseSlowEffect: 20
   baseSlowChance: 10
-  baseSlowDuration: 5
+  baseSlowDuration: 2

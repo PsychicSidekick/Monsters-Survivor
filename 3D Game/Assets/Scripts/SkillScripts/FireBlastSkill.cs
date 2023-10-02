@@ -30,7 +30,12 @@ public class FireBlastSkill : Skill
         }
         else
         {
-            UseSkill(skillUser);
+            if (TryUseSkill(skillUser, GetManaCost(skillUser)))
+            {
+                UseSkill(skillUser);
+                skillHandler.currentSkillHolder.state = SkillState.active;
+                skillHandler.currentSkillHolder.activeTime = activeTime;
+            }
         }
     }
 

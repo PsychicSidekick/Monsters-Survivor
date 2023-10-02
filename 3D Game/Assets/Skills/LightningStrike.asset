@@ -16,14 +16,14 @@ MonoBehaviour:
   skillIcon: {fileID: 21300000, guid: 48ca77e020f357f4e87cd0fb5869e287, type: 3}
   coolDownTime: 0
   activeTime: 0
-  baseManaCost: 0
+  baseManaCost: 15
   targetsCharacters: 0
   isChannellingSkill: 0
   lightningStrikeAreaPrefab: {fileID: 6512507329015173101, guid: ef85d401959c25843bee4c80cfee792b, type: 3}
   baseNumberOfLightningStrikes: 10
-  baseLightningStrikeDamage: 300
+  baseLightningStrikeDamage: 200
   baseLightningStrikeRadius: 1
-  baseMaximumLightningStrikeRange: 6
+  baseMaximumLightningStrikeRange: 5
   baseShockEffect: 30
   baseShockChance: 50
   baseShockDuration: 5

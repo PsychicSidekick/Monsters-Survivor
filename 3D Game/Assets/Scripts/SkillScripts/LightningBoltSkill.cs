@@ -70,7 +70,7 @@ public class LightningBoltSkill : Skill
             proj.chainingRange = chainingRange;
             if (skillTree.maximumNumberOfLightningBoltsIsOne)
             {
-                proj.chainDamageMultiplier = 1 + (0.01f * skillTree.additionalNumberOfLightningBolts + (int)skillUser.stats.additionalNumberOfProjectiles.value);
+                proj.chainDamageMultiplier = 1 + (0.1f * skillTree.additionalNumberOfLightningBolts + (int)skillUser.stats.additionalNumberOfProjectiles.value);
             }
             else
             {

@@ -24,4 +24,4 @@ MonoBehaviour:
   baseChillingGroundHealingPerSecond: 10
   baseChillingGroundRadius: 6
   baseChillingGroundDuration: 4
-  baseSlowEffect: 40
+  baseSlowEffect: 30

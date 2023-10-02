@@ -24,7 +24,7 @@ MonoBehaviour:
   baseFireBallDamage: 100
   baseFireBallRange: 5
   baseFireBallSpeed: 4
-  baseFireBallSpread: 10
+  baseFireBallSpread: 7
   baseExplosionDamage: 75
   baseExplosionRadius: 3
   baseIgniteChance: 25

@@ -21,11 +21,11 @@ MonoBehaviour:
   isChannellingSkill: 0
   lightningBoltPrefab: {fileID: 3120438280565544056, guid: e70467d2e7cdc5c459eee70e4da708af, type: 3}
   baseNumberOfLightningBolts: 1
-  baseNumberOfLightningBoltChains: 5
-  baseLightningBoltChainingRange: 5
-  baseLightningBoltDamage: 100
-  baseLightningBoltRange: 5
-  baseLightningBoltSpeed: 10
+  baseNumberOfLightningBoltChains: 2
+  baseLightningBoltChainingRange: 3
+  baseLightningBoltDamage: 80
+  baseLightningBoltRange: 4
+  baseLightningBoltSpeed: 30
   baseLightningBoltSpread: 10
   baseShockEffect: 20
   baseShockChance: 20
