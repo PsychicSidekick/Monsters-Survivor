@@ -16,64 +16,81 @@ public class FireBlastSkillTree : SkillTree
     public bool destroysProjectiles;
     public bool doesNotStopToUseSkill;
 
-    public void IncreaseManaCost(int value)
+    public void BlastDamage()
     {
-        additionalManaCost += value;
+        increasedFireBlastDamage += 0.2f;
     }
 
-    public void IncreaseAttackSpeed(float value)
+    public void CastSpeed()
     {
-        increasedAttackSpeed += value;
+        increasedAttackSpeed += 15;
     }
 
-    public void IncreaseCooldownTime(float value)
+    public void ManaBurner()
     {
-        additionalCooldownTime += value;
+        increasedFireBlastDamage += 0.3f;
+        additionalManaCost += 5;
     }
 
-    public void IncreaseFireBlastDamage(float value)
-    {
-        increasedFireBlastDamage += value;
-    }
-
-    public void IncreaseFireBlastRadius(float value)
-    {
-        increasedFireBlastRadius += value;
-    }
-
-    public void IncreaseFireBlastExpansionTime(float value)
-    {
-        increasedFireBlastExpansionTime += value;
-    }
-
-    public void IncreaseIgniteDamage(float value)
-    {
-        increasedIgniteDamage += value;
-    }
-
-    public void IncreaseIgniteChance(float value)
-    {
-        increasedIgniteChance += value;
-    }
-
-    public void IncreaseIgniteDuration(float value)
-    {
-        increasedIgniteDuration += value;
-    }
-
-    public void ToggleDoesNotDealDamageOnHit()
-    {
-        doesNotDealDamageOnHit = true;
-    }
-
-    public void ToggleDestroysProjectiles()
-    {
-        destroysProjectiles = true;
-    }
-
-    public void ToggleDoesNotStopToUseSkill()
+    public void FreedomBlaster()
     {
         doesNotStopToUseSkill = true;
+    }
+
+    public void FocusBlasting()
+    {
+        increasedFireBlastDamage += 0.8f;
+        increasedFireBlastRadius -= 0.2f;
+    }
+
+    public void BlastArea()
+    {
+        increasedFireBlastRadius += 0.25f;
+    }
+
+    public void IgniteDamage()
+    {
+        increasedIgniteDamage += 0.4f;
+    }
+
+    public void FireParty()
+    {
+        increasedIgniteDamage += 0.3f;
+        increasedFireBlastRadius += 0.3f;
+    }
+
+    public void SafetyZone()
+    {
+        destroysProjectiles = true;
+        additionalCooldownTime += 3f;
+        increasedFireBlastExpansionTime += 1.5f;
+    }
+
+    public void IgnitionSpecialist()
+    {
+        doesNotDealDamageOnHit = true;
+        increasedIgniteChance += 30;
+        increasedIgniteDamage += 0.7f;
+    }
+
+    public void ReducedCosts()
+    {
+        additionalManaCost -= 7;
+    }
+
+    public void BlastSpeed()
+    {
+        increasedFireBlastExpansionTime -= 0.5f;
+    }
+
+    public void IgniteChance()
+    {
+        increasedIgniteChance += 25;
+    }
+
+    public void IgniteDuration()
+    {
+        increasedIgniteDuration += 0.5f;
     }
 
     public override void ResetSkillTree()

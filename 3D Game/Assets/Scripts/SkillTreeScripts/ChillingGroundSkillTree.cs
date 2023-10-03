@@ -12,50 +12,72 @@ public class ChillingGroundSkillTree : SkillTree
     public float increasedSlowEffect;
 
     public bool damageModifiersAffectHealing;
+    public bool doesNotSlow;
 
-    public void IncreaseManaCost(int value)
+    public void ChillingGroundDamage()
     {
-        additionalManaCost += value;
+        increasedChillingGroundDamage += 0.3f;
     }
 
-    public void IncreaseCooldownTime(float value)
+    public void LargerArea()
     {
-        additionalCooldownTime += value;
+        increasedChillingGroundRadius += 0.3f;
     }
 
-    public void IncreaseChillingGroundDamage(float value)
+    public void ManaEnchanted()
     {
-        increasedChillingGroundDamage += value;
+        increasedChillingGroundDamage += 0.4f;
+        additionalManaCost += 5;
     }
 
-    public void IncreaseBaseChillingGroundDamage(float value)
+    public void DangerZone()
     {
-        increasedBaseChillingGroundDamage += value;
+        doesNotSlow = true;
+        increasedChillingGroundDamage += 1;
     }
 
-    public void IncreaseChillingGroundHealing(float value)
-    {
-        increasedChillingGroundHealing += value;
-    }
-
-    public void IncreaseChillingGroundRadius(float value)
-    {
-        increasedChillingGroundRadius += value;
-    }
-
-    public void IncreaseChillingGroundDuration(float value)
-    {
-        increasedChillingGroundDuration += value;
-    }
-
-    public void IncreaseSlowEffect(float value)
-    {
-        increasedSlowEffect += value;
-    }
-
-    public void ToggleDamageModifiersAffectHealing()
+    public void ComfortZone()
     {
         damageModifiersAffectHealing = true;
+        increasedBaseChillingGroundDamage -= 0.5f;
+    }
+
+    public void LingeringChill()
+    {
+        increasedChillingGroundDuration += 0.25f;
+    }
+
+    public void BoneChilling()
+    {
+        increasedSlowEffect += 10;
+    }
+
+    public void MaximumCoverage()
+    {
+        increasedChillingGroundRadius += 0.5f;
+        increasedBaseChillingGroundDamage -= 0.1f;
+    }
+
+    public void AbsoluteZero()
+    {
+        increasedSlowEffect += 30;
+        increasedChillingGroundDamage += 0.3f;
+    }
+
+    public void EternalWinter()
+    {
+        increasedChillingGroundDuration += 2;
+        additionalCooldownTime += 5;
+    }
+
+    public void ReducedCooldown()
+    {
+        additionalCooldownTime -= 1;
+    }
+
+    public void ReducedCosts()
+    {
+        additionalManaCost -= 5;
     }
 
     public override void ResetSkillTree()
@@ -71,6 +93,7 @@ public class ChillingGroundSkillTree : SkillTree
 
         increasedSlowEffect = 0;
 
+        doesNotSlow = false;
         damageModifiersAffectHealing = false;
     }
 }

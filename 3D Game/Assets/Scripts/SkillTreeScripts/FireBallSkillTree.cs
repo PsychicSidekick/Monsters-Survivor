@@ -19,74 +19,87 @@ public class FireBallSkillTree : SkillTree
 
     public bool igniteAppliedByExplosion;
 
-    public void IncreaseManaCost(int value)
+    public void FireBallDamage()
     {
-        additionalManaCost += value;
+        increasedFireBallDamage += 0.4f;
     }
 
-    public void IncreaseAttackSpeed(float value)
+    public void IgniteDamage()
     {
-        increasedAttackSpeed += value;
+        increasedIgniteDamage += 0.3f;
     }
 
-    public void IncreaseNumberOfFireBalls(int value)
+    public void FireExposure()
     {
-        additionalNumberOfFireBalls += value;
+        increasedIgniteChance += 15;
+        increasedIgniteDuration += 0.3f;
     }
 
-    public void IncreaseFireBallDamage(float value)
+    public void SniperWizard()
     {
-        increasedFireBallDamage += value;
+        increasedBaseFireBallDamage += 0.6f;
+        additionalManaCost += 20;
+        increasedFireBallSpeed += 0.5f;
     }
 
-    public void IncreaseBaseFireBallDamage(float value)
+    public void FireMachineGun()
     {
-        increasedBaseFireBallDamage += value;
+        increasedAttackSpeed += 30f;
+        increasedBaseFireBallDamage += 0.1f;
     }
 
-    public void IncreaseFireBallRange(float value)
+    public void ExplosionDamage()
     {
-        increasedFireBallRange += value;
+        increasedExplosionDamage += 0.3f;
     }
 
-    public void IncreaseFireBallSpeed(float value)
+    public void ExplosionRadius()
     {
-        increasedFireBallSpeed += value;
+        increasedExplosionRadius += 0.2f;
     }
 
-    public void IncreaseExplosionDamage(float value)
+    public void ExplosiveSpecialist()
     {
-        increasedExplosionDamage += value;
+        increasedBaseExplosionDamage += 0.2f;
+        increasedExplosionRadius += 0.3f;
     }
 
-    public void IncreaseBaseExplosionDamage(float value)
+    public void MoreExplosions()
     {
-        increasedBaseExplosionDamage += 0;
+        additionalManaCost += 10;
+        additionalNumberOfFireBalls += 1;
+        increasedBaseFireBallDamage -= 0.25f;
     }
 
-    public void IncreaseExplosionRadius(float value)
-    {
-        increasedExplosionRadius += value;
-    }
-
-    public void IncreaseIgniteDamage(float value)
-    {
-        increasedIgniteDamage += value;
-    }
-
-    public void IncreaseIgniteChance(float value)
-    {
-        increasedIgniteChance += value;
-    }
-
-    public void IncreaseIgniteDuration(float value)
-    {
-        increasedIgniteDuration += value;
-    }
-
-    public void ToggleIgniteAppliedByExplosion()
+    public void Pyromancer()
     {
         igniteAppliedByExplosion = true;
+        increasedIgniteChance += 30;
+    }
+
+    public void FireBallSpeed()
+    {
+        increasedFireBallSpeed += 0.3f;
+    }
+
+    public void CastSpeed()
+    {
+        increasedAttackSpeed += 15;
+    }
+
+    public void ReducedCosts()
+    {
+        additionalManaCost -= 5;
+    }
+
+    public void IgniteChance()
+    {
+        increasedIgniteChance += 25;
+    }
+
+    public void IgniteDuration()
+    {
+        increasedIgniteDuration += 0.5f;
     }
 
     public override void ResetSkillTree()

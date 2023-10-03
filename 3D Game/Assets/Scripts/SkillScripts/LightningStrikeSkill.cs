@@ -43,8 +43,22 @@ public class LightningStrikeSkill : Skill
         LightningStrikeSkillTree skillTree = skillUser.GetComponent<LightningStrikeSkillTree>();
 
         int numberOfLightningStrikes = baseNumberOfLightningStrikes + skillTree.additionalNumberOfLightningStrikes + (int)skillUser.stats.additionalNumberOfProjectiles.value;
-        float lightningStrikeDamage = (baseLightningStrikeDamage * (1 + skillTree.increasedbaseLightningStrikeDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedLightningStrikeDamage + skillUser.stats.increasedLightningDamage.value + skillUser.stats.increasedAreaDamage.value);
-        float lightningStrikeRadius = baseLightningStrikeRadius * (1 + skillTree.increasedLightningStrikeRadius + skillUser.stats.increasedAreaEffect.value);
+
+        float increasedBaseLightningStrikeDamage;
+        float increasedLightningStrikeRadius;
+        if (skillTree.maximumNumberOfLightningStrikesIsOne)
+        {
+            increasedBaseLightningStrikeDamage = 1 + skillTree.increasedBaseLightningStrikeDamage + (numberOfLightningStrikes - 1) * 0.05f;
+            increasedLightningStrikeRadius = 1 + skillTree.increasedLightningStrikeRadius + skillUser.stats.increasedAreaEffect.value + (numberOfLightningStrikes - 1) * 0.1f;
+            numberOfLightningStrikes = 1;
+        }
+        else
+        {
+            increasedBaseLightningStrikeDamage = 1 + skillTree.increasedBaseLightningStrikeDamage;
+            increasedLightningStrikeRadius = 1 + skillTree.increasedLightningStrikeRadius + skillUser.stats.increasedAreaEffect.value;
+        }
+        float lightningStrikeDamage = (baseLightningStrikeDamage * increasedBaseLightningStrikeDamage + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedLightningStrikeDamage + skillUser.stats.increasedLightningDamage.value + skillUser.stats.increasedAreaDamage.value);
+        float lightningStrikeRadius = baseLightningStrikeRadius * increasedLightningStrikeRadius;
         float maximumLightningStrikeRange = baseMaximumLightningStrikeRange * (1 + skillTree.increasedMaximumLightningStrikeRange);
 
         float shockEffect = baseShockEffect + skillTree.increasedShockEffect + skillUser.stats.increasedShockEffect.value;

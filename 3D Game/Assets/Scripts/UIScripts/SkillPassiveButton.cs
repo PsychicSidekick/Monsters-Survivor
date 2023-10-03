@@ -6,23 +6,22 @@ using TMPro;
 
 public class SkillPassiveButton : MonoBehaviour
 {
-    public string passiveName;
     private Button button;
-    public TMP_Text textName;
-    public TMP_Text allocation;
+    [HideInInspector] public TMP_Text textName;
+    [HideInInspector] public TMP_Text allocation;
 
     [HideInInspector] public int timesAllocated = 0;
     public int maxAllocation;
 
     public SkillPassiveButton preRequisite;
-    public int requiredAllocation;
 
     public TMP_Text pointCounter;
 
     private void Start()
     {
         button = GetComponent<Button>();
-        textName.text = passiveName;
+        GetComponent<ShowDescription>().title = gameObject.name;
+        textName.text = gameObject.name;
         UpdateGUI();
     }
 
@@ -34,16 +33,17 @@ public class SkillPassiveButton : MonoBehaviour
             {
                 button.interactable = true;
             }
-            return;
-        }
-
-        if (preRequisite.timesAllocated >= requiredAllocation && timesAllocated < maxAllocation)
-        {
-            button.interactable = true;
         }
         else
         {
-            button.interactable = false;
+            if (preRequisite.timesAllocated == preRequisite.maxAllocation && timesAllocated < maxAllocation)
+            {
+                button.interactable = true;
+            }
+            else
+            {
+                button.interactable = false;
+            }
         }
     }
 

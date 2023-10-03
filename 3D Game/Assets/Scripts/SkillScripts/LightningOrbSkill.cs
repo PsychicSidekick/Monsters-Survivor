@@ -72,11 +72,6 @@ public class LightningOrbSkill : Skill
             EffectCollider collider = Instantiate(lightningOrbPrefab, rotationCenter.transform).GetComponent<EffectCollider>();
             collider.SetHostileEffects(lightningOrbDamage, DamageType.Lightning, false, skillUser, null, shock);
             collider.transform.position = rotationCenter.transform.position + spawnOffset;
-
-            if (!skillTree.doesNotPierce)
-            {
-                collider.GetComponent<Projectile>().pierce = 10000;
-            }
         }
     }
 

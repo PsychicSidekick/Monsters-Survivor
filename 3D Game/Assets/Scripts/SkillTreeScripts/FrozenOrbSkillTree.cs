@@ -20,79 +20,92 @@ public class FrozenOrbSkillTree : SkillTree
     public float increasedIcicleSlowChance;
     public float increasedIcicleSlowDuration;
 
-    public void IncreaseManaCost(int value)
+    public void IcicleDamage()
     {
-        additionalManaCost += value;
+        increasedIcicleDamage += 0.3f;
     }
 
-    public void IncreaseCoolDownTime(float value)
+    public void FrozenMana()
     {
-        additionalCooldownTime += value;
+        additionalNumberOfIcicles += 2;
+        additionalManaCost += 2;
     }
 
-    public void IncreaseFrozenOrbDuration(float value)
+    public void ManaInfused()
     {
-        increasedFrozenOrbDuration += value;
+        increasedIcicleDamage += 0.5f;
+        additionalManaCost += 5;
     }
 
-    public void IncreaseFrozenOrbSpeed(float value)
+    public void IceFactory()
     {
-        increasedFrozenOrbSpeed += value;
+        additionalNumberOfIcicles += 3;
+        increasedBaseIcicleDamage += 0.3f;
     }
 
-    public void IncreaseFrozenOrbSlowEffect(float value)
+    public void MultiOrb()
     {
-        increasedFrozenOrbSlowEffect += value;
+        additionalCooldownTime -= 3;
+        additionalManaCost -= 50;
     }
 
-    public void IncreaseNumberOfIcicles(int value)
+    public void IcicleShootRate()
     {
-        additionalNumberOfIcicles += value;
+        increasedIcicleShootRate += 0.2f;
     }
 
-    public void IncreaseIciclePierce(int value)
+    public void Streamlined()
     {
-        additionalIciclePierce += value;
+        additionalIciclePierce += 2;
+        increasedIcicleRange += 0.3f;
     }
 
-    public void IncreaseIcicleDamage(float value)
+    public void SplittedIcicles()
     {
-        increasedIcicleDamage += value;
+        additionalNumberOfIcicles += 2;
+        increasedBaseIcicleDamage -= 0.1f;
     }
 
-    public void IncreaseBaseIcicleDamage(float value)
+    public void IcicleStorm()
     {
-        increasedBaseIcicleDamage += value;
+        additionalNumberOfIcicles += 4;
+        increasedIcicleSpeed += 0.5f;
     }
 
-    public void IncreaseIcicleRange(float value)
+    public void ManaEngine()
     {
-        increasedIcicleRange += value;
+        additionalManaCost += 15;
+        increasedIcicleShootRate += 1;
     }
 
-    public void IncreaseIcicleSpeed(float value)
+    public void OrbDuration()
     {
-        increasedIcicleSpeed += value;
+        increasedFrozenOrbDuration += 0.5f;
     }
 
-    public void IncreaseIcicleShootRate(float value)
+    public void HeavyOrb()
     {
-        increasedIcicleShootRate += value;
+        increasedFrozenOrbSpeed -= 0.5f;
     }
 
-    public void IncreaseIcicleSlowEffect(float value)
+    public void ReducedCosts()
     {
-        increasedIcicleSlowEffect += value;
+        additionalManaCost -= 5;
     }
 
-    public void IncreaseIcicleSlowChance(float value)
+    public void IcicleSlowEffect()
     {
-        increasedIcicleSlowChance += value;
+        increasedIcicleSlowEffect += 0.15f;
     }
 
-    public void IncreaseIcicleSlowDuration(float value)
+    public void IcicleSlowDuration()
     {
-        increasedIcicleSlowDuration += value;
+        increasedIcicleSlowDuration += 1;
+    }
+
+    public void IceTrap()
+    {
+        increasedFrozenOrbSlowEffect += 0.2f;
     }
 
     public override void ResetSkillTree()

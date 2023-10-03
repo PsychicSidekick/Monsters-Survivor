@@ -21,81 +21,73 @@ public class LightningOrbSkillTree : SkillTree
 
     public bool doesNotStopMoving;
     public bool randomRotationRadius;
-    public bool doesNotPierce;
 
-    public void IncreaseManaCost(int value)
+    public void LightningOrbDamage()
     {
-        additionalManaCost += value;
+        increasedLightningOrbDamage += 0.3f;
     }
 
-    public void IncreaseCooldownTime(float value)
+    public void ShockEffect()
     {
-        additionalCooldownTime += value;
+        increasedShockEffect += 20;
     }
 
-    public void IncreaseAttackSpeed(float value)
+    public void ManaOrbs()
     {
-        increasedAttackSpeed += value;
+        additionalNumberOfLightningOrbs += 2;
+        additionalManaCost += 10;
     }
 
-    public void IncreaseNumberOfLightningOrbs(int value)
+    public void MoreOrbs()
     {
-        additionalNumberOfLightningOrbs += value;
+        additionalNumberOfLightningOrbs += 6;
     }
 
-    public void IncreaseLightningOrbDamage(float value)
+    public void ChaosOrbs()
     {
-        increasedLightningOrbDamage += value;
+        randomRotationRadius = true;
+        increasedLightningOrbRotationRadius += 1;
+        increasedBaseLightningOrbDamage += 0.2f;
     }
 
-    public void IncreaseBaseLightningOrbDamage(float value)
+    public void OrbSpeed()
     {
-        increasedBaseLightningOrbDamage += value;
+        increasedLightningOrbSpeed += 0.3f;
     }
 
-    public void IncreaseLightningOrbRotationRadius(float value)
+    public void OrbDuration()
     {
-        increasedLightningOrbRotationRadius += value;
+        increasedLightningOrbDuration += 0.3f;
     }
 
-    public void IncreaseLightningOrbSpeed(float value)
+    public void ReducedCooldown()
     {
-        increasedLightningOrbSpeed += value;
+        additionalCooldownTime -= 2.5f;
     }
 
-    public void IncreaseLightningOrbDuration(float value)
+    public void CastSpeed()
     {
-        increasedLightningOrbDuration += value;
+        increasedAttackSpeed += 30;
     }
 
-    public void IncreaseShockEffect(float value)
-    {
-        increasedShockEffect += value;
-    }
-
-    public void IncreaseShockChance(float value)
-    {
-        increasedShockChance += value;
-    }
-
-    public void IncreaseShockDuration(float value)
-    {
-        increasedShockDuration += value;
-    }
-
-    public void ToggleDoesNotStopMoving()
+    public void StormAdvance()
     {
         doesNotStopMoving = true;
     }
 
-    public void ToggleRandomRotationRadius()
+    public void ReducedCosts()
     {
-        randomRotationRadius = true;
+        additionalManaCost -= 5;
     }
 
-    public void ToggleDoesNotPierce()
+    public void ShockDuration()
     {
-        doesNotPierce = true;
+        increasedShockDuration += 1;
+    }
+
+    public void ShockChance()
+    {
+        increasedShockChance += 30;
     }
 
     public override void ResetSkillTree()
@@ -117,6 +109,5 @@ public class LightningOrbSkillTree : SkillTree
 
         doesNotStopMoving = false;
         randomRotationRadius = false;
-        doesNotPierce = false;
-}
+    }
 }

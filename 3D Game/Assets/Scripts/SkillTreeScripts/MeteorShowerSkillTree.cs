@@ -7,55 +7,87 @@ public class MeteorShowerSkillTree : SkillTree
     public float increasedMeteorShowerDamage;
     public float increasedBaseMeteorShowerDamage;
     public float increasedMeteorShowerRadius;
+    public float increasedBaseMeteorShowerRadius;
     public float increasedMeteorShowerDuration;
 
     public float increasedIgniteDamage;
     public float increasedIgniteChance;
     public float increasedIgniteDuration;
 
-    public void IncreaseManaCost(int value)
+    public void LongerDuration()
     {
-        additionalManaCost += value;
+        increasedMeteorShowerDuration += 0.2f;
     }
 
-    public void IncreaseAttackSpeed(float value)
+    public void ReducedCoolDown()
     {
-        increasedAttackSpeed += value;
+        additionalCooldownTime -= 1;
     }
 
-    public void IncreaseCooldownTime(float value)
+    public void InfiniteMeteors()
     {
-        additionalCooldownTime += value;
+        additionalCooldownTime -= 4;
+        increasedAttackSpeed += 10;
     }
 
-    public void IncreaseMeteorShowerDamage(float value)
+    public void FireStorm()
     {
-        increasedMeteorShowerDamage += value;
+        increasedMeteorShowerDamage += 0.7f;
+        additionalManaCost -= 30;
     }
 
-    public void IncreaseMeteorShowerRadius(float value)
+    public void CastSpeed()
     {
-        increasedMeteorShowerRadius += value;
+        increasedAttackSpeed += 30;
     }
 
-    public void IncreaseMeteorShowerDuration(float value)
+    public void IgniteDamage()
     {
-        increasedMeteorShowerDuration += value;
+        increasedIgniteDamage += 0.3f;
     }
 
-    public void IncreaseIgniteDamage(float value)
+    public void MeteorDamage()
     {
-        increasedIgniteDamage += value;
+        increasedMeteorShowerDamage += 0.2f;
     }
 
-    public void IncreaseIgniteDuration(float value)
+    public void ManaMeteor()
     {
-        increasedIgniteDuration += value;
+        additionalManaCost += 20;
+        increasedMeteorShowerDamage += 0.4f;
     }
 
-    public void IncreaseIgniteChance(float value)
+    public void HellFire()
     {
-        increasedIgniteChance += value;
+        increasedIgniteDamage += 0.6f;
+        increasedIgniteDuration += 0.6f;
+        increasedIgniteChance += 20;
+    }
+
+    public void HeavenlyPillars()
+    {
+        increasedBaseMeteorShowerRadius -= 0.95f;
+        increasedBaseMeteorShowerDamage += 1;
+    }
+
+    public void ReducedCosts()
+    {
+        additionalManaCost -= 5;
+    }
+
+    public void IgniteChance()
+    {
+        increasedIgniteChance += 20;
+    }
+
+    public void IgniteDuration()
+    {
+        increasedIgniteDuration += 0.5f;
+    }
+
+    public void LargerArea()
+    {
+        increasedMeteorShowerRadius += 0.3f;
     }
 
     public override void ResetSkillTree()
@@ -67,6 +99,7 @@ public class MeteorShowerSkillTree : SkillTree
         increasedMeteorShowerDamage = 0;
         increasedBaseMeteorShowerDamage = 0;
         increasedMeteorShowerRadius = 0;
+        increasedBaseMeteorShowerRadius = 0;
         increasedMeteorShowerDuration = 0;
 
         increasedIgniteDamage = 0;

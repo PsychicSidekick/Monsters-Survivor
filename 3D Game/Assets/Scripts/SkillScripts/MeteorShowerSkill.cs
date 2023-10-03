@@ -32,7 +32,7 @@ public class MeteorShowerSkill : Skill
         SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
 
         float meteorShowerDamagePerSecond = (baseMeteorShowerDamagePerSecond * (1 + skillTree.increasedBaseMeteorShowerDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedMeteorShowerDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedAreaDamage.value);
-        float meteorShowerRadius = baseMeteorShowerRadius * (1 + skillTree.increasedMeteorShowerRadius + skillUser.stats.increasedAreaEffect.value);
+        float meteorShowerRadius = baseMeteorShowerRadius * (1 + skillTree.increasedBaseMeteorShowerRadius) * (1 + skillTree.increasedMeteorShowerRadius + skillUser.stats.increasedAreaEffect.value);
         float meteorShowerDuration = baseMeteorShowerDuration * (1 + skillTree.increasedMeteorShowerDuration);
 
         float igniteDamage = meteorShowerDamagePerSecond * 0.5f * (1 + skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedIgniteDamage.value + skillUser.stats.increasedIgniteDuration.value);

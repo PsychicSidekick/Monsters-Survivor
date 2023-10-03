@@ -19,79 +19,69 @@ public class LightningBoltSkillTree : SkillTree
     public bool chainsToUser;
     public bool maximumNumberOfLightningBoltsIsOne;
 
-    public void IncreaseManaCost(int value)
+    public void LightningBoltDamage()
     {
-        additionalManaCost += value;
+        increasedLightningBoltDamage += 0.3f;
     }
 
-    public void IncreaseAttackSpeed(float value)
+    public void ShockEffect()
     {
-        increasedAttackSpeed += value;
+        increasedShockEffect += 30;
     }
 
-    public void IncreaseNumberOfLightningBolts(int value)
+    public void LightningFork()
     {
-        additionalNumberOfLightningBolts += value;
+        additionalNumberOfLightningBolts += 1;
+        increasedBaseLightningBoltDamage -= 0.1f;
     }
 
-    public void IncreaseLightningBoltChains(int value)
+    public void EnergyLoss()
     {
-        additionalNumberOfLightningBoltChains += value;
+        additionalNumberOfLightningBoltChains += 4;
+        increasedBaseLightningBoltDamage -= 0.2f;
     }
 
-    public void IncreaseLightningBoltChainingRange(float value)
-    {
-        increasedLightningBoltChainingRange += value;
-    }
-
-    public void IncreaseLightningBoltDamage(float value)
-    {
-        increasedLightningBoltDamage += value;
-    }
-
-    public void IncreaseBaseLightningBoltDamage(float value)
-    {
-        increasedBaseLightningBoltDamage += value;
-    }
-
-    public void IncreaseLightningBoltRange(float value)
-    {
-        increasedLightningBoltRange += value;
-    }
-
-    public void IncreaselightningBoltSpeed(float value)
-    {
-        increasedLightningBoltSpeed += value;
-    }
-
-    public void IncreaseLightningBoltSpread(float value)
-    {
-        increasedLightningBoltSpread += value;
-    }
-
-    public void IncreaseShockEffect(float value)
-    {
-        increasedShockEffect += value;
-    }
-
-    public void IncreaseShockChance(float value)
-    {
-        increasedShockChance += value;
-    }
-
-    public void IncreaseShockDuration(float value)
-    {
-        increasedShockDuration += value;
-    }
-
-    public void ToggleChainsToUser()
-    {
-        chainsToUser = true;
-    }
-
-    public void ToggleMaximumNumberOfProjectilesIsOne()
+    public void Amplifier()
     {
         maximumNumberOfLightningBoltsIsOne = true;
+    }
+
+    public void MoreChains()
+    {
+        additionalNumberOfLightningBoltChains += 1;
+    }
+
+    public void ShockDuration()
+    {
+        increasedShockDuration += 1;
+    }
+
+    public void ChainingRange()
+    {
+        increasedLightningBoltChainingRange += 0.5f;
+    }
+
+    public void ElectroTherapy()
+    {
+        chainsToUser = true;
+        increasedLightningBoltChainingRange += 1;
+    }
+
+    public void MassElectrocution()
+    {
+        increasedShockChance += 60;
+        additionalNumberOfLightningBolts += 2;
+        increasedBaseLightningBoltDamage -= 0.3f;
+    }
+
+    public void CastSpeed()
+    {
+        increasedAttackSpeed += 15;
+    }
+
+    public void ReducedCosts()
+    {
+        additionalManaCost -= 5;
     }
 
     public override void ResetSkillTree()

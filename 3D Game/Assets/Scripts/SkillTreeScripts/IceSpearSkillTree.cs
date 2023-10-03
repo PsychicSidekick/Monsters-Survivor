@@ -15,64 +15,77 @@ public class IceSpearSkillTree : SkillTree
     public float increasedSlowChance;
     public float increasedSlowDuration;
 
-    public void IncreaseManaCost(int value)
+    public bool spearsShootInNova;
+
+    public void SpearDamage()
     {
-        additionalManaCost += value;
+        increasedIceSpearDamage += 0.3f;
     }
 
-    public void IncreaseAttackSpeed(float value)
+    public void TargetForcus()
     {
-        increasedAttackSpeed += value;
+        increasedIceSpearSpread -= 0.2f;
     }
 
-    public void IncreaseNumberOfIceSpears(int value)
+    public void MoreSpears()
     {
-        additionalNumberOfIceSpears += value;
+        additionalNumberOfIceSpears += 1;
     }
 
-    public void IncreaseIceSpearPierce(int value)
+    public void ManaInfused()
     {
-        additionalNumberOfIceSpearPierces += value;
+        increasedIceSpearDamage += 0.7f;
+        additionalManaCost += 5;
     }
 
-    public void IncreaseIceSpearDamage(float value)
+    public void QuantityOverQuality()
     {
-        increasedIceSpearDamage += value;
+        additionalNumberOfIceSpears += 4;
+        increasedBaseIceSpearDamage -= 0.15f;
     }
 
-    public void IncreaseBaseIceSpearDamage(float value)
+    public void SharpSpears()
     {
-        increasedBaseIceSpearDamage += value;
+        additionalNumberOfIceSpearPierces += 1;
     }
 
-    public void IncreaseIceSpearRange(float value)
+    public void CastSpeed()
     {
-        increasedIceSpearRange += value;
+        increasedAttackSpeed += 20;
     }
 
-    public void IncreaseIceSpearSpeed(float value)
+    public void IceBurst()
     {
-        increasedIceSpearSpeed += value;
+        additionalNumberOfIceSpears += 2;
+        increasedIceSpearSpread += 0.3f;
     }
 
-    public void IncreaseIceSpearSpread(float value)
+    public void FreezingSpears()
     {
-        increasedIceSpearSpread += value;
+        additionalNumberOfIceSpearPierces += 2;
+        increasedSlowChance += 20;
+        increasedSlowDuration += 0.2f;
     }
 
-    public void IncreaseSlowEffect(float value)
+    public void IceNova()
     {
-        increasedSlowEffect += value;
+        additionalNumberOfIceSpears += 4;
+        spearsShootInNova = true;
     }
 
-    public void IncreaseSlowChance(float value)
+    public void SpearRange()
     {
-        increasedSlowChance += value;
+        increasedIceSpearRange += 0.4f;
     }
 
-    public void IncreaseSlowDuration(float value)
+    public void ReducedCosts()
     {
-        increasedSlowDuration += value;
+        additionalManaCost -= 5;
+    }
+
+    public void SpearSpeed()
+    {
+        increasedIceSpearSpeed += 0.35f;
     }
     
     public override void ResetSkillTree()
@@ -91,5 +104,7 @@ public class IceSpearSkillTree : SkillTree
         increasedSlowEffect = 0;
         increasedSlowChance = 0;
         increasedSlowDuration = 0;
+
+        spearsShootInNova = false;
     }
 }

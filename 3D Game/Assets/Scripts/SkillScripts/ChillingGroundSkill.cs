@@ -44,7 +44,16 @@ public class ChillingGroundSkill : Skill
         StatusEffect[] inAreaStatusEffects = { slow };
 
         EffectCollider chillingArea = Instantiate(chillingAreaPrefab, skillUser.transform.position, Quaternion.identity).GetComponent<EffectCollider>();
-        chillingArea.SetHostileEffects(chillingGroundDamagePerSecond, DamageType.Cold, true, skillUser, inAreaStatusEffects);
+        if (skillTree.doesNotSlow)
+        {
+            chillingArea.SetHostileEffects(chillingGroundDamagePerSecond, DamageType.Cold, true, skillUser, null);
+        }
+        else
+        {
+            chillingArea.SetHostileEffects(chillingGroundDamagePerSecond, DamageType.Cold, true, skillUser, inAreaStatusEffects);
+        }
+
+        Debug.Log(chillingGroundHealingPerSecond);
         chillingArea.SetFriendlyEffects(chillingGroundHealingPerSecond, true, skillUser, null);
 
         skillUser.StartCoroutine(DestroyChillingArea(chillingArea.gameObject, chillingGroundDuration));

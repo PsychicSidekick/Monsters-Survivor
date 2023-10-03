@@ -9,7 +9,7 @@ public class LightningStrikeSkillTree : SkillTree
 
     public int additionalNumberOfLightningStrikes;
     public float increasedLightningStrikeDamage;
-    public float increasedbaseLightningStrikeDamage;
+    public float increasedBaseLightningStrikeDamage;
     public float increasedLightningStrikeRadius;
     public float increasedMaximumLightningStrikeRange;
 
@@ -18,60 +18,71 @@ public class LightningStrikeSkillTree : SkillTree
     public float increasedShockDuration;
 
     public bool doesNotStopMoving;
+    public bool maximumNumberOfLightningStrikesIsOne;
 
-    public void IncreaseManaCost(int value)
+    public void LightningStrikeDamage()
     {
-        additionalManaCost += value;
+        increasedLightningStrikeDamage += 0.3f;
     }
 
-    public void IncreaseAttackSpeed(float value)
+    public void UnstableCurrents()
     {
-        increasedAttackSpeed += value;
+        increasedLightningStrikeDamage += 0.5f;
+        increasedMaximumLightningStrikeRange += 0.25f;
     }
 
-    public void IncreaseNumberOfLightningStrikes(int value)
+    public void ManaCharged()
     {
-        additionalNumberOfLightningStrikes += value;
+        additionalNumberOfLightningStrikes += 5;
+        additionalManaCost += 5;
     }
 
-    public void IncreaseLightningStrikeDamage(float value)
-    {
-        increasedLightningStrikeDamage += value;
-    }
-
-    public void IncreaseBaseLightningStrikeDamage(float value)
-    {
-        increasedbaseLightningStrikeDamage += value;
-    }
-
-    public void IncreaseLightningStrikeRadius(float value)
-    {
-        increasedLightningStrikeRadius += value;
-    }
-
-    public void IncreaseMaximumLightningStrikeRange(float value)
-    {
-        increasedMaximumLightningStrikeRange += value;
-    }
-
-    public void IncreaseShockEffect(float value)
-    {
-        increasedShockEffect += value;
-    }
-
-    public void IncreaseShockChance(float value)
-    {
-        increasedShockChance += value;
-    }
-
-    public void IncreaseShockDuration(float value)
-    {
-        increasedShockDuration += value;
-    }
-
-    public void ToggleDoesNotStopMoving(float value)
+    public void PortablePylon()
     {
         doesNotStopMoving = true;
+    }
+
+    public void LightningRod()
+    {
+        maximumNumberOfLightningStrikesIsOne = true;
+    }
+
+    public void LargerArea()
+    {
+        increasedLightningStrikeRadius += 0.3f;
+    }
+
+    public void CastSpeed()
+    {
+        increasedAttackSpeed += 20;
+    }
+
+    public void PowerSplit()
+    {
+        additionalNumberOfLightningStrikes += 5;
+        increasedBaseLightningStrikeDamage -= 0.15f;
+    }
+
+    public void ThunderStorm()
+    {
+        increasedLightningStrikeRadius += 1;
+        additionalManaCost += 10;
+    }
+
+    public void RapidStrikes()
+    {
+        increasedAttackSpeed += 50;
+        increasedBaseLightningStrikeDamage -= 0.2f;
+    }
+
+    public void ReducedCosts()
+    {
+        additionalManaCost -= 5;
+    }
+
+    public void ShockChance()
+    {
+        increasedShockChance += 20;
     }
     
     public override void ResetSkillTree()
@@ -81,7 +92,7 @@ public class LightningStrikeSkillTree : SkillTree
 
         additionalNumberOfLightningStrikes = 0;
         increasedLightningStrikeDamage = 0;
-        increasedbaseLightningStrikeDamage = 0;
+        increasedBaseLightningStrikeDamage = 0;
         increasedLightningStrikeRadius = 0;
         increasedMaximumLightningStrikeRange = 0;
 

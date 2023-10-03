@@ -51,12 +51,22 @@ public class IceSpearSkill : Skill
 
         for (int i = 0; i < numberOfSpears; i++)
         {
+            float spreadAngle;
+            if (skillTree.spearsShootInNova)
+            {
+                spreadAngle = i * 360 / numberOfSpears;
+                startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
+            }
+            else
+            {
+                spreadAngle = (numberOfSpears - 1) * -spearSpread + i * 2 * spearSpread;
+            }
             EffectCollider collider = Instantiate(iceSpearPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();
             SlowEffect slow = new SlowEffect(slowEffect, slowDuration, slowChance);
             collider.SetHostileEffects(spearDamage, DamageType.Cold, false, skillUser, null, slow);
 
             Projectile proj = collider.GetComponent<Projectile>();
-            proj.targetPos = startPos + Quaternion.Euler(0, (numberOfSpears - 1) * -spearSpread + i * 2 * spearSpread, 0) * targetDirection * spearRange;
+            proj.targetPos = startPos + Quaternion.Euler(0, spreadAngle, 0) * targetDirection * spearRange;
             proj.projSpeed = spearSpeed;
             proj.pierce = spearPierce;
         }
