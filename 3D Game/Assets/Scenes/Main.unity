@@ -4747,7 +4747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 80
+      value: 116.88
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -11081,11 +11081,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 86.877
+      value: 116.88
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 389
+      value: 399.14
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -26387,11 +26387,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 86.877
+      value: 116.88
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 398.96
+      value: 399.14
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -33722,7 +33722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 103.88
+      value: 116.88
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -34939,7 +34939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 86.877
+      value: 116.88
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -44908,13 +44908,13 @@ MonoBehaviour:
     baseValue: 10000
   lifeRegeneration:
     type: 1
-    baseValue: 10000
+    baseValue: 1
   maximumMana:
     type: 2
-    baseValue: 100
+    baseValue: 10000
   manaRegeneration:
     type: 3
-    baseValue: 1000
+    baseValue: 10
   movementSpeed:
     type: 4
     baseValue: 3
@@ -45363,15 +45363,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81aa550f3f10bca44897bae71a4dbcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  additionalManaCost: -10
-  additionalCooldownTime: -3
+  additionalManaCost: 0
+  additionalCooldownTime: 0
   increasedFrozenOrbDuration: 0
   increasedFrozenOrbSpeed: 0
   increasedFrozenOrbSlowEffect: 0
-  additionalNumberOfIcicles: 13
+  additionalNumberOfIcicles: 0
   additionalIciclePierce: 0
-  increasedIcicleDamage: 0.9
-  increasedBaseIcicleDamage: 1
+  increasedIcicleDamage: 0
+  increasedBaseIcicleDamage: 0
   increasedIcicleRange: 0
   increasedIcicleSpeed: 0
   increasedIcicleShootRate: 0
@@ -45392,13 +45392,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   additionalManaCost: 0
   increasedAttackSpeed: 0
-  additionalNumberOfIceSpears: 2
+  additionalNumberOfIceSpears: 0
   additionalNumberOfIceSpearPierces: 0
   increasedIceSpearDamage: 0
   increasedBaseIceSpearDamage: 0
   increasedIceSpearRange: 0
   increasedIceSpearSpeed: 0
-  increasedIceSpearSpread: -0.4
+  increasedIceSpearSpread: 0
   increasedSlowEffect: 0
   increasedSlowChance: 0
   increasedSlowDuration: 0
@@ -45418,9 +45418,9 @@ MonoBehaviour:
   additionalManaCost: 0
   increasedAttackSpeed: 0
   additionalNumberOfLightningBolts: 0
-  additionalNumberOfLightningBoltChains: 3
+  additionalNumberOfLightningBoltChains: 0
   increasedLightningBoltChainingRange: 0
-  increasedLightningBoltDamage: 0.9
+  increasedLightningBoltDamage: 0
   increasedBaseLightningBoltDamage: 0
   increasedLightningBoltRange: 0
   increasedLightningBoltSpeed: 0
@@ -45443,18 +45443,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalManaCost: 0
-  additionalCooldownTime: -5
-  increasedAttackSpeed: 60
+  additionalCooldownTime: 0
+  increasedAttackSpeed: 0
   additionalNumberOfLightningOrbs: 0
   increasedLightningOrbDamage: 0
   increasedBaseLightningOrbDamage: 0
   increasedLightningOrbRotationRadius: 0
-  increasedLightningOrbSpeed: 0.9
-  increasedLightningOrbDuration: 0.6
+  increasedLightningOrbSpeed: 0
+  increasedLightningOrbDuration: 0
   increasedShockEffect: 0
   increasedShockChance: 0
   increasedShockDuration: 0
-  doesNotStopMoving: 1
+  doesNotStopMoving: 0
   randomRotationRadius: 0
 --- !u!114 &7599843586163216823
 MonoBehaviour:
@@ -45513,18 +45513,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8533456f211ac9942bf3b99d5bc49345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  additionalManaCost: 15
+  additionalManaCost: 0
   increasedAttackSpeed: 0
-  additionalNumberOfLightningStrikes: 15
-  increasedLightningStrikeDamage: 1.9
+  additionalNumberOfLightningStrikes: 0
+  increasedLightningStrikeDamage: 0
   increasedBaseLightningStrikeDamage: 0
   increasedLightningStrikeRadius: 0
-  increasedMaximumLightningStrikeRange: 0.25
+  increasedMaximumLightningStrikeRange: 0
   increasedShockEffect: 0
   increasedShockChance: 0
   increasedShockDuration: 0
-  doesNotStopMoving: 1
-  maximumNumberOfLightningStrikesIsOne: 1
+  doesNotStopMoving: 0
+  maximumNumberOfLightningStrikesIsOne: 0
 --- !u!4 &7666680085093108268
 Transform:
   m_ObjectHideFlags: 0
@@ -47310,11 +47310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 125.92659
+      value: 116.88
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 62
+      value: 399.14
       objectReference: {fileID: 0}
     - target: {fileID: 9093911771531087003, guid: 2e0cd41125690bb49a132e627acfdda6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
