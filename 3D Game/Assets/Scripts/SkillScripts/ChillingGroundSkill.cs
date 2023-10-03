@@ -53,7 +53,6 @@ public class ChillingGroundSkill : Skill
             chillingArea.SetHostileEffects(chillingGroundDamagePerSecond, DamageType.Cold, true, skillUser, inAreaStatusEffects);
         }
 
-        Debug.Log(chillingGroundHealingPerSecond);
         chillingArea.SetFriendlyEffects(chillingGroundHealingPerSecond, true, skillUser, null);
 
         skillUser.StartCoroutine(DestroyChillingArea(chillingArea.gameObject, chillingGroundDuration));

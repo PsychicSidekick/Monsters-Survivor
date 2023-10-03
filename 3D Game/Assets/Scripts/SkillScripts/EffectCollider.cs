@@ -56,10 +56,9 @@ public class EffectCollider : MonoBehaviour
         {
             foreach (Character character in charactersStatusEffects.Keys)
             {
-                Debug.Log("hi");
                 if (character.GetType() == owner.GetType())
                 {
-                    character.ReceiveHealing(healing);
+                    character.ReceiveHealing(healing * Time.deltaTime);
                 }
                 else
                 {

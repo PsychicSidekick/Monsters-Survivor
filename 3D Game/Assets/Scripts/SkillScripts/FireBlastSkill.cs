@@ -45,7 +45,7 @@ public class FireBlastSkill : Skill
 
         float fireBlastDamage = (baseFireBlastDamage + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedFireBlastDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedAreaDamage.value);
         float fireBlastRadius = baseFireBlastRadius * (1 + skillTree.increasedFireBlastRadius + skillUser.stats.increasedAreaEffect.value);
-        float expansionTime = baseFireBlastExpansionTime + skillTree.increasedFireBlastExpansionTime;
+        float expansionTime = baseFireBlastExpansionTime * (1 + skillTree.increasedFireBlastExpansionTime);
 
         float igniteDamage = fireBlastDamage * 0.5f * (1 + skillTree.increasedIgniteDuration + skillTree.increasedIgniteDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedIgniteDamage.value + skillUser.stats.increasedIgniteDuration.value);
         float igniteChance = baseIgniteChance + skillTree.increasedIgniteChance + skillUser.stats.additionalIgniteChance.value;
