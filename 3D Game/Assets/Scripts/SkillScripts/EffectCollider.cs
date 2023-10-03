@@ -10,24 +10,25 @@ public class EffectCollider : MonoBehaviour
     public Character owner;
     public Dictionary<Character, List<StatusEffect>> charactersStatusEffects = new Dictionary<Character, List<StatusEffect>>();
 
+    public bool overTimeEffects;
+
     public float damage;
     public DamageType type;
-    public bool damageOverTime;
+
     public List<StatusEffect> hostileInAreaStatusEffects = new List<StatusEffect>();
     public List<StatusEffect> hostileOneTimeStatusEffects = new List<StatusEffect>();
 
     public float healing;
-    public bool healingOverTime;
     public List<StatusEffect> friendlyInAreaStatusEffects = new List<StatusEffect>();
     public List<StatusEffect> friendlyOneTimeStatusEffects = new List<StatusEffect>();
 
     public GameObject onHitVFX;
 
-    public void SetHostileEffects(float _damage, DamageType _type, bool _damageOverTime, Character _owner, StatusEffect[] _hostileInAreaStatusEffects, params StatusEffect[] _hostileOneTimeStatusEffects)
+    public void SetHostileEffects(float _damage, DamageType _type, bool _overTimeEffects, Character _owner, StatusEffect[] _hostileInAreaStatusEffects, params StatusEffect[] _hostileOneTimeStatusEffects)
     {
         damage = _damage;
         type = _type;
-        damageOverTime = _damageOverTime;
+        overTimeEffects = _overTimeEffects;
         if (_hostileInAreaStatusEffects != null)
         {
             hostileInAreaStatusEffects.AddRange(_hostileInAreaStatusEffects);
@@ -36,25 +37,34 @@ public class EffectCollider : MonoBehaviour
         owner = _owner;
     }
 
-    public void SetFriendlyEffects(float _healing, bool _healingOverTime, Character _owner, StatusEffect[] _friendlyInAreaStatusEffects, params StatusEffect[] _friendlyOneTimeStatusEffects)
+    public void SetFriendlyEffects(float _healing, bool _overTimeEffects, Character _owner, StatusEffect[] _friendlyInAreaStatusEffects, params StatusEffect[] _friendlyOneTimeStatusEffects)
     {
         healing = _healing;
-        healingOverTime = _healingOverTime;
+        overTimeEffects = _overTimeEffects;
         if (_friendlyInAreaStatusEffects != null)
         {
             friendlyInAreaStatusEffects.AddRange(_friendlyInAreaStatusEffects);
         }
         friendlyOneTimeStatusEffects.AddRange(_friendlyOneTimeStatusEffects);
         owner = _owner;
+        affectsFriendlyCharacters = true;
     }
 
     public void Update()
     {
-        if (damageOverTime)
+        if (overTimeEffects)
         {
             foreach (Character character in charactersStatusEffects.Keys)
             {
-                character.ReceiveDamage(new Damage(damage * Time.deltaTime, owner, type));
+                Debug.Log("hi");
+                if (character.GetType() == owner.GetType())
+                {
+                    character.ReceiveHealing(healing);
+                }
+                else
+                {
+                    character.ReceiveDamage(new Damage(damage * Time.deltaTime, owner, type));
+                }
             }
         }
 
@@ -69,7 +79,7 @@ public class EffectCollider : MonoBehaviour
 
     public void ApplyHostileEffects(Character character)
     {
-        if (!damageOverTime)
+        if (!overTimeEffects)
         {
             character.ReceiveDamage(new Damage(damage, owner, type));
         }
@@ -94,7 +104,7 @@ public class EffectCollider : MonoBehaviour
 
     public void ApplyFriendlyEffects(Character character)
     {
-        if (!healingOverTime)
+        if (!overTimeEffects)
         {
             character.ReceiveHealing(healing);
         }
