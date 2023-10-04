@@ -25,7 +25,7 @@ MonoBehaviour:
   baseLightningBoltChainingRange: 3
   baseLightningBoltDamage: 80
   baseLightningBoltRange: 4
-  baseLightningBoltSpeed: 30
+  baseLightningBoltSpeed: 25
   baseLightningBoltSpread: 10
   baseShockEffect: 20
   baseShockChance: 20

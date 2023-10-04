@@ -14,6 +14,8 @@ public class MeteorShowerSkillTree : SkillTree
     public float increasedIgniteChance;
     public float increasedIgniteDuration;
 
+    public bool raiseEmission;
+
     public void LongerDuration()
     {
         increasedMeteorShowerDuration += 0.2f;
@@ -68,6 +70,7 @@ public class MeteorShowerSkillTree : SkillTree
     {
         increasedBaseMeteorShowerRadius -= 0.95f;
         increasedBaseMeteorShowerDamage += 1;
+        raiseEmission = true;
     }
 
     public void ReducedCosts()
@@ -105,5 +108,7 @@ public class MeteorShowerSkillTree : SkillTree
         increasedIgniteDamage = 0;
         increasedIgniteChance = 0;
         increasedIgniteDuration = 0;
+
+        raiseEmission = false;
     }
 }

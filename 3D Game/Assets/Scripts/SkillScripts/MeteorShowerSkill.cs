@@ -47,6 +47,11 @@ public class MeteorShowerSkill : Skill
 
         GameObject meteorShowerParticles = Instantiate(meteorShowerParticlesPrefab, skillHandler.groundTarget - new Vector3(0, 1, 0), Quaternion.identity);
         meteorShowerParticles.transform.localScale = new Vector3(meteorShowerRadius * 0.11f, 1, meteorShowerRadius * 0.11f);
+        if (skillTree.raiseEmission)
+        {
+            ParticleSystem.EmissionModule emission = meteorShowerParticles.GetComponent<ParticleSystem>().emission;
+            emission.rateOverTime = 200;
+        }
 
         skillUser.StartCoroutine(DestroyMeteorShowerArea(meteorShowerArea.gameObject, meteorShowerParticles, meteorShowerDuration));
     }

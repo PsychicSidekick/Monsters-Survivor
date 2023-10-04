@@ -1,11 +1,25 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Platform : MonoBehaviour
 {
+    [Serializable]
+    public struct MaterialLightColor
+    {
+        public Material material;
+        public Color color;
+    }
+
     public static List<Vector2Int> listOfExistingPlatforms = new List<Vector2Int>();
+    public static Platform centerPlatform;
+    public static Material surfaceMaterial;
+
+    public Light enviromentLight;
+
+    public List<MaterialLightColor> materialLightColors = new List<MaterialLightColor>();
 
     public Vector2Int pos;
 
@@ -14,6 +28,15 @@ public class Platform : MonoBehaviour
     private void Start()
     {
         listOfExistingPlatforms.Add(pos);
+        if (pos == new Vector2Int(0, 0))
+        {
+            centerPlatform = this;
+            int index = UnityEngine.Random.Range(0, materialLightColors.Count);
+            index = 4;
+            surfaceMaterial = materialLightColors[index].material;
+            enviromentLight.color = materialLightColors[index].color;
+        }
+        GetComponent<MeshRenderer>().material = surfaceMaterial;
     }
 
     private void CreatePlatforms()
@@ -47,7 +70,7 @@ public class Platform : MonoBehaviour
         if (other.GetComponent<PlayerControl>())
         {
             CreatePlatforms();
-            NavMeshManager.instance.UpdateNavMesh();
+            centerPlatform.GetComponent<NavMeshSurface>().BuildNavMesh();
         }
     }
 }

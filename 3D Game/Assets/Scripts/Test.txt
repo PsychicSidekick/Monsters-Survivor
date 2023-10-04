@@ -1,0 +1,229 @@
+{
+  "waves": [
+    {
+      "duration": "120",
+      "jobs": [
+        {
+          "enemyTypeID": "0",
+          "amount": "400"
+        }
+      ],
+      "specialJobs": [
+        {
+          "startTime": "90",
+          "enemyTypeID": "1",
+          "amount": "1"
+        }
+      ]
+    },
+    {
+      "duration": "120",
+      "jobs": [
+        {
+          "enemyTypeID": "3",
+          "amount": "40"
+        }
+      ],
+      "specialJobs": [
+        {
+          "startTime": "90",
+          "enemyTypeID": "4",
+          "amount": "1"
+        }
+      ]
+    },
+    {
+      "duration": "120",
+      "jobs": [
+        {
+          "enemyTypeID": "6",
+          "amount": "40"
+        }
+      ],
+      "specialJobs": [
+        {
+          "startTime": "90",
+          "enemyTypeID": "7",
+          "amount": "1"
+        }
+      ]
+    },
+    {
+      "duration": "120",
+      "jobs": [
+        {
+          "enemyTypeID": "0",
+          "amount": "60"
+        },
+        {
+          "enemyTypeID": "1",
+          "amount": "5"
+        }
+      ],
+      "specialJobs": [
+        {
+          "startTime": "90",
+          "enemyTypeID": "2",
+          "amount": "1"
+        },
+        {
+          "startTime": "60",
+          "enemyTypeID": "3",
+          "amount": "10"
+        }
+      ]
+    },
+    {
+      "duration": "120",
+      "jobs": [
+        {
+          "enemyTypeID": "3",
+          "amount": "60"
+        },
+        {
+          "enemyTypeID": "4",
+          "amount": "5"
+        }
+      ],
+      "specialJobs": [
+        {
+          "startTime": "90",
+          "enemyTypeID": "5",
+          "amount": "1"
+        },
+        {
+          "startTime": "60",
+          "enemyTypeID": "6",
+          "amount": "10"
+        }
+      ]
+    },
+    {
+      "duration": "120",
+      "jobs": [
+        {
+          "enemyTypeID": "6",
+          "amount": "60"
+        },
+        {
+          "enemyTypeID": "7",
+          "amount": "5"
+        }
+      ],
+      "specialJobs": [
+        {
+          "startTime": "90",
+          "enemyTypeID": "8",
+          "amount": "1"
+        },
+        {
+          "startTime": "60",
+          "enemyTypeID": "0",
+          "amount": "10"
+        }
+      ]
+    },
+    {
+      "duration": "120",
+      "jobs": [
+        {
+          "enemyTypeID": "0",
+          "amount": "40"
+        },
+        {
+          "enemyTypeID": "3",
+          "amount": "40"
+        },
+        {
+          "enemyTypeID": "1",
+          "amount": "10"
+        }
+      ],
+      "specialJobs": [
+        {
+          "startTime": "90",
+          "enemyTypeID": "2",
+          "amount": "1"
+        },
+        {
+          "startTime": "90",
+          "enemyTypeID": "5",
+          "amount": "1"
+        },
+        {
+          "startTime": "60",
+          "enemyTypeID": "4",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "duration": "120",
+      "jobs": [
+        {
+          "enemyTypeID": "3",
+          "amount": "40"
+        },
+        {
+          "enemyTypeID": "6",
+          "amount": "40"
+        },
+        {
+          "enemyTypeID": "4",
+          "amount": "10"
+        }
+      ],
+      "specialJobs": [
+        {
+          "startTime": "90",
+          "enemyTypeID": "5",
+          "amount": "1"
+        },
+        {
+          "startTime": "90",
+          "enemyTypeID": "8",
+          "amount": "1"
+        },
+        {
+          "startTime": "60",
+          "enemyTypeID": "7",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "duration": "120",
+      "jobs": [
+        {
+          "enemyTypeID": "6",
+          "amount": "40"
+        },
+        {
+          "enemyTypeID": "0",
+          "amount": "40"
+        },
+        {
+          "enemyTypeID": "7",
+          "amount": "10"
+        }
+      ],
+      "specialJobs": [
+        {
+          "startTime": "90",
+          "enemyTypeID": "8",
+          "amount": "1"
+        },
+        {
+          "startTime": "90",
+          "enemyTypeID": "2",
+          "amount": "1"
+        },
+        {
+          "startTime": "60",
+          "enemyTypeID": "1",
+          "amount": "5"
+        }
+      ]
+    }
+  ]
+}
