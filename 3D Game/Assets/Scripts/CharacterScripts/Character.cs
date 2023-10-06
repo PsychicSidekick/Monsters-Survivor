@@ -55,7 +55,7 @@ public class Character : MonoBehaviour
 
         while (xp >= requiredXp)
         {
-            requiredXp += (level + 1) * 1000;
+            requiredXp += (level + 1) * 500;
             level++;
 
             if (level >= 100)
@@ -73,7 +73,7 @@ public class Character : MonoBehaviour
 
         for (int i = 1; i < level; i++)
         {
-            requiredXp += i * 1000;
+            requiredXp += i * 500;
         }
 
         return requiredXp;

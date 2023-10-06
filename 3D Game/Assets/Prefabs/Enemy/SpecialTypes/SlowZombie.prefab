@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 3358042974457620871}
   - component: {fileID: 3694338966625401863}
   m_Layer: 7
-  m_Name: Zombie
+  m_Name: SlowZombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -995,7 +995,7 @@ MonoBehaviour:
     baseValue: 10000
   movementSpeed:
     type: 4
-    baseValue: 2.5
+    baseValue: 0.5
   attackSpeed:
     type: 5
     baseValue: 1.2
@@ -1201,13 +1201,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageType: 1
   increasedRange: 0.2
-  increasedDamage: 0
+  increasedDamage: 2
   increasedIgniteDamage: 0
   increasedIgniteDuration: 0
   increasedIgniteChance: 0
   increasedSlowEffect: 0
   increasedSlowDuration: 0
-  increasedSlowChance: 0
+  increasedSlowChance: 100
   increasedShockEffect: 0
   increasedShockDuration: 0
   increasedShockChance: 0

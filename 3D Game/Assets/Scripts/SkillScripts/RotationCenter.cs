@@ -11,7 +11,7 @@ public class RotationCenter : MonoBehaviour
     void Update()
     {
         lifeTime -= Time.deltaTime;
-        if (lifeTime <= 0)
+        if (lifeTime <= 0 || !movingTarget.gameObject.activeInHierarchy)
         {
             Destroy(gameObject);
         }

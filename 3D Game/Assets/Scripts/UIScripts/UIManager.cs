@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class UIManager : MonoBehaviour
     public GameObject playerPassivesPanel;
     public GameObject inventoryPanel;
     public GameObject characterStatsPanel;
+    public GameObject escapeMenuPanel;
 
     private void Update()
     {
@@ -32,13 +34,18 @@ public class UIManager : MonoBehaviour
         {
             ToggleUIPanel(inventoryPanel);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleUIPanel(escapeMenuPanel);
+        }
     }
 
     private void ToggleUIPanel(GameObject panel)
     {
         panel.SetActive(!panel.activeInHierarchy);
 
-        if (!skillPassivesPanel.activeInHierarchy && !playerPassivesPanel.activeInHierarchy && !inventoryPanel.activeInHierarchy && !characterStatsPanel.activeInHierarchy)
+        if (!skillPassivesPanel.activeInHierarchy && !playerPassivesPanel.activeInHierarchy && !inventoryPanel.activeInHierarchy && !characterStatsPanel.activeInHierarchy && !escapeMenuPanel.activeInHierarchy)
         {
             GameManager.instance.UnpauseGame();
         }
@@ -46,5 +53,16 @@ public class UIManager : MonoBehaviour
         {
             GameManager.instance.PauseGame();
         }
+    }
+
+    public void ResumeOnClick()
+    {
+        ToggleUIPanel(escapeMenuPanel);
+    }
+
+    public void ReturnToMainMenuOnClick()
+    {
+        GameManager.instance.UnpauseGame();
+        SceneManager.LoadScene("MainMenu");
     }
 }

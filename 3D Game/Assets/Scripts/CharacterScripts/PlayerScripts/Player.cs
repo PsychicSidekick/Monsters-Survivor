@@ -5,9 +5,9 @@ using TMPro;
 using UnityEngine.AI;
 
 
-public class PlayerControl : Character
+public class Player : Character
 {
-    public static PlayerControl instance;
+    public static Player instance;
 
     [HideInInspector] private Vector3 moveTarget = new Vector3(0, 0, 0);
 
@@ -19,6 +19,7 @@ public class PlayerControl : Character
 
     public int availableSkillPoints;
     public TMP_Text availableSkillPointsText;
+    public GameObject deathScreen;
 
     protected override void Awake()
     {
@@ -52,6 +53,13 @@ public class PlayerControl : Character
                 Move(moveTarget);
             }
         }
+    }
+
+    public override void OnDeath()
+    {
+        GameManager.instance.PauseGame();
+        deathScreen.SetActive(true);
+        base.OnDeath();
     }
 
     public override void OnLevelUp()

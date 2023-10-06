@@ -44,7 +44,7 @@ public class PlayerPassiveButton : MonoBehaviour
     {
         foreach (StatModifier mod in statModifiers)
         {
-            PlayerControl.instance.stats.ApplyStatModifier(mod);
+            Player.instance.stats.ApplyStatModifier(mod);
         }
         
         button.interactable = false;

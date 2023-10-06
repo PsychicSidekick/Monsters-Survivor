@@ -15,7 +15,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         itemObj.description.SetActive(true);
         foreach (StatModifier mod in itemObj.item.itemModifiers)
         {
-            PlayerControl.instance.stats.ApplyStatModifier(mod);
+            Player.instance.stats.ApplyStatModifier(mod);
         }
         equippedItem = itemObj;
     }
@@ -26,7 +26,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         equippedItem.description.SetActive(false);
         foreach (StatModifier mod in equippedItem.item.itemModifiers)
         {
-            PlayerControl.instance.stats.RemoveStatModifier(mod);
+            Player.instance.stats.RemoveStatModifier(mod);
         }
         equippedItem = null;
     }

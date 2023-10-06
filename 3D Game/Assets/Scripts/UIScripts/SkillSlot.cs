@@ -18,7 +18,7 @@ public class SkillSlot : MonoBehaviour
 
     private void Start()
     {
-        skillHolder = PlayerControl.instance.GetComponent<SkillHandler>().skills[skillSlotID];
+        skillHolder = Player.instance.GetComponent<SkillHandler>().skills[skillSlotID];
         button = GetComponent<Button>();
         image = GetComponent<Image>();
     }

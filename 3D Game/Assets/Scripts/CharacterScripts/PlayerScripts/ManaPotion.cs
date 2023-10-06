@@ -8,6 +8,6 @@ public class ManaPotion : Potion
 
     public override void ApplyPotionEffect()
     {
-        PlayerControl.instance.GetComponent<Character>().AddMana(PlayerControl.instance.stats.maximumMana.value * percentOfMaximumMana / 100);
+        Player.instance.GetComponent<Character>().AddMana(Player.instance.stats.maximumMana.value * percentOfMaximumMana / 100);
     }
 }

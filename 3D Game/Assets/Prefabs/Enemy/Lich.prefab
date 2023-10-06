@@ -239,7 +239,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 58f32ba312da65e4ab410fbb5a35afb3, type: 2}
   - {fileID: 11400000, guid: 1571d0fd26bb4b2479abf05690a5de47, type: 2}
   - {fileID: 11400000, guid: a2d572f5e427d2b4f9623dc9bf243cf8, type: 2}
-  xpYield: 10000
+  xpYield: 500
   player: {fileID: 0}
   detectionRange: 0
   attackRange: 0
@@ -445,7 +445,14 @@ MonoBehaviour:
     channelledTime: 0
     state: 0
     triggerSkill: 0
-  currentSkill: {fileID: 0}
+  currentSkillHolder:
+    skill: {fileID: 0}
+    key: 0
+    cooldownTime: 0
+    activeTime: 0
+    channelledTime: 0
+    state: 0
+    triggerSkill: 0
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
   mask:
@@ -471,13 +478,14 @@ MonoBehaviour:
   additionalNumberOfIceSpears: 0
   additionalNumberOfIceSpearPierces: 0
   increasedIceSpearDamage: 0
-  increasedBaseIceSpearDamage: 0
+  increasedBaseIceSpearDamage: -0.8
   increasedIceSpearRange: 0
   increasedIceSpearSpeed: 0
-  increasedIceSpearSpread: 0
+  increasedIceSpearSpread: 0.5
   increasedSlowEffect: 0
   increasedSlowChance: 0
   increasedSlowDuration: 0
+  spearsShootInNova: 0
 --- !u!114 &1039472905318561837
 MonoBehaviour:
   m_ObjectHideFlags: 0

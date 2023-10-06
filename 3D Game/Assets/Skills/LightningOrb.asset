@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: LightningOrb
   skillIcon: {fileID: 21300000, guid: fe860402416047c45a58160daa3c0d9a, type: 3}
-  coolDownTime: 5
+  coolDownTime: 6
   activeTime: 0
   baseManaCost: 30
   targetsCharacters: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
   baseLightningOrbDamage: 170
   baseLightningOrbRotationRadius: 1.5
   baseLightningOrbSpeed: 100
-  baseLightningOrbDuration: 5
+  baseLightningOrbDuration: 6
   baseShockEffect: 20
   baseShockChance: 20
   baseShockDuration: 2

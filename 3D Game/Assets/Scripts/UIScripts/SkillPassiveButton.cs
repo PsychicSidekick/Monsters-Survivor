@@ -27,6 +27,18 @@ public class SkillPassiveButton : MonoBehaviour
 
     private void Update()
     {
+        if (pointCounter.text == "15")
+        {
+            button.interactable = false;
+            return;
+        }
+
+        if (Player.instance.availableSkillPoints <= 0)
+        {
+            button.interactable = false;
+            return;
+        }
+
         if (preRequisite == null)
         {
             if (timesAllocated < maxAllocation)
@@ -60,14 +72,14 @@ public class SkillPassiveButton : MonoBehaviour
 
     public void OnClick()
     {
-        if (PlayerControl.instance.availableSkillPoints <= 0)
+        if (Player.instance.availableSkillPoints <= 0)
         {
             return;
         }
 
         if (timesAllocated < maxAllocation)
         {
-            PlayerControl.instance.AddToAvailableSkillPoints(-1);
+            Player.instance.AddToAvailableSkillPoints(-1);
             timesAllocated++;
             GameManager.instance.AddIntToStringNumber(1, pointCounter);
 

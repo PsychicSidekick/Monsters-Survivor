@@ -27,7 +27,7 @@ public class EnemySpawnManager : MonoBehaviour
 
         Vector3 randomDirection = new Vector3(randomX, 0, randomZ).normalized;
         
-        return PlayerControl.instance.transform.position + randomDirection * distanceFromPlayer;
+        return Player.instance.transform.position + randomDirection * distanceFromPlayer;
     }
 
     public IEnumerator SpawnSequence()

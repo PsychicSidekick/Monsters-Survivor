@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CharacterUI : MonoBehaviour
+public class CharacterStatsPanel : MonoBehaviour
 {
-    public GameObject characterUI;
-
     public TMP_Text lifeRegenTxt;
     public TMP_Text manaRegenTxt;
     public TMP_Text moveSpeedTxt;
@@ -16,20 +14,15 @@ public class CharacterUI : MonoBehaviour
     public TMP_Text coldResTxt;
     public TMP_Text lightningResTxt;
 
-    public PlayerControl player;
+    public Player player;
 
     private void Start()
     {
-        player = PlayerControl.instance;
+        player = Player.instance;
     }
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.C))
-        //{
-        //    characterUI.SetActive(!characterUI.activeInHierarchy);
-        //}
-
         lifeRegenTxt.text = "Life regen per second: " + player.stats.lifeRegeneration.value;
         manaRegenTxt.text = "Mana regen per second: " + player.stats.manaRegeneration.value;
         moveSpeedTxt.text = "Movement Speed: " + player.stats.movementSpeed.value;

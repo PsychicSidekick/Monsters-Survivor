@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     [HideInInspector]
     public static Inventory instance;
 
-    public PlayerControl player;
+    public Player player;
 
     [HideInInspector]
     public List<List<Cell>> inventory = new List<List<Cell>>();

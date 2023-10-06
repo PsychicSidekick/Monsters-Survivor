@@ -2242,7 +2242,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 58f32ba312da65e4ab410fbb5a35afb3, type: 2}
   - {fileID: 11400000, guid: 1571d0fd26bb4b2479abf05690a5de47, type: 2}
   - {fileID: 11400000, guid: a2d572f5e427d2b4f9623dc9bf243cf8, type: 2}
-  xpYield: 10000
+  xpYield: 500
   player: {fileID: 0}
   detectionRange: 0
   attackRange: 0
@@ -2448,7 +2448,14 @@ MonoBehaviour:
     channelledTime: 0
     state: 0
     triggerSkill: 0
-  currentSkill: {fileID: 0}
+  currentSkillHolder:
+    skill: {fileID: 0}
+    key: 0
+    cooldownTime: 0
+    activeTime: 0
+    channelledTime: 0
+    state: 0
+    triggerSkill: 0
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
   mask:
@@ -2473,11 +2480,11 @@ MonoBehaviour:
   increasedAttackSpeed: 0
   additionalNumberOfFireBalls: 0
   increasedFireBallDamage: 0
-  increasedBaseFireBallDamage: 0
+  increasedBaseFireBallDamage: -0.8
   increasedFireBallRange: 0
   increasedFireBallSpeed: 0
   increasedExplosionDamage: 0
-  increasedBaseExplosionDamage: 0
+  increasedBaseExplosionDamage: -0.8
   increasedExplosionRadius: 0
   increasedIgniteDamage: 0
   increasedIgniteChance: 0
@@ -2495,7 +2502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a56df1599cd2e459ed17c7f9334a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 5
+  attackRange: 4
   inAttackAnimation: 0
 --- !u!1 &5390186903128566244
 GameObject:

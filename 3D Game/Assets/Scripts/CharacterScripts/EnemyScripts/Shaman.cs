@@ -24,7 +24,7 @@ public class Shaman : MonoBehaviour
 
     private void Update()
     {
-        float distanceFromPlayer = Vector3.Distance(PlayerControl.instance.transform.position, transform.position);
+        float distanceFromPlayer = Vector3.Distance(Player.instance.transform.position, transform.position);
 
         enemy.FindGroundTarget();
         enemy.FacePlayer();
@@ -32,7 +32,7 @@ public class Shaman : MonoBehaviour
         // if not attacking, follow target
         if (!inAttackAnimation)
         {
-            enemy.Move(PlayerControl.instance.transform.position);
+            enemy.Move(Player.instance.transform.position);
         }
         else
         {

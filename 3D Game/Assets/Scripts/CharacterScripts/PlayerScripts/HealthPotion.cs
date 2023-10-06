@@ -8,6 +8,6 @@ public class HealthPotion : Potion
 
     public override void ApplyPotionEffect()
     {
-        PlayerControl.instance.GetComponent<Character>().ReceiveHealing(PlayerControl.instance.stats.maximumLife.value * percentOfMaximumLife / 100);
+        Player.instance.GetComponent<Character>().ReceiveHealing(Player.instance.stats.maximumLife.value * percentOfMaximumLife / 100);
     }
 }

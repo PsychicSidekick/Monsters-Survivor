@@ -23,6 +23,6 @@ MonoBehaviour:
   meteorShowerParticlesPrefab: {fileID: 1578278915059731184, guid: a78f89c0573064446b23cee9cc21f306, type: 3}
   baseMeteorShowerDamagePerSecond: 70
   baseMeteorShowerRadius: 5
-  baseMeteorShowerDuration: 4
+  baseMeteorShowerDuration: 5
   baseIgniteChance: 40
   baseIgniteDuration: 4

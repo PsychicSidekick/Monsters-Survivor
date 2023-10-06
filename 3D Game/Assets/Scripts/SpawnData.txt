@@ -1,48 +1,58 @@
 {
   "waves": [
     {
-      "duration": "120",
+      "duration": "60",
       "jobs": [
         {
           "enemyTypeID": "0",
-          "amount": "400"
+          "amount": "25"
         }
       ],
       "specialJobs": [
         {
-          "startTime": "90",
+          "startTime": "45",
           "enemyTypeID": "1",
           "amount": "1"
         }
       ]
     },
     {
-      "duration": "120",
+      "duration": "60",
       "jobs": [
         {
           "enemyTypeID": "3",
-          "amount": "40"
+          "amount": "30"
         }
       ],
       "specialJobs": [
         {
-          "startTime": "90",
+          "startTime": "30",
+          "enemyTypeID": "9",
+          "amount": "60"
+        },
+        {
+          "startTime": "45",
           "enemyTypeID": "4",
           "amount": "1"
         }
       ]
     },
     {
-      "duration": "120",
+      "duration": "60",
       "jobs": [
         {
           "enemyTypeID": "6",
-          "amount": "40"
+          "amount": "50"
         }
       ],
       "specialJobs": [
         {
-          "startTime": "90",
+          "startTime": "30",
+          "enemyTypeID": "6",
+          "amount": "15"
+        },
+        {
+          "startTime": "30",
           "enemyTypeID": "7",
           "amount": "1"
         }

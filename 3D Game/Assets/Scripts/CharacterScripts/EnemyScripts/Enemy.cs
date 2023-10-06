@@ -13,7 +13,7 @@ public class Enemy : Character
 
     public int xpYield;
 
-    public PlayerControl player;
+    public Player player;
 
     public float detectionRange;
     public float attackRange;
@@ -22,7 +22,7 @@ public class Enemy : Character
     {
         base.Start();
         healthBarCanvas = GameObject.Find("EnemyHealthCanvas");
-        player = PlayerControl.instance;
+        player = Player.instance;
         healthBar = Instantiate(healthBarPrefab, healthBarCanvas.transform);
         healthBar.GetComponent<RectTransform>().anchoredPosition = GameManager.instance.WorldToCanvasPos(healthBarCanvas, transform.position);
 
@@ -56,7 +56,8 @@ public class Enemy : Character
         Destroy(healthBar);
         player.ReceiveXp(xpYield);
         SpawnLoot();
-        base.OnDeath();
+        Destroy(gameObject);
+        //base.OnDeath();
     }
 
     public void FacePlayer()
@@ -75,6 +76,6 @@ public class Enemy : Character
 
     public override Character FindCharacterTarget()
     {
-        return PlayerControl.instance;
+        return Player.instance;
     }
 }

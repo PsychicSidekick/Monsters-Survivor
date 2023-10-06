@@ -8,7 +8,7 @@ public class CameraControl : MonoBehaviour
 
     private void Start()
     {
-        player = PlayerControl.instance.gameObject;
+        player = Player.instance.gameObject;
     }
 
     void Update()

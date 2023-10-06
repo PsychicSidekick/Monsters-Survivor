@@ -54,7 +54,7 @@ public class ItemObj : MonoBehaviour
 
     public void OnDrop()
     {
-        transform.position = PlayerControl.instance.transform.position;
+        transform.position = Player.instance.transform.position;
         rb.velocity = Vector3.zero;
     }
 }

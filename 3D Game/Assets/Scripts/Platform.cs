@@ -30,11 +30,14 @@ public class Platform : MonoBehaviour
         listOfExistingPlatforms.Add(pos);
         if (pos == new Vector2Int(0, 0))
         {
+            listOfExistingPlatforms = new List<Vector2Int>();
+            listOfExistingPlatforms.Add(pos);
             centerPlatform = this;
             int index = UnityEngine.Random.Range(0, materialLightColors.Count);
-            index = 4;
             surfaceMaterial = materialLightColors[index].material;
             enviromentLight.color = materialLightColors[index].color;
+            CreatePlatforms();
+            centerPlatform.GetComponent<NavMeshSurface>().BuildNavMesh();
         }
         GetComponent<MeshRenderer>().material = surfaceMaterial;
     }
@@ -67,7 +70,7 @@ public class Platform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerControl>())
+        if (other.GetComponent<Player>())
         {
             CreatePlatforms();
             centerPlatform.GetComponent<NavMeshSurface>().BuildNavMesh();
