@@ -10,32 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
-  m_Name: Amulet1
+  m_Name: Weapon1
   m_EditorClassIdentifier: 
-  itemName: Amulet
-  type: 7
-  size: {x: 1, y: 1}
-  itemObjPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImgPrefab: {fileID: 4065881981570626885, guid: 5400d1ac79c3c70488e1e96357ca66b3, type: 3}
+  itemName: Weapon1
+  type: 0
+  size: {x: 1, y: 3}
+  lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
+  itemImagePrefab: {fileID: 4065881981570626885, guid: 9620dfd51fa8ba541b194111793a53aa, type: 3}
   modPool:
-  - itemModType: 0
-    maxValue: 30
-  - itemModType: 1
-    maxValue: 20
   - itemModType: 2
-    maxValue: 30
+    maxValue: 100
   - itemModType: 3
-    maxValue: 20
+    maxValue: 50
   - itemModType: 5
-    maxValue: 15
-  - itemModType: 7
-    maxValue: 20
+    maxValue: 30
+  - itemModType: 6
+    maxValue: 100
   - itemModType: 12
     maxValue: 10
   - itemModType: 13
     maxValue: 10
   - itemModType: 14
     maxValue: 10
-  baseItemMod:
-    itemModType: 2
-    value: {x: 20, y: 30}

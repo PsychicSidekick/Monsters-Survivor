@@ -9,18 +9,13 @@ public static class RandomItemGenerator
 
     private static Random random = new Random();
 
-    public static List<StatModifier> RandomizeItemMods(ItemPrefab itemPrefab)
+    public static List<StatModifier> RandomizeItemMods(ItemBase itemPrefab)
     {
         List<ItemModMaxValue> modPool = itemPrefab.modPool;
 
         List<StatModType> existingMods = new List<StatModType>();
 
         List<StatModifier> mods = new List<StatModifier>();
-
-        // Add itemBase modifier
-        BaseItemMod bsm = itemPrefab.baseItemMod;
-        StatModifier baseMod = new StatModifier(bsm.itemModType, random.Next(bsm.value.x, bsm.value.y + 1));
-        mods.Add(baseMod);
 
         // Add random number of random item modifiers
         for (int i = 0; i < random.Next(minModCount, maxModCount + 1); i++)

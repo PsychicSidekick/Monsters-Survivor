@@ -4,21 +4,21 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class LootText : MonoBehaviour, IPointerDownHandler
+public class LootButton : MonoBehaviour, IPointerDownHandler
 {
     public TMP_Text itemNameTxt;
-    public ItemObj itemObj;
+    public LootGameObject lootGameObject;
 
     private void Start()
     {
-        itemNameTxt.text = itemObj.item.name;
+        itemNameTxt.text = lootGameObject.item.name;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.pointerId == -1)
         {
-            Inventory.instance.MovePlayerToLoot(itemObj.gameObject);
+            Inventory.instance.MovePlayerToLoot(lootGameObject);
         }
     }
 }

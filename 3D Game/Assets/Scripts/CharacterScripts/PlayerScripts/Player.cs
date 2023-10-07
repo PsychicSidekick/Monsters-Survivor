@@ -13,7 +13,7 @@ public class Player : Character
 
     [HideInInspector] public bool isAttacking;
 
-    public GameObject targetItem;
+    public LootGameObject targetLoot;
 
     public LayerMask moveRayLayer;
 
@@ -25,6 +25,20 @@ public class Player : Character
     {
         base.Awake();
         instance = this;
+        Inventory.instance.player = this;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        foreach (ItemSlot itemSlot in Resources.FindObjectsOfTypeAll(typeof(ItemSlot)))
+        {
+            if (itemSlot.equippedItem != null)
+            {
+                itemSlot.EquipItem(itemSlot.equippedItem);
+            }
+        }
+        
     }
 
     protected override void Update()

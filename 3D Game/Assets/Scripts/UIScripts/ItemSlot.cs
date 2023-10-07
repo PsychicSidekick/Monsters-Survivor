@@ -7,24 +7,22 @@ using TMPro;
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public ItemType slotType;
-    public ItemObj equippedItem;
+    public Item equippedItem;
 
-    public void EquipItem(ItemObj itemObj)
+    public void EquipItem(Item item)
     {
-        itemObj.isEquipped = true;
-        itemObj.description.SetActive(true);
-        foreach (StatModifier mod in itemObj.item.itemModifiers)
+        item.isEquipped = true;
+        foreach (StatModifier mod in item.itemModifiers)
         {
             Player.instance.stats.ApplyStatModifier(mod);
         }
-        equippedItem = itemObj;
+        equippedItem = item;
     }
 
     public void UnequipItem()
     {
         equippedItem.isEquipped = false;
-        equippedItem.description.SetActive(false);
-        foreach (StatModifier mod in equippedItem.item.itemModifiers)
+        foreach (StatModifier mod in equippedItem.itemModifiers)
         {
             Player.instance.stats.RemoveStatModifier(mod);
         }
@@ -38,9 +36,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             return;
         }
 
-        ItemObj cursorItem = Inventory.instance.cursorItem;
+        Item cursorItem = Inventory.instance.cursorItem;
 
-        if (cursorItem != null && cursorItem.item.type == slotType)
+        if (cursorItem != null && cursorItem.type == slotType)
         {
             if (equippedItem == null)
             {
@@ -49,7 +47,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             }
             else
             {
-                Inventory.instance.SwapItemWithEquippedItem(cursorItem, this);
+                Inventory.instance.SwapCursorItemWithEquippedItem(cursorItem, this);
                 return;
             }
         }
@@ -64,17 +62,18 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (equippedItem)
+        if (equippedItem != null)
         {
-            equippedItem.description.SetActive(true);
+            Inventory.instance.descriptionPanel.SetActive(true);
+            Inventory.instance.descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(equippedItem);
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (equippedItem)
+        if (equippedItem != null)
         {
-            equippedItem.description.SetActive(false);
+            Inventory.instance.descriptionPanel.SetActive(false);
         }
     }
 }

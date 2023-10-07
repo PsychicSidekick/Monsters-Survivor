@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 8049323066325870815}
   - component: {fileID: 8245832098789239064}
   m_Layer: 5
-  m_Name: LootText
+  m_Name: LootButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

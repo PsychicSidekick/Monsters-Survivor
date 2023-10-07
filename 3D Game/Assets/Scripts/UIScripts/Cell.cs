@@ -16,7 +16,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
 {
     public Vector2Int pos;
     public bool occupied;
-    public ItemObj occupiedBy;
+    public Item occupiedBy;
     List<Cell> childCells = new List<Cell>();
 
     public CellState state;
@@ -37,16 +37,16 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
         }
     }
 
-    public void PlaceItem(ItemObj itemObj)
+    public void PlaceItem(Item item)
     {
-        itemObj.occupyingCell = this;
+        item.occupiedCell = this;
 
         if (Inventory.instance.inventoryUI.activeInHierarchy)
         {
-            itemObj.description.SetActive(true);
+            //item.description.SetActive(true);
         }
 
-        childCells = FindCellGroupOfSize(itemObj.item.size);
+        childCells = FindCellGroupOfSize(item.size);
         if(childCells == null)
         {
             Debug.Log("Item cannot be placed in this parent cell");
@@ -55,14 +55,14 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
         foreach (Cell c in childCells)
         {
             c.occupied = true;
-            c.occupiedBy = itemObj;
+            c.occupiedBy = item;
         }
     }
 
     public void RemoveItem()
     {
-        occupiedBy.occupyingCell = null;
-        occupiedBy.description.SetActive(false);
+        occupiedBy.occupiedCell = null;
+        Inventory.instance.descriptionPanel.SetActive(false);
 
         foreach (Cell c in childCells)
         {
@@ -173,7 +173,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
                     .Count();
     }
 
-    public ItemObj FindOccupyingItemInCells(List<Cell> cells)
+    public Item FindOccupyingItemInCells(List<Cell> cells)
     {
         if (CountItemsInCells(cells) > 1)
         {
@@ -199,7 +199,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
             return;
         }
 
-        ItemObj cursorItem = Inventory.instance.cursorItem;
+        Item cursorItem = Inventory.instance.cursorItem;
 
         if (cursorItem == null)
         {
@@ -210,8 +210,8 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
             return;
         }
 
-        Cell parentCell = FindParentCell(cursorItem.item.size, Input.mousePosition);
-        List<Cell> cellGroup = parentCell.FindCellGroupOfSize(cursorItem.item.size);
+        Cell parentCell = FindParentCell(cursorItem.size, Input.mousePosition);
+        List<Cell> cellGroup = parentCell.FindCellGroupOfSize(cursorItem.size);
 
         int overlappedItems = CountItemsInCells(cellGroup);
 
@@ -221,26 +221,27 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
         }
         else
         {
-            ItemObj temp = cursorItem;
+            Item temp = cursorItem;
 
             if (overlappedItems == 1)
             {
-                Inventory.instance.SwapItemWithInventoryItem(cursorItem, parentCell);
+                Inventory.instance.SwapCursorItemWithItemInInventory(cursorItem, parentCell);
                 return;
             }
                 
             Inventory.instance.PlaceItemInInventory(temp, parentCell);
-
+            Inventory.instance.descriptionPanel.SetActive(true);
         }
     }
 
     public void OnPointerMove(PointerEventData eventData)
     {
-        ItemObj cursorItem = Inventory.instance.cursorItem;
+        Item cursorItem = Inventory.instance.cursorItem;
 
-        if (occupiedBy)
+        if (occupiedBy != null)
         {
-            occupiedBy.description.SetActive(true);
+            Inventory.instance.descriptionPanel.SetActive(true);
+            Inventory.instance.descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(occupiedBy);
         }
 
         if (cursorItem == null)
@@ -250,7 +251,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
 
         Inventory.instance.ResetCellsColour();
 
-        List<Cell> cellGroup = FindParentCell(cursorItem.item.size, Input.mousePosition).FindCellGroupOfSize(cursorItem.item.size);
+        List<Cell> cellGroup = FindParentCell(cursorItem.size, Input.mousePosition).FindCellGroupOfSize(cursorItem.size);
 
         if (CountItemsInCells(cellGroup) > 1)
         {
@@ -266,7 +267,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
     {
         if (occupiedBy != null)
         {
-            occupiedBy.description.SetActive(false);
+            Inventory.instance.descriptionPanel.SetActive(false);
         }
 
         if (pos.x == 0 || pos.y == 0)

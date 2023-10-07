@@ -7,22 +7,29 @@ public class Item
     public string name;
     public Vector2Int size;
     public ItemType type;
+    public GameObject itemImage;
+    public ItemBase itemBase;
+    public bool isEquipped = false;
+    public Cell occupiedCell;
+    public LootGameObject lootGameObject;
     public List<StatModifier> itemModifiers = new List<StatModifier>();
 
-    public Item(ItemPrefab itemPrefab)
+    public Item(ItemBase itemBase)
     {
-        name = itemPrefab.itemName;
-        size = itemPrefab.size;
-        type = itemPrefab.type;
+        name = itemBase.itemName;
+        size = itemBase.size;
+        type = itemBase.type;
+        this.itemBase = itemBase;
 
-        itemModifiers = RandomItemGenerator.RandomizeItemMods(itemPrefab);
+        itemModifiers = RandomItemGenerator.RandomizeItemMods(itemBase);
     }
 
-    public Item(ItemPrefab itemPrefab, List<StatModifier> savedModifiers)
+    public Item(ItemBase itemBase, List<StatModifier> savedModifiers)
     {
-        name = itemPrefab.itemName;
-        size = itemPrefab.size;
-        type = itemPrefab.type;
+        name = itemBase.itemName;
+        size = itemBase.size;
+        type = itemBase.type;
+        this.itemBase = itemBase;
 
         itemModifiers = savedModifiers;
     }

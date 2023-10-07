@@ -17,22 +17,31 @@ public class Inventory : MonoBehaviour
     public Vector2Int inventorySize;
 
     [HideInInspector]
-    public ItemObj cursorItem;
+    public Item cursorItem;
+
+    public GameObject descriptionPanel;
 
     public GameObject inventoryUI;
 
     public GameObject cellPrefab;
     public GameObject inventoryAnchor;
-    public GameObject descriptionHolder;
+
 
     // defines whether the player's current action is to pick up loot
     [HideInInspector] public bool pickingUpLoot;
-    [HideInInspector]
-    public bool lockCursor;
+    [HideInInspector] public bool lockCursor;
 
     private void Awake()
     {
-        instance = this;
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
     }
 
     private void Start()
@@ -45,27 +54,23 @@ public class Inventory : MonoBehaviour
         // Attach item image to cursor
         if (cursorItem != null)
         {
-            cursorItem.itemImg.transform.position = Input.mousePosition;
+            cursorItem.itemImage.transform.position = Input.mousePosition;
         }
-
-        // Toggle inventory UI
-        //if (Input.GetKeyDown(KeyCode.I))
-        //{
-        //    inventoryUI.SetActive(!inventoryUI.activeInHierarchy);
-        //}
 
         if (pickingUpLoot)
         {
+            Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.z);
+            Vector2 lootPos = new Vector2(player.targetLoot.transform.position.x, player.targetLoot.transform.position.z);
             // if player has arrived at the position of the target loot
-            if (Vector3.Distance(player.transform.position, player.targetItem.transform.position) < 0.1f)
+            if (Vector2.Distance(playerPos, lootPos) < 0.1f)
             {
                 if (inventoryUI.activeInHierarchy)
                 {
-                    PickUpItemWithCursor(player.targetItem.GetComponent<ItemObj>());
+                    PlaceItemInFirstAvailableCell(player.targetLoot.item);
                 }
                 else
                 {
-                    PlaceItemInInventory(player.targetItem.GetComponent<ItemObj>(), FindFirstAvailableCell(player.targetItem.GetComponent<ItemObj>().item.size));
+                    PlaceItemInFirstAvailableCell(player.targetLoot.item);
                 }
             }
         }
@@ -125,81 +130,95 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
-    public void PlaceItemInFirstAvailableCell(ItemObj itemObj)
+    public void PlaceItemInFirstAvailableCell(Item item)
     {
-        PlaceItemInInventory(itemObj, FindFirstAvailableCell(itemObj.item.size));
+        PlaceItemInInventory(item, FindFirstAvailableCell(item.size));
     }
 
-    public void PlaceItemInInventory(ItemObj itemObj, Cell c)
+    public void PlaceItemInInventory(Item item, Cell c)
     {
+        if (c == null)
+        {
+            return;
+        }
+
         ResetCellsColour();
 
         pickingUpLoot = false;
-        c.PlaceItem(itemObj);
-
-        itemObj.isPickedUp = true;
-        itemObj.isPlaced = true;
-        itemObj.itemImg.transform.position = FindItemImgPos(c, itemObj.item.size);
+        c.PlaceItem(item);
+        item.itemImage.SetActive(true);
+        if (item.lootGameObject)
+        {
+            Destroy(item.lootGameObject.gameObject);
+        }
+        
+        item.itemImage.transform.position = FindItemImgPos(c, item.size);
         cursorItem = null;
     }
 
-    public void PlaceItemInItemSlot(ItemObj itemObj, ItemSlot slot)
+    public void PlaceItemInItemSlot(Item item, ItemSlot slot)
     {
         pickingUpLoot = false;
-        slot.EquipItem(itemObj);
+        slot.EquipItem(item);
+        descriptionPanel.SetActive(true);
+        descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(item);
 
-        itemObj.isPickedUp = true;
-        itemObj.isPlaced = true;
-        itemObj.itemImg.transform.position = slot.transform.position;
+        item.itemImage.transform.position = slot.transform.position;
         cursorItem = null;
     }
     
-    public void PickUpItemWithCursor(ItemObj itemObj)
+    public void PickUpItemWithCursor(Item item)
     {
-        if (itemObj.occupyingCell != null)
+        if (item.occupiedCell != null)
         {
-            itemObj.occupyingCell.RemoveItem();
+            item.occupiedCell.RemoveItem();
+        }
+        else
+        {
+            item.itemImage.SetActive(true);
         }
 
+        descriptionPanel.SetActive(false);
         lockCursor = true;
         pickingUpLoot = false;
-        itemObj.isPickedUp = true;
-        itemObj.isPlaced = false;
-        cursorItem = itemObj;
+        cursorItem = item;
     }
 
-    public void SwapItemWithInventoryItem(ItemObj itemObj, Cell c)
+    public void SwapCursorItemWithItemInInventory(Item item, Cell c)
     {
-        ItemObj inventoryItem = c.FindOccupyingItemInCells(c.FindCellGroupOfSize(itemObj.item.size));
+        Item inventoryItem = c.FindOccupyingItemInCells(c.FindCellGroupOfSize(item.size));
         PickUpItemWithCursor(inventoryItem);
-        PlaceItemInInventory(itemObj, c);
-        itemObj.description.SetActive(false);
+        PlaceItemInInventory(item, c);
+        descriptionPanel.SetActive(false);
         cursorItem = inventoryItem;
     }
 
-    public void SwapItemWithEquippedItem(ItemObj itemObj, ItemSlot slot)
+    public void SwapCursorItemWithEquippedItem(Item item, ItemSlot slot)
     {
-        ItemObj equippedItem = slot.equippedItem;
+        Item equippedItem = slot.equippedItem;
         PickUpItemWithCursor(equippedItem);
         slot.UnequipItem();
-        PlaceItemInItemSlot(itemObj, slot);
-        itemObj.description.SetActive(false);
+        PlaceItemInItemSlot(item, slot);
+        descriptionPanel.SetActive(false);
         cursorItem = equippedItem;
     }
 
-    public void DropItem(ItemObj itemObj)
+    public void DropItem(Item item)
     {
-        itemObj.OnDrop();
-        if (itemObj.isPlaced)
+        LootGameObject lootGameObject = Instantiate(item.itemBase.lootGameObjectPrefab, GameManager.instance.RefinedPos(player.transform.position), Quaternion.identity).GetComponent<LootGameObject>();
+        lootGameObject.item = item;
+        item.lootGameObject = lootGameObject;
+        Destroy(item.itemImage);
+
+        if (item.occupiedCell != null)
         {
-            itemObj.occupyingCell.RemoveItem();
+            item.occupiedCell.RemoveItem();
         }
-        itemObj.isPlaced = false;
-        itemObj.isPickedUp = false;
+
         cursorItem = null;
     }
 
-    public void MovePlayerToLoot(GameObject itemObj)
+    public void MovePlayerToLoot(LootGameObject lootGameObject)
     {
         if (lockCursor)
         {
@@ -208,8 +227,8 @@ public class Inventory : MonoBehaviour
 
         lockCursor = true;
         pickingUpLoot = true;
-        player.targetItem = itemObj;
-        player.Move(itemObj.transform.position);
+        player.targetLoot = lootGameObject;
+        player.Move(lootGameObject.transform.position);
     }
 
     public void ResetCellsColour()

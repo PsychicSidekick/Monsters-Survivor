@@ -18,8 +18,8 @@ GameObject:
   m_Name: Loot
   m_TagString: Loot
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7658236228654959871
 Transform:
@@ -127,17 +127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9044db768ce7314bb8b1c2e22288ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 0}
-  lootTextPrefab: {fileID: 4541949895424491162, guid: dec1f91504f816b4d8141d79c632f74e, type: 3}
-  itemImgPrefab: {fileID: 0}
-  descriptionPrefab: {fileID: 7128375827946210032, guid: 31a578ef1cb5e834498a4a947565974c, type: 3}
-  lootText: {fileID: 0}
-  itemImg: {fileID: 0}
-  description: {fileID: 0}
-  lootCanvas: {fileID: 0}
-  mr: {fileID: 0}
-  rb: {fileID: 0}
-  occupyingCell: {fileID: 0}
-  isEquipped: 0
-  isPickedUp: 0
-  isPlaced: 0
+  lootButtonPrefab: {fileID: 4541949895424491162, guid: dec1f91504f816b4d8141d79c632f74e, type: 3}

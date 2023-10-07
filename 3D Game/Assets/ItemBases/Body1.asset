@@ -10,40 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
-  m_Name: Belt1
+  m_Name: Body1
   m_EditorClassIdentifier: 
-  itemName: Belt1
-  type: 8
-  size: {x: 2, y: 1}
-  itemObjPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImgPrefab: {fileID: 126991780030651831, guid: b1ce261681bd14c4f8522779d61f8b5f, type: 3}
+  itemName: Body Armour1
+  type: 2
+  size: {x: 2, y: 3}
+  lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
+  itemImagePrefab: {fileID: 4028795390590836520, guid: 29a85967892fa9640ba261a253bc933a, type: 3}
   modPool:
   - itemModType: 0
-    maxValue: 30
+    maxValue: 100
   - itemModType: 1
-    maxValue: 20
+    maxValue: 50
   - itemModType: 2
-    maxValue: 30
+    maxValue: 100
   - itemModType: 3
-    maxValue: 20
-  - itemModType: 5
-    maxValue: 15
-  - itemModType: 7
-    maxValue: 20
+    maxValue: 50
   - itemModType: 8
-    maxValue: 100
+    maxValue: 500
   - itemModType: 9
-    maxValue: 20
-  - itemModType: 10
-    maxValue: 100
-  - itemModType: 11
-    maxValue: 20
+    maxValue: 50
   - itemModType: 12
     maxValue: 10
   - itemModType: 13
     maxValue: 10
   - itemModType: 14
     maxValue: 10
-  baseItemMod:
-    itemModType: 0
-    value: {x: 10, y: 20}

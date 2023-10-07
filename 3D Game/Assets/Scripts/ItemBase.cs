@@ -23,21 +23,13 @@ public struct ItemModMaxValue
     public int maxValue;
 }
 
-[Serializable]
-public struct BaseItemMod
-{
-    public StatModType itemModType;
-    public Vector2Int value;
-}
-
 [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
-public class ItemPrefab : ScriptableObject
+public class ItemBase : ScriptableObject
 {
     public string itemName;
     public ItemType type;
     public Vector2Int size;
-    public GameObject itemObjPrefab;
-    public GameObject itemImgPrefab;
+    public GameObject lootGameObjectPrefab;
+    public GameObject itemImagePrefab;
     public List<ItemModMaxValue> modPool;
-    public BaseItemMod baseItemMod;
 }

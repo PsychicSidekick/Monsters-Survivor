@@ -11,6 +11,12 @@ public class UIManager : MonoBehaviour
     public GameObject characterStatsPanel;
     public GameObject escapeMenuPanel;
 
+    private void Start()
+    {
+        inventoryPanel = Inventory.instance.transform.GetChild(0).gameObject;
+        inventoryPanel.SetActive(false);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
@@ -33,6 +39,13 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             ToggleUIPanel(inventoryPanel);
+            Inventory.instance.descriptionPanel.SetActive(false);
+            if (Inventory.instance.cursorItem != null)
+            {
+                Inventory.instance.DropItem(Inventory.instance.cursorItem);
+                Inventory.instance.cursorItem = null;
+                Inventory.instance.lockCursor = false;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -63,6 +76,7 @@ public class UIManager : MonoBehaviour
     public void ReturnToMainMenuOnClick()
     {
         GameManager.instance.UnpauseGame();
+        Inventory.instance.inventoryUI.SetActive(false);
         SceneManager.LoadScene("MainMenu");
     }
 }

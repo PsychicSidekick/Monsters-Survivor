@@ -5,10 +5,9 @@ using TMPro;
 
 public class DescriptionPanel : MonoBehaviour
 {
-    public ItemObj itemObj;
+    public Item item;
 
     public TMP_Text itemNameTxt;
-    public TMP_Text itemBaseModTxt;
     public TMP_Text itemModTxt;
 
     private Rect itemImgRect;
@@ -16,24 +15,6 @@ public class DescriptionPanel : MonoBehaviour
 
     private void Start()
     {
-        itemNameTxt.text = itemObj.item.name;
-
-        List<StatModifier> mods = itemObj.item.itemModifiers;
-        itemBaseModTxt.text = mods[0].modString;
-
-        string itemModString = null;
-
-        foreach (StatModifier mod in itemObj.item.itemModifiers)
-        {
-            if (mod.modString == itemBaseModTxt.text)
-            {
-                continue;
-            }
-            itemModString += mod.modString + System.Environment.NewLine;
-        }
-
-        itemModTxt.text = itemModString;
-        itemImgRect = itemObj.itemImg.GetComponent<RectTransform>().rect;
         rect = GetComponent<RectTransform>().rect;
     }
 
@@ -41,7 +22,7 @@ public class DescriptionPanel : MonoBehaviour
     {
         Vector3 positionOffSet;
 
-        if (itemObj.isEquipped)
+        if (item.isEquipped)
         {
             positionOffSet = new Vector3(-itemImgRect.width / 2 - rect.width / 2, 0, 0);
         }
@@ -50,6 +31,22 @@ public class DescriptionPanel : MonoBehaviour
             positionOffSet = new Vector3(0, itemImgRect.height / 2 + rect.height / 2, 0);
         }
 
-        transform.position = itemObj.itemImg.transform.position + positionOffSet;
+        transform.position = item.itemImage.transform.position + positionOffSet;
+    }
+
+    public void UpdateDescription(Item item)
+    {
+        this.item = item;
+        itemNameTxt.text = item.name;
+
+        string itemModString = null;
+
+        foreach (StatModifier mod in item.itemModifiers)
+        {
+            itemModString += mod.modString + System.Environment.NewLine;
+        }
+
+        itemModTxt.text = itemModString;
+        itemImgRect = item.itemImage.GetComponent<RectTransform>().rect;
     }
 }

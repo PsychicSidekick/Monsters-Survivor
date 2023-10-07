@@ -9,7 +9,7 @@ public class Enemy : Character
     public GameObject healthBarPrefab;
     private GameObject healthBar;
     
-    public List<ItemPrefab> lootPool = new List<ItemPrefab>();
+    public List<ItemBase> lootPool = new List<ItemBase>();
 
     public int xpYield;
 
@@ -25,7 +25,6 @@ public class Enemy : Character
         player = Player.instance;
         healthBar = Instantiate(healthBarPrefab, healthBarCanvas.transform);
         healthBar.GetComponent<RectTransform>().anchoredPosition = GameManager.instance.WorldToCanvasPos(healthBarCanvas, transform.position);
-
     }
 
     protected override void Update()
@@ -37,17 +36,17 @@ public class Enemy : Character
 
     public void SpawnLoot()
     {
-        for (int i = 0; i < 0; i++)
+        for (int i = 0; i < 1; i++)
         {
             // Choose random item from loot pool
-            ItemPrefab itemPrefab = lootPool[Random.Range(0, lootPool.Count)];
-            ItemObj itemObj = Instantiate(itemPrefab.itemObjPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity).GetComponent<ItemObj>();
-            itemObj.itemPrefab = itemPrefab;
-            itemObj.item = new Item(itemPrefab);
+            ItemBase itemBase = lootPool[Random.Range(0, lootPool.Count)];
+            LootGameObject lootGameObject = Instantiate(itemBase.lootGameObjectPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity).GetComponent<LootGameObject>();
+            lootGameObject.item = new Item(itemBase);
+            lootGameObject.item.lootGameObject = lootGameObject;
 
             // Spread loot position
             Vector3 randomOffset = new Vector3(Random.Range(0, 1.5f), 0, Random.Range(0, 1.5f));
-            itemObj.transform.position += randomOffset;
+            lootGameObject.transform.position += randomOffset;
         }
     }
 
@@ -57,7 +56,6 @@ public class Enemy : Character
         player.ReceiveXp(xpYield);
         SpawnLoot();
         Destroy(gameObject);
-        //base.OnDeath();
     }
 
     public void FacePlayer()
