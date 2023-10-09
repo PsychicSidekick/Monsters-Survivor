@@ -18,7 +18,7 @@ public class LootButton : MonoBehaviour, IPointerDownHandler
     {
         if (eventData.pointerId == -1)
         {
-            Inventory.instance.MovePlayerToLoot(lootGameObject);
+            PlayerStorage.instance.MovePlayerToLoot(lootGameObject);
         }
     }
 }

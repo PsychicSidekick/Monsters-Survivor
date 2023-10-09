@@ -69,9 +69,10 @@ public class EffectCollider : MonoBehaviour
 
         if (GetComponent<Projectile>() == null)
         {
-            if (!owner.gameObject.activeInHierarchy)
+            if (!owner || !owner.gameObject.activeInHierarchy)
             {
                 Destroy(gameObject);
+                return;
             }
         }
     }

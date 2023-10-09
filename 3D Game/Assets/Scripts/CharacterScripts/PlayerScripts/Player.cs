@@ -25,7 +25,7 @@ public class Player : Character
     {
         base.Awake();
         instance = this;
-        Inventory.instance.player = this;
+        PlayerStorage.instance.player = this;
     }
 
     protected override void Start()
@@ -50,7 +50,7 @@ public class Player : Character
             return;
         }
 
-        if (Inventory.instance.lockCursor)
+        if (PlayerStorage.instance.lockCursor)
         {
             return;
         }
@@ -63,7 +63,7 @@ public class Player : Character
             {
                 GetComponent<SkillHandler>().currentSkillHolder = null;
                 FindMoveTarget(hit);
-                Inventory.instance.pickingUpLoot = false;
+                PlayerStorage.instance.pickingUpLoot = false;
                 Move(moveTarget);
             }
         }

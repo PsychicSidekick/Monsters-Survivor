@@ -36,25 +36,25 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             return;
         }
 
-        Item cursorItem = Inventory.instance.cursorItem;
+        Item cursorItem = PlayerStorage.instance.cursorItem;
 
         if (cursorItem != null && cursorItem.type == slotType)
         {
             if (equippedItem == null)
             {
-                Inventory.instance.PlaceItemInItemSlot(cursorItem, this);
+                PlayerStorage.instance.PlaceItemInItemSlot(cursorItem, this);
                 return;
             }
             else
             {
-                Inventory.instance.SwapCursorItemWithEquippedItem(cursorItem, this);
+                PlayerStorage.instance.SwapCursorItemWithEquippedItem(cursorItem, this);
                 return;
             }
         }
 
         if (equippedItem != null)
         {
-            Inventory.instance.PickUpItemWithCursor(equippedItem);
+            PlayerStorage.instance.PickUpItemWithCursor(equippedItem);
             UnequipItem();
             return;
         }
@@ -64,8 +64,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         if (equippedItem != null)
         {
-            Inventory.instance.descriptionPanel.SetActive(true);
-            Inventory.instance.descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(equippedItem);
+            PlayerStorage.instance.descriptionPanel.SetActive(true);
+            PlayerStorage.instance.descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(equippedItem);
         }
     }
 
@@ -73,7 +73,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         if (equippedItem != null)
         {
-            Inventory.instance.descriptionPanel.SetActive(false);
+            PlayerStorage.instance.descriptionPanel.SetActive(false);
         }
     }
 }

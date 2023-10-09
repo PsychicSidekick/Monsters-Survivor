@@ -19,7 +19,7 @@ public class LootGameObject : MonoBehaviour
         lootButton = Instantiate(lootButtonPrefab, lootCanvas.transform);
         lootButton.GetComponent<LootButton>().lootGameObject = this;
 
-        item.itemImage = Instantiate(item.itemBase.itemImagePrefab, Inventory.instance.inventoryUI.transform);
+        item.itemImage = Instantiate(item.itemBase.itemImagePrefab, PlayerStorage.instance.inventoryCells.transform);
         item.itemImage.SetActive(false);
     }
 

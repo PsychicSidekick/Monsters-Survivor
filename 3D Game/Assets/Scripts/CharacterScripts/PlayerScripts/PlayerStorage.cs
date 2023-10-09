@@ -5,27 +5,32 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class Inventory : MonoBehaviour
+public class PlayerStorage : MonoBehaviour
 {
     [HideInInspector]
-    public static Inventory instance;
+    public static PlayerStorage instance;
 
     public Player player;
 
     [HideInInspector]
     public List<List<Cell>> inventory = new List<List<Cell>>();
     public Vector2Int inventorySize;
+    public GameObject inventoryAnchor;
+
+    [HideInInspector]
+    public List<List<Cell>> stash = new List<List<Cell>>();
+    public Vector2Int stashSize;
+    public GameObject stashAnchor;
 
     [HideInInspector]
     public Item cursorItem;
 
     public GameObject descriptionPanel;
 
-    public GameObject inventoryUI;
+    public GameObject inventoryCells;
+    public GameObject stashCells;
 
     public GameObject cellPrefab;
-    public GameObject inventoryAnchor;
-
 
     // defines whether the player's current action is to pick up loot
     [HideInInspector] public bool pickingUpLoot;
@@ -46,7 +51,7 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        InitiateInventory();
+        InitiateStorage();
     }
 
     private void Update()
@@ -64,14 +69,7 @@ public class Inventory : MonoBehaviour
             // if player has arrived at the position of the target loot
             if (Vector2.Distance(playerPos, lootPos) < 0.1f)
             {
-                if (inventoryUI.activeInHierarchy)
-                {
-                    PlaceItemInFirstAvailableCell(player.targetLoot.item);
-                }
-                else
-                {
-                    PlaceItemInFirstAvailableCell(player.targetLoot.item);
-                }
+                PlaceItemInFirstAvailableCell(inventory, player.targetLoot.item);
             }
         }
         else if (cursorItem != null && lockCursor && Input.GetKeyDown(KeyCode.Mouse0) && !GameManager.IsMouseOverUI())
@@ -85,7 +83,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void InitiateInventory()
+    private void InitiateStorage()
     {
         for (int x = 0; x < inventorySize.x; x++)
         {
@@ -95,22 +93,40 @@ public class Inventory : MonoBehaviour
             {
                 Cell c = Instantiate(cellPrefab, inventoryAnchor.transform.position + new Vector3(x * 60, y * -60, 0), Quaternion.identity).GetComponent<Cell>();
                 c.pos = new Vector2Int(x, y);
+                c.storage = inventory;
                 c.occupied = false;
-                c.transform.SetParent(inventoryUI.transform);
+                c.transform.SetParent(inventoryCells.transform);
                 cellCol.Add(c);
             }
 
             inventory.Add(cellCol);
         }
+
+        for (int x = 0; x < stashSize.x; x++)
+        {
+            List<Cell> cellCol = new List<Cell>();
+
+            for (int y = 0; y < stashSize.y; y++)
+            {
+                Cell c = Instantiate(cellPrefab, stashAnchor.transform.position + new Vector3(x * 60, y * -60, 0), Quaternion.identity).GetComponent<Cell>();
+                c.pos = new Vector2Int(x, y);
+                c.storage = stash;
+                c.occupied = false;
+                c.transform.SetParent(stashCells.transform);
+                cellCol.Add(c);
+            }
+
+            stash.Add(cellCol);
+        }
     }
 
-    private Cell FindFirstAvailableCell(Vector2Int itemSize)
+    private Cell FindFirstAvailableCell(List<List<Cell>> cells, Vector2Int itemSize)
     {
-        for (int x = 0; x < inventorySize.x; x++)
+        for (int x = 0; x < cells.Count; x++)
         {
-            for (int y = 0; y < inventorySize.y; y++)
+            for (int y = 0; y < cells[0].Count; y++)
             {
-                Cell cell = inventory[x][y];
+                Cell cell = cells[x][y];
 
                 if (cell.occupied)
                 {
@@ -130,12 +146,12 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
-    public void PlaceItemInFirstAvailableCell(Item item)
+    public void PlaceItemInFirstAvailableCell(List<List<Cell>> cells, Item item)
     {
-        PlaceItemInInventory(item, FindFirstAvailableCell(item.size));
+        PlaceItem(item, FindFirstAvailableCell(cells, item.size));
     }
 
-    public void PlaceItemInInventory(Item item, Cell c)
+    public void PlaceItem(Item item, Cell c)
     {
         if (c == null)
         {
@@ -153,6 +169,7 @@ public class Inventory : MonoBehaviour
         }
         
         item.itemImage.transform.position = FindItemImgPos(c, item.size);
+        item.itemImage.transform.SetParent(c.transform.parent);
         cursorItem = null;
     }
 
@@ -164,6 +181,7 @@ public class Inventory : MonoBehaviour
         descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(item);
 
         item.itemImage.transform.position = slot.transform.position;
+        item.itemImage.transform.SetParent(slot.transform);
         cursorItem = null;
     }
     
@@ -178,6 +196,7 @@ public class Inventory : MonoBehaviour
             item.itemImage.SetActive(true);
         }
 
+        item.itemImage.transform.SetParent(transform);
         descriptionPanel.SetActive(false);
         lockCursor = true;
         pickingUpLoot = false;
@@ -188,7 +207,7 @@ public class Inventory : MonoBehaviour
     {
         Item inventoryItem = c.FindOccupyingItemInCells(c.FindCellGroupOfSize(item.size));
         PickUpItemWithCursor(inventoryItem);
-        PlaceItemInInventory(item, c);
+        PlaceItem(item, c);
         descriptionPanel.SetActive(false);
         cursorItem = inventoryItem;
     }
@@ -238,6 +257,14 @@ public class Inventory : MonoBehaviour
             for (int y = 0; y < inventorySize.y; y++)
             {
                 inventory[x][y].state = CellState.Normal;
+            }
+        }
+
+        for (int x = 0; x < stashSize.x; x++)
+        {
+            for (int y = 0; y < stashSize.y; y++)
+            {
+                stash[x][y].state = CellState.Normal;
             }
         }
     }

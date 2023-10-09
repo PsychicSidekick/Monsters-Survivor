@@ -8,11 +8,15 @@ public class MainMenu : MonoBehaviour
     public void StartGameOnClick()
     {
         SceneManager.LoadScene("Main");
+        GameObject stashPanel = PlayerStorage.instance.transform.GetChild(1).gameObject;
+        stashPanel.SetActive(false);
     }
 
     public void ShowStashOnClick()
     {
-        GameObject inventoryPanel = Inventory.instance.transform.GetChild(0).gameObject;
+        GameObject inventoryPanel = PlayerStorage.instance.transform.GetChild(0).gameObject;
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
+        GameObject stashPanel = PlayerStorage.instance.transform.GetChild(1).gameObject;
+        stashPanel.SetActive(!stashPanel.activeInHierarchy);
     }
 }

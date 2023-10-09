@@ -15,6 +15,7 @@ public enum CellState
 public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPointerClickHandler
 {
     public Vector2Int pos;
+    public List<List<Cell>> storage;
     public bool occupied;
     public Item occupiedBy;
     List<Cell> childCells = new List<Cell>();
@@ -41,11 +42,6 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
     {
         item.occupiedCell = this;
 
-        if (Inventory.instance.inventoryUI.activeInHierarchy)
-        {
-            //item.description.SetActive(true);
-        }
-
         childCells = FindCellGroupOfSize(item.size);
         if(childCells == null)
         {
@@ -62,7 +58,6 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
     public void RemoveItem()
     {
         occupiedBy.occupiedCell = null;
-        Inventory.instance.descriptionPanel.SetActive(false);
 
         foreach (Cell c in childCells)
         {
@@ -75,7 +70,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
 
     public bool CanFitItem(Vector2Int itemSize)
     {
-        if(ExeedsInventorySize(itemSize))
+        if(ExeedsStorageSize(itemSize))
         {
             return false;
         }
@@ -93,14 +88,14 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
         return true;
     }
 
-    public bool ExeedsInventorySize(Vector2Int itemSize)
+    public bool ExeedsStorageSize(Vector2Int itemSize)
     {
-        return pos.x + itemSize.x > Inventory.instance.inventorySize.x || pos.y + itemSize.y > Inventory.instance.inventorySize.y;
+        return pos.x + itemSize.x > storage.Count || pos.y + itemSize.y > storage[0].Count;
     }
 
     public List<Cell> FindCellGroupOfSize(Vector2Int itemSize)
     {
-        if(ExeedsInventorySize(itemSize))
+        if(ExeedsStorageSize(itemSize))
         {
             return null;
         }
@@ -111,7 +106,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
         {
             for (int y = 0; y < itemSize.y; y++)
             {
-                cells.Add(Inventory.instance.inventory[pos.x + x][pos.y + y]);
+                cells.Add(storage[pos.x + x][pos.y + y]);
             }
         }
 
@@ -148,21 +143,21 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
         {
             xOffSet = 0;
         }
-        else if (xPos + itemSize.x > Inventory.instance.inventorySize.x)
+        else if (xPos + itemSize.x > storage.Count)
         {
-            xOffSet += xPos + itemSize.x - Inventory.instance.inventorySize.x;
+            xOffSet += xPos + itemSize.x - storage.Count;
         }
 
         if (yPos < 0)
         {
             yOffSet = 0;
         }
-        else if (yPos + itemSize.y > Inventory.instance.inventorySize.y)
+        else if (yPos + itemSize.y > storage[0].Count)
         {
-            yOffSet += yPos + itemSize.y - Inventory.instance.inventorySize.y;
+            yOffSet += yPos + itemSize.y - storage[0].Count;
         }
 
-        return Inventory.instance.inventory[pos.x - xOffSet][pos.y - yOffSet];
+        return storage[pos.x - xOffSet][pos.y - yOffSet];
     }
 
     public int CountItemsInCells(List<Cell> cells)
@@ -199,13 +194,13 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
             return;
         }
 
-        Item cursorItem = Inventory.instance.cursorItem;
+        Item cursorItem = PlayerStorage.instance.cursorItem;
 
         if (cursorItem == null)
         {
             if (occupiedBy != null)
             {
-                Inventory.instance.PickUpItemWithCursor(occupiedBy);
+                PlayerStorage.instance.PickUpItemWithCursor(occupiedBy);
             }
             return;
         }
@@ -225,23 +220,23 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
 
             if (overlappedItems == 1)
             {
-                Inventory.instance.SwapCursorItemWithItemInInventory(cursorItem, parentCell);
+                PlayerStorage.instance.SwapCursorItemWithItemInInventory(cursorItem, parentCell);
                 return;
             }
                 
-            Inventory.instance.PlaceItemInInventory(temp, parentCell);
-            Inventory.instance.descriptionPanel.SetActive(true);
+            PlayerStorage.instance.PlaceItem(temp, parentCell);
+            PlayerStorage.instance.descriptionPanel.SetActive(true);
         }
     }
 
     public void OnPointerMove(PointerEventData eventData)
     {
-        Item cursorItem = Inventory.instance.cursorItem;
+        Item cursorItem = PlayerStorage.instance.cursorItem;
 
         if (occupiedBy != null)
         {
-            Inventory.instance.descriptionPanel.SetActive(true);
-            Inventory.instance.descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(occupiedBy);
+            PlayerStorage.instance.descriptionPanel.SetActive(true);
+            PlayerStorage.instance.descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(occupiedBy);
         }
 
         if (cursorItem == null)
@@ -249,17 +244,17 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
             return;
         }
 
-        Inventory.instance.ResetCellsColour();
+        PlayerStorage.instance.ResetCellsColour();
 
         List<Cell> cellGroup = FindParentCell(cursorItem.size, Input.mousePosition).FindCellGroupOfSize(cursorItem.size);
 
         if (CountItemsInCells(cellGroup) > 1)
         {
-            Inventory.instance.ChangeCellsStates(cellGroup, CellState.CannotFit);
+            PlayerStorage.instance.ChangeCellsStates(cellGroup, CellState.CannotFit);
         }
         else
         {
-            Inventory.instance.ChangeCellsStates(cellGroup, CellState.Highlighted);
+            PlayerStorage.instance.ChangeCellsStates(cellGroup, CellState.Highlighted);
         }
     }
 
@@ -267,12 +262,12 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
     {
         if (occupiedBy != null)
         {
-            Inventory.instance.descriptionPanel.SetActive(false);
+            PlayerStorage.instance.descriptionPanel.SetActive(false);
         }
 
         if (pos.x == 0 || pos.y == 0)
         {
-            Inventory.instance.ResetCellsColour();
+            PlayerStorage.instance.ResetCellsColour();
         }
     }
 }

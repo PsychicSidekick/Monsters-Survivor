@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        inventoryPanel = Inventory.instance.transform.GetChild(0).gameObject;
+        inventoryPanel = PlayerStorage.instance.transform.GetChild(0).gameObject;
         inventoryPanel.SetActive(false);
     }
 
@@ -39,12 +39,12 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             ToggleUIPanel(inventoryPanel);
-            Inventory.instance.descriptionPanel.SetActive(false);
-            if (Inventory.instance.cursorItem != null)
+            PlayerStorage.instance.descriptionPanel.SetActive(false);
+            if (PlayerStorage.instance.cursorItem != null)
             {
-                Inventory.instance.DropItem(Inventory.instance.cursorItem);
-                Inventory.instance.cursorItem = null;
-                Inventory.instance.lockCursor = false;
+                PlayerStorage.instance.DropItem(PlayerStorage.instance.cursorItem);
+                PlayerStorage.instance.cursorItem = null;
+                PlayerStorage.instance.lockCursor = false;
             }
         }
 
@@ -76,7 +76,7 @@ public class UIManager : MonoBehaviour
     public void ReturnToMainMenuOnClick()
     {
         GameManager.instance.UnpauseGame();
-        Inventory.instance.inventoryUI.SetActive(false);
+        PlayerStorage.instance.transform.GetChild(0).gameObject.SetActive(false);
         SceneManager.LoadScene("MainMenu");
     }
 }
