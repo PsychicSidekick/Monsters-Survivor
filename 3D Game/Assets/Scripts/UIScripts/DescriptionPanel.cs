@@ -6,32 +6,39 @@ using TMPro;
 public class DescriptionPanel : MonoBehaviour
 {
     public Item item;
-
     public TMP_Text itemNameTxt;
-    public TMP_Text itemModTxt;
-
-    private Rect itemImgRect;
-    private Rect rect;
-
-    private void Start()
-    {
-        rect = GetComponent<RectTransform>().rect;
-    }
+    public TMP_Text itemModsTxt;
 
     private void Update()
     {
-        Vector3 positionOffSet;
+        UpdatePosition();
+    }
 
-        if (item.isEquipped)
-        {
-            positionOffSet = new Vector3(-itemImgRect.width / 2 - rect.width / 2, 0, 0);
-        }
-        else
-        {
-            positionOffSet = new Vector3(0, itemImgRect.height / 2 + rect.height / 2, 0);
-        }
+    public void UpdatePosition()
+    {
+        transform.position = new Vector3(FindXPos(), FindYPos(), 0);
+    }
 
-        transform.position = item.itemImage.transform.position + positionOffSet;
+    private float FindXPos()
+    {
+        float panelWidth = GetComponent<RectTransform>().rect.width;
+
+        float descriptionHorizontalOffset = item.itemImage.GetComponent<RectTransform>().rect.width / 2;
+
+        descriptionHorizontalOffset += panelWidth / 2;
+        descriptionHorizontalOffset *= -1;
+        
+        return item.itemImage.transform.position.x + descriptionHorizontalOffset;
+    }
+
+    private float FindYPos()
+    {
+        float panelHeight = GetComponent<RectTransform>().rect.height;
+
+        float minValue = panelHeight / 2;
+        float maxValue = transform.parent.GetComponent<RectTransform>().rect.height - panelHeight / 2;
+
+        return Mathf.Clamp(item.itemImage.transform.position.y, minValue, maxValue);
     }
 
     public void UpdateDescription(Item item)
@@ -46,7 +53,6 @@ public class DescriptionPanel : MonoBehaviour
             itemModString += mod.modString + System.Environment.NewLine;
         }
 
-        itemModTxt.text = itemModString;
-        itemImgRect = item.itemImage.GetComponent<RectTransform>().rect;
+        itemModsTxt.text = itemModString;
     }
 }

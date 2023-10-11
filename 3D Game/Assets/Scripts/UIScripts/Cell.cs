@@ -18,7 +18,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
     public List<List<Cell>> storage;
     public bool occupied;
     public Item occupiedBy;
-    List<Cell> childCells = new List<Cell>();
+    public List<Cell> childCells = new List<Cell>();
 
     public CellState state;
 
@@ -42,7 +42,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
     {
         item.occupiedCell = this;
 
-        childCells = FindCellGroupOfSize(item.size);
+        childCells = FindCellGroupOfSize(item.itemBase.size);
         if(childCells == null)
         {
             Debug.Log("Item cannot be placed in this parent cell");
@@ -205,8 +205,8 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
             return;
         }
 
-        Cell parentCell = FindParentCell(cursorItem.size, Input.mousePosition);
-        List<Cell> cellGroup = parentCell.FindCellGroupOfSize(cursorItem.size);
+        Cell parentCell = FindParentCell(cursorItem.itemBase.size, Input.mousePosition);
+        List<Cell> cellGroup = parentCell.FindCellGroupOfSize(cursorItem.itemBase.size);
 
         int overlappedItems = CountItemsInCells(cellGroup);
 
@@ -226,6 +226,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
                 
             PlayerStorage.instance.PlaceItem(temp, parentCell);
             PlayerStorage.instance.descriptionPanel.SetActive(true);
+            PlayerStorage.instance.descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(occupiedBy);
         }
     }
 
@@ -246,7 +247,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
 
         PlayerStorage.instance.ResetCellsColour();
 
-        List<Cell> cellGroup = FindParentCell(cursorItem.size, Input.mousePosition).FindCellGroupOfSize(cursorItem.size);
+        List<Cell> cellGroup = FindParentCell(cursorItem.itemBase.size, Input.mousePosition).FindCellGroupOfSize(cursorItem.itemBase.size);
 
         if (CountItemsInCells(cellGroup) > 1)
         {

@@ -11,21 +11,27 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void EquipItem(Item item)
     {
-        item.isEquipped = true;
-        foreach (StatModifier mod in item.itemModifiers)
+        if (Player.instance != null)
         {
-            Player.instance.stats.ApplyStatModifier(mod);
+            foreach (StatModifier mod in item.itemModifiers)
+            {
+                Player.instance.stats.ApplyStatModifier(mod);
+            }
         }
+
         equippedItem = item;
     }
 
     public void UnequipItem()
     {
-        equippedItem.isEquipped = false;
-        foreach (StatModifier mod in equippedItem.itemModifiers)
+        if (Player.instance != null)
         {
-            Player.instance.stats.RemoveStatModifier(mod);
+            foreach (StatModifier mod in equippedItem.itemModifiers)
+            {
+                Player.instance.stats.RemoveStatModifier(mod);
+            }
         }
+
         equippedItem = null;
     }
 
@@ -38,7 +44,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
         Item cursorItem = PlayerStorage.instance.cursorItem;
 
-        if (cursorItem != null && cursorItem.type == slotType)
+        if (cursorItem != null && cursorItem.itemBase.type == slotType)
         {
             if (equippedItem == null)
             {

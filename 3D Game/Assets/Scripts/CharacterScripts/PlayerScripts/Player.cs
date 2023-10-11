@@ -31,7 +31,7 @@ public class Player : Character
     protected override void Start()
     {
         base.Start();
-        foreach (ItemSlot itemSlot in Resources.FindObjectsOfTypeAll(typeof(ItemSlot)))
+        foreach (ItemSlot itemSlot in PlayerStorage.instance.itemSlots)
         {
             if (itemSlot.equippedItem != null)
             {

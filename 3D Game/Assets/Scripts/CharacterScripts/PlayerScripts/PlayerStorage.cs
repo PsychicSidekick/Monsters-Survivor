@@ -7,34 +7,28 @@ using UnityEngine.EventSystems;
 
 public class PlayerStorage : MonoBehaviour
 {
-    [HideInInspector]
     public static PlayerStorage instance;
 
     public Player player;
-
-    [HideInInspector]
-    public List<List<Cell>> inventory = new List<List<Cell>>();
-    public Vector2Int inventorySize;
-    public GameObject inventoryAnchor;
-
-    [HideInInspector]
-    public List<List<Cell>> stash = new List<List<Cell>>();
-    public Vector2Int stashSize;
-    public GameObject stashAnchor;
-
-    [HideInInspector]
-    public Item cursorItem;
-
     public GameObject descriptionPanel;
-
-    public GameObject inventoryCells;
-    public GameObject stashCells;
+    public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
     public GameObject cellPrefab;
+
+    [HideInInspector] public List<List<Cell>> inventory = new List<List<Cell>>();
+    public Vector2Int inventorySize;
+    public GameObject inventoryAnchor;
+    public GameObject inventoryCells;
+
+    [HideInInspector] public List<List<Cell>> stash = new List<List<Cell>>();
+    public Vector2Int stashSize;
+    public GameObject stashAnchor;
+    public GameObject stashCells;
 
     // defines whether the player's current action is to pick up loot
     [HideInInspector] public bool pickingUpLoot;
     [HideInInspector] public bool lockCursor;
+    [HideInInspector] public Item cursorItem;
 
     private void Awake()
     {
@@ -52,6 +46,8 @@ public class PlayerStorage : MonoBehaviour
     private void Start()
     {
         InitiateStorage();
+        GameSave storageSave = new GameSave();
+        storageSave.Load();
     }
 
     private void Update()
@@ -148,7 +144,7 @@ public class PlayerStorage : MonoBehaviour
 
     public void PlaceItemInFirstAvailableCell(List<List<Cell>> cells, Item item)
     {
-        PlaceItem(item, FindFirstAvailableCell(cells, item.size));
+        PlaceItem(item, FindFirstAvailableCell(cells, item.itemBase.size));
     }
 
     public void PlaceItem(Item item, Cell c)
@@ -168,7 +164,7 @@ public class PlayerStorage : MonoBehaviour
             Destroy(item.lootGameObject.gameObject);
         }
         
-        item.itemImage.transform.position = FindItemImgPos(c, item.size);
+        item.itemImage.transform.position = FindItemImgPos(c, item.itemBase.size);
         item.itemImage.transform.SetParent(c.transform.parent);
         cursorItem = null;
     }
@@ -205,7 +201,7 @@ public class PlayerStorage : MonoBehaviour
 
     public void SwapCursorItemWithItemInInventory(Item item, Cell c)
     {
-        Item inventoryItem = c.FindOccupyingItemInCells(c.FindCellGroupOfSize(item.size));
+        Item inventoryItem = c.FindOccupyingItemInCells(c.FindCellGroupOfSize(item.itemBase.size));
         PickUpItemWithCursor(inventoryItem);
         PlaceItem(item, c);
         descriptionPanel.SetActive(false);
@@ -277,11 +273,22 @@ public class PlayerStorage : MonoBehaviour
         }
     }
 
+    public void InstantiateItemImage(Item item)
+    {
+        item.itemImage = Instantiate(item.itemBase.itemImagePrefab, transform);
+    }
+
     public Vector3 FindItemImgPos(Cell cell, Vector2Int itemSize)
     {
         float xPos = cell.transform.position.x + (itemSize.x - 1) * 30;
         float yPos = cell.transform.position.y + (itemSize.y - 1) * -30;
 
         return new Vector3(xPos, yPos, 0);
+    }
+
+    private void OnApplicationQuit()
+    {
+        GameSave storageSave = new GameSave();
+        storageSave.Save();
     }
 }

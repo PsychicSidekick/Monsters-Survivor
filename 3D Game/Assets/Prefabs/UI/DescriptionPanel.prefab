@@ -281,6 +281,8 @@ GameObject:
   - component: {fileID: 6174194429252772007}
   - component: {fileID: 831364821649406693}
   - component: {fileID: 2702284033336751757}
+  - component: {fileID: -1226418666694011560}
+  - component: {fileID: 5691556241620092686}
   - component: {fileID: 1602933906881003477}
   m_Layer: 5
   m_Name: DescriptionPanel
@@ -349,6 +351,46 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-1226418666694011560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128375827946210032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 1
+  m_VerticalFit: 1
+--- !u!114 &5691556241620092686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128375827946210032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!114 &1602933906881003477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,6 +403,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6039bcc899513a74881fc70aeeec7a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemObj: {fileID: 0}
   itemNameTxt: {fileID: 1414113473666435771}
-  itemModTxt: {fileID: 1031833130382743296}
+  itemModsTxt: {fileID: 1031833130382743296}

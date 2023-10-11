@@ -2311,6 +2311,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1647673527}
     m_Modifications:
+    - target: {fileID: -1226418666694011560, guid: 31a578ef1cb5e834498a4a947565974c, type: 3}
+      propertyPath: m_VerticalFit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1226418666694011560, guid: 31a578ef1cb5e834498a4a947565974c, type: 3}
+      propertyPath: m_HorizontalFit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691556241620092686, guid: 31a578ef1cb5e834498a4a947565974c, type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691556241620092686, guid: 31a578ef1cb5e834498a4a947565974c, type: 3}
+      propertyPath: m_ChildForceExpandWidth
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6174194429252772007, guid: 31a578ef1cb5e834498a4a947565974c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2585,14 +2601,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  descriptionPanel: {fileID: 1283376935}
+  itemSlots:
+  - {fileID: 1820639738}
+  - {fileID: 687453150}
+  - {fileID: 352929784}
+  - {fileID: 64703366}
+  - {fileID: 394950247}
+  - {fileID: 1016081314}
+  - {fileID: 71454931}
+  - {fileID: 26389228}
+  - {fileID: 1332517806}
+  - {fileID: 317018602}
+  cellPrefab: {fileID: 6126283839985104959, guid: 11aad05711ac7d2468cd397cf47f25cd, type: 3}
   inventorySize: {x: 12, y: 5}
   inventoryAnchor: {fileID: 895103111}
+  inventoryCells: {fileID: 1790175021}
   stashSize: {x: 12, y: 17}
   stashAnchor: {fileID: 262085276}
-  descriptionPanel: {fileID: 1283376935}
-  inventoryCells: {fileID: 1790175021}
   stashCells: {fileID: 2048593844}
-  cellPrefab: {fileID: 6126283839985104959, guid: 11aad05711ac7d2468cd397cf47f25cd, type: 3}
   pickingUpLoot: 0
   lockCursor: 0
 --- !u!1 &1790175021
