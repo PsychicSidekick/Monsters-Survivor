@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public enum CellState
 {
@@ -200,15 +201,34 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
         {
             if (occupiedBy != null)
             {
+                if (SceneManager.GetActiveScene().name == "MainMenu")
+                {
+                    if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        if (storage == PlayerStorage.instance.stash)
+                        {
+                            PlayerStorage.instance.PickUpItemWithCursor(occupiedBy);
+                            PlayerStorage.instance.PlaceItemInFirstAvailableCell(PlayerStorage.instance.inventory, PlayerStorage.instance.cursorItem);
+                        }
+                        else if (storage == PlayerStorage.instance.inventory)
+                        {
+                            PlayerStorage.instance.PickUpItemWithCursor(occupiedBy);
+                            PlayerStorage.instance.PlaceItemInFirstAvailableCell(PlayerStorage.instance.stash, PlayerStorage.instance.cursorItem);
+                        }
+                        return;
+                    }
+                }
+
                 PlayerStorage.instance.PickUpItemWithCursor(occupiedBy);
+                UpdateCellColour();
             }
             return;
         }
 
         Cell parentCell = FindParentCell(cursorItem.itemBase.size, Input.mousePosition);
-        List<Cell> cellGroup = parentCell.FindCellGroupOfSize(cursorItem.itemBase.size);
+        List<Cell> cellsToFitCursorItem = parentCell.FindCellGroupOfSize(cursorItem.itemBase.size);
 
-        int overlappedItems = CountItemsInCells(cellGroup);
+        int overlappedItems = CountItemsInCells(cellsToFitCursorItem);
 
         if (overlappedItems > 1)
         {
@@ -221,42 +241,25 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
             if (overlappedItems == 1)
             {
                 PlayerStorage.instance.SwapCursorItemWithItemInInventory(cursorItem, parentCell);
-                return;
             }
-                
-            PlayerStorage.instance.PlaceItem(temp, parentCell);
-            PlayerStorage.instance.descriptionPanel.SetActive(true);
-            PlayerStorage.instance.descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(occupiedBy);
+            else
+            {
+                PlayerStorage.instance.PlaceItem(temp, parentCell);
+                PlayerStorage.instance.descriptionPanel.SetActive(true);
+                PlayerStorage.instance.descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(occupiedBy);
+            }
         }
     }
 
     public void OnPointerMove(PointerEventData eventData)
     {
-        Item cursorItem = PlayerStorage.instance.cursorItem;
-
         if (occupiedBy != null)
         {
             PlayerStorage.instance.descriptionPanel.SetActive(true);
             PlayerStorage.instance.descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(occupiedBy);
         }
 
-        if (cursorItem == null)
-        {
-            return;
-        }
-
-        PlayerStorage.instance.ResetCellsColour();
-
-        List<Cell> cellGroup = FindParentCell(cursorItem.itemBase.size, Input.mousePosition).FindCellGroupOfSize(cursorItem.itemBase.size);
-
-        if (CountItemsInCells(cellGroup) > 1)
-        {
-            PlayerStorage.instance.ChangeCellsStates(cellGroup, CellState.CannotFit);
-        }
-        else
-        {
-            PlayerStorage.instance.ChangeCellsStates(cellGroup, CellState.Highlighted);
-        }
+        UpdateCellColour();
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -266,9 +269,38 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
             PlayerStorage.instance.descriptionPanel.SetActive(false);
         }
 
-        if (pos.x == 0 || pos.y == 0)
+        if (pos.x == 0 || pos.y == 0 || pos.x == storage.Count - 1 || pos.y == storage[0].Count - 1)
         {
             PlayerStorage.instance.ResetCellsColour();
+        }
+    }
+
+    public void UpdateCellColour()
+    {
+        Item cursorItem = PlayerStorage.instance.cursorItem;
+        if (cursorItem == null)
+        {
+            return;
+        }
+        PlayerStorage.instance.ResetCellsColour();
+
+        List<Cell> cellGroup = FindParentCell(cursorItem.itemBase.size, Input.mousePosition).FindCellGroupOfSize(cursorItem.itemBase.size);
+
+        if (CountItemsInCells(cellGroup) > 1)
+        {
+            ChangeCellsStates(cellGroup, CellState.CannotFit);
+        }
+        else
+        {
+            ChangeCellsStates(cellGroup, CellState.Highlighted);
+        }
+    }
+
+    public void ChangeCellsStates(List<Cell> cellsToBeHighlighted, CellState state)
+    {
+        foreach (Cell cell in cellsToBeHighlighted)
+        {
+            cell.state = state;
         }
     }
 }

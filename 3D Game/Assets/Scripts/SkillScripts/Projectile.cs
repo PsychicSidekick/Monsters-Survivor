@@ -47,11 +47,14 @@ public class Projectile : MonoBehaviour
         if (remainingChains < chain && chain > 0)
         {
             // which is destroyed when the chain target is no longer in the scene
-            if (!chainTarget.gameObject.activeInHierarchy)
+            if (chainTarget == null)
             {
                 Destroy(gameObject);
             }
-            targetPos = chainTarget.transform.position;
+            else
+            {
+                targetPos = chainTarget.transform.position;
+            }
         }
         
         transform.position = Vector3.MoveTowards(transform.position, targetPos, projSpeed * Time.deltaTime * 1.5f);

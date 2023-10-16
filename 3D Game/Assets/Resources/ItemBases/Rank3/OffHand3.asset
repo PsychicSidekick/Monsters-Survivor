@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
+  m_Name: OffHand3
+  m_EditorClassIdentifier: 
+  itemName: Champion Kite Shield
+  type: 5
+  size: {x: 2, y: 2}
+  numberOfMods: {x: 4, y: 5}
+  lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
+  itemImagePrefab: {fileID: 126991780030651831, guid: ed29e9aed1dbb91458ae62b667740299, type: 3}
+  modPool:
+  - itemModType: 0
+    minValue: 10
+    maxValue: 70
+  - itemModType: 1
+    minValue: 10
+    maxValue: 40
+  - itemModType: 2
+    minValue: 1
+    maxValue: 9
+  - itemModType: 3
+    minValue: 10
+    maxValue: 40
+  - itemModType: 4
+    minValue: 10
+    maxValue: 40
+  - itemModType: 5
+    minValue: 10
+    maxValue: 40
+  - itemModType: 7
+    minValue: 10
+    maxValue: 40
+  - itemModType: 12
+    minValue: 10
+    maxValue: 30
+  - itemModType: 13
+    minValue: 10
+    maxValue: 30
+  - itemModType: 14
+    minValue: 10
+    maxValue: 30
+  - itemModType: 15
+    minValue: 15
+    maxValue: 45
+  - itemModType: 16
+    minValue: 15
+    maxValue: 45
+  - itemModType: 17
+    minValue: 15
+    maxValue: 45
+  - itemModType: 18
+    minValue: 15
+    maxValue: 45
+  - itemModType: 19
+    minValue: 20
+    maxValue: 50
+  - itemModType: 20
+    minValue: 15
+    maxValue: 45
+  - itemModType: 21
+    minValue: 20
+    maxValue: 50

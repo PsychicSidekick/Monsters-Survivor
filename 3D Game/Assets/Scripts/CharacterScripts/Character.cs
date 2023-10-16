@@ -93,8 +93,6 @@ public class Character : MonoBehaviour
     public virtual void OnLevelUp()
     {
         Debug.Log("Leveled Up!");
-        stats.ApplyStatModifier(new StatModifier(StatType.MaximumLife, 5, ModType.flat));
-        life = stats.maximumLife.value;
     }
 
     public void ReceiveDamage(Damage dmg)

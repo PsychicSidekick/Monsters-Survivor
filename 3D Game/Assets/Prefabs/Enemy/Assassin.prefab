@@ -836,17 +836,9 @@ MonoBehaviour:
   xpIsDirty: 0
   healthBarCanvas: {fileID: 0}
   healthBarPrefab: {fileID: 3577782504961595815, guid: 172706cc439a7084aa97a6ac4edd1a48, type: 3}
-  lootPool:
-  - {fileID: 11400000, guid: e4e5c46a82218324188a1392bd4491b2, type: 2}
-  - {fileID: 11400000, guid: 7fb6d9a1a3286c64186b909e1871511b, type: 2}
-  - {fileID: 11400000, guid: 9fde4a3d0b726c1469c1328db1089c73, type: 2}
-  - {fileID: 11400000, guid: 968923314bc038642a559e0ef93830e9, type: 2}
-  - {fileID: 11400000, guid: b91ddf5039d0c444e9d946946dba9102, type: 2}
-  - {fileID: 11400000, guid: 05e02452d353acd438a267782d319051, type: 2}
-  - {fileID: 11400000, guid: 58f32ba312da65e4ab410fbb5a35afb3, type: 2}
-  - {fileID: 11400000, guid: 1571d0fd26bb4b2479abf05690a5de47, type: 2}
-  - {fileID: 11400000, guid: a2d572f5e427d2b4f9623dc9bf243cf8, type: 2}
+  lootRank: 1
   xpYield: 100
+  chanceToDropLoot: 10
   player: {fileID: 0}
   detectionRange: 0
   attackRange: 0
@@ -876,7 +868,7 @@ MonoBehaviour:
     baseValue: 10000
   movementSpeed:
     type: 4
-    baseValue: 3
+    baseValue: 2
   attackSpeed:
     type: 5
     baseValue: 1.5

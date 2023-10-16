@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using TMPro;
 using UnityEngine.AI;
@@ -17,8 +18,6 @@ public class Player : Character
 
     public LayerMask moveRayLayer;
 
-    public int availableSkillPoints;
-    public TMP_Text availableSkillPointsText;
     public GameObject deathScreen;
 
     protected override void Awake()
@@ -30,7 +29,6 @@ public class Player : Character
 
     protected override void Start()
     {
-        base.Start();
         foreach (ItemSlot itemSlot in PlayerStorage.instance.itemSlots)
         {
             if (itemSlot.equippedItem != null)
@@ -38,7 +36,7 @@ public class Player : Character
                 itemSlot.EquipItem(itemSlot.equippedItem);
             }
         }
-        
+        base.Start();
     }
 
     protected override void Update()
@@ -79,13 +77,17 @@ public class Player : Character
     public override void OnLevelUp()
     {
         base.OnLevelUp();
-        AddToAvailableSkillPoints(1);
+        AddToAvailablePointsToAllSkills(1);
     }
 
-    public void AddToAvailableSkillPoints(int value)
+    public void AddToAvailablePointsToAllSkills(int value)
     {
-        availableSkillPoints += value;
-        availableSkillPointsText.text = availableSkillPoints.ToString();
+        List<PassivePointsCounter> passivePointsCounters = (Resources.FindObjectsOfTypeAll(typeof(PassivePointsCounter)) as PassivePointsCounter[]).ToList();
+
+        foreach(PassivePointsCounter pointsCounter in passivePointsCounters)
+        {
+            pointsCounter.AddAvailablePoints(value);
+        }
     }
 
     public void FindMoveTarget(RaycastHit hit)

@@ -19,4 +19,10 @@ public class MainMenu : MonoBehaviour
         GameObject stashPanel = PlayerStorage.instance.transform.GetChild(1).gameObject;
         stashPanel.SetActive(!stashPanel.activeInHierarchy);
     }
+
+    public void ClearSaveOnClick()
+    {
+        GameSave gameSave = new GameSave();
+        gameSave.ClearSave();
+    }
 }

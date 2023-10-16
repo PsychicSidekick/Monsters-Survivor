@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public GameObject skillPassivesPanel;
-    public GameObject playerPassivesPanel;
     public GameObject inventoryPanel;
     public GameObject characterStatsPanel;
     public GameObject escapeMenuPanel;
@@ -22,13 +21,6 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             ToggleUIPanel(skillPassivesPanel);
-            playerPassivesPanel.SetActive(false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            ToggleUIPanel(playerPassivesPanel);
-            skillPassivesPanel.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.C))
@@ -58,7 +50,7 @@ public class UIManager : MonoBehaviour
     {
         panel.SetActive(!panel.activeInHierarchy);
 
-        if (!skillPassivesPanel.activeInHierarchy && !playerPassivesPanel.activeInHierarchy && !inventoryPanel.activeInHierarchy && !characterStatsPanel.activeInHierarchy && !escapeMenuPanel.activeInHierarchy)
+        if (!skillPassivesPanel.activeInHierarchy && !inventoryPanel.activeInHierarchy && !characterStatsPanel.activeInHierarchy && !escapeMenuPanel.activeInHierarchy)
         {
             GameManager.instance.UnpauseGame();
         }

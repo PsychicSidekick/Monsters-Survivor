@@ -10,7 +10,7 @@ public class Devil : MonoBehaviour
     public float fireballRange;
     public float blastRange;
 
-    [HideInInspector] public bool inAttackAnimation;
+    public bool inAttackAnimation;
     [HideInInspector] public float timeSpentCastingFireballs;
     [HideInInspector] private bool enraged = false;
 

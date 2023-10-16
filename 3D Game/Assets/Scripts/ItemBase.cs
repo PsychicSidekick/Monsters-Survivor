@@ -17,9 +17,10 @@ public enum ItemType
 }
 
 [Serializable]
-public struct ItemModMaxValue
+public struct ItemModValueBounds
 {
     public StatModType itemModType;
+    public int minValue;
     public int maxValue;
 }
 
@@ -29,7 +30,8 @@ public class ItemBase : ScriptableObject
     public string itemName;
     public ItemType type;
     public Vector2Int size;
+    public Vector2Int numberOfMods;
     public GameObject lootGameObjectPrefab;
     public GameObject itemImagePrefab;
-    public List<ItemModMaxValue> modPool;
+    public List<ItemModValueBounds> modPool;
 }

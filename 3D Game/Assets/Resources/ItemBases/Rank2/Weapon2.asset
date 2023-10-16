@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
+  m_Name: Weapon2
+  m_EditorClassIdentifier: 
+  itemName: Imbued Wand
+  type: 0
+  size: {x: 1, y: 3}
+  numberOfMods: {x: 3, y: 4}
+  lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
+  itemImagePrefab: {fileID: 4065881981570626885, guid: f2dbcfeda38b15a4e93827432ac6e1a0, type: 3}
+  modPool:
+  - itemModType: 4
+    minValue: 20
+    maxValue: 40
+  - itemModType: 5
+    minValue: 20
+    maxValue: 40
+  - itemModType: 6
+    minValue: 5
+    maxValue: 15
+  - itemModType: 7
+    minValue: 20
+    maxValue: 40
+  - itemModType: 9
+    minValue: 15
+    maxValue: 30
+  - itemModType: 10
+    minValue: 10
+    maxValue: 50
+  - itemModType: 15
+    minValue: 20
+    maxValue: 40
+  - itemModType: 16
+    minValue: 20
+    maxValue: 40
+  - itemModType: 17
+    minValue: 20
+    maxValue: 40
+  - itemModType: 18
+    minValue: 20
+    maxValue: 40
+  - itemModType: 19
+    minValue: 25
+    maxValue: 45
+  - itemModType: 20
+    minValue: 20
+    maxValue: 40
+  - itemModType: 21
+    minValue: 25
+    maxValue: 45
+  - itemModType: 22
+    minValue: 1
+    maxValue: 2
+  - itemModType: 23
+    minValue: 20
+    maxValue: 40
+  - itemModType: 24
+    minValue: 10
+    maxValue: 10
+  - itemModType: 25
+    minValue: 25
+    maxValue: 45
+  - itemModType: 26
+    minValue: 5
+    maxValue: 15
+  - itemModType: 27
+    minValue: 10
+    maxValue: 10
+  - itemModType: 28
+    minValue: 25
+    maxValue: 45
+  - itemModType: 29
+    minValue: 10
+    maxValue: 25
+  - itemModType: 30
+    minValue: 10
+    maxValue: 10
+  - itemModType: 31
+    minValue: 25
+    maxValue: 45

@@ -1,24 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public static class RandomItemGenerator
 {
-    private static int minModCount = 2;
-    private static int maxModCount = 4;
-
     private static Random random = new Random();
 
-    public static List<StatModifier> RandomizeItemMods(ItemBase itemPrefab)
+    public static List<StatModifier> RandomizeItemMods(ItemBase itemBase)
     {
-        List<ItemModMaxValue> modPool = itemPrefab.modPool;
+        List<ItemModValueBounds> modPool = itemBase.modPool;
 
         List<StatModType> existingMods = new List<StatModType>();
 
         List<StatModifier> mods = new List<StatModifier>();
 
         // Add random number of random item modifiers
-        for (int i = 0; i < random.Next(minModCount, maxModCount + 1); i++)
+        for (int i = 0; i < random.Next(itemBase.numberOfMods.x, itemBase.numberOfMods.y + 1); i++)
         {
             int itemModType;
 
@@ -28,10 +26,16 @@ public static class RandomItemGenerator
             } while (existingMods.Contains(modPool[itemModType].itemModType));
 
             existingMods.Add(modPool[itemModType].itemModType);
+        }
 
-            int value = random.Next(1, modPool[itemModType].maxValue);
+        List<StatModType> modTypePool = modPool.Select(mod => mod.itemModType).ToList();
+        existingMods = existingMods.OrderBy(mod => modTypePool.IndexOf(mod)).ToList();
 
-            StatModifier mod = new StatModifier(modPool[itemModType].itemModType, value);
+        foreach (StatModType modType in existingMods)
+        {
+            int posInModPool = modPool.FindIndex(mod => mod.itemModType == modType);
+            int value = random.Next(modPool[posInModPool].minValue, modPool[posInModPool].maxValue);
+            StatModifier mod = new StatModifier(modType, value);
             mods.Add(mod);
         }
 

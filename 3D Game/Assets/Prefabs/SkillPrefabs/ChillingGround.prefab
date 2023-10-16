@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1760609262557908001}
   - component: {fileID: 1760609262557908000}
   - component: {fileID: 1760609262557908003}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5007,7 +5007,7 @@ GameObject:
   - component: {fileID: 1971992739140654284}
   - component: {fileID: 2514710835884156760}
   - component: {fileID: 8756276211068572996}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Freeze circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9882,7 +9882,7 @@ GameObject:
   - component: {fileID: 4362969836478247106}
   - component: {fileID: 964606486644550955}
   - component: {fileID: 7140334082347439294}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Healing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14761,7 +14761,7 @@ GameObject:
   - component: {fileID: 1417107722476637973}
   - component: {fileID: 4084346875902720979}
   - component: {fileID: 5342357712740009184}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19633,7 +19633,7 @@ GameObject:
   - component: {fileID: 8512654477489213}
   - component: {fileID: 4420175640489461428}
   - component: {fileID: 7621161327953873071}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ChillingGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19731,16 +19731,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfc9965cd55fb848b7832cdecfadb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  affectsOwner: 0
+  affectsFriendlyCharacters: 0
   owner: {fileID: 0}
-  charactersInArea: []
+  overTimeEffects: 0
   damage: 0
   type: 0
-  damageOverTime: 0
-  hostileStatusEffects: []
+  hostileInAreaStatusEffects: []
+  hostileOneTimeStatusEffects: []
   healing: 0
-  healingOverTime: 0
-  friendlyStatusEffects: []
+  friendlyInAreaStatusEffects: []
+  friendlyOneTimeStatusEffects: []
+  onHitVFX: {fileID: 0}
 --- !u!1 &5646544144914790827
 GameObject:
   m_ObjectHideFlags: 0
@@ -19752,7 +19753,7 @@ GameObject:
   - component: {fileID: 4791100413285787262}
   - component: {fileID: 8328266215140866967}
   - component: {fileID: 2154578272678625794}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Snowflakes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24631,7 +24632,7 @@ GameObject:
   - component: {fileID: 7686864919408304519}
   - component: {fileID: 7077071292232033925}
   - component: {fileID: 8379231868605839994}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}

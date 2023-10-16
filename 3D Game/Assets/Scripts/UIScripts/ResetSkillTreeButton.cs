@@ -7,13 +7,12 @@ using TMPro;
 public class ResetSkillTreeButton : MonoBehaviour
 {
     public SkillTree targetSkillTree;
-    public TMP_Text pointCounter;
+    public PassivePointsCounter pointsCounter;
 
     public void OnClick()
     {
         targetSkillTree.ResetSkillTree();
-        Player.instance.AddToAvailableSkillPoints(int.Parse(pointCounter.text));
-        pointCounter.text = "0";
+        pointsCounter.ResetPoints();
 
         foreach (Transform child in transform.parent)
         {

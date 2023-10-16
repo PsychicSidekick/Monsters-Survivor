@@ -28,7 +28,7 @@
         {
           "startTime": "30",
           "enemyTypeID": "9",
-          "amount": "60"
+          "amount": "45"
         },
         {
           "startTime": "45",
@@ -42,24 +42,24 @@
       "jobs": [
         {
           "enemyTypeID": "6",
-          "amount": "50"
+          "amount": "40"
         }
       ],
       "specialJobs": [
         {
           "startTime": "30",
           "enemyTypeID": "6",
-          "amount": "15"
+          "amount": "10"
         },
         {
-          "startTime": "30",
+          "startTime": "45",
           "enemyTypeID": "7",
           "amount": "1"
         }
       ]
     },
     {
-      "duration": "120",
+      "duration": "60",
       "jobs": [
         {
           "enemyTypeID": "0",
@@ -72,14 +72,14 @@
       ],
       "specialJobs": [
         {
-          "startTime": "90",
+          "startTime": "45",
           "enemyTypeID": "2",
           "amount": "1"
         },
         {
-          "startTime": "60",
+          "startTime": "30",
           "enemyTypeID": "3",
-          "amount": "10"
+          "amount": "60"
         }
       ]
     },

@@ -68,6 +68,17 @@ public class GameSave
         itemBases = Resources.LoadAll<ItemBase>("ItemBases").ToList();
     }
 
+    public void ClearSave()
+    {
+        StorageSave storageSave;
+        storageSave.savedStashItems = new List<ItemSave>();
+        storageSave.savedInventoryItems = new List<ItemSave>();
+        storageSave.savedEquippedItems = new List<ItemSave>();
+
+        string json = JsonUtility.ToJson(storageSave);
+        File.WriteAllText(Application.dataPath + "/Save/save.txt", json);
+    }
+
     public void Save()
     {
         StorageSave storageSave;

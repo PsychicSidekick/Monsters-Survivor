@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,10 +9,12 @@ public class Enemy : Character
     public GameObject healthBarCanvas;
     public GameObject healthBarPrefab;
     private GameObject healthBar;
-    
-    public List<ItemBase> lootPool = new List<ItemBase>();
+
+    public int lootRank;
+    private List<ItemBase> lootPool = new List<ItemBase>();
 
     public int xpYield;
+    public int chanceToDropLoot;
 
     public Player player;
 
@@ -23,6 +26,7 @@ public class Enemy : Character
         base.Start();
         healthBarCanvas = GameObject.Find("EnemyHealthCanvas");
         player = Player.instance;
+        lootPool = Resources.LoadAll<ItemBase>("ItemBases/Rank"+lootRank).ToList();
         healthBar = Instantiate(healthBarPrefab, healthBarCanvas.transform);
         healthBar.GetComponent<RectTransform>().anchoredPosition = GameManager.instance.WorldToCanvasPos(healthBarCanvas, transform.position);
     }
@@ -36,17 +40,13 @@ public class Enemy : Character
 
     public void SpawnLoot()
     {
-        for (int i = 0; i < 1; i++)
+        if (Random.Range(1, 101) <= chanceToDropLoot)
         {
             // Choose random item from loot pool
             ItemBase itemBase = lootPool[Random.Range(0, lootPool.Count)];
             LootGameObject lootGameObject = Instantiate(itemBase.lootGameObjectPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity).GetComponent<LootGameObject>();
             lootGameObject.item = new Item(itemBase);
             lootGameObject.item.lootGameObject = lootGameObject;
-
-            // Spread loot position
-            Vector3 randomOffset = new Vector3(Random.Range(0, 1.5f), 0, Random.Range(0, 1.5f));
-            lootGameObject.transform.position += randomOffset;
         }
     }
 

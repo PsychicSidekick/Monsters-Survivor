@@ -116,7 +116,7 @@ public class PlayerStorage : MonoBehaviour
         }
     }
 
-    private Cell FindFirstAvailableCell(List<List<Cell>> cells, Vector2Int itemSize)
+    public Cell FindFirstAvailableCell(List<List<Cell>> cells, Vector2Int itemSize)
     {
         for (int x = 0; x < cells.Count; x++)
         {
@@ -265,14 +265,6 @@ public class PlayerStorage : MonoBehaviour
         }
     }
 
-    public void ChangeCellsStates(List<Cell> cellsToBeHighlighted, CellState state)
-    {
-        foreach (Cell cell in cellsToBeHighlighted)
-        {
-            cell.state = state;
-        }
-    }
-
     public void InstantiateItemImage(Item item)
     {
         item.itemImage = Instantiate(item.itemBase.itemImagePrefab, transform);
@@ -289,6 +281,6 @@ public class PlayerStorage : MonoBehaviour
     private void OnApplicationQuit()
     {
         GameSave storageSave = new GameSave();
-        storageSave.Save();
+        //storageSave.Save();
     }
 }

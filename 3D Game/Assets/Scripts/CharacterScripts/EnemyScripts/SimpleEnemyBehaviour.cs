@@ -8,7 +8,7 @@ public class SimpleEnemyBehaviour : MonoBehaviour
     Enemy enemy;
 
     public float attackRange;
-    [HideInInspector] public bool inAttackAnimation;
+    public bool inAttackAnimation;
 
     private void Start()
     {
