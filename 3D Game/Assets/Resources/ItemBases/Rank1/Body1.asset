@@ -20,32 +20,26 @@ MonoBehaviour:
   itemImagePrefab: {fileID: 4028795390590836520, guid: 29a85967892fa9640ba261a253bc933a, type: 3}
   modPool:
   - itemModType: 0
-    minValue: 10
-    maxValue: 50
+    minValue: 20
+    maxValue: 30
   - itemModType: 1
     minValue: 10
-    maxValue: 20
+    maxValue: 15
   - itemModType: 2
-    minValue: 1
-    maxValue: 7
+    minValue: 20
+    maxValue: 30
   - itemModType: 3
     minValue: 10
     maxValue: 20
   - itemModType: 4
     minValue: 10
     maxValue: 20
-  - itemModType: 5
+  - itemModType: 8
     minValue: 10
-    maxValue: 20
-  - itemModType: 7
+    maxValue: 15
+  - itemModType: 9
     minValue: 10
-    maxValue: 20
-  - itemModType: 12
+    maxValue: 15
+  - itemModType: 10
     minValue: 10
-    maxValue: 20
-  - itemModType: 13
-    minValue: 10
-    maxValue: 20
-  - itemModType: 14
-    minValue: 10
-    maxValue: 20
+    maxValue: 15

@@ -12,64 +12,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
   m_Name: Amulet3
   m_EditorClassIdentifier: 
-  itemName: DIamond Amulet
+  itemName: Glass Amulet
   type: 7
   size: {x: 1, y: 1}
-  numberOfMods: {x: 4, y: 5}
+  numberOfMods: {x: 2, y: 3}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImagePrefab: {fileID: 4065881981570626885, guid: fde0494c412b3e444b7acb86059ea94b, type: 3}
+  itemImagePrefab: {fileID: 4065881981570626885, guid: 5400d1ac79c3c70488e1e96357ca66b3, type: 3}
   modPool:
   - itemModType: 0
-    minValue: 10
-    maxValue: 70
+    minValue: 30
+    maxValue: 40
   - itemModType: 1
-    minValue: 5
-    maxValue: 30
+    minValue: 15
+    maxValue: 20
   - itemModType: 2
-    minValue: 1
-    maxValue: 9
+    minValue: 30
+    maxValue: 40
   - itemModType: 3
-    minValue: 10
+    minValue: 30
     maxValue: 40
   - itemModType: 4
-    minValue: 10
-    maxValue: 40
-  - itemModType: 5
-    minValue: 10
-    maxValue: 40
-  - itemModType: 7
-    minValue: 10
-    maxValue: 40
-  - itemModType: 9
-    minValue: 5
+    minValue: 30
+    maxValue: 0
+  - itemModType: 6
+    minValue: 20
     maxValue: 25
-  - itemModType: 12
-    minValue: 5
-    maxValue: 25
-  - itemModType: 13
-    minValue: 5
-    maxValue: 25
-  - itemModType: 14
-    minValue: 5
-    maxValue: 25
-  - itemModType: 15
+  - itemModType: 8
     minValue: 15
+    maxValue: 20
+  - itemModType: 9
+    minValue: 15
+    maxValue: 20
+  - itemModType: 10
+    minValue: 15
+    maxValue: 20
+  - itemModType: 11
+    minValue: 30
+    maxValue: 40
+  - itemModType: 12
+    minValue: 30
+    maxValue: 40
+  - itemModType: 13
+    minValue: 30
+    maxValue: 40
+  - itemModType: 14
+    minValue: 30
+    maxValue: 40
+  - itemModType: 15
+    minValue: 35
     maxValue: 45
   - itemModType: 16
-    minValue: 15
-    maxValue: 45
+    minValue: 30
+    maxValue: 40
   - itemModType: 17
-    minValue: 15
+    minValue: 35
     maxValue: 45
-  - itemModType: 18
-    minValue: 15
-    maxValue: 45
-  - itemModType: 19
-    minValue: 20
-    maxValue: 50
-  - itemModType: 20
-    minValue: 15
-    maxValue: 45
-  - itemModType: 21
-    minValue: 20
-    maxValue: 50

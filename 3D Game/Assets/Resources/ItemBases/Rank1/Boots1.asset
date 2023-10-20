@@ -21,13 +21,13 @@ MonoBehaviour:
   modPool:
   - itemModType: 0
     minValue: 10
-    maxValue: 30
+    maxValue: 20
   - itemModType: 1
+    minValue: 5
+    maxValue: 10
+  - itemModType: 2
     minValue: 10
     maxValue: 20
-  - itemModType: 2
-    minValue: 1
-    maxValue: 5
   - itemModType: 3
     minValue: 10
     maxValue: 20
@@ -36,19 +36,13 @@ MonoBehaviour:
     maxValue: 20
   - itemModType: 5
     minValue: 10
-    maxValue: 20
-  - itemModType: 7
-    minValue: 10
-    maxValue: 20
+    maxValue: 10
   - itemModType: 8
-    minValue: 10
-    maxValue: 30
-  - itemModType: 12
-    minValue: 10
-    maxValue: 20
-  - itemModType: 13
-    minValue: 10
-    maxValue: 20
-  - itemModType: 14
-    minValue: 10
-    maxValue: 20
+    minValue: 5
+    maxValue: 10
+  - itemModType: 9
+    minValue: 5
+    maxValue: 10
+  - itemModType: 10
+    minValue: 5
+    maxValue: 10

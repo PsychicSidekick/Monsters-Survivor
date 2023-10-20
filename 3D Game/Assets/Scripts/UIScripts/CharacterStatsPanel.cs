@@ -23,13 +23,13 @@ public class CharacterStatsPanel : MonoBehaviour
 
     private void Update()
     {
-        lifeRegenTxt.text = "Life regen per second: " + player.stats.lifeRegeneration.value;
-        manaRegenTxt.text = "Mana regen per second: " + player.stats.manaRegeneration.value;
-        moveSpeedTxt.text = "Movement Speed: " + player.stats.movementSpeed.value;
-        atkSpeedTxt.text = "Attacks per second: " + player.stats.attackSpeed.value;
-        atkDamageTxt.text = "Bonus Attack Damage: " + player.stats.attackDamage.value;
-        fireResTxt.text = "Fire Resistance: " + player.stats.fireResistance.value + "%";
-        coldResTxt.text = "Cold Resistance: " + player.stats.coldResistance.value + "%";
-        lightningResTxt.text = "Lightning Resistance: " + player.stats.lightningResistance.value + "%";
+        //lifeRegenTxt.text = "Life regen per second: " + player.stats.lifeRegeneration.value;
+        //manaRegenTxt.text = "Mana regen per second: " + player.stats.manaRegeneration.value;
+        //moveSpeedTxt.text = "Movement Speed: " + player.stats.movementSpeed.value;
+        //atkSpeedTxt.text = "Attacks per second: " + player.stats.attackSpeed.value;
+        //atkDamageTxt.text = "Bonus Attack Damage: " + player.stats.attackDamage.value;
+        //fireResTxt.text = "Fire Resistance: " + player.stats.fireResistance.value + "%";
+        //coldResTxt.text = "Cold Resistance: " + player.stats.coldResistance.value + "%";
+        //lightningResTxt.text = "Lightning Resistance: " + player.stats.lightningResistance.value + "%";
     }
 }

@@ -12,64 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
   m_Name: Gloves3
   m_EditorClassIdentifier: 
-  itemName: Crusader Gauntlet
+  itemName: Hide Gloves
   type: 4
   size: {x: 2, y: 2}
-  numberOfMods: {x: 4, y: 5}
+  numberOfMods: {x: 2, y: 3}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImagePrefab: {fileID: 126991780030651831, guid: 95419ae9038dc99428fed4e4b51607cc, type: 3}
+  itemImagePrefab: {fileID: 126991780030651831, guid: e760a0f136ee00947856912e163d2d01, type: 3}
   modPool:
   - itemModType: 0
-    minValue: 10
-    maxValue: 70
-  - itemModType: 1
-    minValue: 10
+    minValue: 30
     maxValue: 40
+  - itemModType: 1
+    minValue: 15
+    maxValue: 20
   - itemModType: 2
-    minValue: 1
-    maxValue: 9
+    minValue: 30
+    maxValue: 40
   - itemModType: 3
-    minValue: 10
+    minValue: 30
     maxValue: 40
   - itemModType: 4
-    minValue: 10
+    minValue: 30
     maxValue: 40
-  - itemModType: 5
-    minValue: 10
-    maxValue: 40
-  - itemModType: 7
-    minValue: 10
-    maxValue: 40
-  - itemModType: 9
-    minValue: 5
+  - itemModType: 6
+    minValue: 20
     maxValue: 25
-  - itemModType: 12
-    minValue: 10
-    maxValue: 30
-  - itemModType: 13
-    minValue: 10
-    maxValue: 30
-  - itemModType: 14
-    minValue: 10
-    maxValue: 30
-  - itemModType: 15
+  - itemModType: 8
     minValue: 15
-    maxValue: 45
-  - itemModType: 16
+    maxValue: 20
+  - itemModType: 9
     minValue: 15
-    maxValue: 45
-  - itemModType: 17
+    maxValue: 20
+  - itemModType: 10
     minValue: 15
-    maxValue: 45
-  - itemModType: 18
-    minValue: 15
-    maxValue: 45
-  - itemModType: 19
-    minValue: 20
-    maxValue: 50
-  - itemModType: 20
-    minValue: 15
-    maxValue: 45
-  - itemModType: 21
-    minValue: 20
-    maxValue: 50
+    maxValue: 20

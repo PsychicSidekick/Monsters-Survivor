@@ -12,46 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
   m_Name: Belt3
   m_EditorClassIdentifier: 
-  itemName: Chain Belt
+  itemName: Cloth Belt
   type: 8
   size: {x: 2, y: 1}
-  numberOfMods: {x: 4, y: 5}
+  numberOfMods: {x: 2, y: 3}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImagePrefab: {fileID: 126991780030651831, guid: 7c4cbc1f26145ac48aa26bff32bebb47, type: 3}
+  itemImagePrefab: {fileID: 126991780030651831, guid: b1ce261681bd14c4f8522779d61f8b5f, type: 3}
   modPool:
   - itemModType: 0
-    minValue: 10
-    maxValue: 70
+    minValue: 30
+    maxValue: 40
   - itemModType: 1
-    minValue: 5
-    maxValue: 30
+    minValue: 15
+    maxValue: 20
   - itemModType: 2
-    minValue: 1
-    maxValue: 9
+    minValue: 30
+    maxValue: 40
   - itemModType: 3
-    minValue: 10
+    minValue: 30
     maxValue: 40
   - itemModType: 4
-    minValue: 10
+    minValue: 30
     maxValue: 40
-  - itemModType: 5
-    minValue: 10
-    maxValue: 40
-  - itemModType: 7
-    minValue: 10
-    maxValue: 40
-  - itemModType: 12
-    minValue: 5
-    maxValue: 25
-  - itemModType: 13
-    minValue: 5
-    maxValue: 25
-  - itemModType: 14
-    minValue: 5
-    maxValue: 25
-  - itemModType: 19
-    minValue: 20
-    maxValue: 50
-  - itemModType: 21
-    minValue: 20
-    maxValue: 50
+  - itemModType: 8
+    minValue: 15
+    maxValue: 20
+  - itemModType: 9
+    minValue: 15
+    maxValue: 20
+  - itemModType: 10
+    minValue: 15
+    maxValue: 20

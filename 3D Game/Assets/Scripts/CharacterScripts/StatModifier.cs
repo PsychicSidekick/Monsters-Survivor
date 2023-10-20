@@ -21,16 +21,12 @@ public enum StatModType
 {
     flat_MaximumLife,
     inc_MaximumLife,
-    flat_LifeRegeneration,
     inc_LifeRegeneration,
-    flat_MaximumMana,
     inc_MaximumMana,
-    flat_ManaRegeneration,
     inc_ManaRegeneration,
     inc_MovementSpeed,
     inc_AttackSpeed,
     flat_AttackDamage,
-    inc_AttackDamage,
     flat_FireResistance,
     flat_ColdResistance,
     flat_LightningResistance,
@@ -43,13 +39,10 @@ public enum StatModType
     flat_IncreasedProjectileSpeed,
     flat_AdditionalNumberOfProjectiles,
     flat_IncreasedIgniteDamage,
-    flat_AdditionalIgniteChance,
     flat_IncreasedIgniteDuration,
     flat_IncreasedSlowEffect,
-    flat_AdditionalSlowChance,
     flat_IncreasedSlowDuration,
     flat_IncreasedShockEffect,
-    flat_AdditionalShockChance,
     flat_IncreasedShockDuration
 }
 

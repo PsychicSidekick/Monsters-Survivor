@@ -57,7 +57,7 @@ public class HUD : MonoBehaviour
             int requiredXpThisLevel = currRequiredXp - prevRequiredXp;
 
             xpText.text = xpIntoThisLevel + "/" + requiredXpThisLevel;
-            xpBar.transform.localScale = new Vector3((float)xpIntoThisLevel / (float)requiredXpThisLevel, 1, 1);
+            xpBar.transform.localScale = new Vector3(xpIntoThisLevel / (float)requiredXpThisLevel, 1, 1);
 
             player.xpIsDirty = false;
         }

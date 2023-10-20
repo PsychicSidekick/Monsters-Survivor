@@ -12,79 +12,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
   m_Name: Weapon2
   m_EditorClassIdentifier: 
-  itemName: Imbued Wand
+  itemName: Carved Wand
   type: 0
   size: {x: 1, y: 3}
-  numberOfMods: {x: 3, y: 4}
+  numberOfMods: {x: 2, y: 3}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImagePrefab: {fileID: 4065881981570626885, guid: f2dbcfeda38b15a4e93827432ac6e1a0, type: 3}
+  itemImagePrefab: {fileID: 4065881981570626885, guid: 9620dfd51fa8ba541b194111793a53aa, type: 3}
   modPool:
-  - itemModType: 4
-    minValue: 20
-    maxValue: 40
-  - itemModType: 5
-    minValue: 20
-    maxValue: 40
-  - itemModType: 6
-    minValue: 5
-    maxValue: 15
   - itemModType: 7
     minValue: 20
-    maxValue: 40
-  - itemModType: 9
-    minValue: 15
     maxValue: 30
-  - itemModType: 10
-    minValue: 10
-    maxValue: 50
-  - itemModType: 15
+  - itemModType: 3
+    minValue: 30
+    maxValue: 40
+  - itemModType: 4
+    minValue: 30
+    maxValue: 40
+  - itemModType: 6
     minValue: 20
+    maxValue: 25
+  - itemModType: 11
+    minValue: 25
+    maxValue: 35
+  - itemModType: 12
+    minValue: 25
+    maxValue: 35
+  - itemModType: 13
+    minValue: 25
+    maxValue: 35
+  - itemModType: 14
+    minValue: 25
+    maxValue: 35
+  - itemModType: 15
+    minValue: 30
     maxValue: 40
   - itemModType: 16
-    minValue: 20
-    maxValue: 40
+    minValue: 25
+    maxValue: 35
   - itemModType: 17
-    minValue: 20
+    minValue: 30
     maxValue: 40
   - itemModType: 18
-    minValue: 20
-    maxValue: 40
-  - itemModType: 19
-    minValue: 25
-    maxValue: 45
-  - itemModType: 20
-    minValue: 20
-    maxValue: 40
-  - itemModType: 21
-    minValue: 25
-    maxValue: 45
-  - itemModType: 22
     minValue: 1
     maxValue: 2
-  - itemModType: 23
-    minValue: 20
+  - itemModType: 19
+    minValue: 25
+    maxValue: 35
+  - itemModType: 20
+    minValue: 30
     maxValue: 40
-  - itemModType: 24
+  - itemModType: 21
     minValue: 10
-    maxValue: 10
-  - itemModType: 25
-    minValue: 25
-    maxValue: 45
-  - itemModType: 26
-    minValue: 5
     maxValue: 15
-  - itemModType: 27
-    minValue: 10
-    maxValue: 10
-  - itemModType: 28
-    minValue: 25
-    maxValue: 45
-  - itemModType: 29
-    minValue: 10
-    maxValue: 25
-  - itemModType: 30
-    minValue: 10
-    maxValue: 10
-  - itemModType: 31
-    minValue: 25
-    maxValue: 45
+  - itemModType: 22
+    minValue: 30
+    maxValue: 40
+  - itemModType: 23
+    minValue: 15
+    maxValue: 20
+  - itemModType: 24
+    minValue: 30
+    maxValue: 40

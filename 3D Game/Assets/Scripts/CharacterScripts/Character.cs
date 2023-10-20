@@ -14,6 +14,8 @@ public class Character : MonoBehaviour
     public float mana;
     public int xp;
     public int level;
+    public int increasedRequiredXpPerLevel;
+    public int maxLevel;
 
     [HideInInspector] public bool xpIsDirty = true;
 
@@ -55,10 +57,10 @@ public class Character : MonoBehaviour
 
         while (xp >= requiredXp)
         {
-            requiredXp += (level + 1) * 500;
+            requiredXp += (level + 1) * increasedRequiredXpPerLevel;
             level++;
 
-            if (level >= 100)
+            if (level >= maxLevel)
             {
                 return level;
             }
@@ -73,7 +75,7 @@ public class Character : MonoBehaviour
 
         for (int i = 1; i < level; i++)
         {
-            requiredXp += i * 500;
+            requiredXp += i * increasedRequiredXpPerLevel;
         }
 
         return requiredXp;

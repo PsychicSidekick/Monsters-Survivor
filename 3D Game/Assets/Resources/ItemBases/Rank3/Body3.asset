@@ -12,40 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
   m_Name: Body3
   m_EditorClassIdentifier: 
-  itemName: Glorious Plate
+  itemName: Simple Rope
   type: 2
   size: {x: 2, y: 3}
-  numberOfMods: {x: 4, y: 5}
+  numberOfMods: {x: 2, y: 3}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImagePrefab: {fileID: 4028795390590836520, guid: fcc129ad96f748849951025cb36686ea, type: 3}
+  itemImagePrefab: {fileID: 4028795390590836520, guid: 29a85967892fa9640ba261a253bc933a, type: 3}
   modPool:
   - itemModType: 0
-    minValue: 10
-    maxValue: 90
+    minValue: 40
+    maxValue: 50
   - itemModType: 1
-    minValue: 10
-    maxValue: 40
+    minValue: 20
+    maxValue: 25
   - itemModType: 2
-    minValue: 1
-    maxValue: 11
+    minValue: 40
+    maxValue: 50
   - itemModType: 3
-    minValue: 10
+    minValue: 30
     maxValue: 40
   - itemModType: 4
-    minValue: 10
+    minValue: 30
     maxValue: 40
-  - itemModType: 5
-    minValue: 10
-    maxValue: 40
-  - itemModType: 7
-    minValue: 10
-    maxValue: 40
-  - itemModType: 12
-    minValue: 10
-    maxValue: 30
-  - itemModType: 13
-    minValue: 10
-    maxValue: 30
-  - itemModType: 14
-    minValue: 10
-    maxValue: 30
+  - itemModType: 8
+    minValue: 20
+    maxValue: 25
+  - itemModType: 9
+    minValue: 20
+    maxValue: 25
+  - itemModType: 10
+    minValue: 20
+    maxValue: 25
