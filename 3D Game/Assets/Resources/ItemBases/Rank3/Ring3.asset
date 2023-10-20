@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
   m_Name: Ring3
   m_EditorClassIdentifier: 
-  itemName: Bronze Ring
+  itemName: Gold Ring
   type: 6
   size: {x: 1, y: 1}
   numberOfMods: {x: 2, y: 3}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImagePrefab: {fileID: 4065881981570626885, guid: 6d3229d862ea9dc4fb363ad901cbb8ab, type: 3}
+  itemImagePrefab: {fileID: 4065881981570626885, guid: 0c706a930f154cc4397b5959b1029cfa, type: 3}
   modPool:
   - itemModType: 0
     minValue: 30

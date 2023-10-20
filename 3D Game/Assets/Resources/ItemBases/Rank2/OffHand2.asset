@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
   m_Name: OffHand2
   m_EditorClassIdentifier: 
-  itemName: Wood Buckler
+  itemName: Steel Round Shield
   type: 5
   size: {x: 2, y: 2}
   numberOfMods: {x: 2, y: 3}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImagePrefab: {fileID: 126991780030651831, guid: e033a2e20e9be5541beed89c32760805, type: 3}
+  itemImagePrefab: {fileID: 126991780030651831, guid: ba80f916e4bb0884db10bdea00a79c30, type: 3}
   modPool:
   - itemModType: 0
     minValue: 20

@@ -17,7 +17,7 @@ MonoBehaviour:
   size: {x: 1, y: 1}
   numberOfMods: {x: 2, y: 3}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImagePrefab: {fileID: 4065881981570626885, guid: 5400d1ac79c3c70488e1e96357ca66b3, type: 3}
+  itemImagePrefab: {fileID: 4065881981570626885, guid: c79645ad34791374a93d3e5f227ecec9, type: 3}
   modPool:
   - itemModType: 0
     minValue: 20

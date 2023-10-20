@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18128428648665842bd072e08222afe4, type: 3}
   m_Name: Weapon3
   m_EditorClassIdentifier: 
-  itemName: Carved Wand
+  itemName: Royal Sceptre
   type: 0
   size: {x: 1, y: 3}
   numberOfMods: {x: 2, y: 3}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
-  itemImagePrefab: {fileID: 4065881981570626885, guid: 9620dfd51fa8ba541b194111793a53aa, type: 3}
+  itemImagePrefab: {fileID: 4065881981570626885, guid: 53d41c8e9e99e6641a17303ed1eac57d, type: 3}
   modPool:
   - itemModType: 7
     minValue: 30
