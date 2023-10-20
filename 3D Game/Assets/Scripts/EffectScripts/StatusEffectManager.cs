@@ -48,6 +48,11 @@ public class StatusEffectManager : MonoBehaviour
                 if (dup != null && !expiredStatusEffects.Contains(dup))
                 {
                     dup.AddStack(character, statusEffect);
+
+                    if (dup.GetType() == typeof(IgniteEffect))
+                    {
+                        return;
+                    }
                 }
             }
             

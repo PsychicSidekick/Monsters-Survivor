@@ -29,6 +29,11 @@ public class IgniteEffect : StatusEffect
         remainingDamage = ignite.remainingDamage;
     }
 
+    public override void AddStack(Character character, StatusEffect statusEffect)
+    {
+        character.GetComponent<StatusEffectManager>().statusEffectList.Add(statusEffect);
+    }
+
     public override void EffectOverTime(Character character, float deltaTime)
     {
         float damageThisFrame = totalDamage / maxDuration * deltaTime;
