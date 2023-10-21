@@ -21,7 +21,7 @@ public enum StatModType
 {
     flat_MaximumLife,
     inc_MaximumLife,
-    inc_LifeRegeneration,
+    flat_LifeRegeneration,
     inc_MaximumMana,
     inc_ManaRegeneration,
     inc_MovementSpeed,

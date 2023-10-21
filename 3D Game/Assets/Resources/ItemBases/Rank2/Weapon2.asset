@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Imbued Wand
   type: 0
   size: {x: 1, y: 3}
-  numberOfMods: {x: 2, y: 3}
+  numberOfMods: {x: 3, y: 4}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
   itemImagePrefab: {fileID: 4065881981570626885, guid: f2dbcfeda38b15a4e93827432ac6e1a0, type: 3}
   modPool:

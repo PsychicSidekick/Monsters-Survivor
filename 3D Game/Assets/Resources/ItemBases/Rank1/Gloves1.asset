@@ -26,8 +26,8 @@ MonoBehaviour:
     minValue: 5
     maxValue: 10
   - itemModType: 2
-    minValue: 10
-    maxValue: 20
+    minValue: 1
+    maxValue: 3
   - itemModType: 3
     minValue: 10
     maxValue: 20

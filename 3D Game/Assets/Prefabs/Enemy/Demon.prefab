@@ -2229,6 +2229,8 @@ MonoBehaviour:
   mana: 0
   xp: 0
   level: 0
+  increasedRequiredXpPerLevel: 0
+  maxLevel: 0
   xpIsDirty: 0
   healthBarCanvas: {fileID: 0}
   healthBarPrefab: {fileID: 3577782504961595815, guid: 172706cc439a7084aa97a6ac4edd1a48, type: 3}
@@ -2474,7 +2476,7 @@ MonoBehaviour:
   increasedFireBallDamage: 0
   increasedBaseFireBallDamage: -0.8
   increasedFireBallRange: 0
-  increasedFireBallSpeed: 0
+  increasedFireBallSpeed: -0.3
   increasedExplosionDamage: 0
   increasedBaseExplosionDamage: -0.8
   increasedExplosionRadius: 0

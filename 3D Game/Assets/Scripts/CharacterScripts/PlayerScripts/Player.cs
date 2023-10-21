@@ -69,7 +69,7 @@ public class Player : Character
 
     public override void OnDeath()
     {
-        GameManager.instance.PauseGame();
+        EnemySpawnManager.instance.StopAllCoroutines();
         deathScreen.SetActive(true);
         base.OnDeath();
     }

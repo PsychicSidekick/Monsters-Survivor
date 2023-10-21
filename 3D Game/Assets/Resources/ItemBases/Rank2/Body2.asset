@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Leather Vest
   type: 2
   size: {x: 2, y: 3}
-  numberOfMods: {x: 2, y: 3}
+  numberOfMods: {x: 3, y: 4}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
   itemImagePrefab: {fileID: 4028795390590836520, guid: 2fc798a09af28a845bb9c181e77c169d, type: 3}
   modPool:
@@ -26,8 +26,8 @@ MonoBehaviour:
     minValue: 15
     maxValue: 20
   - itemModType: 2
-    minValue: 30
-    maxValue: 40
+    minValue: 4
+    maxValue: 6
   - itemModType: 3
     minValue: 20
     maxValue: 30

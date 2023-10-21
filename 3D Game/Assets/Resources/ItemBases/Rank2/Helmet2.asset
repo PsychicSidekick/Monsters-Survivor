@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Soldier Helmet
   type: 1
   size: {x: 2, y: 2}
-  numberOfMods: {x: 2, y: 3}
+  numberOfMods: {x: 3, y: 4}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
   itemImagePrefab: {fileID: 126991780030651831, guid: ae9faa49a15bb804f8416d3d09af760a, type: 3}
   modPool:
@@ -26,8 +26,8 @@ MonoBehaviour:
     minValue: 10
     maxValue: 15
   - itemModType: 2
-    minValue: 20
-    maxValue: 30
+    minValue: 3
+    maxValue: 5
   - itemModType: 3
     minValue: 20
     maxValue: 30

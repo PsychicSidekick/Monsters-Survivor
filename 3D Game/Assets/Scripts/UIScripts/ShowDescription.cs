@@ -28,6 +28,7 @@ public class ShowDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         if (mouseOvered && Input.GetKey("s"))
         {
+            mouseOvered = false;
             descriptionPanel.SetActive(false);
         }
     }

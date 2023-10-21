@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Glorious Plate
   type: 2
   size: {x: 2, y: 3}
-  numberOfMods: {x: 2, y: 3}
+  numberOfMods: {x: 4, y: 5}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
   itemImagePrefab: {fileID: 4028795390590836520, guid: fcc129ad96f748849951025cb36686ea, type: 3}
   modPool:
@@ -26,8 +26,8 @@ MonoBehaviour:
     minValue: 20
     maxValue: 25
   - itemModType: 2
-    minValue: 40
-    maxValue: 50
+    minValue: 6
+    maxValue: 8
   - itemModType: 3
     minValue: 30
     maxValue: 40

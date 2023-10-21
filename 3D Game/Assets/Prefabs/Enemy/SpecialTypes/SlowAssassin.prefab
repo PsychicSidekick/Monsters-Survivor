@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 1882591495079538874}
   - component: {fileID: 7111855284402048050}
   m_Layer: 7
-  m_Name: Assassin
+  m_Name: SlowAssassin
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -870,7 +870,7 @@ MonoBehaviour:
     baseValue: 10000
   movementSpeed:
     type: 4
-    baseValue: 2
+    baseValue: 0.5
   attackSpeed:
     type: 5
     baseValue: 1.5

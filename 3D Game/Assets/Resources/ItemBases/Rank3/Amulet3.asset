@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Diamond Amulet
   type: 7
   size: {x: 1, y: 1}
-  numberOfMods: {x: 2, y: 3}
+  numberOfMods: {x: 4, y: 5}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
   itemImagePrefab: {fileID: 4065881981570626885, guid: fde0494c412b3e444b7acb86059ea94b, type: 3}
   modPool:
@@ -26,8 +26,8 @@ MonoBehaviour:
     minValue: 15
     maxValue: 20
   - itemModType: 2
-    minValue: 30
-    maxValue: 40
+    minValue: 5
+    maxValue: 7
   - itemModType: 3
     minValue: 30
     maxValue: 40

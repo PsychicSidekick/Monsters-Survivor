@@ -60,6 +60,11 @@ public class PlayerStorage : MonoBehaviour
 
         if (pickingUpLoot)
         {
+            if (Player.instance == null)
+            {
+                pickingUpLoot = false;
+                return;
+            }
             Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.z);
             Vector2 lootPos = new Vector2(player.targetLoot.transform.position.x, player.targetLoot.transform.position.z);
             // if player has arrived at the position of the target loot

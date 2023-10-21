@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Great Crown
   type: 1
   size: {x: 2, y: 2}
-  numberOfMods: {x: 2, y: 3}
+  numberOfMods: {x: 4, y: 5}
   lootGameObjectPrefab: {fileID: 6708462287413670352, guid: b0c01007b6d249644850fede9b3ba181, type: 3}
   itemImagePrefab: {fileID: 126991780030651831, guid: 1ef9363d2e15ae34c85353d559d0563f, type: 3}
   modPool:
@@ -26,8 +26,8 @@ MonoBehaviour:
     minValue: 15
     maxValue: 20
   - itemModType: 2
-    minValue: 30
-    maxValue: 40
+    minValue: 5
+    maxValue: 7
   - itemModType: 3
     minValue: 30
     maxValue: 40
