@@ -37,6 +37,8 @@ public class Player : Character
             }
         }
         base.Start();
+
+        AddToAvailablePointsToAllSkills(100);
     }
 
     protected override void Update()

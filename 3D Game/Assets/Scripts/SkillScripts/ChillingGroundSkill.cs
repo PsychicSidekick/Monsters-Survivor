@@ -25,6 +25,8 @@ public class ChillingGroundSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
+        skillUser.audioSource.PlayOneShot(skillSFX);
+
         ChillingGroundSkillTree skillTree = skillUser.GetComponent<ChillingGroundSkillTree>();
 
         float chillingGroundDamagePerSecond = (baseChillingGroundDamagePerSecond * (1 + skillTree.increasedBaseChillingGroundDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedChillingGroundDamage + skillUser.stats.increasedColdDamage.value + skillUser.stats.increasedAreaDamage.value);

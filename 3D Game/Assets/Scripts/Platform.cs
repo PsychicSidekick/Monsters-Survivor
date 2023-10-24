@@ -76,4 +76,9 @@ public class Platform : MonoBehaviour
             centerPlatform.GetComponent<NavMeshSurface>().BuildNavMesh();
         }
     }
+
+    //private void OnParticleCollision(GameObject other)
+    //{
+    //    Debug.Log("HI");
+    //}
 }

@@ -31,6 +31,8 @@ public class IceSpearSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
+        skillUser.audioSource.PlayOneShot(skillSFX);
+
         IceSpearSkillTree skillTree = skillUser.GetComponent<IceSpearSkillTree>();
         SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
 

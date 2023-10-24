@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public StatsManager stats;
     [HideInInspector] public StatusEffectManager status;
+    [HideInInspector] public AudioSource audioSource;
 
     public float life;
     public float mana;
@@ -27,6 +28,7 @@ public class Character : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         stats = GetComponent<StatsManager>();
         status = GetComponent<StatusEffectManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void Start()

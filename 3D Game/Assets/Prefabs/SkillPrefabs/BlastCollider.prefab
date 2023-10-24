@@ -4985,13 +4985,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   affectsFriendlyCharacters: 0
   owner: {fileID: 0}
+  overTimeEffects: 0
   damage: 0
   type: 0
-  damageOverTime: 0
   hostileInAreaStatusEffects: []
   hostileOneTimeStatusEffects: []
   healing: 0
-  healingOverTime: 0
   friendlyInAreaStatusEffects: []
   friendlyOneTimeStatusEffects: []
   onHitVFX: {fileID: 1394909451735306806, guid: cf6a31f0c66e1dd4f8d2449d6e97b568, type: 3}

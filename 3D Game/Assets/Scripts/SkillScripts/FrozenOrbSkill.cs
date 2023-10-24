@@ -81,6 +81,8 @@ public class FrozenOrbSkill : Skill
 
         while (frozenOrbProjectile != null)
         {
+            skillUser.audioSource.PlayOneShot(skillSFX);
+
             for (int i = 0; i < numberOfIcicles; i++)
             {
                 Vector3 startPos = GameManager.instance.RefinedPos(frozenOrbProjectile.transform.position);

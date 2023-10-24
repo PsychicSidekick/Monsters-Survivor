@@ -5,6 +5,8 @@ using UnityEngine;
 public class ExplodingProjectile : MonoBehaviour
 {
     public GameObject explosionPrefab;
+    public AudioClip explosionSFX;
+
     public float explosionRadius;
     public float explosionDamage;
     public DamageType explosionDamageType;
@@ -23,6 +25,8 @@ public class ExplodingProjectile : MonoBehaviour
         Character owner = GetComponent<EffectCollider>().owner;
         if (owner && owner.gameObject.activeInHierarchy)
         {
+            owner.audioSource.clip = explosionSFX;
+            owner.audioSource.Play();
             owner.StartCoroutine(DestroyExplosion(explosion.gameObject));
         }
         else

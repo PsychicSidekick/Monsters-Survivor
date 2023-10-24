@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: FireBall
   skillIcon: {fileID: 21300000, guid: 5d3f65ce0671b8c48ad1e7d133d3618d, type: 3}
+  skillSFX: {fileID: 8300000, guid: a652877b012108e41871f867ada9f176, type: 3}
   coolDownTime: 0
   activeTime: 0
   baseManaCost: 15

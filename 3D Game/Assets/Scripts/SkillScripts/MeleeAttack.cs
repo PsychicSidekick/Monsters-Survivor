@@ -36,6 +36,8 @@ public class MeleeAttack : Skill
 
         if (Vector3.Distance(skillUser.transform.position, targetCharacter.transform.position) <= baseRange + skillTree.increasedRange + 1)
         {
+            skillUser.audioSource.PlayOneShot(skillSFX);
+
             Instantiate(skillTree.onHitVFX, GameManager.instance.RefinedPos(targetCharacter.transform.position), Quaternion.identity);
 
             float damage = (baseDamage + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedDamage);

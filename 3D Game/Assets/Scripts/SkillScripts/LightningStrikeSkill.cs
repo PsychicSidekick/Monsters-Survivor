@@ -40,6 +40,8 @@ public class LightningStrikeSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
+        skillUser.audioSource.PlayOneShot(skillSFX);
+
         LightningStrikeSkillTree skillTree = skillUser.GetComponent<LightningStrikeSkillTree>();
 
         int numberOfLightningStrikes = baseNumberOfLightningStrikes + skillTree.additionalNumberOfLightningStrikes + (int)skillUser.stats.additionalNumberOfProjectiles.value;

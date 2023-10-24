@@ -41,6 +41,7 @@ public class FireBlastSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
+        skillUser.GetComponent<AudioSource>().PlayOneShot(skillSFX);
         FireBlastSkillTree skillTree = skillUser.GetComponent<FireBlastSkillTree>();
 
         float fireBlastDamage = (baseFireBlastDamage + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedFireBlastDamage + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedAreaDamage.value);

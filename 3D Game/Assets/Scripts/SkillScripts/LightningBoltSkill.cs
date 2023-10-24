@@ -31,6 +31,8 @@ public class LightningBoltSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
+        skillUser.audioSource.PlayOneShot(skillSFX);
+
         LightningBoltSkillTree skillTree = skillUser.GetComponent<LightningBoltSkillTree>();
 
         int numberOfLightningBolts;

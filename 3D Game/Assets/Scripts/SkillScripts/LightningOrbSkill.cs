@@ -42,6 +42,8 @@ public class LightningOrbSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
+        skillUser.audioSource.PlayOneShot(skillSFX);
+
         LightningOrbSkillTree skillTree = skillUser.GetComponent<LightningOrbSkillTree>();
 
         int numberOfLightningOrbs = baseNumberOfLightningOrbs + skillTree.additionalNumberOfLightningOrbs + (int)skillUser.stats.additionalNumberOfProjectiles.value;

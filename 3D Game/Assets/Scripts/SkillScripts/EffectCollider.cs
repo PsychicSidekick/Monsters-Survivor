@@ -23,6 +23,7 @@ public class EffectCollider : MonoBehaviour
     public List<StatusEffect> friendlyOneTimeStatusEffects = new List<StatusEffect>();
 
     public GameObject onHitVFX;
+    public AudioClip onHitSFX;
 
     public void SetHostileEffects(float _damage, DamageType _type, bool _overTimeEffects, Character _owner, StatusEffect[] _hostileInAreaStatusEffects, params StatusEffect[] _hostileOneTimeStatusEffects)
     {
@@ -175,6 +176,12 @@ public class EffectCollider : MonoBehaviour
         if (onHitVFX != null)
         {
             Instantiate(onHitVFX, other.ClosestPointOnBounds(transform.position), Quaternion.identity);
+        }
+
+        if (onHitSFX != null)
+        {
+            owner.audioSource.clip = onHitSFX;
+            owner.audioSource.Play();
         }
 
         if (!charactersStatusEffects.ContainsKey(character))

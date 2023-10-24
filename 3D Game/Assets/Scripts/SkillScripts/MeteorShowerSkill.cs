@@ -49,6 +49,8 @@ public class MeteorShowerSkill : Skill
         meteorShowerParticles.transform.localScale = new Vector3(meteorShowerRadius * 0.11f, 1, meteorShowerRadius * 0.11f);
         if (skillTree.raiseEmission)
         {
+            Destroy(meteorShowerParticles.GetComponent<MeteorShowerSound>());
+            skillUser.audioSource.PlayOneShot(skillSFX);
             ParticleSystem.EmissionModule emission = meteorShowerParticles.GetComponent<ParticleSystem>().emission;
             emission.rateOverTime = 200;
         }

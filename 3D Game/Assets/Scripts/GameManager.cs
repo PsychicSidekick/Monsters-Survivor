@@ -35,11 +35,13 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
+        AudioListener.pause = true;
     }
 
     public void UnpauseGame()
     {
         Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 
     public Vector3 RefinedPos(Vector3 position)

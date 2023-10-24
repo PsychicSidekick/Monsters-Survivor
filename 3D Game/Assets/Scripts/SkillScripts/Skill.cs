@@ -8,6 +8,8 @@ public class Skill : ScriptableObject
     public string skillName;
     public Sprite skillIcon;
 
+    public AudioClip skillSFX;
+
     public float coolDownTime;
     public float activeTime;
     public float baseManaCost;
