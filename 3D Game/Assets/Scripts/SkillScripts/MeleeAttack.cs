@@ -34,7 +34,7 @@ public class MeleeAttack : Skill
 
         skillTree.meleeVFX.GetComponent<ParticleSystem>().Play();
 
-        if (Vector3.Distance(skillUser.transform.position, targetCharacter.transform.position) <= baseRange + skillTree.increasedRange + 1)
+        if (Vector3.Distance(skillUser.transform.position, targetCharacter.transform.position) <= baseRange + skillTree.increasedRange + 1 && targetCharacter.isActiveAndEnabled)
         {
             skillUser.audioSource.PlayOneShot(skillSFX);
 

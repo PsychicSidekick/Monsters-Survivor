@@ -7,10 +7,12 @@ using UnityEngine.AI;
 public class Platform : MonoBehaviour
 {
     [Serializable]
-    public struct MaterialLightColor
+    public struct MapPreset
     {
         public Material material;
         public Color color;
+        public AudioClip bgm;
+        public float bgmVolume;
     }
 
     public static List<Vector2Int> listOfExistingPlatforms = new List<Vector2Int>();
@@ -19,7 +21,7 @@ public class Platform : MonoBehaviour
 
     public Light enviromentLight;
 
-    public List<MaterialLightColor> materialLightColors = new List<MaterialLightColor>();
+    public List<MapPreset> mapPresets = new List<MapPreset>();
 
     public Vector2Int pos;
 
@@ -33,9 +35,12 @@ public class Platform : MonoBehaviour
             listOfExistingPlatforms = new List<Vector2Int>();
             listOfExistingPlatforms.Add(pos);
             centerPlatform = this;
-            int index = UnityEngine.Random.Range(0, materialLightColors.Count);
-            surfaceMaterial = materialLightColors[index].material;
-            enviromentLight.color = materialLightColors[index].color;
+            int index = UnityEngine.Random.Range(0, mapPresets.Count);
+            surfaceMaterial = mapPresets[index].material;
+            enviromentLight.color = mapPresets[index].color;
+            Camera.main.GetComponent<AudioSource>().clip = mapPresets[index].bgm;
+            Camera.main.GetComponent<AudioSource>().volume = mapPresets[index].bgmVolume;
+            Camera.main.GetComponent<AudioSource>().Play();
             CreatePlatforms();
             centerPlatform.GetComponent<NavMeshSurface>().BuildNavMesh();
         }
@@ -76,9 +81,4 @@ public class Platform : MonoBehaviour
             centerPlatform.GetComponent<NavMeshSurface>().BuildNavMesh();
         }
     }
-
-    //private void OnParticleCollision(GameObject other)
-    //{
-    //    Debug.Log("HI");
-    //}
 }

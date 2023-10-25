@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: MeleeAttack
   skillIcon: {fileID: 0}
-  skillSFX: {fileID: 8300000, guid: fd25a15f9797641458336cccfb445343, type: 3}
+  skillSFX: {fileID: 8300000, guid: 076c674d9627d49d7bc9428ecb754613, type: 3}
   coolDownTime: 0
   activeTime: 0
   baseManaCost: 0

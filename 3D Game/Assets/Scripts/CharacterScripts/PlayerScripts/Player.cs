@@ -18,6 +18,8 @@ public class Player : Character
 
     public LayerMask moveRayLayer;
 
+    public AudioClip levelUpSFX;
+    public AudioClip deathSFX;
     public GameObject deathScreen;
 
     protected override void Awake()
@@ -73,12 +75,13 @@ public class Player : Character
     {
         EnemySpawnManager.instance.StopAllCoroutines();
         deathScreen.SetActive(true);
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(deathSFX);
         base.OnDeath();
     }
 
     public override void OnLevelUp()
     {
-        base.OnLevelUp();
+        audioSource.PlayOneShot(levelUpSFX);
         AddToAvailablePointsToAllSkills(1);
     }
 

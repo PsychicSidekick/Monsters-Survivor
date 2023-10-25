@@ -70,6 +70,7 @@ public class PlayerStorage : MonoBehaviour
             // if player has arrived at the position of the target loot
             if (Vector2.Distance(playerPos, lootPos) < 0.1f)
             {
+                GetComponent<AudioSource>().Play();
                 PlaceItemInFirstAvailableCell(inventory, player.targetLoot.item);
             }
         }

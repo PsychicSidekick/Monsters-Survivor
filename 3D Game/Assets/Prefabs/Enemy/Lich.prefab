@@ -223,6 +223,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   stats: {fileID: 0}
   status: {fileID: 0}
+  audioSource: {fileID: 0}
   life: 0
   mana: 0
   xp: 0
@@ -507,7 +508,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

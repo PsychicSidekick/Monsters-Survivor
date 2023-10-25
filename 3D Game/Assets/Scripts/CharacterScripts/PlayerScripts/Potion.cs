@@ -46,6 +46,7 @@ public class Potion : MonoBehaviour
     {
         if (cooldownTime <= 0)
         {
+            GetComponent<AudioSource>().Play();
             ApplyPotionEffect();
             button.enabled = false;
             image.color = button.colors.disabledColor;
