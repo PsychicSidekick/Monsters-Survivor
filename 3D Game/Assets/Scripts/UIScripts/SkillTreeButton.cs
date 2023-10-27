@@ -7,15 +7,24 @@ using TMPro;
 public class SkillTreeButton : MonoBehaviour
 {
     public GameObject skillTreePanel;
+    private List<GameObject> skillTreePanels = new List<GameObject>();
+
+    private void Start()
+    {
+        foreach (Transform child in skillTreePanel.transform.parent)
+        {
+            if (!child.GetComponent<Button>() && !child.GetComponent<TMP_Text>() && child.name != "ChooseTreePanel" && child.name != "Frame")
+            {
+                skillTreePanels.Add(child.gameObject);
+            }
+        }
+    }
 
     public void OnClick()
     {
-        foreach(Transform child in transform.parent)
+        foreach(GameObject skillTreePanel in skillTreePanels)
         {
-            if (!child.GetComponent<Button>() && !child.GetComponent<TMP_Text>())
-            {
-                child.gameObject.SetActive(false);
-            }
+            skillTreePanel.SetActive(false);
         }
 
         skillTreePanel.SetActive(true);

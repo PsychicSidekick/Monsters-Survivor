@@ -205,13 +205,15 @@ public class PlayerStorage : MonoBehaviour
         cursorItem = item;
     }
 
-    public void SwapCursorItemWithItemInInventory(Item item, Cell c)
+    public void SwapCursorItemWithItemInInventory(Item item, Cell cellContainingItem, Cell cellClickedOn)
     {
-        Item inventoryItem = c.FindOccupyingItemInCells(c.FindCellGroupOfSize(item.itemBase.size));
+        Item inventoryItem = cellContainingItem.FindOccupyingItemInCells(cellContainingItem.FindCellGroupOfSize(item.itemBase.size));
         PickUpItemWithCursor(inventoryItem);
-        PlaceItem(item, c);
-        descriptionPanel.SetActive(false);
+        PlaceItem(item, cellContainingItem);
+        descriptionPanel.SetActive(true);
         cursorItem = inventoryItem;
+        descriptionPanel.GetComponent<DescriptionPanel>().UpdateDescription(item);
+        cellClickedOn.UpdateCellColour();
     }
 
     public void SwapCursorItemWithEquippedItem(Item item, ItemSlot slot)

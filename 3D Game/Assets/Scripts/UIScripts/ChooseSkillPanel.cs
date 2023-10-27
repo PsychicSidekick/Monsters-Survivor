@@ -42,7 +42,7 @@ public class ChooseSkillPanel : MonoBehaviour
 
                 GameObject chooseSkillButton = Instantiate(chooseSkillButtonPrefab, transform);
                 chooseSkillButton.GetComponent<ChooseSkillButton>().skill = availableSkills[buttonCount];
-                chooseSkillButton.GetComponent<Image>().sprite = availableSkills[buttonCount].skillIcon;
+                chooseSkillButton.transform.GetChild(0).GetComponent<Image>().sprite = availableSkills[buttonCount].skillIcon;
                 chooseSkillButton.GetComponent<RectTransform>().localPosition = new Vector2(posX, posY);
                 buttonCount++;
                 if (buttonCount >= availableSkills.Count)

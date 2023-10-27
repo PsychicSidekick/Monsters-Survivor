@@ -14,7 +14,8 @@ public class ChooseSkillButton : MonoBehaviour
         transform.parent.GetComponent<ChooseSkillPanel>().chosenSkills.Remove(currentSkillSlot.chosenSkill);
         currentSkillSlot.chosenSkill = skill;
         transform.parent.GetComponent<ChooseSkillPanel>().chosenSkills.Add(skill);
-        currentSkillSlot.GetComponent<Image>().sprite = skill.skillIcon;
+        currentSkillSlot.transform.GetChild(0).GetComponent<Image>().sprite = skill.skillIcon;
+        currentSkillSlot.transform.GetChild(0).gameObject.SetActive(true);
         transform.parent.gameObject.SetActive(false);
         currentSkillSlot.SetPlayerSkill();
     }

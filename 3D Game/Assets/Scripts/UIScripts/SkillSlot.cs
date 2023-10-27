@@ -14,13 +14,13 @@ public class SkillSlot : MonoBehaviour
     public TMP_Text cooldownText;
 
     private Button button;
-    private Image image;
+    private Image skillIcon;
 
     private void Start()
     {
         skillHolder = Player.instance.GetComponent<SkillHandler>().skills[skillSlotID];
         button = GetComponent<Button>();
-        image = GetComponent<Image>();
+        skillIcon = transform.GetChild(0).GetComponent<Image>();
     }
 
     private void Update()
@@ -30,13 +30,13 @@ public class SkillSlot : MonoBehaviour
             if (skillHolder.cooldownTime > 0)
             {
                 button.enabled = false;
-                image.color = button.colors.disabledColor;
+                skillIcon.color = button.colors.disabledColor;
                 cooldownText.text = Mathf.Ceil(skillHolder.cooldownTime).ToString();
             }
             else
             {
                 button.enabled = true;
-                image.color = button.colors.normalColor;
+                skillIcon.color = button.colors.normalColor;
                 cooldownText.text = "";
             }
         }

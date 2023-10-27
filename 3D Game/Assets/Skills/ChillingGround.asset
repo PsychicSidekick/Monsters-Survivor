@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChillingGround
   m_EditorClassIdentifier: 
   skillName: ChillingGround
-  skillIcon: {fileID: 21300000, guid: 0f1a197c13ff60d43bd415be4d2acf45, type: 3}
+  skillIcon: {fileID: 21300000, guid: 68a2bfe6bd7f2864487240d4c34510d2, type: 3}
   skillSFX: {fileID: 8300000, guid: d1857ae27d7a1d54f9c16a2d32e25e6a, type: 3}
   coolDownTime: 5
   activeTime: 0

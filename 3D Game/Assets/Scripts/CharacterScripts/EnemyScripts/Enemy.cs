@@ -15,6 +15,7 @@ public class Enemy : Character
 
     public int xpYield;
     public int chanceToDropLoot;
+    public AudioClip lootDropSFX;
 
     public Player player;
 
@@ -42,6 +43,7 @@ public class Enemy : Character
     {
         if (Random.Range(1, 101) <= chanceToDropLoot)
         {
+            player.audioSource.PlayOneShot(lootDropSFX);
             // Choose random item from loot pool
             ItemBase itemBase = lootPool[Random.Range(0, lootPool.Count)];
             LootGameObject lootGameObject = Instantiate(itemBase.lootGameObjectPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity).GetComponent<LootGameObject>();

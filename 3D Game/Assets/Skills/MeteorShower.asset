@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MeteorShower
   m_EditorClassIdentifier: 
   skillName: Meteor Shower
-  skillIcon: {fileID: 21300000, guid: 689cd0fe452c95545b4c6766e9c27d07, type: 3}
+  skillIcon: {fileID: 21300000, guid: d9e411be101cab94d9b1a85d3a5390bc, type: 3}
   skillSFX: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
   coolDownTime: 6
   activeTime: 0

@@ -240,7 +240,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
 
             if (overlappedItems == 1)
             {
-                PlayerStorage.instance.SwapCursorItemWithItemInInventory(cursorItem, parentCell);
+                PlayerStorage.instance.SwapCursorItemWithItemInInventory(cursorItem, parentCell, this);
             }
             else
             {

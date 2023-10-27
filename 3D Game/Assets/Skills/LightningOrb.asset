@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightningOrb
   m_EditorClassIdentifier: 
   skillName: LightningOrb
-  skillIcon: {fileID: 21300000, guid: fe860402416047c45a58160daa3c0d9a, type: 3}
+  skillIcon: {fileID: 21300000, guid: b675ded392faec3449678431a04075a0, type: 3}
   skillSFX: {fileID: 8300000, guid: 076c674d9627d49d7bc9428ecb754613, type: 3}
   coolDownTime: 6
   activeTime: 0

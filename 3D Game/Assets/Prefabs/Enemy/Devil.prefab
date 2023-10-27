@@ -2818,6 +2818,7 @@ MonoBehaviour:
   lootRank: 3
   xpYield: 1000
   chanceToDropLoot: 50
+  lootDropSFX: {fileID: 8300000, guid: ca056d4afe5e74498a0798f16e0e866d, type: 3}
   player: {fileID: 0}
   detectionRange: 0
   attackRange: 0

@@ -8,18 +8,19 @@ public class Potion : MonoBehaviour
 {
     public float cooldown;
     public KeyCode key;
+    public GameObject potionVFX;
 
     private float cooldownTime;
 
     private Button button;
-    private Image image;
+    private Image potionIcon;
 
     public TMP_Text cooldownText;
 
     private void Start()
     {
         button = GetComponent<Button>();
-        image = GetComponent<Image>();
+        potionIcon = transform.GetChild(0).GetComponent<Image>();
     }
 
     void Update()
@@ -37,7 +38,7 @@ public class Potion : MonoBehaviour
         else
         {
             button.enabled = true;
-            image.color = button.colors.normalColor;
+            potionIcon.color = button.colors.normalColor;
             cooldownText.text = "";
         }
     }
@@ -47,9 +48,10 @@ public class Potion : MonoBehaviour
         if (cooldownTime <= 0)
         {
             GetComponent<AudioSource>().Play();
+            Instantiate(potionVFX, Player.instance.transform);
             ApplyPotionEffect();
             button.enabled = false;
-            image.color = button.colors.disabledColor;
+            potionIcon.color = button.colors.disabledColor;
             cooldownTime = cooldown;
         }
     }

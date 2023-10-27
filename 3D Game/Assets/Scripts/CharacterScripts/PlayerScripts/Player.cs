@@ -19,6 +19,7 @@ public class Player : Character
     public LayerMask moveRayLayer;
 
     public AudioClip levelUpSFX;
+    public GameObject levelUpVFX;
     public AudioClip deathSFX;
     public GameObject deathScreen;
 
@@ -40,7 +41,7 @@ public class Player : Character
         }
         base.Start();
 
-        AddToAvailablePointsToAllSkills(100);
+        AddToAvailablePointsToAllSkills(50);
     }
 
     protected override void Update()
@@ -81,6 +82,7 @@ public class Player : Character
 
     public override void OnLevelUp()
     {
+        Instantiate(levelUpVFX, transform);
         audioSource.PlayOneShot(levelUpSFX);
         AddToAvailablePointsToAllSkills(1);
     }

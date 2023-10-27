@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightningStrike
   m_EditorClassIdentifier: 
   skillName: LightningStrike
-  skillIcon: {fileID: 21300000, guid: 48ca77e020f357f4e87cd0fb5869e287, type: 3}
+  skillIcon: {fileID: 21300000, guid: 5df2121d36a221a429d2d9bd0193d99c, type: 3}
   skillSFX: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
   coolDownTime: 0
   activeTime: 0
