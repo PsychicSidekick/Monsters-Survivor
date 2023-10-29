@@ -11,7 +11,7 @@ public class ShowDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [TextArea(15, 20)]
     public string description;
     public GameObject descriptionPanel;
-
+    public bool fixedPos;
     private bool mouseOvered = false;
 
     private void Start()
@@ -21,7 +21,7 @@ public class ShowDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private void Update()
     {
-        if (mouseOvered)
+        if (mouseOvered && !fixedPos)
         {
             SetDescriptionPos();
         }

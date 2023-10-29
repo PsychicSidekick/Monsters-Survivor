@@ -2459,7 +2459,7 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 3577782504961595815, guid: 172706cc439a7084aa97a6ac4edd1a48, type: 3}
   lootRank: 1
   xpYield: 100
-  chanceToDropLoot: 100
+  chanceToDropLoot: 10
   lootDropSFX: {fileID: 8300000, guid: ca056d4afe5e74498a0798f16e0e866d, type: 3}
   player: {fileID: 0}
   detectionRange: 0

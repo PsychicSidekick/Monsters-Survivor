@@ -178,7 +178,7 @@ public class EffectCollider : MonoBehaviour
             Instantiate(onHitVFX, other.ClosestPointOnBounds(transform.position), Quaternion.identity);
         }
 
-        if (onHitSFX != null)
+        if (onHitSFX != null && owner != null)
         {
             owner.audioSource.clip = onHitSFX;
             owner.audioSource.Play();

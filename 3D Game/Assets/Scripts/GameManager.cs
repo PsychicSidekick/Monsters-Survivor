@@ -9,14 +9,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [HideInInspector] public float gameStartTime;
+
     private void Awake()
     {
         instance = this;
     }
 
-    private void Update()
+    private void Start()
     {
-        //Debug.Log(Time.time);
+        gameStartTime = Time.time;
     }
 
     // call to pause/unpause game
@@ -40,6 +42,20 @@ public class GameManager : MonoBehaviour
     public void UnpauseGame()
     {
         Time.timeScale = 1;
+    }
+
+    public float GetCurrentGameTime()
+    {
+        return Time.time - gameStartTime;
+    }
+
+    public string TimeToString(float time)
+    {
+        string minutes = Mathf.Floor(time / 60).ToString().PadLeft(2, '0');
+
+        string seconds = Mathf.Floor(time % 60).ToString().PadLeft(2, '0');
+
+        return minutes + ":" + seconds;
     }
 
     public Vector3 RefinedPos(Vector3 position)

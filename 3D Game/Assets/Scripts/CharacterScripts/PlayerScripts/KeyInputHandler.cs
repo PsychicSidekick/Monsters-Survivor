@@ -13,6 +13,11 @@ public class KeyInputHandler : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
+
         foreach (SkillHolder skillHolder in playerSkillHandler.skills)
         {
             if(Input.GetKey(skillHolder.key))

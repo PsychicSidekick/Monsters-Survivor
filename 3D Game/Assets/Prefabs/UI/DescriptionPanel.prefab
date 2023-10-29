@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6671563322516363548}
   - component: {fileID: 6671563322516363551}
   m_Layer: 5
-  m_Name: PassiveName
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,8 +70,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fe9f4cb040ca00646b82fd71980f24a9, type: 2}
+  m_sharedMaterial: {fileID: -228249498204361212, guid: fe9f4cb040ca00646b82fd71980f24a9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 3
+  m_fontStyle: 7
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -205,8 +205,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 123
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fe9f4cb040ca00646b82fd71980f24a9, type: 2}
+  m_sharedMaterial: {fileID: -228249498204361212, guid: fe9f4cb040ca00646b82fd71980f24a9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 6671563323965463184}
   - component: {fileID: 5941943705321913660}
   m_Layer: 5
-  m_Name: PassiveDescription
+  m_Name: DescriptionPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

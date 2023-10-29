@@ -40,8 +40,6 @@ public class Player : Character
             }
         }
         base.Start();
-
-        AddToAvailablePointsToAllSkills(50);
     }
 
     protected override void Update()
@@ -58,7 +56,7 @@ public class Player : Character
             return;
         }
 
-        if (((!isAttacking && Input.GetMouseButton(0)) || (isAttacking && Input.GetMouseButtonDown(0))) && !GetComponent<SkillHandler>().isChannelling)
+        if (((!isAttacking && Input.GetMouseButton(0)) || (isAttacking && Input.GetMouseButtonDown(0))) && !GetComponent<SkillHandler>().isChannelling && Time.timeScale != 0)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -77,12 +75,13 @@ public class Player : Character
         EnemySpawnManager.instance.StopAllCoroutines();
         deathScreen.SetActive(true);
         Camera.main.GetComponent<AudioSource>().PlayOneShot(deathSFX);
+        HUD.instance.timerStopped = true;
         base.OnDeath();
     }
 
     public override void OnLevelUp()
     {
-        Instantiate(levelUpVFX, transform);
+        Instantiate(levelUpVFX, transform.position, Quaternion.identity);
         audioSource.PlayOneShot(levelUpSFX);
         AddToAvailablePointsToAllSkills(1);
     }

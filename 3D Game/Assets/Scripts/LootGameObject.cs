@@ -32,4 +32,9 @@ public class LootGameObject : MonoBehaviour
     {
         Destroy(lootButton);
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.collider.name);
+    }
 }

@@ -25,7 +25,7 @@ public class Potion : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(key))
+        if (Input.GetKeyDown(key) && Time.timeScale != 0)
         {
             TryUsePotion();
         }
@@ -45,10 +45,10 @@ public class Potion : MonoBehaviour
 
     public void TryUsePotion()
     {
-        if (cooldownTime <= 0)
+        if (cooldownTime <= 0 && Time.timeScale != 0 && Player.instance.gameObject.activeInHierarchy)
         {
             GetComponent<AudioSource>().Play();
-            Instantiate(potionVFX, Player.instance.transform);
+            Instantiate(potionVFX, Player.instance.transform.position, Quaternion.identity);
             ApplyPotionEffect();
             button.enabled = false;
             potionIcon.color = button.colors.disabledColor;

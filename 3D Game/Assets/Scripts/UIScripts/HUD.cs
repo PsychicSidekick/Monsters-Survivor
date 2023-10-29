@@ -7,6 +7,8 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
+    public static HUD instance;
+
     public TMP_Text lifeText;
     public TMP_Text manaText;
     public TMP_Text xpText;
@@ -20,19 +22,26 @@ public class HUD : MonoBehaviour
     public Image manaMask;
 
     public TMP_Text timerText;
-    private float startTime;
+    public bool timerStopped;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
         player = Player.instance;
-        startTime = Time.time;
         lifeBallOriginalSize = lifeMask.rectTransform.rect.width;
         manaBallOriginalSize = manaMask.rectTransform.rect.width;
     }
 
     private void Update()
     {
-        timerText.text = GetCurrentTime();
+        if (!timerStopped)
+        {
+            timerText.text = GameManager.instance.TimeToString(GameManager.instance.GetCurrentGameTime());
+        }
 
         lifeText.text = (int)player.life + "/" + (int)player.stats.maximumLife.value;
         lifeMask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, lifeBallOriginalSize * player.life / (float)player.stats.maximumLife.value);
@@ -61,17 +70,5 @@ public class HUD : MonoBehaviour
 
             player.xpIsDirty = false;
         }
-    }
-
-    private string GetCurrentTime()
-    {
-        float currentTime = Time.time - startTime;
-
-        string minutes = Mathf.Floor(currentTime / 60).ToString().PadLeft(2, '0');
-
-        string seconds = Mathf.Floor(currentTime % 60).ToString().PadLeft(2, '0');
-
-
-        return minutes + ":" + seconds;
     }
 }
