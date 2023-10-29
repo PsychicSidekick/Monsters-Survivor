@@ -1722,15 +1722,15 @@ MonoBehaviour:
   additionalNumberOfLightningBolts: 0
   additionalNumberOfLightningBoltChains: 0
   increasedLightningBoltChainingRange: 0
-  increasedLightningBoltDamage: 0
+  increasedLightningBoltDamage: 0.5
   increasedBaseLightningBoltDamage: 0
   increasedLightningBoltRange: 0
-  increasedLightningBoltSpeed: 0
+  increasedLightningBoltSpeed: -0.9
   increasedLightningBoltSpread: 0
   increasedShockEffect: 0
   increasedShockChance: 0
   increasedShockDuration: 0
-  chainsToUser: 1
+  chainsToUser: 0
   maximumNumberOfLightningBoltsIsOne: 0
 --- !u!82 &-5733219081167357293
 AudioSource:

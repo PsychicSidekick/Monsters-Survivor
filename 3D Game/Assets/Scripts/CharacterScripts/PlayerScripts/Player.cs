@@ -22,6 +22,7 @@ public class Player : Character
     public GameObject levelUpVFX;
     public AudioClip deathSFX;
     public GameObject deathScreen;
+    public TMP_Text survivalTimeMessage;
 
     protected override void Awake()
     {
@@ -73,6 +74,12 @@ public class Player : Character
     public override void OnDeath()
     {
         EnemySpawnManager.instance.StopAllCoroutines();
+        float survivalTime = GameManager.instance.GetCurrentGameTime();
+        survivalTimeMessage.text = "You have survived for: " + GameManager.instance.TimeToString(survivalTime);
+        if (survivalTime > PlayerPrefs.GetFloat("HighScore"))
+        {
+            PlayerPrefs.SetFloat("HighScore", GameManager.instance.GetCurrentGameTime());
+        }
         deathScreen.SetActive(true);
         Camera.main.GetComponent<AudioSource>().PlayOneShot(deathSFX);
         HUD.instance.timerStopped = true;

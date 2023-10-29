@@ -1245,7 +1245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumLife:
     type: 0
-    baseValue: 5000
+    baseValue: 7500
   lifeRegeneration:
     type: 1
     baseValue: 0
@@ -1257,7 +1257,7 @@ MonoBehaviour:
     baseValue: 10000
   movementSpeed:
     type: 4
-    baseValue: 3.5
+    baseValue: 4
   attackSpeed:
     type: 5
     baseValue: 1.5
@@ -1266,13 +1266,13 @@ MonoBehaviour:
     baseValue: 0
   fireResistance:
     type: 7
-    baseValue: 0
+    baseValue: 20
   coldResistance:
     type: 8
-    baseValue: 0
+    baseValue: 20
   lightningResistance:
     type: 9
-    baseValue: 0
+    baseValue: 20
   increasedFireDamage:
     type: 10
     baseValue: 0

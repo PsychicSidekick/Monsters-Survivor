@@ -14,7 +14,7 @@ public class Enemy : Character
     private List<ItemBase> lootPool = new List<ItemBase>();
 
     public int xpYield;
-    public int chanceToDropLoot;
+    public float chanceToDropLoot;
     public AudioClip lootDropSFX;
 
     public Player player;
@@ -46,7 +46,7 @@ public class Enemy : Character
 
     public void SpawnLoot()
     {
-        if (Random.Range(1, 101) <= chanceToDropLoot)
+        if (Random.Range(1f, 101f) <= chanceToDropLoot)
         {
             player.audioSource.PlayOneShot(lootDropSFX);
             // Choose random item from loot pool
