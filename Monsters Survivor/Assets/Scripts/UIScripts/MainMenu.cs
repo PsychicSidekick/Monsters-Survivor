@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     public TMP_Text longestSurvivalTimeText;
+    public GameObject loadingScreen;
+    public Slider loadingBar;
 
     private void Start()
     {
@@ -24,9 +27,10 @@ public class MainMenu : MonoBehaviour
 
     public void StartGameOnClick()
     {
-        SceneManager.LoadScene("Main");
         GameObject stashPanel = PlayerStorage.instance.transform.GetChild(1).gameObject;
         stashPanel.SetActive(false);
+        StartCoroutine(LoadSceneAsync());
+        //SceneManager.LoadScene("Main");
     }
 
     public void ShowStashOnClick()
@@ -41,5 +45,26 @@ public class MainMenu : MonoBehaviour
     {
         GameSave gameSave = new GameSave();
         gameSave.ClearSave();
+    }
+
+    IEnumerator LoadSceneAsync()
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync("Main");
+        operation.allowSceneActivation = false;
+        loadingScreen.SetActive(true);
+        Debug.Log("Hello");
+        while(!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / 0.9f);
+
+            loadingBar.value = progress;
+
+            if (operation.progress == 0.9f)
+            {
+                operation.allowSceneActivation = true;
+            }
+            Debug.Log("HJI");
+            yield return null;
+        }
     }
 }
