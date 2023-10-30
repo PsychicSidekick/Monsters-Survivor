@@ -51,11 +51,11 @@ public class HUD : MonoBehaviour
         int playerLevel = player.GetCurrentLevel();
         levelText.text = "Level: " + playerLevel;
 
-        if (playerLevel >= 60)
-        {
-            xpText.text = "MAX LEVEL";
-            xpBar.transform.localScale = new Vector3(1, 1, 1);
-        }
+        //if (playerLevel >= 60)
+        //{
+        //    xpText.text = "MAX LEVEL";
+        //    xpBar.transform.localScale = new Vector3(1, 1, 1);
+        //}
 
         if (player.xpIsDirty)
         {

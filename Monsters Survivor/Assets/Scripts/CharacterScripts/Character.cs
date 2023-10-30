@@ -62,10 +62,10 @@ public class Character : MonoBehaviour
             requiredXp += (level + 1) * increasedRequiredXpPerLevel;
             level++;
 
-            if (level >= maxLevel)
-            {
-                return level;
-            }
+            //if (level >= maxLevel)
+            //{
+            //    return level;
+            //}
         }
 
         return level;

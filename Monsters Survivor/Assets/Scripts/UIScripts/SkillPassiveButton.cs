@@ -27,12 +27,6 @@ public class SkillPassiveButton : MonoBehaviour
 
     private void Update()
     {
-        if (pointsCounter.pointsSpent == 15)
-        {
-            button.interactable = false;
-            return;
-        }
-
         if (pointsCounter.availablePoints <= 0)
         {
             button.interactable = false;
