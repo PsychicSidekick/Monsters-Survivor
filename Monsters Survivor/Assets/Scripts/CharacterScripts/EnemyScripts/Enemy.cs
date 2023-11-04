@@ -32,6 +32,11 @@ public class Enemy : Character
             lootRank = 2;
             chanceToDropLoot = 1;
         }
+        if (lootRank == 2 && GameManager.instance.GetCurrentGameTime() > 360)
+        {
+            lootRank = 3;
+            chanceToDropLoot = 1;
+        }
         lootPool = Resources.LoadAll<ItemBase>("ItemBases/Rank" + lootRank).ToList();
         healthBar = Instantiate(healthBarPrefab, healthBarCanvas.transform);
         healthBar.GetComponent<RectTransform>().anchoredPosition = GameManager.instance.WorldToCanvasPos(healthBarCanvas, transform.position);

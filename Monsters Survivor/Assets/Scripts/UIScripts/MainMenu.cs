@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject helpPanel;
+
     public TMP_Text longestSurvivalTimeText;
     public GameObject loadingScreen;
     public Slider loadingBar;
@@ -39,6 +41,13 @@ public class MainMenu : MonoBehaviour
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
         GameObject stashPanel = PlayerStorage.instance.transform.GetChild(1).gameObject;
         stashPanel.SetActive(!stashPanel.activeInHierarchy);
+    }
+
+    public void ShowHelpPanelOnClick()
+    {
+        helpPanel.SetActive(!helpPanel.activeInHierarchy);
+        PlayerStorage.instance.transform.GetChild(0).gameObject.SetActive(false);
+        PlayerStorage.instance.transform.GetChild(1).gameObject.SetActive(false);
     }
 
     public void ClearSaveOnClick()
