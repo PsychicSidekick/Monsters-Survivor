@@ -15411,17 +15411,21 @@ MonoBehaviour:
     enemies that they pass through.
 
 
+    Mana Cost: 30
+
+    Cooldown
+    Time: 6s
+
     Damage: 50
 
-    Number
-    of orbs: 3
+    Number of orbs: 3
 
     Shock chance: 10%
 
-    Shock duration: 2s
+    Shock
+    duration: 2s
 
-    Shock effect:
-    50%'
+    Shock effect: 50%'
   descriptionPanel: {fileID: 1435534865}
   fixedPos: 0
 --- !u!224 &796595384 stripped
@@ -22064,21 +22068,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Meteor Shower
-  description: 'Calls down a meteor shower at the target area, dealing fire damage
-    to enemies in area continuously.
-
-
-    Mana Cost: 50
-
-    Meteor Shower Damage
-    Per Second: 70
-
-    Meteor Shower Duration: 4s
-
-    Ignite Chance: 40%
-
-    Ignite
-    Duration: 4s'
+  description: "Calls down a meteor shower at the target area, \ndealing fire damage
+    to enemies in area continuously.\n\nMana Cost: 50\nCooldown Time: 6s\nMeteor
+    Shower Damage Per Second: 70\nMeteor Shower Duration: 4s\nIgnite Chance: 40%\nIgnite
+    Duration: 4s"
   descriptionPanel: {fileID: 1435534865}
   fixedPos: 0
 --- !u!1 &1050705193
@@ -23737,28 +23730,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Chilling Ground
-  description: 'Creates an area of chill under the player, slowing and dealing Cold
-    damage to enemies continuously. Chilling Ground also heals the player
-
-    when
-    they stand on it.
-
-
-    Mana Cost: 20
-
-    Cooldown Time: 5
-
-    Chilling Ground
-    Damage Per Second: 50
-
-    Chilling Ground Healing Per Second: 10
-
-    Chilling
-    Ground Duration: 4s
-
-    Slow Effect: 30
-
-'
+  description: "Creates an area of chill under the player, slowing \nand dealing
+    Cold damage to enemies continuously. \nChilling Ground also heals the player
+    when they stand on it.\n\nMana Cost: 20\nCooldown Time: 5s\nChilling Ground Damage
+    Per Second: 50\nChilling Ground Healing Per Second: 10\nChilling Ground Duration:
+    4s\nSlow Effect: 30\n"
   descriptionPanel: {fileID: 1435534865}
   fixedPos: 0
 --- !u!1001 &1127503463

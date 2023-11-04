@@ -50,6 +50,11 @@ public class MainMenu : MonoBehaviour
         PlayerStorage.instance.transform.GetChild(1).gameObject.SetActive(false);
     }
 
+    public void ExitGameOnClick()
+    {
+        Application.Quit();
+    }
+
     public void ClearSaveOnClick()
     {
         GameSave gameSave = new GameSave();

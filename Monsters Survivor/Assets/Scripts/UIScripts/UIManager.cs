@@ -76,7 +76,7 @@ public class UIManager : MonoBehaviour
         }
         else if (inventoryPanel.activeInHierarchy)
         {
-            ToggleUIPanel(inventoryPanel);
+            InventoryButtonOnClick();
         }
         else
         {
