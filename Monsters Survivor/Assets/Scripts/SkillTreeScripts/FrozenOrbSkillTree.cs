@@ -45,8 +45,8 @@ public class FrozenOrbSkillTree : SkillTree
 
     public void MultiOrb()
     {
-        additionalCooldownTime -= 3;
-        additionalManaCost -= 50;
+        additionalCooldownTime -= 4;
+        additionalManaCost -= 20;
     }
 
     public void IcicleShootRate()

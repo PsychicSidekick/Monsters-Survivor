@@ -3539,7 +3539,7 @@ MonoBehaviour:
     damage to enemies
 
 
-    Mana Cost: 30
+    Mana Cost: 40
 
     Fire Blast Damage: 150
 
@@ -34256,9 +34256,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '-3s Cooldown Time
+      value: '-4s Cooldown Time
 
-        -50 Mana Cost'
+        -20 Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -44655,7 +44655,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: -2.5s Cooldown Time
+      value: -3s Cooldown Time
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel

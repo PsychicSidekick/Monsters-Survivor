@@ -477,7 +477,7 @@ MonoBehaviour:
   increasedIceSpearDamage: 0
   increasedBaseIceSpearDamage: -0.8
   increasedIceSpearRange: 0
-  increasedIceSpearSpeed: 0
+  increasedIceSpearSpeed: -0.2
   increasedIceSpearSpread: 0
   increasedSlowEffect: 0
   increasedSlowChance: 0

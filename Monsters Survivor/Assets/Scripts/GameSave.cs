@@ -76,7 +76,7 @@ public class GameSave
         storageSave.savedEquippedItems = new List<ItemSave>();
 
         string json = JsonUtility.ToJson(storageSave);
-        File.WriteAllText(Application.dataPath + "/Save/save.txt", json);
+        File.WriteAllText(Application.streamingAssetsPath + "/Save/save.txt", json);
     }
 
     public void Save()
@@ -130,12 +130,12 @@ public class GameSave
         }
 
         string json = JsonUtility.ToJson(storageSave);
-        File.WriteAllText(Application.dataPath + "/Save/save.txt", json);
+        File.WriteAllText(Application.streamingAssetsPath + "/Save/save.txt", json);
     }
 
     public void Load()
     {
-        string json = File.ReadAllText(Application.dataPath + "/Save/save.txt");
+        string json = File.ReadAllText(Application.streamingAssetsPath + "/Save/save.txt");
         StorageSave storageSave = JsonUtility.FromJson<StorageSave>(json);
 
         foreach (ItemSave itemSave in storageSave.savedStashItems)

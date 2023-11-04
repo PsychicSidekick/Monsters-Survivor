@@ -13,9 +13,14 @@ public class MainMenu : MonoBehaviour
     public GameObject loadingScreen;
     public Slider loadingBar;
 
+    public GameObject inventoryPanel;
+    public GameObject stashPanel;
+
     private void Start()
     {
         longestSurvivalTimeText.text = "Your Longest Survival Time: " + TimeToString(PlayerPrefs.GetFloat("HighScore"));
+        inventoryPanel = PlayerStorage.instance.transform.GetChild(0).gameObject;
+        stashPanel = PlayerStorage.instance.transform.GetChild(1).gameObject;
     }
 
     private string TimeToString(float time)
@@ -29,25 +34,22 @@ public class MainMenu : MonoBehaviour
 
     public void StartGameOnClick()
     {
-        GameObject stashPanel = PlayerStorage.instance.transform.GetChild(1).gameObject;
+        inventoryPanel.SetActive(false);
         stashPanel.SetActive(false);
         StartCoroutine(LoadSceneAsync());
-        //SceneManager.LoadScene("Main");
     }
 
     public void ShowStashOnClick()
     {
-        GameObject inventoryPanel = PlayerStorage.instance.transform.GetChild(0).gameObject;
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
-        GameObject stashPanel = PlayerStorage.instance.transform.GetChild(1).gameObject;
         stashPanel.SetActive(!stashPanel.activeInHierarchy);
     }
 
     public void ShowHelpPanelOnClick()
     {
         helpPanel.SetActive(!helpPanel.activeInHierarchy);
-        PlayerStorage.instance.transform.GetChild(0).gameObject.SetActive(false);
-        PlayerStorage.instance.transform.GetChild(1).gameObject.SetActive(false);
+        inventoryPanel.SetActive(false);
+        stashPanel.gameObject.SetActive(false);
     }
 
     public void ExitGameOnClick()
@@ -66,7 +68,7 @@ public class MainMenu : MonoBehaviour
         AsyncOperation operation = SceneManager.LoadSceneAsync("Main");
         operation.allowSceneActivation = false;
         loadingScreen.SetActive(true);
-        Debug.Log("Hello");
+
         while(!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
@@ -77,7 +79,7 @@ public class MainMenu : MonoBehaviour
             {
                 operation.allowSceneActivation = true;
             }
-            Debug.Log("HJI");
+
             yield return null;
         }
     }

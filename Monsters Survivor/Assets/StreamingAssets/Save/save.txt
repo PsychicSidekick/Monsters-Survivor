@@ -1,0 +1,1 @@
+{"savedStashItems":[],"savedInventoryItems":[],"savedEquippedItems":[{"positionInStorage":{"x":0,"y":0},"occupiedItemSlotID":0,"itemName":"Carved Wand","itemBaseID":8,"itemMods":[{"itemModValue":16.0,"itemModStatType":6,"itemModType":0},{"itemModValue":21.0,"itemModStatType":13,"itemModType":0}]}]}

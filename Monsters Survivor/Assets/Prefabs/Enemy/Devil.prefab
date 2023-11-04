@@ -2848,13 +2848,13 @@ MonoBehaviour:
     baseValue: 10000
   movementSpeed:
     type: 4
-    baseValue: 1
+    baseValue: 1.2
   attackSpeed:
     type: 5
     baseValue: 1.5
   attackDamage:
     type: 6
-    baseValue: 0
+    baseValue: 10
   fireResistance:
     type: 7
     baseValue: 20

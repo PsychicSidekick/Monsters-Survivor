@@ -62,7 +62,7 @@ public class LightningOrbSkillTree : SkillTree
 
     public void ReducedCooldown()
     {
-        additionalCooldownTime -= 2.5f;
+        additionalCooldownTime -= 3f;
     }
 
     public void CastSpeed()

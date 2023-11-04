@@ -289,6 +289,6 @@ public class PlayerStorage : MonoBehaviour
     private void OnApplicationQuit()
     {
         GameSave storageSave = new GameSave();
-        //storageSave.Save();
+        storageSave.Save();
     }
 }
