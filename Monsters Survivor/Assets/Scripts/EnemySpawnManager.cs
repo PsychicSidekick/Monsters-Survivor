@@ -53,22 +53,25 @@ public class EnemySpawnManager : MonoBehaviour
 
     public IEnumerator SpawnSequence()
     {
-        // repeat for every wave
-        for (int i = 0; i < spawnData.waves.Length; i++)
+        while(true)
         {
-            // repeat for every specialJob
-            for (int j = 0; j < spawnData.waves[i].specialJobs.Length; j++)
+            // repeat for every wave
+            for (int i = 0; i < spawnData.waves.Length; i++)
             {
-                StartCoroutine(SpecialSpawnJob(spawnData.waves[i].specialJobs[j]));
-            }
+                // repeat for every specialJob
+                for (int j = 0; j < spawnData.waves[i].specialJobs.Length; j++)
+                {
+                    StartCoroutine(SpecialSpawnJob(spawnData.waves[i].specialJobs[j]));
+                }
 
-            // repeat for every job
-            for (int k = 0; k < spawnData.waves[i].jobs.Length; k++)
-            {
-                StartCoroutine(SpawnJob(spawnData.waves[i].jobs[k], spawnData.waves[i].duration));
-            }
+                // repeat for every job
+                for (int k = 0; k < spawnData.waves[i].jobs.Length; k++)
+                {
+                    StartCoroutine(SpawnJob(spawnData.waves[i].jobs[k], spawnData.waves[i].duration));
+                }
 
-            yield return new WaitForSeconds(spawnData.waves[i].duration);
+                yield return new WaitForSeconds(spawnData.waves[i].duration);
+            }
         }
     }
 
@@ -97,6 +100,11 @@ public class EnemySpawnManager : MonoBehaviour
     public void ApplyStatModifiers(StatsManager statsManager)
     {
         float minutePassed = Mathf.Floor((Time.time - startTime) / 60);
+
+        if (minutePassed >= 10)
+        {
+            minutePassed *= (minutePassed / 5) * (minutePassed / 10) ;
+        }
 
         statsManager.ApplyStatModifier(new StatModifier(StatModType.flat_MaximumLife, flatMaximumLifePerMinute * minutePassed));
         statsManager.ApplyStatModifier(new StatModifier(StatModType.inc_MaximumLife, incMaximumLifePerMinute * minutePassed));
