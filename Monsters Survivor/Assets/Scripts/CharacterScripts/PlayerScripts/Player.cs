@@ -22,6 +22,7 @@ public class Player : Character
     public GameObject levelUpVFX;
     public AudioClip deathSFX;
     public GameObject deathScreen;
+    public LevelUpRewardPanel levelUpRewardPanel;
     public TMP_Text survivalTimeMessage;
 
     protected override void Awake()
@@ -91,6 +92,8 @@ public class Player : Character
         Instantiate(levelUpVFX, transform.position, Quaternion.identity);
         audioSource.PlayOneShot(levelUpSFX);
         AddToAvailablePointsToAllSkills(1);
+        levelUpRewardPanel.ShowRewards();
+        levelUpRewardPanel.RandomizeRewards();
     }
 
     public void AddToAvailablePointsToAllSkills(int value)

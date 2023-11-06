@@ -11,9 +11,10 @@ public class RotationCenter : MonoBehaviour
     void Update()
     {
         lifeTime -= Time.deltaTime;
-        if (lifeTime <= 0 || !movingTarget.gameObject.activeInHierarchy)
+        if (movingTarget == null || lifeTime <= 0 || !movingTarget.gameObject.activeInHierarchy)
         {
             Destroy(gameObject);
+            return;
         }
         transform.position = GameManager.instance.RefinedPos(movingTarget.position);
         gameObject.transform.Rotate(new Vector3(0, rotationSpeed * Time.deltaTime, 0), Space.World);

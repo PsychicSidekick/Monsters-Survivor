@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject inventoryPanel;
     public GameObject characterStatsPanel;
     public GameObject escapeMenuPanel;
+    public GameObject levelUpRewardPanel;
 
     public Button inventoryButton;
 
@@ -88,7 +89,7 @@ public class UIManager : MonoBehaviour
     {
         panel.SetActive(!panel.activeInHierarchy);
 
-        if (!skillPassivesPanel.activeInHierarchy && !inventoryPanel.activeInHierarchy && !characterStatsPanel.activeInHierarchy && !escapeMenuPanel.activeInHierarchy)
+        if (!skillPassivesPanel.activeInHierarchy && !inventoryPanel.activeInHierarchy && !characterStatsPanel.activeInHierarchy && !escapeMenuPanel.activeInHierarchy && !levelUpRewardPanel.activeInHierarchy)
         {
             GameManager.instance.UnpauseGame();
         }

@@ -81,7 +81,10 @@ public class FrozenOrbSkill : Skill
 
         while (frozenOrbProjectile != null)
         {
-            skillUser.audioSource.PlayOneShot(skillSFX);
+            if (skillUser.audioSource != null)
+            {
+                skillUser.audioSource.PlayOneShot(skillSFX);
+            }
 
             for (int i = 0; i < numberOfIcicles; i++)
             {

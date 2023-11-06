@@ -10,11 +10,8 @@ public class EnemySpawnManager : MonoBehaviour
 
     public static EnemySpawnManager instance;
 
-    public float startTime;
-
     private float flatMaximumLifePerMinute = 50;
     private float incMaximumLifePerMinute = 10;
-    private float incAttackSpeedPerMinute = 5;
     private float flatAttackDamagePerMinute = 5;
     private float flatFireResistancePerMinute = 5;
     private float flatColdResistancePerMinute = 5;
@@ -31,7 +28,6 @@ public class EnemySpawnManager : MonoBehaviour
     private void Start()
     {
         spawnData = JsonUtility.FromJson<SpawnData>(spawnDataJson.text);
-        startTime = Time.time;
         StartCoroutine(SpawnSequence());
     }
 
@@ -80,8 +76,8 @@ public class EnemySpawnManager : MonoBehaviour
         for (int i = 0; i < job.amount; i++)
         {
             Vector3 spawnPosition = RandomSpawnPositionAroundPlayer(12);
-            StatsManager stats = Instantiate(enemyPrefabs[job.enemyTypeID], spawnPosition, Quaternion.identity).GetComponent<Character>().stats;
-            ApplyStatModifiers(stats);
+            Enemy enemy = Instantiate(enemyPrefabs[job.enemyTypeID], spawnPosition, Quaternion.identity).GetComponent<Enemy>();
+            ApplyModifiersOverTime(enemy);
             yield return new WaitForSeconds(duration/job.amount);
         }
     }
@@ -92,30 +88,30 @@ public class EnemySpawnManager : MonoBehaviour
         for (int i = 0; i < specialJob.amount; i++)
         {
             Vector3 spawnPosition = RandomSpawnPositionAroundPlayer(12);
-            StatsManager stats = Instantiate(enemyPrefabs[specialJob.enemyTypeID], spawnPosition, Quaternion.identity).GetComponent<Character>().stats;
-            ApplyStatModifiers(stats);
+            Enemy enemy = Instantiate(enemyPrefabs[specialJob.enemyTypeID], spawnPosition, Quaternion.identity).GetComponent<Enemy>();
+            ApplyModifiersOverTime(enemy);
         }
     }
 
-    public void ApplyStatModifiers(StatsManager statsManager)
+    public void ApplyModifiersOverTime(Enemy enemy)
     {
-        float minutePassed = Mathf.Floor((Time.time - startTime) / 60);
+        float minutePassed = Mathf.Floor(GameManager.instance.GetCurrentGameTime() / 60);
 
-        if (minutePassed >= 10)
-        {
-            minutePassed *= (minutePassed / 5) * (minutePassed / 10) ;
-        }
+        float statMultiplier = minutePassed * (1 + Mathf.Floor(minutePassed / 10) * 0.5f);
 
-        statsManager.ApplyStatModifier(new StatModifier(StatModType.flat_MaximumLife, flatMaximumLifePerMinute * minutePassed));
-        statsManager.ApplyStatModifier(new StatModifier(StatModType.inc_MaximumLife, incMaximumLifePerMinute * minutePassed));
-        statsManager.ApplyStatModifier(new StatModifier(StatModType.inc_AttackSpeed, incAttackSpeedPerMinute * minutePassed));
-        statsManager.ApplyStatModifier(new StatModifier(StatModType.flat_AttackDamage, flatAttackDamagePerMinute * minutePassed));
-        statsManager.ApplyStatModifier(new StatModifier(StatModType.flat_FireResistance, flatFireResistancePerMinute * minutePassed));
-        statsManager.ApplyStatModifier(new StatModifier(StatModType.flat_ColdResistance, flatColdResistancePerMinute * minutePassed));
-        statsManager.ApplyStatModifier(new StatModifier(StatModType.flat_LightningResistance, flatLightningResistancePerMinute * minutePassed));
-        statsManager.ApplyStatModifier(new StatModifier(StatModType.flat_IncreasedFireDamage, incFireDamagePerMinute * minutePassed));
-        statsManager.ApplyStatModifier(new StatModifier(StatModType.flat_IncreasedColdDamage, incColdDamagePerMinute * minutePassed));
-        statsManager.ApplyStatModifier(new StatModifier(StatModType.flat_IncreasedLightningDamage, incLightningDamagePerMinute * minutePassed));
+        int additionalXpYield = (int)Mathf.Floor(minutePassed / 10) * 150;
+
+        enemy.xpYield += additionalXpYield;
+
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_MaximumLife, flatMaximumLifePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.inc_MaximumLife, incMaximumLifePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_AttackDamage, flatAttackDamagePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_FireResistance, flatFireResistancePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_ColdResistance, flatColdResistancePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_LightningResistance, flatLightningResistancePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_IncreasedFireDamage, incFireDamagePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_IncreasedColdDamage, incColdDamagePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_IncreasedLightningDamage, incLightningDamagePerMinute * statMultiplier));
     }
 }
 
