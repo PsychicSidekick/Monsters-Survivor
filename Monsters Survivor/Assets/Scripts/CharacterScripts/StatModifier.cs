@@ -4,20 +4,20 @@ using UnityEngine;
 using System;
 using System.Text;
 
-public enum ModType
+public enum ModifierType
 {
     flat,
     inc
 }
 
 [Serializable]
-public class StatMod
+public class StatModifierTypeValuePair
 {
-    public StatModType statModType;
+    public StatModifierType statModifierType;
     public float value;
 }
 
-public enum StatModType
+public enum StatModifierType
 {
     flat_MaximumLife,
     inc_MaximumLife,
@@ -50,10 +50,10 @@ public class StatModifier
 {
     public readonly StatType statType;
     public readonly float value;
-    public readonly ModType type;
+    public readonly ModifierType type;
     public readonly string modString;
 
-    public StatModifier(StatType _statType, float _value, ModType _type)
+    public StatModifier(StatType _statType, float _value, ModifierType _type)
     {
         statType = _statType;
         value = _value;
@@ -61,12 +61,12 @@ public class StatModifier
         modString = ToString();
     }
 
-    public StatModifier(StatModType itemModType, float _value)
+    public StatModifier(StatModifierType itemModType, float _value)
     {
         string[] modType_statType = itemModType.ToString().Split("_");
         statType = (StatType)Enum.Parse(typeof(StatType), modType_statType[1], true);
         value = _value;
-        type = (ModType)Enum.Parse(typeof(ModType), modType_statType[0], true);
+        type = (ModifierType)Enum.Parse(typeof(ModifierType), modType_statType[0], true);
         modString = ToString();
     }
 

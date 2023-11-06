@@ -103,15 +103,15 @@ public class EnemySpawnManager : MonoBehaviour
 
         enemy.xpYield += additionalXpYield;
 
-        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_MaximumLife, flatMaximumLifePerMinute * statMultiplier));
-        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.inc_MaximumLife, incMaximumLifePerMinute * statMultiplier));
-        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_AttackDamage, flatAttackDamagePerMinute * statMultiplier));
-        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_FireResistance, flatFireResistancePerMinute * statMultiplier));
-        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_ColdResistance, flatColdResistancePerMinute * statMultiplier));
-        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_LightningResistance, flatLightningResistancePerMinute * statMultiplier));
-        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_IncreasedFireDamage, incFireDamagePerMinute * statMultiplier));
-        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_IncreasedColdDamage, incColdDamagePerMinute * statMultiplier));
-        enemy.stats.ApplyStatModifier(new StatModifier(StatModType.flat_IncreasedLightningDamage, incLightningDamagePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModifierType.flat_MaximumLife, flatMaximumLifePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModifierType.inc_MaximumLife, incMaximumLifePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModifierType.flat_AttackDamage, flatAttackDamagePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModifierType.flat_FireResistance, flatFireResistancePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModifierType.flat_ColdResistance, flatColdResistancePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModifierType.flat_LightningResistance, flatLightningResistancePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModifierType.flat_IncreasedFireDamage, incFireDamagePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModifierType.flat_IncreasedColdDamage, incColdDamagePerMinute * statMultiplier));
+        enemy.stats.ApplyStatModifier(new StatModifier(StatModifierType.flat_IncreasedLightningDamage, incLightningDamagePerMinute * statMultiplier));
     }
 }
 

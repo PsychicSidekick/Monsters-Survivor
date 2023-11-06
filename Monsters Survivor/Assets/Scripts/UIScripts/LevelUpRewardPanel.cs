@@ -12,24 +12,24 @@ public class LevelUpRewardPanel : MonoBehaviour
     public List<Button> rewardButtons;
     public List<StatModifier> rewards;
 
-    public List<StatMod> possibleRewards;
+    public List<StatModifierTypeValuePair> possibleRewards;
 
     public void RandomizeRewards()
     {
-        List<StatMod> statMods = possibleRewards.OrderBy(reward => random.Next()).Take(rewardButtons.Count).ToList();
+        List<StatModifierTypeValuePair> typeValuePairs = possibleRewards.OrderBy(reward => random.Next()).Take(rewardButtons.Count).ToList();
 
         rewards = new List<StatModifier>();
 
         float statModifierMultiplier = 1 + Mathf.Floor(GameManager.instance.GetCurrentGameTime() / 600);
 
-        foreach (StatMod statMod in statMods)
+        foreach (StatModifierTypeValuePair typeValuePair in typeValuePairs)
         {
-            float modValue = statMod.value;
-            if (statMod.statModType != StatModType.flat_AdditionalNumberOfProjectiles)
+            float modifierValue = typeValuePair.value;
+            if (typeValuePair.statModifierType != StatModifierType.flat_AdditionalNumberOfProjectiles)
             {
-                modValue *= statModifierMultiplier;
+                modifierValue *= statModifierMultiplier;
             }
-            StatModifier statModifier = new StatModifier(statMod.statModType, modValue);
+            StatModifier statModifier = new StatModifier(typeValuePair.statModifierType, modifierValue);
             rewards.Add(statModifier);
         }
 

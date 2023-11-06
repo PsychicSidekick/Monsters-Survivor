@@ -19,7 +19,7 @@ public enum ItemType
 [Serializable]
 public struct ItemModValueBounds
 {
-    public StatModType itemModType;
+    public StatModifierType itemModType;
     public int minValue;
     public int maxValue;
 }

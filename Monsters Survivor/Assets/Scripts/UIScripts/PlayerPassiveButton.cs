@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerPassiveButton : MonoBehaviour
 {
     public static int pointsAvailable;
-    public List<StatMod> passiveModifiers = new List<StatMod>();
+    public List<StatModifierTypeValuePair> passiveModifiers = new List<StatModifierTypeValuePair>();
     private List<StatModifier> statModifiers = new List<StatModifier>();
     private Button button;
     public bool allocated;
@@ -17,9 +17,9 @@ public class PlayerPassiveButton : MonoBehaviour
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(delegate { OnClick(); });
-        foreach (StatMod statMod in passiveModifiers)
+        foreach (StatModifierTypeValuePair statMod in passiveModifiers)
         {
-            statModifiers.Add(new StatModifier(statMod.statModType, statMod.value));
+            statModifiers.Add(new StatModifier(statMod.statModifierType, statMod.value));
         }
     }
 

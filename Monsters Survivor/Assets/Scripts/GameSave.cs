@@ -53,7 +53,7 @@ public class GameSave
     {
         public float itemModValue;
         public StatType itemModStatType;
-        public ModType itemModType;
+        public ModifierType itemModType;
 
         public ItemModifierSave(StatModifier statModifier)
         {

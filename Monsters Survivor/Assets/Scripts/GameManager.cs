@@ -21,19 +21,6 @@ public class GameManager : MonoBehaviour
         gameStartTime = Time.time;
     }
 
-    // call to pause/unpause game
-    public void ToggleGamePause()
-    {
-        if (Time.timeScale == 0)
-        {
-            Time.timeScale = 1;
-        }
-        else
-        {
-            Time.timeScale = 0;
-        }
-    }
-
     public void PauseGame()
     {
         Time.timeScale = 0;

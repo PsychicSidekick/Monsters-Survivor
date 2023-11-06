@@ -68,7 +68,7 @@ public class Devil : MonoBehaviour
         if (!enraged && enemy.life <= enemy.stats.maximumLife.value * 0.3f)
         {
             enraged = true;
-            enemy.stats.ApplyStatModifier(new StatModifier(StatType.AttackSpeed, 50, ModType.inc));
+            enemy.stats.ApplyStatModifier(new StatModifier(StatType.AttackSpeed, 50, ModifierType.inc));
         }
     }
 

@@ -13,7 +13,7 @@ public class SlowEffect : StatusEffect
         this.chance = chance;
         maxDuration = duration;
         remainingDuration = duration;
-        slowMod = new StatModifier(StatModType.inc_MovementSpeed, -slowPercentage);
+        slowMod = new StatModifier(StatModifierType.inc_MovementSpeed, -slowPercentage);
         disabled = false;
     }
 

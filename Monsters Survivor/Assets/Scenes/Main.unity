@@ -27724,35 +27724,35 @@ MonoBehaviour:
   - {fileID: 1217768131}
   - {fileID: 583518320}
   possibleRewards:
-  - statModType: 0
+  - statModifierType: 0
     value: 15
-  - statModType: 1
+  - statModifierType: 1
     value: 10
-  - statModType: 2
+  - statModifierType: 2
     value: 5
-  - statModType: 3
+  - statModifierType: 3
     value: 20
-  - statModType: 4
+  - statModifierType: 4
     value: 10
-  - statModType: 6
+  - statModifierType: 6
     value: 5
-  - statModType: 7
+  - statModifierType: 7
     value: 10
-  - statModType: 11
+  - statModifierType: 11
     value: 15
-  - statModType: 12
+  - statModifierType: 12
     value: 15
-  - statModType: 13
+  - statModifierType: 13
     value: 15
-  - statModType: 14
+  - statModifierType: 14
     value: 15
-  - statModType: 15
+  - statModifierType: 15
     value: 25
-  - statModType: 16
+  - statModifierType: 16
     value: 15
-  - statModType: 17
+  - statModifierType: 17
     value: 25
-  - statModType: 18
+  - statModifierType: 18
     value: 1
 --- !u!114 &1228209132
 MonoBehaviour:
@@ -31132,7 +31132,6 @@ MonoBehaviour:
   spawnDataJson: {fileID: 4900000, guid: 1fc14776d136b914c9e96a9bdbc68236, type: 3}
   spawnData:
     waves: []
-  startTime: 0
 --- !u!4 &1409478796
 Transform:
   m_ObjectHideFlags: 0
