@@ -40,31 +40,38 @@ public class MeleeAttack : Skill
 
             Instantiate(skillTree.onHitVFX, GameManager.instance.RefinedPos(targetCharacter.transform.position), Quaternion.identity);
 
-            float damage = (baseDamage + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedDamage);
-            targetCharacter.ReceiveDamage(new Damage(baseDamage + skillUser.stats.attackDamage.value, skillUser, skillTree.damageType));
+            float damage = baseDamage + skillUser.stats.attackDamage.value;
 
             StatusEffect statusEffect = new StatusEffect();
             switch (skillTree.damageType)
             {
                 case DamageType.Fire:
-                    float igniteDamage = damage * 0.5f * (1 + skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration);
-                    float igniteDuration = baseIgniteDuration * (1 + skillTree.increasedIgniteDuration);
-                    float igniteChance = baseIgniteChance + skillTree.increasedIgniteChance;
+                    damage *= 1 + skillTree.increasedDamage + skillUser.stats.increasedFireDamage.value;
+
+                    float igniteDamage = damage * 0.5f * (1 + skillTree.increasedIgniteDamage + skillTree.increasedIgniteDuration + skillUser.stats.increasedFireDamage.value + skillUser.stats.increasedIgniteDamage.value + skillUser.stats.increasedIgniteDuration.value);
+                    float igniteDuration = baseIgniteDuration * (1 + skillTree.increasedIgniteDuration + skillUser.stats.increasedIgniteDuration.value);
+                    float igniteChance = baseIgniteChance + skillTree.increasedIgniteChance + skillUser.stats.additionalIgniteChance.value;
                     statusEffect = new IgniteEffect(skillUser, igniteDamage, igniteDuration, igniteChance);
                     break;
                 case DamageType.Cold:
-                    float slowEffect = baseSlowEffect + skillTree.increasedSlowEffect;
-                    float slowDuration = baseSlowDuration * (1 + skillTree.increasedSlowDuration);
-                    float slowChance = baseSlowChance + skillTree.increasedSlowChance;
+                    damage *= 1 + skillTree.increasedDamage + skillUser.stats.increasedColdDamage.value;
+
+                    float slowEffect = baseSlowEffect + skillTree.increasedSlowEffect + skillUser.stats.increasedSlowEffect.value;
+                    float slowDuration = baseSlowDuration * (1 + skillTree.increasedSlowDuration + skillUser.stats.increasedSlowDuration.value);
+                    float slowChance = baseSlowChance + skillTree.increasedSlowChance + skillUser.stats.additionalSlowChance.value;
                     statusEffect = new SlowEffect(slowEffect, slowDuration, slowChance);
                     break;
                 case DamageType.Lightning:
-                    float shockEffect = baseShockEffect + skillTree.increasedShockEffect;
-                    float shockDuration = baseShockDuration * (1 + skillTree.increasedShockDuration);
-                    float shockChance = baseShockChance + skillTree.increasedShockChance;
+                    damage *= 1 + skillTree.increasedDamage + skillUser.stats.increasedLightningDamage.value;
+
+                    float shockEffect = baseShockEffect + skillTree.increasedShockEffect + skillUser.stats.increasedShockEffect.value;
+                    float shockDuration = baseShockDuration * (1 + skillTree.increasedShockDuration + skillUser.stats.increasedShockDuration.value);
+                    float shockChance = baseShockChance + skillTree.increasedShockChance + skillUser.stats.additionalShockChance.value;
                     statusEffect = new ShockEffect(shockEffect, shockDuration, shockChance);
                     break;
             }
+
+            targetCharacter.ReceiveDamage(new Damage(damage, skillUser, skillTree.damageType));
             targetCharacter.GetComponent<StatusEffectManager>().ApplyStatusEffect(statusEffect);
         }
     }
