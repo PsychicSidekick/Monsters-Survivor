@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs;
-    public TextAsset spawnDataJson;
-    public SpawnData spawnData;
-
     public static EnemySpawnManager instance;
 
+    // All possible enemies to spawn.
+    public GameObject[] enemyPrefabs;
+    // Json File for spawn data.
+    public TextAsset spawnDataJson;
+    // Spawn data object.
+    public SpawnData spawnData;
+
+    // Enemy stat increases per minute.
     private float flatMaximumLifePerMinute = 50;
     private float incMaximumLifePerMinute = 10;
     private float flatAttackDamagePerMinute = 5;
@@ -27,10 +31,13 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Start()
     {
+        // Reads from spawn data json.
         spawnData = JsonUtility.FromJson<SpawnData>(spawnDataJson.text);
+        // Starts spawning enemies.
         StartCoroutine(SpawnSequence());
     }
 
+    // Returns a random position around the player with the given distance to the player.
     private Vector3 RandomSpawnPositionAroundPlayer(float distanceFromPlayer)
     {
         float randomX = 0;
@@ -49,23 +56,25 @@ public class EnemySpawnManager : MonoBehaviour
 
     public IEnumerator SpawnSequence()
     {
+        // Repeats whole spawn sequence indefinitely.
         while(true)
         {
-            // repeat for every wave
+            // Repeats for every wave.
             for (int i = 0; i < spawnData.waves.Length; i++)
             {
-                // repeat for every specialJob
+                // Repeats for every special spawn job.
                 for (int j = 0; j < spawnData.waves[i].specialJobs.Length; j++)
                 {
                     StartCoroutine(SpecialSpawnJob(spawnData.waves[i].specialJobs[j]));
                 }
 
-                // repeat for every job
+                // Repeats for every spawn job.
                 for (int k = 0; k < spawnData.waves[i].jobs.Length; k++)
                 {
                     StartCoroutine(SpawnJob(spawnData.waves[i].jobs[k], spawnData.waves[i].duration));
                 }
 
+                // Waits until current wave ends.
                 yield return new WaitForSeconds(spawnData.waves[i].duration);
             }
         }
@@ -73,18 +82,22 @@ public class EnemySpawnManager : MonoBehaviour
 
     public IEnumerator SpawnJob(Job job, float duration)
     {
+        // Repeats for every enemy in job.
         for (int i = 0; i < job.amount; i++)
         {
             Vector3 spawnPosition = RandomSpawnPositionAroundPlayer(12);
             Enemy enemy = Instantiate(enemyPrefabs[job.enemyTypeID], spawnPosition, Quaternion.identity).GetComponent<Enemy>();
             ApplyModifiersOverTime(enemy);
+            // Waits until next enemy spawn.
             yield return new WaitForSeconds(duration/job.amount);
         }
     }
 
     public IEnumerator SpecialSpawnJob(SpecialJob specialJob)
     {
+        // Waits until start time of special job.
         yield return new WaitForSeconds(specialJob.startTime);
+        // Repeats for every enemy in special job.
         for (int i = 0; i < specialJob.amount; i++)
         {
             Vector3 spawnPosition = RandomSpawnPositionAroundPlayer(12);
@@ -93,12 +106,16 @@ public class EnemySpawnManager : MonoBehaviour
         }
     }
 
+    // Apply stat and xp yield modifiers to enemy depending on the amount of time passed.
     public void ApplyModifiersOverTime(Enemy enemy)
     {
+        // Minutes passed since this run started.
         float minutePassed = Mathf.Floor(GameManager.instance.GetCurrentGameTime() / 60);
 
+        // Multiplier to stat modifiers, increased by 0.5 every 10 minutes passed.
         float statMultiplier = minutePassed * (1 + Mathf.Floor(minutePassed / 10) * 0.5f);
 
+        // Adds 150xp to xp yields of enemies every 10 minutes passed.
         int additionalXpYield = (int)Mathf.Floor(minutePassed / 10) * 150;
 
         enemy.xpYield += additionalXpYield;

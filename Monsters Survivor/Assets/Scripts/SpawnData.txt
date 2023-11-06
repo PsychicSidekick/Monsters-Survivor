@@ -234,6 +234,67 @@
           "amount": "5"
         }
       ]
+    },
+    {
+      "duration": "60",
+      "jobs": [
+        {
+          "enemyTypeID": "0",
+          "amount": "200"
+        },
+        {
+          "enemyTypeID": "3",
+          "amount": "200"
+        },
+        {
+          "enemyTypeID": "6",
+          "amount": "200"
+        },
+        {
+          "enemyTypeID": "1",
+          "amount": "6"
+        },
+        {
+          "enemyTypeID": "4",
+          "amount": "6"
+        },
+        {
+          "enemyTypeID": "7",
+          "amount": "6"
+        }
+      ],
+      "specialJobs": [
+        {
+          "startTime": "20",
+          "enemyTypeID": "2",
+          "amount": "1"
+        },
+        {
+          "startTime": "20",
+          "enemyTypeID": "5",
+          "amount": "1"
+        },
+        {
+          "startTime": "20",
+          "enemyTypeID": "8",
+          "amount": "1"
+        },
+        {
+          "startTime": "40",
+          "enemyTypeID": "2",
+          "amount": "1"
+        },
+        {
+          "startTime": "40",
+          "enemyTypeID": "5",
+          "amount": "1"
+        },
+        {
+          "startTime": "40",
+          "enemyTypeID": "8",
+          "amount": "1"
+        }
+      ]
     }
   ]
 }
