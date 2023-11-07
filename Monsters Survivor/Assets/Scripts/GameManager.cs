@@ -62,11 +62,6 @@ public class GameManager : MonoBehaviour
         return canvasPos;
     }
 
-    public void AddIntToStringNumber(int value, TMP_Text text)
-    {
-        text.text = (int.Parse(text.text) + value).ToString();
-    }
-
     public static bool IsMouseOverUI()
     {
         return EventSystem.current.IsPointerOverGameObject();

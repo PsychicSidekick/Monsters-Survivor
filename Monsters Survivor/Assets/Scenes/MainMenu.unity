@@ -3378,6 +3378,8 @@ MonoBehaviour:
   longestSurvivalTimeText: {fileID: 1727845411}
   loadingScreen: {fileID: 720317238}
   loadingBar: {fileID: 1976097534}
+  inventoryPanel: {fileID: 0}
+  stashPanel: {fileID: 0}
 --- !u!82 &482169461
 AudioSource:
   m_ObjectHideFlags: 0

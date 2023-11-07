@@ -140,46 +140,37 @@ public class GameSave
 
         foreach (ItemSave itemSave in storageSave.savedStashItems)
         {
-            List<StatModifier> itemMods = new List<StatModifier>();
-
-            foreach(ItemModifierSave itemModSave in itemSave.itemMods)
-            {
-                itemMods.Add(new StatModifier(itemModSave.itemModStatType, itemModSave.itemModValue, itemModSave.itemModType));
-            }
-
-            Item item = new Item(itemBases[itemSave.itemBaseID], itemMods);
-            PlayerStorage.instance.InstantiateItemImage(item);
+            Item item = LoadItem(itemSave);
             PlayerStorage.instance.PlaceItem(item, PlayerStorage.instance.stash[itemSave.positionInStorage.x][itemSave.positionInStorage.y]);
         }
 
         foreach (ItemSave itemSave in storageSave.savedInventoryItems)
         {
-            List<StatModifier> itemMods = new List<StatModifier>();
-
-            foreach (ItemModifierSave itemModSave in itemSave.itemMods)
-            {
-                itemMods.Add(new StatModifier(itemModSave.itemModStatType, itemModSave.itemModValue, itemModSave.itemModType));
-            }
-
-            Item item = new Item(itemBases[itemSave.itemBaseID], itemMods);
-            PlayerStorage.instance.InstantiateItemImage(item);
+            Item item = LoadItem(itemSave);
             PlayerStorage.instance.PlaceItem(item, PlayerStorage.instance.inventory[itemSave.positionInStorage.x][itemSave.positionInStorage.y]);
         }
 
         foreach (ItemSave itemSave in storageSave.savedEquippedItems)
         {
-            List<StatModifier> itemMods = new List<StatModifier>();
-
-            foreach (ItemModifierSave itemModSave in itemSave.itemMods)
-            {
-                itemMods.Add(new StatModifier(itemModSave.itemModStatType, itemModSave.itemModValue, itemModSave.itemModType));
-            }
-
-            Item item = new Item(itemBases[itemSave.itemBaseID], itemMods);
-            PlayerStorage.instance.InstantiateItemImage(item);
+            Item item = LoadItem(itemSave);
             PlayerStorage.instance.PlaceItemInItemSlot(item, PlayerStorage.instance.itemSlots[itemSave.occupiedItemSlotID]);
         }
 
         PlayerStorage.instance.descriptionPanel.SetActive(false);
+    }
+
+    public Item LoadItem(ItemSave itemSave)
+    {
+        List<StatModifier> itemMods = new List<StatModifier>();
+
+        foreach (ItemModifierSave itemModSave in itemSave.itemMods)
+        {
+            itemMods.Add(new StatModifier(itemModSave.itemModStatType, itemModSave.itemModValue, itemModSave.itemModType));
+        }
+
+        Item item = new Item(itemBases[itemSave.itemBaseID], itemMods);
+        PlayerStorage.instance.InstantiateItemImage(item);
+
+        return item;
     }
 }
