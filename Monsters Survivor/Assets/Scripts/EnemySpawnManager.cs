@@ -115,7 +115,7 @@ public class EnemySpawnManager : MonoBehaviour
         // Multiplier to stat modifiers, increased by 0.5 every 10 minutes passed.
         float statMultiplier = minutePassed * (1 + Mathf.Floor(minutePassed / 10) * 0.5f);
 
-        // Adds 150xp to xp yields of enemies every 10 minutes passed.
+        // Additional xp yields to enemies, increased by 150 every 10 minutes passed.
         int additionalXpYield = (int)Mathf.Floor(minutePassed / 10) * 150;
 
         enemy.xpYield += additionalXpYield;

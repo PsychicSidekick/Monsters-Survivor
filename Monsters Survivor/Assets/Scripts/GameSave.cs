@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class GameSave
 {
+    // List of all available item bases
     public static List<ItemBase> itemBases = new List<ItemBase>();
 
     [Serializable]
@@ -20,8 +21,11 @@ public class GameSave
     [Serializable]
     public struct ItemSave
     {
+        // Position of item in storage
         public Vector2Int positionInStorage;
+        // ID of opccupied item slot, -1 if item was not equipped
         public int occupiedItemSlotID;
+
         public string itemName;
         public int itemBaseID;
         public List<ItemModifierSave> itemMods;
@@ -65,9 +69,11 @@ public class GameSave
 
     public GameSave()
     {
+        // Find all available item bases in Resources
         itemBases = Resources.LoadAll<ItemBase>("ItemBases").ToList();
     }
 
+    // Clears save Json
     public void ClearSave()
     {
         StorageSave storageSave;
@@ -86,6 +92,7 @@ public class GameSave
         storageSave.savedInventoryItems = new List<ItemSave>();
         storageSave.savedEquippedItems = new List<ItemSave>();
 
+        // Save stash items
         List<List<Cell>> stash = PlayerStorage.instance.stash;
         Vector2Int stashSize = PlayerStorage.instance.stashSize;
 
@@ -102,6 +109,7 @@ public class GameSave
             }
         }
 
+        // Save inventory items
         List<List<Cell>> inventory = PlayerStorage.instance.inventory;
         Vector2Int inventorySize = PlayerStorage.instance.inventorySize;
 
@@ -118,6 +126,7 @@ public class GameSave
             }
         }
 
+        // Save equipped items
         List<ItemSlot> itemSlots = PlayerStorage.instance.itemSlots;
 
         foreach (ItemSlot itemSlot in itemSlots)
@@ -129,27 +138,32 @@ public class GameSave
             }
         }
 
+        // Write storage save to Json
         string json = JsonUtility.ToJson(storageSave);
         File.WriteAllText(Application.streamingAssetsPath + "/Save/save.txt", json);
     }
 
     public void Load()
     {
+        // Read and create storage save from Json
         string json = File.ReadAllText(Application.streamingAssetsPath + "/Save/save.txt");
         StorageSave storageSave = JsonUtility.FromJson<StorageSave>(json);
 
+        // Load saved items into stash
         foreach (ItemSave itemSave in storageSave.savedStashItems)
         {
             Item item = LoadItem(itemSave);
             PlayerStorage.instance.PlaceItem(item, PlayerStorage.instance.stash[itemSave.positionInStorage.x][itemSave.positionInStorage.y]);
         }
 
+        // Load saved items into inventory
         foreach (ItemSave itemSave in storageSave.savedInventoryItems)
         {
             Item item = LoadItem(itemSave);
             PlayerStorage.instance.PlaceItem(item, PlayerStorage.instance.inventory[itemSave.positionInStorage.x][itemSave.positionInStorage.y]);
         }
 
+        // Load saved items into item slots
         foreach (ItemSave itemSave in storageSave.savedEquippedItems)
         {
             Item item = LoadItem(itemSave);
@@ -163,6 +177,7 @@ public class GameSave
     {
         List<StatModifier> itemMods = new List<StatModifier>();
 
+        // Recreate item mods
         foreach (ItemModifierSave itemModSave in itemSave.itemMods)
         {
             itemMods.Add(new StatModifier(itemModSave.itemModStatType, itemModSave.itemModValue, itemModSave.itemModType));

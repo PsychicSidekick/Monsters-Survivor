@@ -35,24 +35,29 @@ public class Platform : MonoBehaviour
             listOfExistingPlatforms = new List<Vector2Int>();
             listOfExistingPlatforms.Add(pos);
             centerPlatform = this;
+
+            // Choose random map preset
             int index = UnityEngine.Random.Range(0, mapPresets.Count);
             surfaceMaterial = mapPresets[index].material;
             enviromentLight.color = mapPresets[index].color;
             Camera.main.GetComponent<AudioSource>().clip = mapPresets[index].bgm;
             Camera.main.GetComponent<AudioSource>().volume = mapPresets[index].bgmVolume;
             Camera.main.GetComponent<AudioSource>().Play();
-            CreatePlatforms();
+
+            CreateSurroundingPlatforms();
             centerPlatform.GetComponent<NavMeshSurface>().BuildNavMesh();
         }
         GetComponent<MeshRenderer>().material = surfaceMaterial;
     }
 
-    private void CreatePlatforms()
+    // Creates surrounding platforms if they do not exist already
+    private void CreateSurroundingPlatforms()
     {
         for (int i = -1; i <= 1; i++)
         {
             for (int j = -1; j <= 1; j++)
             {
+                // Skip centre
                 if (i == 0 && j == 0)
                 {
                     continue;
@@ -60,6 +65,7 @@ public class Platform : MonoBehaviour
 
                 Vector2Int newPos = pos + new Vector2Int(i, j);
 
+                // Skip if already exists
                 if (listOfExistingPlatforms.Contains(newPos))
                 {
                     continue;
@@ -75,9 +81,10 @@ public class Platform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Create surrounding platforms if player enters
         if (other.GetComponent<Player>())
         {
-            CreatePlatforms();
+            CreateSurroundingPlatforms();
             centerPlatform.GetComponent<NavMeshSurface>().BuildNavMesh();
         }
     }
