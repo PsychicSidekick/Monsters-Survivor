@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     // Start time of current run
-    [HideInInspector] public float gameStartTime;
+    [HideInInspector] public float runStartTime;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //Sets start time of current run
-        gameStartTime = Time.time;
+        runStartTime = Time.time;
     }
 
     public void PauseGame()
@@ -33,9 +33,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public float GetCurrentGameTime()
+    public float GetCurrentRunTime()
     {
-        return Time.time - gameStartTime;
+        return Time.time - runStartTime;
     }
 
     // Returns a string representing the given amount of seconds in the format of "00:00"
@@ -48,13 +48,12 @@ public class GameManager : MonoBehaviour
         return minutes + ":" + seconds;
     }
 
-    // Returns a modified vector 3 with y = 1 from the given vector 3
+    // Returns the given vector3 with y = 1
     public Vector3 RefinedPos(Vector3 position)
     {
         return new Vector3(position.x, 1, position.z);
     }
 
-    // Turns a 3D world position to position in given canvas
     public Vector2 WorldToCanvasPos(GameObject canvas, Vector3 worldPos)
     {
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
@@ -67,7 +66,6 @@ public class GameManager : MonoBehaviour
         return canvasPos;
     }
 
-    // Returns true if cursor is currently over an UI element
     public static bool IsMouseOverUI()
     {
         return EventSystem.current.IsPointerOverGameObject();

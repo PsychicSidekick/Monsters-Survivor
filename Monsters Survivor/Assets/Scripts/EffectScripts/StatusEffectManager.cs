@@ -30,6 +30,7 @@ public class StatusEffectManager : MonoBehaviour
             }
         }
 
+        // Remove expired effects
         foreach (StatusEffect statusEffect in expiredStatusEffects)
         {
             statusEffectList.Remove(statusEffect);
@@ -42,6 +43,7 @@ public class StatusEffectManager : MonoBehaviour
     {
         if (Random.Range(1, 101) <= statusEffect.chance)
         {
+            // Find all existing effects of the same type/name
             List<StatusEffect> dups = FindStatusEffectsWithName(statusEffect.name);
             foreach (StatusEffect dup in dups)
             {
@@ -49,6 +51,7 @@ public class StatusEffectManager : MonoBehaviour
                 {
                     dup.AddStack(character, statusEffect);
 
+                    // Prevents ignite effects from stacking multiplicatively
                     if (dup.GetType() == typeof(IgniteEffect))
                     {
                         return;
@@ -56,6 +59,7 @@ public class StatusEffectManager : MonoBehaviour
                 }
             }
             
+            // If none were found
             if (dups.Count == 0)
             {
                 statusEffectList.Add(statusEffect);
@@ -64,6 +68,7 @@ public class StatusEffectManager : MonoBehaviour
         }
     }
 
+    // Move expired effects to the expired status effects list
     public void RemoveStatusEffect(StatusEffect statusEffect)
     {
         expiredStatusEffects.Add(statusEffect);
@@ -72,16 +77,6 @@ public class StatusEffectManager : MonoBehaviour
 
     public List<StatusEffect> FindStatusEffectsWithName(string name)
     {
-        List<StatusEffect> statusEffects = new List<StatusEffect>();
-
-        foreach (StatusEffect statusEffect in statusEffectList)
-        {
-            if (statusEffect.name == name)
-            {
-                statusEffects.Add(statusEffect);
-            }
-        }
-
-        return statusEffects;
+        return statusEffectList.Where(statusEffects => statusEffects.name == name).ToList();
     }
 }

@@ -20,7 +20,7 @@ public class LevelUpRewardPanel : MonoBehaviour
 
         rewards = new List<StatModifier>();
 
-        float statModifierMultiplier = 1 + Mathf.Floor(GameManager.instance.GetCurrentGameTime() / 600);
+        float statModifierMultiplier = 1 + Mathf.Floor(GameManager.instance.GetCurrentRunTime() / 600);
 
         foreach (StatModifierTypeValuePair typeValuePair in typeValuePairs)
         {

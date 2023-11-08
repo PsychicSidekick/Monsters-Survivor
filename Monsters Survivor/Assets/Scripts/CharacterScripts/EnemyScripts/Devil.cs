@@ -28,7 +28,7 @@ public class Devil : MonoBehaviour
         enemy.FacePlayer();
         enemy.FindGroundTarget();
 
-        // if not attacking, follow target
+        // If not attacking, follow target
         if (!inAttackAnimation)
         {
             enemy.Move(Player.instance.transform.position);
@@ -38,6 +38,7 @@ public class Devil : MonoBehaviour
             enemy.StopMoving();
         }
 
+        // Attack if in range
         if (distanceFromPlayer <= fireballRange)
         {
             enemy.animator.SetBool("isAttacking", true);
@@ -45,6 +46,7 @@ public class Devil : MonoBehaviour
             enemy.StopMoving();
             if (enemy.animator.GetFloat("ActionSpeed") != 0)
             {
+                // Cast Fire Blast if already casted Fireball for 5 seconds
                 if (timeSpentCastingFireballs >= 5)
                 {
                     enemySkillHandler.skills[0].triggerSkill = false;
@@ -65,6 +67,7 @@ public class Devil : MonoBehaviour
             enemySkillHandler.skills[1].triggerSkill = false;
         }
 
+        // Enrage if under 30% life, increases attack speed by 50%
         if (!enraged && enemy.life <= enemy.stats.maximumLife.value * 0.3f)
         {
             enraged = true;
@@ -72,6 +75,7 @@ public class Devil : MonoBehaviour
         }
     }
 
+    // Dash towards player
     public void UseDash()
     {
         enemySkillHandler.skills[2].skill.OnUse(enemy);

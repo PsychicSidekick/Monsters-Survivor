@@ -24,7 +24,7 @@ public class SimpleEnemyBehaviour : MonoBehaviour
         enemy.FacePlayer();
         enemy.FindGroundTarget();
 
-        // if not attacking, follow target
+        // If not attacking, follow target
         if (!inAttackAnimation)
         {
             enemy.Move(Player.instance.transform.position);
@@ -34,7 +34,7 @@ public class SimpleEnemyBehaviour : MonoBehaviour
             enemy.StopMoving();
         }
 
-        // if in attack range, start attacking
+        // If in attack range, start attacking
         if (distanceFromPlayer <= attackRange)
         {
             enemy.animator.SetBool("isAttacking", true);

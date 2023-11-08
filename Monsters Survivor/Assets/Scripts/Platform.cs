@@ -36,7 +36,7 @@ public class Platform : MonoBehaviour
             listOfExistingPlatforms.Add(pos);
             centerPlatform = this;
 
-            // Choose random map preset
+            // Choose and set random map preset
             int index = UnityEngine.Random.Range(0, mapPresets.Count);
             surfaceMaterial = mapPresets[index].material;
             enviromentLight.color = mapPresets[index].color;
@@ -45,12 +45,12 @@ public class Platform : MonoBehaviour
             Camera.main.GetComponent<AudioSource>().Play();
 
             CreateSurroundingPlatforms();
+            // Build nav mesh
             centerPlatform.GetComponent<NavMeshSurface>().BuildNavMesh();
         }
         GetComponent<MeshRenderer>().material = surfaceMaterial;
     }
 
-    // Creates surrounding platforms if they do not exist already
     private void CreateSurroundingPlatforms()
     {
         for (int i = -1; i <= 1; i++)

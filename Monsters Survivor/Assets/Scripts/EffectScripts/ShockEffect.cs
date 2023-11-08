@@ -34,8 +34,10 @@ public class ShockEffect : StatusEffect
 
     public override void AddStack(Character character, StatusEffect statusEffect)
     {
+        // If new shock mods are stronger than the old ones
         if (((ShockEffect)statusEffect).shockMods[0].value <= shockMods[0].value)
         {
+            // Remove old mods and apply new mods
             character.stats.RemoveStatModifiers(shockMods);
             shockMods = ((ShockEffect)statusEffect).shockMods;
             remainingDuration = statusEffect.maxDuration;

@@ -21,7 +21,6 @@ public class GameSave
     [Serializable]
     public struct ItemSave
     {
-        // Position of item in storage
         public Vector2Int positionInStorage;
         // ID of opccupied item slot, -1 if item was not equipped
         public int occupiedItemSlotID;
@@ -73,7 +72,6 @@ public class GameSave
         itemBases = Resources.LoadAll<ItemBase>("ItemBases").ToList();
     }
 
-    // Clears save Json
     public void ClearSave()
     {
         StorageSave storageSave;

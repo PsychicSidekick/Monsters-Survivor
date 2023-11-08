@@ -8,9 +8,8 @@ public class EnemySpawnManager : MonoBehaviour
 
     // All possible enemies to spawn.
     public GameObject[] enemyPrefabs;
-    // Json File for spawn data.
+
     public TextAsset spawnDataJson;
-    // Spawn data object.
     public SpawnData spawnData;
 
     // Enemy stat increases per minute.
@@ -33,11 +32,9 @@ public class EnemySpawnManager : MonoBehaviour
     {
         // Reads from spawn data json.
         spawnData = JsonUtility.FromJson<SpawnData>(spawnDataJson.text);
-        // Starts spawning enemies.
         StartCoroutine(SpawnSequence());
     }
 
-    // Returns a random position around the player with the given distance to the player.
     private Vector3 RandomSpawnPositionAroundPlayer(float distanceFromPlayer)
     {
         float randomX = 0;
@@ -62,13 +59,13 @@ public class EnemySpawnManager : MonoBehaviour
             // Repeats for every wave.
             for (int i = 0; i < spawnData.waves.Length; i++)
             {
-                // Repeats for every special spawn job.
+                // Starts every special spawn job.
                 for (int j = 0; j < spawnData.waves[i].specialJobs.Length; j++)
                 {
                     StartCoroutine(SpecialSpawnJob(spawnData.waves[i].specialJobs[j]));
                 }
 
-                // Repeats for every spawn job.
+                // Starts for every spawn job.
                 for (int k = 0; k < spawnData.waves[i].jobs.Length; k++)
                 {
                     StartCoroutine(SpawnJob(spawnData.waves[i].jobs[k], spawnData.waves[i].duration));
@@ -110,13 +107,13 @@ public class EnemySpawnManager : MonoBehaviour
     public void ApplyModifiersOverTime(Enemy enemy)
     {
         // Minutes passed since this run started.
-        float minutePassed = Mathf.Floor(GameManager.instance.GetCurrentGameTime() / 60);
+        float minutesPassed = Mathf.Floor(GameManager.instance.GetCurrentRunTime() / 60);
 
         // Multiplier to stat modifiers, increased by 0.5 every 10 minutes passed.
-        float statMultiplier = minutePassed * (1 + Mathf.Floor(minutePassed / 10) * 0.5f);
+        float statMultiplier = minutesPassed * (1 + Mathf.Floor(minutesPassed / 10) * 0.5f);
 
         // Additional xp yields to enemies, increased by 150 every 10 minutes passed.
-        int additionalXpYield = (int)Mathf.Floor(minutePassed / 10) * 150;
+        int additionalXpYield = (int)Mathf.Floor(minutesPassed / 10) * 150;
 
         enemy.xpYield += additionalXpYield;
 

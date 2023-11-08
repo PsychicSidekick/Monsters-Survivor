@@ -27,16 +27,19 @@ public class Enemy : Character
         base.Start();
         healthBarCanvas = GameObject.Find("EnemyHealthCanvas");
         player = Player.instance;
-        if (lootRank == 1 && GameManager.instance.GetCurrentGameTime() > 180)
+        // Increase loot rank from 1 to 2 after 3 minutes
+        if (lootRank == 1 && GameManager.instance.GetCurrentRunTime() > 180)
         {
             lootRank = 2;
             chanceToDropLoot = 1;
         }
-        if (lootRank == 2 && GameManager.instance.GetCurrentGameTime() > 360)
+        // Increase loot rank from 2 to 3 after 6 minutes
+        if (lootRank == 2 && GameManager.instance.GetCurrentRunTime() > 360)
         {
             lootRank = 3;
             chanceToDropLoot = 1;
         }
+        // Find all item bases of current loot rank from Resources  
         lootPool = Resources.LoadAll<ItemBase>("ItemBases/Rank" + lootRank).ToList();
         healthBar = Instantiate(healthBarPrefab, healthBarCanvas.transform);
         healthBar.GetComponent<RectTransform>().anchoredPosition = GameManager.instance.WorldToCanvasPos(healthBarCanvas, transform.position);
@@ -51,10 +54,10 @@ public class Enemy : Character
 
     public void SpawnLoot()
     {
-        if (Random.Range(1f, 101f) <= chanceToDropLoot)
+        if (Random.Range(0f, 100f) <= chanceToDropLoot)
         {
             player.audioSource.PlayOneShot(lootDropSFX);
-            // Choose random item from loot pool
+            // Create random item from loot pool
             ItemBase itemBase = lootPool[Random.Range(0, lootPool.Count)];
             LootGameObject lootGameObject = Instantiate(itemBase.lootGameObjectPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity).GetComponent<LootGameObject>();
             lootGameObject.item = new Item(itemBase);

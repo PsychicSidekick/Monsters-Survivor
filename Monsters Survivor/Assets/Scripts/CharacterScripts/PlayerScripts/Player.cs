@@ -75,11 +75,11 @@ public class Player : Character
     public override void OnDeath()
     {
         EnemySpawnManager.instance.StopAllCoroutines();
-        float survivalTime = GameManager.instance.GetCurrentGameTime();
+        float survivalTime = GameManager.instance.GetCurrentRunTime();
         survivalTimeMessage.text = "You have survived for: " + GameManager.instance.TimeToString(survivalTime);
         if (survivalTime > PlayerPrefs.GetFloat("HighScore"))
         {
-            PlayerPrefs.SetFloat("HighScore", GameManager.instance.GetCurrentGameTime());
+            PlayerPrefs.SetFloat("HighScore", GameManager.instance.GetCurrentRunTime());
         }
         deathScreen.SetActive(true);
         Camera.main.GetComponent<AudioSource>().PlayOneShot(deathSFX);

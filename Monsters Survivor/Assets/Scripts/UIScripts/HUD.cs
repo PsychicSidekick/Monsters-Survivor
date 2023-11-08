@@ -40,7 +40,7 @@ public class HUD : MonoBehaviour
     {
         if (!timerStopped)
         {
-            timerText.text = GameManager.instance.TimeToString(GameManager.instance.GetCurrentGameTime());
+            timerText.text = GameManager.instance.TimeToString(GameManager.instance.GetCurrentRunTime());
         }
 
         lifeText.text = (int)player.life + "/" + (int)player.stats.maximumLife.value;

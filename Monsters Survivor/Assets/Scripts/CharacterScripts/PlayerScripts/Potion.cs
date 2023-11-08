@@ -45,6 +45,7 @@ public class Potion : MonoBehaviour
 
     public void TryUsePotion()
     {
+        // Use potion if not in cooldown, game is not paused, and player is still alive
         if (cooldownTime <= 0 && Time.timeScale != 0 && Player.instance.gameObject.activeInHierarchy)
         {
             GetComponent<AudioSource>().Play();

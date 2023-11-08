@@ -29,7 +29,7 @@ public class Shaman : MonoBehaviour
         enemy.FindGroundTarget();
         enemy.FacePlayer();
 
-        // if not attacking, follow target
+        // If not attacking, follow target
         if (!inAttackAnimation)
         {
             enemy.Move(Player.instance.transform.position);
@@ -39,8 +39,10 @@ public class Shaman : MonoBehaviour
             enemy.StopMoving();
         }
 
+        // Casts lightning orbs after 8 melee attacks
         if (timesOfMeleeUsed < 8)
         {
+            // Attack if in range
             if (distanceFromPlayer <= meleeAttackRange)
             {
                 enemy.animator.SetBool("isAttacking", true);
@@ -73,6 +75,7 @@ public class Shaman : MonoBehaviour
     {
         timesOfMeleeUsed++;
 
+        // Use alternating melee skill VFX to match melee attack animation
         if (timesOfMeleeUsed % 2 == 0)
         {
             GetComponent<MeleeSkillTree>().meleeVFX = meleeVFX1;

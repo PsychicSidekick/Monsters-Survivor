@@ -13,6 +13,7 @@ public class KeyInputHandler : MonoBehaviour
 
     private void Update()
     {
+        // Ignore input if game is paused
         if (Time.timeScale == 0)
         {
             return;

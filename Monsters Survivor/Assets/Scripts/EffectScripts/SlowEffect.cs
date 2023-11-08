@@ -44,8 +44,8 @@ public class SlowEffect : StatusEffect
 
         SlowEffect newSlow = (SlowEffect)newStatusEffect;
 
-        /* This slow effect is disabled if the new slow effect has the same amount of effect and more duration
-        or if the new slow effect has more effect. Otherwise the new slow effect will be disabled.*/
+        // This slow effect is disabled if the new slow effect has the same amount of effect and more duration
+        // or if the new slow effect has more effect. Otherwise the new slow effect will be disabled.
         if (newSlow.slowMod.value == slowMod.value)
         {
             if (newSlow.remainingDuration > remainingDuration)

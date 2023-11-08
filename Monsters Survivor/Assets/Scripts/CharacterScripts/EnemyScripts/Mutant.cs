@@ -27,7 +27,7 @@ public class Mutant : MonoBehaviour
         enemy.FindGroundTarget();
         enemy.FacePlayer();
 
-        // if not attacking, follow target
+        // If not attacking, follow target
         if (!inAttackAnimation)
         {
             enemy.Move(Player.instance.transform.position);
@@ -40,7 +40,8 @@ public class Mutant : MonoBehaviour
         int currentSkillId;
         float currentSkillRange;
 
-        if (timesOfMeleeUsed < 2)
+        // Switch to casting Frozen Orbs after 3 melee attacks
+        if (timesOfMeleeUsed < 3)
         {
             currentSkillId = 0;
             currentSkillRange = meleeAttackRange;
@@ -52,7 +53,7 @@ public class Mutant : MonoBehaviour
             currentSkillRange = frozenOrbRange;
         }
 
-        // if in attack range, start attacking
+        // If in attack range, start attacking
         if (distanceFromPlayer <= currentSkillRange)
         {
             enemy.animator.SetBool("isAttacking", true);
