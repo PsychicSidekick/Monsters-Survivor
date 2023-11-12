@@ -51225,7 +51225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumLife:
     type: 0
-    baseValue: 20000
+    baseValue: 100
   lifeRegeneration:
     type: 1
     baseValue: 1

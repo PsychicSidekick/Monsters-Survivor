@@ -8,6 +8,7 @@ public class DestroyProjectiles : MonoBehaviour
     {
         if (other.GetComponent<Projectile>())
         {
+            // Only destroy hostile projectiles
             if (GetComponent<EffectCollider>().owner.GetType() != other.GetComponent<EffectCollider>().owner.GetType())
             {
                 Destroy(other.gameObject);

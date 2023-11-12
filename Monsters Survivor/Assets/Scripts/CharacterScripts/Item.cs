@@ -19,7 +19,6 @@ public class Item
         name = itemBase.itemName;
         this.itemBase = itemBase;
 
-        //itemModifiers = RandomItemGenerator.RandomizeItemMods(itemBase);
         RandomiseItemModifiers();
     }
 
@@ -37,7 +36,7 @@ public class Item
             itemBase.modPool
             // Randomise the order of the list of possible stat modifiers
             .OrderBy(possibleMod => random.Next())
-            // Pick a random number between the minimum and maximum number of stat modifiers this item base can have, then take that many elements from the start of the list
+            // Pick a random number between the minimum and maximum number of stat modifiers this item base can have, then take that amount of mods from the start of the list
             .Take(random.Next(itemBase.numberOfMods.x, itemBase.numberOfMods.y + 1))
             // Reorder the list according to the original list of possible stat modifiers
             .OrderBy(possibleMod => itemBase.modPool.IndexOf(possibleMod))

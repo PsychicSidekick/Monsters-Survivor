@@ -65,6 +65,7 @@ public class ShowDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         float descriptionHorizontalOffset = GetComponent<RectTransform>().rect.width / 2;
 
+        // Puts description to the right if this UI element is on the left of the screen, and vise versa
         if (transform.localPosition.x > 0)
         {
             descriptionHorizontalOffset += descriptionPanel.GetComponent<RectTransform>().rect.width;
@@ -81,6 +82,7 @@ public class ShowDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
         RectTransform descriptionRect = descriptionPanel.GetComponent<RectTransform>();
         RectTransform parentRect = transform.parent.GetComponent<RectTransform>();
 
+        // Prevents description from going off screen vertically
         float minValue = descriptionRect.rect.height;
         float maxValue = parentRect.rect.height;
 

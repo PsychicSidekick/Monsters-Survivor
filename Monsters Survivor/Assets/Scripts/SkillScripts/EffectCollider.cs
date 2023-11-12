@@ -2,34 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Applies damage and status effects to colliding characters
 public class EffectCollider : MonoBehaviour
 {
-    public bool affectsFriendlyCharacters;
-
     public Character owner;
-    public Dictionary<Character, List<StatusEffect>> charactersStatusEffects = new Dictionary<Character, List<StatusEffect>>();
+    // Stores all effects on each affected character currently
+    public Dictionary<Character, List<StatusEffect>> effectsOnCharacters = new Dictionary<Character, List<StatusEffect>>();
 
-    public bool overTimeEffects;
+    // Determines whether this collider applies damage/healing over time
+    public bool appliesOverTime;
+    // Determines whether this collider can hit friendly targets
+    public bool affectsFriendlyCharacters;
 
     public float damage;
     public DamageType type;
-
-    public List<StatusEffect> hostileInAreaStatusEffects = new List<StatusEffect>();
-    public List<StatusEffect> hostileOneTimeStatusEffects = new List<StatusEffect>();
-
     public float healing;
+
+    // In area effects are applied on collision and removed on exit
+    public List<StatusEffect> hostileInAreaStatusEffects = new List<StatusEffect>();
     public List<StatusEffect> friendlyInAreaStatusEffects = new List<StatusEffect>();
+    // One time effects are applied on collision and removed after a duration
+    public List<StatusEffect> hostileOneTimeStatusEffects = new List<StatusEffect>();
     public List<StatusEffect> friendlyOneTimeStatusEffects = new List<StatusEffect>();
 
     public GameObject onHitVFX;
     public AudioClip onHitSFX;
 
-    public void SetHostileEffects(float _damage, DamageType _type, bool _overTimeEffects, Character _owner, StatusEffect[] _hostileInAreaStatusEffects, params StatusEffect[] _hostileOneTimeStatusEffects)
+    public void SetHostileEffects(float _damage, DamageType _type, bool _appliesOverTime, Character _owner, StatusEffect[] _hostileInAreaStatusEffects, params StatusEffect[] _hostileOneTimeStatusEffects)
     {
         damage = _damage;
         type = _type;
-        overTimeEffects = _overTimeEffects;
+        appliesOverTime = _appliesOverTime;
         if (_hostileInAreaStatusEffects != null)
         {
             hostileInAreaStatusEffects.AddRange(_hostileInAreaStatusEffects);
@@ -38,10 +40,10 @@ public class EffectCollider : MonoBehaviour
         owner = _owner;
     }
 
-    public void SetFriendlyEffects(float _healing, bool _overTimeEffects, Character _owner, StatusEffect[] _friendlyInAreaStatusEffects, params StatusEffect[] _friendlyOneTimeStatusEffects)
+    public void SetFriendlyEffects(float _healing, bool _appliesOverTime, Character _owner, StatusEffect[] _friendlyInAreaStatusEffects, params StatusEffect[] _friendlyOneTimeStatusEffects)
     {
         healing = _healing;
-        overTimeEffects = _overTimeEffects;
+        appliesOverTime = _appliesOverTime;
         if (_friendlyInAreaStatusEffects != null)
         {
             friendlyInAreaStatusEffects.AddRange(_friendlyInAreaStatusEffects);
@@ -53,9 +55,9 @@ public class EffectCollider : MonoBehaviour
 
     public void Update()
     {
-        if (overTimeEffects)
+        if (appliesOverTime)
         {
-            foreach (Character character in charactersStatusEffects.Keys)
+            foreach (Character character in effectsOnCharacters.Keys)
             {
                 if (character.GetType() == owner.GetType())
                 {
@@ -80,7 +82,7 @@ public class EffectCollider : MonoBehaviour
 
     public void ApplyHostileEffects(Character character)
     {
-        if (!overTimeEffects)
+        if (!appliesOverTime)
         {
             character.ReceiveDamage(new Damage(damage, owner, type));
         }
@@ -88,7 +90,7 @@ public class EffectCollider : MonoBehaviour
         foreach(StatusEffect statusEffect in hostileInAreaStatusEffects)
         {
             character.status.ApplyStatusEffect(statusEffect);
-            charactersStatusEffects[character].Add(statusEffect);
+            effectsOnCharacters[character].Add(statusEffect);
         }
 
         foreach (StatusEffect statusEffect in hostileOneTimeStatusEffects)
@@ -105,7 +107,7 @@ public class EffectCollider : MonoBehaviour
 
     public void ApplyFriendlyEffects(Character character)
     {
-        if (!overTimeEffects)
+        if (!appliesOverTime)
         {
             character.ReceiveHealing(healing);
         }
@@ -113,7 +115,7 @@ public class EffectCollider : MonoBehaviour
         foreach (StatusEffect statusEffect in friendlyInAreaStatusEffects)
         {
             character.status.ApplyStatusEffect(statusEffect);
-            charactersStatusEffects[character].Add(statusEffect);
+            effectsOnCharacters[character].Add(statusEffect);
         }
 
         foreach (StatusEffect statusEffect in friendlyOneTimeStatusEffects)
@@ -130,9 +132,9 @@ public class EffectCollider : MonoBehaviour
 
     private void CleanInAreaStatusEffectsOnCharacter(Character character)
     {
-        if (charactersStatusEffects.ContainsKey(character))
+        if (effectsOnCharacters.ContainsKey(character))
         {
-            foreach (StatusEffect statusEffect in charactersStatusEffects[character])
+            foreach (StatusEffect statusEffect in effectsOnCharacters[character])
             {
                 character.status.RemoveStatusEffect(statusEffect);
             }
@@ -159,6 +161,7 @@ public class EffectCollider : MonoBehaviour
         Projectile proj = GetComponent<Projectile>();
         if (proj)
         {
+            // Skips owner if affects friendly targets and has not chained yet
             if (character == owner && proj.chain == proj.remainingChains)
             {
                 return;
@@ -184,9 +187,9 @@ public class EffectCollider : MonoBehaviour
             owner.audioSource.Play();
         }
 
-        if (!charactersStatusEffects.ContainsKey(character))
+        if (!effectsOnCharacters.ContainsKey(character))
         {
-            charactersStatusEffects.Add(character, new List<StatusEffect>());
+            effectsOnCharacters.Add(character, new List<StatusEffect>());
         }
 
         if (character.GetType() == owner.GetType())
@@ -210,13 +213,13 @@ public class EffectCollider : MonoBehaviour
         if (character != null)
         {
             CleanInAreaStatusEffectsOnCharacter(character);
-            charactersStatusEffects.Remove(character);
+            effectsOnCharacters.Remove(character);
         }
     }
 
     private void OnDestroy()
     {
-        if (charactersStatusEffects.Count == 0)
+        if (effectsOnCharacters.Count == 0)
         {
             return;
         }
@@ -226,7 +229,7 @@ public class EffectCollider : MonoBehaviour
             return;
         }
 
-        foreach (Character character in charactersStatusEffects.Keys)
+        foreach (Character character in effectsOnCharacters.Keys)
         {
             CleanInAreaStatusEffectsOnCharacter(character);
         }

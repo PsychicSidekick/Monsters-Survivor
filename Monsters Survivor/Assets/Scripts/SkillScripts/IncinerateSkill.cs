@@ -41,7 +41,7 @@ public class IncinerateSkill : Skill
         IncinerateSkillTree skillTree = skillUser.GetComponent<IncinerateSkillTree>();
 
         List<Character> hitTargets = new List<Character>();
-        hitTargets.AddRange(explosion.GetComponent<EffectCollider>().charactersStatusEffects.Keys);
+        hitTargets.AddRange(explosion.GetComponent<EffectCollider>().effectsOnCharacters.Keys);
         foreach (Character character in hitTargets)
         {
             StatusEffectManager statusEffectManager = character.GetComponent<StatusEffectManager>();
@@ -76,7 +76,7 @@ public class IncinerateSkill : Skill
         {
             Character targetCharacter = skillUser.GetComponent<SkillHandler>().characterTarget;
             List<Character> spreadTargets = new List<Character>();
-            spreadTargets.AddRange(explosion.GetComponent<EffectCollider>().charactersStatusEffects.Keys);
+            spreadTargets.AddRange(explosion.GetComponent<EffectCollider>().effectsOnCharacters.Keys);
             spreadTargets.Remove(targetCharacter);
 
             foreach (Character character in spreadTargets)

@@ -16,6 +16,7 @@ public class LootButton : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        // If left clicked
         if (eventData.pointerId == -1)
         {
             PlayerStorage.instance.MovePlayerToLoot(lootGameObject);

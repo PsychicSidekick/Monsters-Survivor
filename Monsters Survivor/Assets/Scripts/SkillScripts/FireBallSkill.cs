@@ -64,7 +64,7 @@ public class FireBallSkill : Skill
             explodingProjectile.explosionRadius = explosionRadius;
             explodingProjectile.explosionDamageType = DamageType.Fire;
             explodingProjectile.explosionDamage = explosionDamage;
-
+            
             if (!skillTree.igniteAppliedByExplosion)
             {
                 float igniteDamage = fireBallDamage * 0.5f * increasedIgniteDamage;

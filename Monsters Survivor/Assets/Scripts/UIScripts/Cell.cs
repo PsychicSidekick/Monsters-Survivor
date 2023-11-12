@@ -69,6 +69,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
         childCells = null;
     }
 
+    // Returns whether an item of given size can fit with this cell as the top left most corner
     public bool CanFitItem(Vector2Int itemSize)
     {
         if(ExeedsStorageSize(itemSize))
@@ -94,6 +95,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
         return pos.x + itemSize.x > storage.Count || pos.y + itemSize.y > storage[0].Count;
     }
 
+    // Returns list of cells that will be occupied by an item of the given size when this cell is occupied as the top left most corner
     public List<Cell> FindCellGroupOfSize(Vector2Int itemSize)
     {
         if(ExeedsStorageSize(itemSize))
@@ -114,11 +116,14 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
         return cells;
     }
 
+    // Finds the top left most cell that will be occupied
     public Cell FindParentCell(Vector2Int itemSize, Vector3 mousePos)
     {
+        // Offset of position from this cell(clicked cell)
         int xOffSet;
         int yOffSet;
 
+        // If odd in width
         if (itemSize.x % 2 == 1)
         {
             xOffSet = (itemSize.x - 1) / 2;
@@ -128,6 +133,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
             xOffSet = mousePos.x < transform.position.x ? itemSize.x / 2 : 0;
         }
 
+        // If odd in height
         if (itemSize.y % 2 == 1)
         {
             yOffSet = (itemSize.y - 1) / 2;
@@ -137,9 +143,11 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
             yOffSet = mousePos.y > transform.position.y ? itemSize.y / 2 : 0;
         }
 
+        // Position of found cell
         int xPos = pos.x - xOffSet;
         int yPos = pos.y - yOffSet;
 
+        // Prevents position going above storage size or below 0
         if (xPos < 0)
         {
             xOffSet = 0;
@@ -190,6 +198,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        // Ignore if not left click
         if (eventData.pointerId != -1)
         {
             return;
@@ -201,6 +210,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
         {
             if (occupiedBy != null)
             {
+                // Allows quick storage between the inventory and the stash if in main menu
                 if (SceneManager.GetActiveScene().name == "MainMenu")
                 {
                     if (Input.GetKey(KeyCode.LeftControl))
@@ -230,6 +240,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
 
         int overlappedItems = CountItemsInCells(cellsToFitCursorItem);
 
+        // Swap cursor item with stored item, if the cells going to be occupied by cursor item contains one item only
         if (overlappedItems > 1)
         {
             return;
@@ -269,6 +280,7 @@ public class Cell : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler, IPo
             PlayerStorage.instance.descriptionPanel.SetActive(false);
         }
 
+        // Resets colour of all cells if cursor left storage panel
         if (pos.x == 0 || pos.y == 0 || pos.x == storage.Count - 1 || pos.y == storage[0].Count - 1)
         {
             PlayerStorage.instance.ResetCellsColour();

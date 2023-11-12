@@ -65,6 +65,7 @@ public class LightningOrbSkill : Skill
             float lightningOrbRotationRadius = baseLightningOrbRotationRadius * (1 + skillTree.increasedLightningOrbRotationRadius);
             if (skillTree.randomRotationRadius)
             {
+                // Change radius by -30% to 30%
                 lightningOrbRotationRadius *= Random.Range(0.7f, 1.3f);
             }
 

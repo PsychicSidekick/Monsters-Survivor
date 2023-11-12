@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        // Setup inventory button when run starts
         inventoryPanel = PlayerStorage.instance.transform.GetChild(0).gameObject;
         inventoryPanel.SetActive(false);
         inventoryButton.onClick.AddListener(InventoryButtonOnClick);
@@ -23,6 +24,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        // Stops interations with UI panels after player dies
         if (!Player.instance.gameObject.activeInHierarchy)
         {
             return;
@@ -53,6 +55,8 @@ public class UIManager : MonoBehaviour
     {
         ToggleUIPanel(inventoryPanel);
         PlayerStorage.instance.descriptionPanel.SetActive(false);
+
+        // Drops cursor item when Inventory panel is closed
         if (PlayerStorage.instance.cursorItem != null)
         {
             PlayerStorage.instance.DropItem(PlayerStorage.instance.cursorItem);
@@ -61,6 +65,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    // Escape button closes each listed UI panel in order
     public void EscapeButtonOnClick()
     {
         if (escapeMenuPanel.activeInHierarchy)
@@ -89,6 +94,7 @@ public class UIManager : MonoBehaviour
     {
         panel.SetActive(!panel.activeInHierarchy);
 
+        // Unpause game only when all other listed UI panels are also inactive
         if (!skillPassivesPanel.activeInHierarchy && !inventoryPanel.activeInHierarchy && !characterStatsPanel.activeInHierarchy && !escapeMenuPanel.activeInHierarchy && !levelUpRewardPanel.activeInHierarchy)
         {
             GameManager.instance.UnpauseGame();

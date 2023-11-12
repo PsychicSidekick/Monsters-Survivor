@@ -20,11 +20,13 @@ public class ChooseSkillPanel : MonoBehaviour
 
     public void InitializePanel()
     {
+        // Resets panel
         foreach(Transform child in transform)
         {
             Destroy(child.gameObject);
         }
 
+        // Finds available skills
         availableSkills = allSkills.Except(chosenSkills).ToList();
 
         float rows = Mathf.Ceil(availableSkills.Count / 4f);
@@ -37,6 +39,7 @@ public class ChooseSkillPanel : MonoBehaviour
         {
             for (int j = 0; j < columns; j++)
             {
+                // Spearates each choose skill button evenly
                 float posX = 45 + 90 * j;
                 float posY = -45 - 90 * i;
 

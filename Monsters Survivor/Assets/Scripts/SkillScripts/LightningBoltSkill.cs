@@ -57,7 +57,7 @@ public class LightningBoltSkill : Skill
 
         Vector3 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
         Vector3 targetDirection = (skillUser.GetComponent<SkillHandler>().groundTarget - startPos).normalized;
-        startPos = startPos + targetDirection * 1f;
+        startPos = startPos + targetDirection;
 
         for (int i = 0; i < numberOfLightningBolts; i++)
         {

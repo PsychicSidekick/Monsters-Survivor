@@ -19,8 +19,10 @@ public class DescriptionPanel : MonoBehaviour
         transform.position = new Vector3(FindXPos(), FindYPos(), 0);
     }
 
+
     private float FindXPos()
     {
+        // Puts item description panel right on the left of the item image
         float panelWidth = GetComponent<RectTransform>().rect.width;
 
         float descriptionHorizontalOffset = item.itemImage.GetComponent<RectTransform>().rect.width / 2;
@@ -35,6 +37,7 @@ public class DescriptionPanel : MonoBehaviour
     {
         float panelHeight = GetComponent<RectTransform>().rect.height;
 
+        // Prevents item description panel from going off screen vertically
         float minValue = panelHeight / 2;
         float maxValue = transform.parent.GetComponent<RectTransform>().rect.height - panelHeight / 2;
 

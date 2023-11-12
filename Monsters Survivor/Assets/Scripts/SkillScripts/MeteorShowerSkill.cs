@@ -49,6 +49,7 @@ public class MeteorShowerSkill : Skill
         meteorShowerParticles.transform.localScale = new Vector3(meteorShowerRadius * 0.11f, 1, meteorShowerRadius * 0.11f);
         if (skillTree.raiseEmission)
         {
+            // Use audio source on skill user instead since having too many particles makes meteor shower sound disrupted
             Destroy(meteorShowerParticles.GetComponent<MeteorShowerSound>());
             skillUser.audioSource.PlayOneShot(skillSFX);
             ParticleSystem.EmissionModule emission = meteorShowerParticles.GetComponent<ParticleSystem>().emission;

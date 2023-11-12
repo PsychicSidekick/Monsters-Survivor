@@ -11,6 +11,7 @@ public class SkillTreeButton : MonoBehaviour
 
     private void Start()
     {
+        // Finds all other skill tree panels
         foreach (Transform child in skillTreePanel.transform.parent)
         {
             if (!child.GetComponent<Button>() && !child.GetComponent<TMP_Text>() && child.name != "ChooseTreePanel" && child.name != "Frame")
@@ -22,7 +23,8 @@ public class SkillTreeButton : MonoBehaviour
 
     public void OnClick()
     {
-        foreach(GameObject skillTreePanel in skillTreePanels)
+        // Disables all other skill tree panels
+        foreach (GameObject skillTreePanel in skillTreePanels)
         {
             skillTreePanel.SetActive(false);
         }

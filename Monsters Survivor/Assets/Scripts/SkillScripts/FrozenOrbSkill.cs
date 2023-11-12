@@ -69,6 +69,10 @@ public class FrozenOrbSkill : Skill
         FrozenOrbSkillTree skillTree = skillUser.GetComponent<FrozenOrbSkillTree>();
 
         int numberOfIcicles = baseNumberOfIcicles + skillTree.additionalNumberOfIcicles + (int)skillUser.stats.additionalNumberOfProjectiles.value;
+        if (numberOfIcicles <= 0)
+        {
+            yield return null;
+        }
         int iciclePierce = baseIciclePierce + skillTree.additionalIciclePierce;
         float icicleDamage = (baseIcicleDamage * (1 + skillTree.increasedBaseIcicleDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedIcicleDamage + skillUser.stats.increasedColdDamage.value + skillUser.stats.increasedProjectileDamage.value);
         float icicleRange = baseIcicleRange * (1 + skillTree.increasedIcicleRange);

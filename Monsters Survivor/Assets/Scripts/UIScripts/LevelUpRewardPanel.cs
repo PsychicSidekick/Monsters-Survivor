@@ -20,11 +20,13 @@ public class LevelUpRewardPanel : MonoBehaviour
 
         rewards = new List<StatModifier>();
 
+        // Increase stat modifiers values by 100% for every 10 minutes passed after the run started
         float statModifierMultiplier = 1 + Mathf.Floor(GameManager.instance.GetCurrentRunTime() / 600);
 
         foreach (StatModifierTypeValuePair typeValuePair in typeValuePairs)
         {
             float modifierValue = typeValuePair.value;
+            // Skip increasing value of additional projectiles
             if (typeValuePair.statModifierType != StatModifierType.flat_AdditionalNumberOfProjectiles)
             {
                 modifierValue *= statModifierMultiplier;

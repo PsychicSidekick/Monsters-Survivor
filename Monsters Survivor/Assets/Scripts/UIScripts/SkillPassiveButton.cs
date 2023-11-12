@@ -33,6 +33,7 @@ public class SkillPassiveButton : MonoBehaviour
             return;
         }
 
+        // Interactable if no prerequisite(the first nodes in each tree) and has not been fully allocated yet
         if (preRequisite == null)
         {
             if (timesAllocated < maxAllocation)
@@ -42,6 +43,7 @@ public class SkillPassiveButton : MonoBehaviour
         }
         else
         {
+            // Interactable if prerequisite has been fully allocated and this node has not
             if (preRequisite.timesAllocated == preRequisite.maxAllocation && timesAllocated < maxAllocation)
             {
                 button.interactable = true;

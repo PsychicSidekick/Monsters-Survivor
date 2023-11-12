@@ -39,6 +39,7 @@ public class Character : MonoBehaviour
 
     protected virtual void Update()
     {
+        // Stop walking when arrived at destination
         if (agent.remainingDistance < 0.1)
         {
             animator.SetBool("isWalking", false);
@@ -48,6 +49,7 @@ public class Character : MonoBehaviour
             animator.SetBool("isWalking", true);
         }
 
+        // Natural regeneration
         ReceiveHealing(stats.lifeRegeneration.value * Time.deltaTime);
         AddMana(stats.manaRegeneration.value * Time.deltaTime);
     }
@@ -61,11 +63,6 @@ public class Character : MonoBehaviour
         {
             requiredXp += (level + 1) * increasedRequiredXpPerLevel;
             level++;
-
-            //if (level >= maxLevel)
-            //{
-            //    return level;
-            //}
         }
 
         return level;
@@ -75,6 +72,7 @@ public class Character : MonoBehaviour
     {
         int requiredXp = 0;
 
+        // Increase required xp every level
         for (int i = 1; i < level; i++)
         {
             requiredXp += i * increasedRequiredXpPerLevel;
@@ -85,9 +83,10 @@ public class Character : MonoBehaviour
 
     public void ReceiveXp(int xp)
     {
-        int currLevel = GetCurrentLevel();
+        int currentLevel = GetCurrentLevel();
         this.xp += xp;
-        for (int i = 0; i < GetCurrentLevel()-currLevel; i++)
+        // Call OnLevelUp for every level increased in this instance of xp gain
+        for (int i = 0; i < GetCurrentLevel()-currentLevel; i++)
         {
             OnLevelUp();
         }
@@ -134,11 +133,9 @@ public class Character : MonoBehaviour
 
     public void ReceiveHealing(float healing)
     {
-        if (life < stats.maximumLife.value)
-        {
-            life += healing;
-        }
+        life += healing;
 
+        // Prevents going over maximum life
         if (life > stats.maximumLife.value)
         {
             life = stats.maximumLife.value;
@@ -147,23 +144,20 @@ public class Character : MonoBehaviour
 
     public void ReduceMana(float value)
     {
-        if (mana > 0)
+        mana -= value;
+
+        // Prevents going below 0 mana
+        if (mana < 0)
         {
-            mana -= value;
-            if (mana < 0)
-            {
-                mana = 0;
-            }
-        }    
+            mana = 0;
+        }  
     }
 
     public void AddMana(float value)
     {
-        if (mana < stats.maximumMana.value)
-        {
-            mana += value;
-        }
+        mana += value;
 
+        // Prevents going over maximum mana
         if (mana > stats.maximumMana.value)
         {
             mana = stats.maximumMana.value;
@@ -186,6 +180,7 @@ public class Character : MonoBehaviour
 
     public void Move(Vector3 targetPosition)
     {
+        // Ignore if target position is too close
         if (Vector3.Distance(transform.position, targetPosition) < 0.2)
         {
             return;
@@ -202,6 +197,7 @@ public class Character : MonoBehaviour
         agent.SetDestination(transform.position);
     }
 
+    // Rotate character to face a vector3 position
     public void FacePosition(Vector3 position)
     {
         if (animator.GetFloat("ActionSpeed") != 0)
@@ -213,7 +209,6 @@ public class Character : MonoBehaviour
 
     public virtual void OnDeath()
     {
-        //Debug.Log(gameObject + " has died");
         gameObject.SetActive(false);
     }
 

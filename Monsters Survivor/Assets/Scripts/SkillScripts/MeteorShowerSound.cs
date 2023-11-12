@@ -10,7 +10,10 @@ public class MeteorShowerSound : MonoBehaviour
     {
         if (Random.Range(1, 100) < 80)
         {
-            Player.instance.audioSource.PlayOneShot(meteorSFX);
+            if (Player.instance != null)
+            {
+                Player.instance.audioSource.PlayOneShot(meteorSFX);
+            }
         }
     }
 }

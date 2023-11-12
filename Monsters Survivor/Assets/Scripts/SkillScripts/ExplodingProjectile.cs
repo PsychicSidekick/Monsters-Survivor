@@ -14,10 +14,12 @@ public class ExplodingProjectile : MonoBehaviour
 
     private void OnDestroy()
     {
+        // For Editor, does not create explosion on play mode exit
         if (!gameObject.scene.isLoaded)
         {
             return;
         }
+
         EffectCollider explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<EffectCollider>();
         explosion.transform.localScale = new Vector3(explosionRadius, explosionRadius, explosionRadius);
         explosion.SetHostileEffects(explosionDamage, explosionDamageType, false, GetComponent<EffectCollider>().owner, null, explosionStatusEffects.ToArray());
@@ -27,7 +29,7 @@ public class ExplodingProjectile : MonoBehaviour
         {
             owner.audioSource.clip = explosionSFX;
             owner.audioSource.Play();
-            owner.StartCoroutine(DestroyExplosion(explosion.gameObject));
+            explosion.StartCoroutine(DestroyExplosion(explosion.gameObject));
         }
         else
         {

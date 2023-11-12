@@ -30,10 +30,10 @@ public class SkillHandler : MonoBehaviour
     public List<SkillHolder> skills = new List<SkillHolder>();
 
     [HideInInspector] public SkillHolder currentSkillHolder;
+    // Bonus increased attack speed from the current skill
     [HideInInspector] public StatModifier currentSkillAttackSpeedMod;
     [HideInInspector] public Vector3 groundTarget;
     [HideInInspector] public Character characterTarget;
-    public LayerMask mask;
 
     [HideInInspector] public bool isChannelling;
     [HideInInspector] public GameObject currentChannelingGameObject;
@@ -48,6 +48,7 @@ public class SkillHandler : MonoBehaviour
 
     private void Update()
     {
+        // Global cooldown
         bool readyToUseSkill = Time.time - 1 / skillUser.stats.attackSpeed.value > lastSkillUseTime;
 
         foreach (SkillHolder skillHolder in skills)
@@ -63,6 +64,7 @@ public class SkillHandler : MonoBehaviour
                         }
                         if (skillHolder.skill.targetsCharacters)
                         {
+                            // Ignore skill trigger if no target was found
                             if (skillUser.FindCharacterTarget() == null)
                             {
                                 break;
@@ -76,7 +78,6 @@ public class SkillHandler : MonoBehaviour
                         lastSkillUseTime = Time.time;
 
                         skillHolder.skill.OnUse(skillUser);
-                        
                     }
                     break;
                 case SkillState.active:
@@ -127,8 +128,7 @@ public class SkillHandler : MonoBehaviour
 
     public void FaceGroundTarget()
     {
-        Vector3 lookDir = Vector3.RotateTowards(transform.forward, new Vector3(groundTarget.x, transform.position.y, groundTarget.z) - transform.position, 10, 0.0f);
-        transform.rotation = Quaternion.LookRotation(lookDir);
+        skillUser.FacePosition(new Vector3(groundTarget.x, transform.position.y, groundTarget.z));
     }
 
     public void FaceCharacterTarget()
@@ -138,14 +138,15 @@ public class SkillHandler : MonoBehaviour
             return;
         }
 
-        Vector3 lookDir = Vector3.RotateTowards(transform.forward, characterTarget.transform.position - transform.position, 10, 0.0f);
-        transform.rotation = Quaternion.LookRotation(lookDir);
+        skillUser.FacePosition(characterTarget.transform.position);
     }
 
+    // Called in animation
     public void UseCurrentSkill()
     {
         if (currentSkillHolder != null)
         {
+            // Use skill only when skill user has enough mana
             if (currentSkillHolder.skill.TryUseSkill(skillUser, currentSkillHolder.skill.GetManaCost(skillUser)))
             {
                 currentSkillHolder.skill.UseSkill(skillUser);
@@ -155,6 +156,7 @@ public class SkillHandler : MonoBehaviour
         }
     }
 
+    // Apply bonus increased attack speed from the current skill
     public void SetCurrentAttackSpeedMod(float value)
     {
         skillUser.stats.RemoveStatModifier(currentSkillAttackSpeedMod);

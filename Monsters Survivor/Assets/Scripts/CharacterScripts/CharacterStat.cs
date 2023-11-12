@@ -87,24 +87,25 @@ public class CharacterStat
         }
     }
 
-    public bool RemoveModifier(StatModifier mod)
+    public void RemoveModifier(StatModifier mod)
     {
         isDirty = true;
         switch ((int)mod.type)
         {
             case 0:
-                return flatModifiers.Remove(mod);
+                flatModifiers.Remove(mod);
+                break;
             case 1:
-                return incModifiers.Remove(mod);
+                incModifiers.Remove(mod);
+                break;
         }
-
-        return false;
     }
 
     private float CalculateFinalValue()
     {
         float finalValue = baseValue;
 
+        // Add flat base values from mods
         foreach (StatModifier mod in flatModifiers)
         {
             finalValue += mod.value;
@@ -112,6 +113,7 @@ public class CharacterStat
 
         float totalPercentIncrease = 0;
 
+        // Multiply by percent increase from mods
         foreach (StatModifier mod in incModifiers)
         {
             totalPercentIncrease += mod.value / 100;
@@ -121,6 +123,7 @@ public class CharacterStat
 
         float roundedFinalValue = (float)Mathf.Round(finalValue * 100f) / 100f;
 
+        // For "flat percentage increased" mods that does not have a flat base value
         if (type.ToString().Contains("Increased"))
         {
             roundedFinalValue /= 100f;

@@ -67,11 +67,13 @@ public class PlayerStorage : MonoBehaviour
             }
             Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.z);
             Vector2 lootPos = new Vector2(player.targetLoot.transform.position.x, player.targetLoot.transform.position.z);
-            // if player has arrived at the position of the target loot
+            // If player has arrived at the position of the target loot
             if (Vector2.Distance(playerPos, lootPos) < 0.1f)
             {
-                GetComponent<AudioSource>().Play();
-                PlaceItemInFirstAvailableCell(inventory, player.targetLoot.item);
+                if (PlaceItemInFirstAvailableCell(inventory, player.targetLoot.item))
+                {
+                    GetComponent<AudioSource>().Play();
+                }
             }
         }
         else if (cursorItem != null && lockCursor && Input.GetKeyDown(KeyCode.Mouse0) && !GameManager.IsMouseOverUI())
@@ -148,16 +150,16 @@ public class PlayerStorage : MonoBehaviour
         return null;
     }
 
-    public void PlaceItemInFirstAvailableCell(List<List<Cell>> cells, Item item)
+    public bool PlaceItemInFirstAvailableCell(List<List<Cell>> cells, Item item)
     {
-        PlaceItem(item, FindFirstAvailableCell(cells, item.itemBase.size));
+        return PlaceItem(item, FindFirstAvailableCell(cells, item.itemBase.size));
     }
 
-    public void PlaceItem(Item item, Cell c)
+    public bool PlaceItem(Item item, Cell c)
     {
         if (c == null)
         {
-            return;
+            return false;
         }
 
         ResetCellsColour();
@@ -173,6 +175,7 @@ public class PlayerStorage : MonoBehaviour
         item.itemImage.transform.position = FindItemImgPos(c, item.itemBase.size);
         item.itemImage.transform.SetParent(c.transform.parent);
         cursorItem = null;
+        return true;
     }
 
     public void PlaceItemInItemSlot(Item item, ItemSlot slot)

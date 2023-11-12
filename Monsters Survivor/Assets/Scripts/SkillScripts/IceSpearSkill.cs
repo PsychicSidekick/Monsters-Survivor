@@ -56,11 +56,13 @@ public class IceSpearSkill : Skill
             float spreadAngle;
             if (skillTree.spearsShootInNova)
             {
+                // Separates each icicle evenly in a circle around the skill user
                 spreadAngle = i * 360 / numberOfSpears;
                 startPos = GameManager.instance.RefinedPos(skillUser.transform.position);
             }
             else
             {
+                // Separates each icicle evenly in front of the user
                 spreadAngle = (numberOfSpears - 1) * -spearSpread + i * 2 * spearSpread;
             }
             EffectCollider collider = Instantiate(iceSpearPrefab, startPos, Quaternion.identity).GetComponent<EffectCollider>();

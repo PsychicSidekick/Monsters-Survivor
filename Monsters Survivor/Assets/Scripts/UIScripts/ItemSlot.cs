@@ -37,6 +37,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        // Ignore if not left click
         if (eventData.pointerId != -1)
         {
             return;
@@ -44,6 +45,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
         Item cursorItem = PlayerStorage.instance.cursorItem;
 
+        // Place item only if it is of correct type
         if (cursorItem != null && cursorItem.itemBase.type == slotType)
         {
             if (equippedItem == null)

@@ -106,6 +106,7 @@ public class StatModifier
         return modifierText;
     }
 
+    // Adds spaces between words in the name of given stat type
     public string StatTypeToString(StatType statType)
     {
         var result = new StringBuilder();

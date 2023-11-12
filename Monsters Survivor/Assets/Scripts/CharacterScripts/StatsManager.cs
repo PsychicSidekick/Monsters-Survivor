@@ -79,13 +79,6 @@ public class StatsManager : MonoBehaviour
         c.animator.SetFloat("ActionSpeed", animationSpeedMultiplier * movementSpeed.value);
     }
 
-    public IEnumerator ApplyTemporaryBuff(StatModifier mod, float duration)
-    {
-        ApplyStatModifier(mod);
-        yield return new WaitForSeconds(duration);
-        RemoveStatModifier(mod);
-    }
-
     public void ApplyStatModifier(StatModifier mod)
     {
         FindStatOfType(mod.statType).AddModifier(mod);

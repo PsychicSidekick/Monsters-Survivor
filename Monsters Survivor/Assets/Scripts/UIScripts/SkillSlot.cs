@@ -56,6 +56,7 @@ public class SkillSlot : MonoBehaviour
             child.GetComponent<ChooseSkillButton>().currentSkillSlot = this;
         }
 
+        // Shows chooseSkillPanel right above this skill slot
         RectTransform chooseSkillPanelTransform = chooseSkillPanel.GetComponent<RectTransform>();
         float newXPos = transform.position.x - chooseSkillPanelTransform.rect.width / 2;
         float newYPos = transform.parent.position.y + transform.parent.GetComponent<RectTransform>().rect.height / 2 + chooseSkillPanelTransform.rect.height;

@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        // destroy when arrived at targetPos
+        // Destroy when arrived at targetPos
         if (Vector3.Distance(transform.position, targetPos) == 0)
         {
             // only if projectile does not chain
@@ -43,10 +43,10 @@ public class Projectile : MonoBehaviour
             }
         }
 
-        // becomes a homing projectile if projectile started chaining
+        // Becomes a homing projectile when projectile started chaining
         if (remainingChains < chain && chain > 0)
         {
-            // which is destroyed when the chain target is no longer in the scene
+            // Destroy when the chain target is no longer in the scene
             if (chainTarget == null)
             {
                 Destroy(gameObject);
@@ -67,14 +67,14 @@ public class Projectile : MonoBehaviour
         remainingPierces--;
         remainingChains--;
         
-        // destroy projectile if cannot pierce or chain anymore
+        // Destroy projectile if cannot pierce or chain anymore
         if (remainingPierces < 0 && remainingChains < 0)
         {
             Destroy(gameObject);
             return;
         }
 
-        // chain to new target
+        // Chain to new target
         if (remainingChains >= 0)
         {
             effectCollider.damage *= chainDamageMultiplier;
@@ -94,31 +94,31 @@ public class Projectile : MonoBehaviour
         {
             Character hitCharacter = hit.GetComponent<Character>();
 
-            // ignore if not a character
+            // Ignore if not a character
             if (!hitCharacter)
             {
                 continue;
             }
 
-            // ignore if projecile does not chain to user and the hit character is friendly
+            // Ignore if projecile does not chain to user and the hit character is friendly
             if (!chainsToUser && hitCharacter.GetType() == effectCollider.owner.GetType())
             {
                 continue;
             }
 
-            // ignore last chained character
+            // Ignore last chained character
             if (hitCharacter == chainedCharacter)
             {
                 continue;
             }
 
-            // ignore if hit character has already been chained
+            // Ignore if hit character has already been chained
             if (chainedCharacters.Contains(hitCharacter))
             {
                 continue;
             }
 
-            // update shortest distance each interation to find nearest possible chain target
+            // Update shortest distance each interation to find nearest possible chain target
             float distance = Vector3.Distance(transform.position, hit.transform.position);
             if (distance < shortestDistance)
             {
@@ -127,17 +127,17 @@ public class Projectile : MonoBehaviour
             }
         }
 
-        // set chain target if one is found
+        // Set chain target if one is found
         if (nextTarget != null)
         {
             targetPos = GameManager.instance.RefinedPos(nextTarget.transform.position);
             chainTarget = nextTarget;
             EffectCollider collider = GetComponent<EffectCollider>();
-            // manually call OnTriggerEnter through OnCollide if the nextTarget is already in the collider
+            // Manually call OnTriggerEnter through OnCollide if the nextTarget is already in the collider
             // this only happens when the next target is too close to the last chained character
-            if (collider.charactersStatusEffects.ContainsKey(nextTarget))
+            if (collider.effectsOnCharacters.ContainsKey(nextTarget))
             {
-                collider.charactersStatusEffects.Remove(nextTarget);
+                collider.effectsOnCharacters.Remove(nextTarget);
                 collider.OnCollide(nextTarget.GetComponent<Collider>());
             }
         }

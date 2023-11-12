@@ -23,6 +23,8 @@ public class MainMenu : MonoBehaviour
         stashPanel = PlayerStorage.instance.transform.GetChild(1).gameObject;
     }
 
+
+    // Returns a string representing the given amount of seconds in the format of "00:00"
     private string TimeToString(float time)
     {
         string minutes = Mathf.Floor(time / 60).ToString().PadLeft(2, '0');
@@ -71,6 +73,7 @@ public class MainMenu : MonoBehaviour
 
         while(!operation.isDone)
         {
+            // Percentage done of the loading progress
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
 
             loadingBar.value = progress;
