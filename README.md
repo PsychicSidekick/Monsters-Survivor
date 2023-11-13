@@ -30,7 +30,7 @@ https://assetstore.unity.com/packages/vfx/particles/spells/magic-vfx-ice-free-17
 
 https://assetstore.unity.com/packages/tools/particles-effects/lightning-bolt-effect-for-unity-59471
 
-Sound Effects:
+Sound Effects/Music:
 
 https://assetstore.unity.com/packages/audio/sound-fx/foley/fantasy-sfx-for-particle-distort-texture-effect-library-42146
 
