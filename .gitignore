@@ -12,16 +12,24 @@
 
 # Imported Assets
 Monsters Survivor/[Aa]ssets/Animation/
+Monsters Survivor/[Aa]ssets/Animation.meta
 Monsters Survivor/[Aa]ssets/ImportedMaterials/
+Monsters Survivor/[Aa]ssets/ImportedMaterials.meta
 Monsters Survivor/[Aa]ssets/ImportedSFX/
+Monsters Survivor/[Aa]ssets/ImportedSFX.meta
 Monsters Survivor/[Aa]ssets/ImportedUI/
+Monsters Survivor/[Aa]ssets/ImportedUI.meta
 Monsters Survivor/[Aa]ssets/ImportedVFX/
+Monsters Survivor/[Aa]ssets/ImportedVFX.meta
 Monsters Survivor/[Aa]ssets/Mixamo/
+Monsters Survivor/[Aa]ssets/Mixamo.meta
 Monsters Survivor/[Aa]ssets/NavMeshComponents/
+Monsters Survivor/[Aa]ssets/NavMeshComponents.meta
 Monsters Survivor/[Aa]ssets/Prefabs/
+Monsters Survivor/[Aa]ssets/Prefabs.meta
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
-!/[Aa]ssets/**/*.meta
+#!/[Aa]ssets/**/*.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
