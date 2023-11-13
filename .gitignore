@@ -27,6 +27,8 @@ Monsters Survivor/[Aa]ssets/NavMeshComponents/
 Monsters Survivor/[Aa]ssets/NavMeshComponents.meta
 Monsters Survivor/[Aa]ssets/Prefabs/
 Monsters Survivor/[Aa]ssets/Prefabs.meta
+Monsters Survivor/[Aa]ssets/TextMesh Pro/
+Monsters Survivor/[Aa]ssets/TextMesh Pro.meta
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 #!/[Aa]ssets/**/*.meta
