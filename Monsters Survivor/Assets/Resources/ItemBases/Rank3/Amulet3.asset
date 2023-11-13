@@ -33,7 +33,7 @@ MonoBehaviour:
     maxValue: 40
   - itemModType: 4
     minValue: 30
-    maxValue: 0
+    maxValue: 40
   - itemModType: 6
     minValue: 20
     maxValue: 25

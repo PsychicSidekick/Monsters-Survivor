@@ -10,6 +10,16 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 
+# Imported Assets
+[Aa]ssets/Animation/
+[Aa]ssets/ImportedMaterials/
+[Aa]ssets/ImportedSFX/
+[Aa]ssets/ImportedUI/
+[Aa]ssets/ImportedVFX/
+[Aa]ssets/Mixamo/
+[Aa]ssets/NavMeshComponents/
+[Aa]ssets/Prefabs/
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
