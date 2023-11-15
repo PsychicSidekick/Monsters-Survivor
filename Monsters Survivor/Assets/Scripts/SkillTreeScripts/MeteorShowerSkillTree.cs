@@ -18,7 +18,7 @@ public class MeteorShowerSkillTree : SkillTree
 
     public void LongerDuration()
     {
-        increasedMeteorShowerDuration += 0.2f;
+        increasedMeteorShowerDuration += 0.3f;
     }
 
     public void ReducedCoolDown()
@@ -35,7 +35,7 @@ public class MeteorShowerSkillTree : SkillTree
     public void FireStorm()
     {
         increasedMeteorShowerDamage += 0.7f;
-        additionalManaCost -= 30;
+        additionalManaCost -= 20;
     }
 
     public void CastSpeed()
@@ -45,18 +45,18 @@ public class MeteorShowerSkillTree : SkillTree
 
     public void IgniteDamage()
     {
-        increasedIgniteDamage += 0.3f;
+        increasedIgniteDamage += 0.4f;
     }
 
     public void MeteorDamage()
     {
-        increasedMeteorShowerDamage += 0.2f;
+        increasedMeteorShowerDamage += 0.5f;
     }
 
     public void ManaMeteor()
     {
         additionalManaCost += 20;
-        increasedMeteorShowerDamage += 0.4f;
+        increasedMeteorShowerDamage += 0.7f;
     }
 
     public void HellFire()
@@ -64,12 +64,13 @@ public class MeteorShowerSkillTree : SkillTree
         increasedIgniteDamage += 0.6f;
         increasedIgniteDuration += 0.6f;
         increasedIgniteChance += 20;
+        additionalManaCost += 20;
     }
 
     public void HeavenlyPillars()
     {
         increasedBaseMeteorShowerRadius -= 0.95f;
-        increasedBaseMeteorShowerDamage += 1;
+        increasedBaseMeteorShowerDamage += 1.5f;
         raiseEmission = true;
     }
 
@@ -90,7 +91,7 @@ public class MeteorShowerSkillTree : SkillTree
 
     public void LargerArea()
     {
-        increasedMeteorShowerRadius += 0.3f;
+        increasedMeteorShowerRadius += 0.2f;
     }
 
     public override void ResetSkillTree()

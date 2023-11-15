@@ -35,13 +35,13 @@ public class IceSpearSkillTree : SkillTree
     public void ManaInfused()
     {
         increasedIceSpearDamage += 0.7f;
-        additionalManaCost += 5;
+        additionalManaCost += 10;
     }
 
     public void QuantityOverQuality()
     {
         additionalNumberOfIceSpears += 4;
-        increasedBaseIceSpearDamage -= 0.15f;
+        increasedBaseIceSpearDamage -= 0.2f;
     }
 
     public void SharpSpears()
@@ -70,6 +70,7 @@ public class IceSpearSkillTree : SkillTree
     public void IceNova()
     {
         additionalNumberOfIceSpears += 4;
+        additionalManaCost += 10;
         spearsShootInNova = true;
     }
 

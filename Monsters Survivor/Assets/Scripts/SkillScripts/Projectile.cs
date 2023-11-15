@@ -23,6 +23,7 @@ public class Projectile : MonoBehaviour
     {
         remainingPierces = pierce;
         remainingChains = chain;
+        chainDamageMultiplier = 1;
         effectCollider = GetComponent<EffectCollider>();
     }
 

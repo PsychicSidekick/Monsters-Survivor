@@ -17,7 +17,7 @@ MonoBehaviour:
   skillSFX: {fileID: 8300000, guid: f19084670875ef64b8870d5fac1b3bd8, type: 3}
   coolDownTime: 4
   activeTime: 0
-  baseManaCost: 40
+  baseManaCost: 30
   targetsCharacters: 0
   isChannellingSkill: 0
   frozenOrbPrefab: {fileID: 2261200419857535693, guid: 3746e7d0886c48e4cb7ffb77b7ea1dc1, type: 3}

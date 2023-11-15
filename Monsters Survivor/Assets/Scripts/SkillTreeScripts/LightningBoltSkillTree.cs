@@ -38,7 +38,7 @@ public class LightningBoltSkillTree : SkillTree
     public void EnergyLoss()
     {
         additionalNumberOfLightningBoltChains += 4;
-        increasedBaseLightningBoltDamage -= 0.2f;
+        increasedBaseLightningBoltDamage -= 0.25f;
     }
 
     public void Amplifier()
@@ -70,8 +70,8 @@ public class LightningBoltSkillTree : SkillTree
     public void MassElectrocution()
     {
         increasedShockChance += 60;
-        additionalNumberOfLightningBolts += 2;
-        increasedBaseLightningBoltDamage -= 0.3f;
+        additionalNumberOfLightningBolts += 1;
+        additionalManaCost += 20;
     }
 
     public void CastSpeed()

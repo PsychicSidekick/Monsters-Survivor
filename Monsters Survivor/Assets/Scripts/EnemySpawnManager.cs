@@ -53,6 +53,8 @@ public class EnemySpawnManager : MonoBehaviour
 
     public IEnumerator SpawnSequence()
     {
+        yield return new WaitForSeconds(1);
+
         // Repeats whole spawn sequence indefinitely.
         while(true)
         {

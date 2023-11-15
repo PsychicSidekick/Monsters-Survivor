@@ -33,6 +33,7 @@ public class FireBallSkillTree : SkillTree
     {
         increasedIgniteChance += 15;
         increasedIgniteDuration += 0.3f;
+        additionalManaCost += 5;
     }
 
     public void SniperWizard()
@@ -46,6 +47,7 @@ public class FireBallSkillTree : SkillTree
     {
         increasedAttackSpeed += 30f;
         increasedBaseFireBallDamage += 0.1f;
+        additionalManaCost += 10;
     }
 
     public void ExplosionDamage()
@@ -62,11 +64,12 @@ public class FireBallSkillTree : SkillTree
     {
         increasedBaseExplosionDamage += 0.2f;
         increasedExplosionRadius += 0.3f;
+        additionalManaCost += 5;
     }
 
     public void MoreExplosions()
     {
-        additionalManaCost += 10;
+        additionalManaCost += 15;
         additionalNumberOfFireBalls += 1;
         increasedBaseFireBallDamage -= 0.25f;
     }
@@ -89,7 +92,7 @@ public class FireBallSkillTree : SkillTree
 
     public void ReducedCosts()
     {
-        additionalManaCost -= 5;
+        additionalManaCost -= 7;
     }
 
     public void IgniteChance()

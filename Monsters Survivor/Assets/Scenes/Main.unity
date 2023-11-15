@@ -3057,7 +3057,7 @@ PrefabInstance:
       propertyPath: description
       value: '+1 Additional Number Of Lightning Bolts
 
-        -10% Base Lightning
+        -20% Base Lightning
         Bolt Damage'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
@@ -3371,7 +3371,7 @@ PrefabInstance:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
       value: "Lightning Bolts can chain to the player, \nhealing for 10% of Lightning
-        Bolt Damage"
+        Bolt Damage\n+100% Chaining Range"
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -4224,10 +4224,10 @@ PrefabInstance:
       propertyPath: description
       value: '+60% Shock Chance
 
-        +2 Additional Number Of Lightning Bolts
+        +1 Additional Number Of Lightning Bolts
 
-        -30%
-        Base Lightning Bolt Damage'
+        +20
+        Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -5846,7 +5846,7 @@ PrefabInstance:
       propertyPath: description
       value: '+70% Ice Spear Damage
 
-        +5 Mana Cost'
+        +10 Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -8260,63 +8260,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397670620}
   m_CullTransparentMesh: 1
---- !u!1001 &401186684
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8835673344882010369, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
-      propertyPath: m_Name
-      value: Mutant
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835673344882010420, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835673344882010420, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835673344882010420, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835673344882010420, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -7.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835673344882010420, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835673344882010420, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835673344882010420, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835673344882010420, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835673344882010420, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835673344882010420, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835673344882010420, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 66c09f68d4e45294fa7f5387fc795180, type: 3}
 --- !u!1 &408269760
 GameObject:
   m_ObjectHideFlags: 0
@@ -11342,7 +11285,10 @@ PrefabInstance:
       propertyPath: description
       value: '+30% Explosive Radius
 
-        +20% Base Explosion Damage'
+        +20% Base Explosion Damage
+
+        +5
+        Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -12839,7 +12785,7 @@ PrefabInstance:
       propertyPath: description
       value: 'Lightning Bolts Chain To 4 Additional Targets
 
-        -20% Base Lightning
+        -25% Base Lightning
         Bolt Damage'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
@@ -13984,7 +13930,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +6 Additional Number Of Lightning Orbs
+      value: '+4 Additional Number Of Lightning Orbs
+
+        +20 Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -14184,7 +14132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6801749013783739763, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_Name
-      value: More Orbs
+      value: Mana Orbs
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -14452,7 +14400,10 @@ PrefabInstance:
       propertyPath: description
       value: '+30% Cast Speed With Fire Ball
 
-        +10% Base Fire Ball Damage'
+        +10% Base Fire Ball Damage
+
+        +10
+        Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -16016,7 +15967,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+100% Base Meteor Shower Damage
+      value: '+150% Base Meteor Shower Damage
 
         -95% Base Meteor Shower Radius'
       objectReference: {fileID: 0}
@@ -18894,7 +18845,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+40% Meteor Shower Damage
+      value: '+70% Meteor Shower Damage
 
         +20 Mana Cost
 
@@ -19314,7 +19265,7 @@ PrefabInstance:
       propertyPath: description
       value: '+4 Additional Number Of Ice Spears
 
-        -15% Base Ice Spear Damage'
+        -20% Base Ice Spear Damage'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -20337,7 +20288,7 @@ PrefabInstance:
       propertyPath: description
       value: '+1 Additional Number Of Fire Balls
 
-        +10 Mana Cost
+        +15 Mana Cost
 
         -25%
         Base Fire Ball Damage'
@@ -20723,7 +20674,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +30% Meteor Shower Radius
+      value: +20% Meteor Shower Radius
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -22372,8 +22323,10 @@ PrefabInstance:
       propertyPath: description
       value: '+4 Additional Number Of Ice Spears
 
-        Ice Spears shoots out in
-        a nova'
+        +10 Mana Cost
+
+        Ice
+        Spears shoot out in a nova'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -23827,9 +23780,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+2 Additional Number Of Lightning Orbs
-
-        +10 Mana Cost'
+      value: +1 Additional Number Of Lightning Orbs
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -24025,7 +23976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6801749013783739763, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_Name
-      value: Mana Orbs
+      value: More Orbs
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -25911,7 +25862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6801749013783739763, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_Name
-      value: Cast Speed
+      value: Orb Juggler
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -25927,7 +25878,7 @@ PrefabInstance:
       propertyPath: description
       value: '+70% Meteor Shower Damage
 
-        -30 Mana Cost'
+        -20 Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -30544,7 +30495,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +30% Ignite Damage
+      value: +40% Ignite Damage
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -32706,9 +32657,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: "Maximum number of Lightning Bolts is one\nAdditional number of Lightning
-        Bolts grants\n+10% Chain Damage Multiplier instead\nLightning Bolt Damage
-        is increased by the Chain \nDamage Multiplier each time it chains"
+      value: "Maximum number of Lightning Bolts is one\n+10% Chain Multiplier \n(Lightning
+        Bolt damage is increased by 10% every time it chains)\nEvery additional number
+        of Lightning Bolts causes\nLightning Bolts to chain to 2 additional targets
+        instead\n\n"
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -33388,7 +33340,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +20% Meteor Shower Duration
+      value: +30% Meteor Shower Duration
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -34221,7 +34173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: -5 Mana Cost
+      value: -7 Mana Cost
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -40067,7 +40019,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +20% Meteor Shower Damage
+      value: +50% Meteor Shower Damage
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -42704,7 +42656,9 @@ PrefabInstance:
         +20% Ignite Chance
 
         +60% Ignite
-        Duration'
+        Duration
+
+        +20 Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -45783,7 +45737,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: -3s Cooldown Time
+      value: '-3s Cooldown Time
+
+        +30 Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -45979,7 +45935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6801749013783739763, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_Name
-      value: Reduced Cooldown
+      value: Quick Cast
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -51327,7 +51283,7 @@ MonoBehaviour:
   mana: 0
   xp: 0
   level: 0
-  increasedRequiredXpPerLevel: 500
+  increasedRequiredXpPerLevel: 600
   maxLevel: 16
   xpIsDirty: 1
   isAttacking: 0
@@ -51562,9 +51518,6 @@ MonoBehaviour:
     triggerSkill: 0
   groundTarget: {x: 0, y: 0, z: 0}
   characterTarget: {fileID: 0}
-  mask:
-    serializedVersion: 2
-    m_Bits: 128
   isChannelling: 0
   currentChannelingGameObject: {fileID: 0}
   lastSkillUseTime: 0
