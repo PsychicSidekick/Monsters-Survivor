@@ -23,10 +23,10 @@ MonoBehaviour:
   lightningOrbPrefab: {fileID: 1197468199083580458, guid: 35e505d3fd0b15f4eba2c67ffa164242, type: 3}
   rotationCenterPrefab: {fileID: 6695515515904180748, guid: e3db36753258e4a489f988e86242c6e2, type: 3}
   baseNumberOfLightningOrbs: 3
-  baseLightningOrbDamage: 170
+  baseLightningOrbDamage: 100
   baseLightningOrbRotationRadius: 1.5
   baseLightningOrbSpeed: 100
-  baseLightningOrbDuration: 6
+  baseLightningOrbDuration: 5
   baseShockEffect: 20
   baseShockChance: 20
   baseShockDuration: 2

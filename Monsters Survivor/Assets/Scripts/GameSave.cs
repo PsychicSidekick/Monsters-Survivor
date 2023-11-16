@@ -31,18 +31,25 @@ public class GameSave
 
         public ItemSave(Item item)
         {
-            if (item.occupiedCell != null)
-            {
-                positionInStorage = item.occupiedCell.pos;
-                occupiedItemSlotID = -1;
-            }
-            else
-            {
-                positionInStorage = Vector2Int.zero;
-                occupiedItemSlotID = PlayerStorage.instance.itemSlots.FindIndex(itemSlot => itemSlot.slotType == item.itemBase.type);
-            }
+            positionInStorage = item.occupiedCell.pos;
+            occupiedItemSlotID = -1;
+
             itemName = item.name;
-            itemBaseID = itemBases.FindIndex(itemBase => itemBase == item.itemBase);
+            itemBaseID = itemBases.IndexOf(item.itemBase);
+            itemMods = new List<ItemModifierSave>();
+            foreach (StatModifier itemModifier in item.itemModifiers)
+            {
+                itemMods.Add(new ItemModifierSave(itemModifier));
+            }
+        }
+
+        public ItemSave(Item item, ItemSlot itemSlot)
+        {
+            positionInStorage = Vector2Int.zero;
+            occupiedItemSlotID = PlayerStorage.instance.itemSlots.IndexOf(itemSlot);
+
+            itemName = item.name;
+            itemBaseID = itemBases.IndexOf(item.itemBase);
             itemMods = new List<ItemModifierSave>();
             foreach (StatModifier itemModifier in item.itemModifiers)
             {
@@ -72,8 +79,10 @@ public class GameSave
         itemBases = Resources.LoadAll<ItemBase>("ItemBases").ToList();
     }
 
-    public void ClearSave()
+    public void NewSave()
     {
+        PlayerPrefs.SetFloat("HighScore", 0);
+
         StorageSave storageSave;
         storageSave.savedStashItems = new List<ItemSave>();
         storageSave.savedInventoryItems = new List<ItemSave>();
@@ -81,6 +90,8 @@ public class GameSave
 
         string json = JsonUtility.ToJson(storageSave);
         File.WriteAllText(Application.streamingAssetsPath + "/Save/save.txt", json);
+
+        PlayerStorage.instance.CleanStorage();
     }
 
     public void Save()
@@ -131,7 +142,7 @@ public class GameSave
         {
             if (itemSlot.equippedItem != null)
             {
-                ItemSave itemSave = new ItemSave(itemSlot.equippedItem);
+                ItemSave itemSave = new ItemSave(itemSlot.equippedItem, itemSlot);
                 storageSave.savedEquippedItems.Add(itemSave);
             }
         }

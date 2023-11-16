@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -15,6 +16,8 @@ public class MainMenu : MonoBehaviour
 
     public GameObject inventoryPanel;
     public GameObject stashPanel;
+
+    public GameObject newGameConfirmPanel;
 
     private void Start()
     {
@@ -41,6 +44,20 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(LoadSceneAsync());
     }
 
+    public void NewGameOnClick()
+    {
+        string json = File.ReadAllText(Application.streamingAssetsPath + "/Save/save.txt");
+
+        if (json.Length < 72 && PlayerPrefs.GetFloat("HighScore") == 0)
+        {
+            StartGameOnClick();
+        }
+        else
+        {
+            newGameConfirmPanel.SetActive(true);
+        }
+    }
+
     public void ShowStashOnClick()
     {
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
@@ -62,7 +79,7 @@ public class MainMenu : MonoBehaviour
     public void ClearSaveOnClick()
     {
         GameSave gameSave = new GameSave();
-        gameSave.ClearSave();
+        gameSave.NewSave();
     }
 
     IEnumerator LoadSceneAsync()

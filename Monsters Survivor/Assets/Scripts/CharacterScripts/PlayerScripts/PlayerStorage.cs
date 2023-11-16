@@ -87,7 +87,7 @@ public class PlayerStorage : MonoBehaviour
         }
     }
 
-    private void InitiateStorage()
+    public void InitiateStorage()
     {
         for (int x = 0; x < inventorySize.x; x++)
         {
@@ -121,6 +121,44 @@ public class PlayerStorage : MonoBehaviour
             }
 
             stash.Add(cellCol);
+        }
+    }
+
+    public void CleanStorage()
+    {
+        for (int x = 0; x < stashSize.x; x++)
+        {
+            for (int y = 0; y < stashSize.y; y++)
+            {
+                Cell cell = stash[x][y];
+                if (cell.childCells != null && cell.childCells.Count > 0)
+                {
+                    Destroy(cell.occupiedBy.itemImage);
+                    cell.RemoveItem();
+                }
+            }
+        }
+
+        for (int x = 0; x < inventorySize.x; x++)
+        {
+            for (int y = 0; y < inventorySize.y; y++)
+            {
+                Cell cell = inventory[x][y];
+                if (cell.childCells != null && cell.childCells.Count > 0)
+                {
+                    Destroy(cell.occupiedBy.itemImage);
+                    cell.RemoveItem();
+                }
+            }
+        }
+
+        foreach (ItemSlot itemSlot in itemSlots)
+        {
+            if (itemSlot.equippedItem != null)
+            {
+                Destroy(itemSlot.equippedItem.itemImage);
+                itemSlot.equippedItem = null;
+            }
         }
     }
 

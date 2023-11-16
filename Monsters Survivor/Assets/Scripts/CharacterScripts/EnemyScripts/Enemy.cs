@@ -31,13 +31,13 @@ public class Enemy : Character
         if (lootRank == 1 && GameManager.instance.GetCurrentRunTime() > 180)
         {
             lootRank = 2;
-            chanceToDropLoot = 1;
+            chanceToDropLoot = 1f;
         }
         // Increase loot rank from 2 to 3 after 6 minutes
         if (lootRank == 2 && GameManager.instance.GetCurrentRunTime() > 360)
         {
             lootRank = 3;
-            chanceToDropLoot = 1;
+            chanceToDropLoot = 0.1f;
         }
         // Find all item bases of current loot rank from Resources  
         lootPool = Resources.LoadAll<ItemBase>("ItemBases/Rank" + lootRank).ToList();

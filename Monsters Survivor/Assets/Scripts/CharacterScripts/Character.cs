@@ -14,9 +14,7 @@ public class Character : MonoBehaviour
     public float life;
     public float mana;
     public int xp;
-    public int level;
     public int increasedRequiredXpPerLevel;
-    public int maxLevel;
 
     [HideInInspector] public bool xpIsDirty = true;
 

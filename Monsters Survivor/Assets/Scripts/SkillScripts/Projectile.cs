@@ -54,7 +54,7 @@ public class Projectile : MonoBehaviour
             }
             else
             {
-                targetPos = chainTarget.transform.position;
+                targetPos = GameManager.instance.RefinedPos(chainTarget.transform.position);
             }
         }
         

@@ -11,7 +11,8 @@ public class LightningStrikeSkillTree : SkillTree
     public float increasedLightningStrikeDamage;
     public float increasedBaseLightningStrikeDamage;
     public float increasedLightningStrikeRadius;
-    public float increasedMaximumLightningStrikeRange;
+    public float increasedBaseLightningStrikeRadius;
+    public float increasedLighningStrikeRange;
 
     public float increasedShockEffect;
     public float increasedShockChance;
@@ -27,13 +28,13 @@ public class LightningStrikeSkillTree : SkillTree
 
     public void UnstableCurrents()
     {
-        increasedLightningStrikeDamage += 0.5f;
-        increasedMaximumLightningStrikeRange += 0.25f;
+        increasedShockEffect += 15;
+        increasedLighningStrikeRange += 0.25f;
     }
 
     public void ManaCharged()
     {
-        additionalNumberOfLightningStrikes += 5;
+        increasedLightningStrikeDamage += 0.6f;
         additionalManaCost += 5;
     }
 
@@ -49,30 +50,30 @@ public class LightningStrikeSkillTree : SkillTree
 
     public void LargerArea()
     {
-        increasedLightningStrikeRadius += 0.3f;
+        increasedLightningStrikeRadius += 0.2f;
     }
 
     public void CastSpeed()
     {
-        increasedAttackSpeed += 20;
+        increasedAttackSpeed += 40;
     }
 
     public void PowerSplit()
     {
-        additionalNumberOfLightningStrikes += 5;
-        increasedBaseLightningStrikeDamage -= 0.15f;
+        additionalNumberOfLightningStrikes += 2;
+        increasedBaseLightningStrikeDamage -= 0.1f;
     }
 
     public void ThunderStorm()
     {
-        increasedLightningStrikeRadius += 1;
+        increasedLightningStrikeRadius += 5;
         additionalManaCost += 10;
     }
 
     public void RapidStrikes()
     {
-        increasedAttackSpeed += 50;
-        increasedBaseLightningStrikeDamage -= 0.2f;
+        increasedAttackSpeed += 100;
+        increasedBaseLightningStrikeRadius -= 0.3f;
     }
 
     public void ReducedCosts()
@@ -94,7 +95,7 @@ public class LightningStrikeSkillTree : SkillTree
         increasedLightningStrikeDamage = 0;
         increasedBaseLightningStrikeDamage = 0;
         increasedLightningStrikeRadius = 0;
-        increasedMaximumLightningStrikeRange = 0;
+        increasedLighningStrikeRange = 0;
 
         increasedShockEffect = 0;
         increasedShockChance = 0;

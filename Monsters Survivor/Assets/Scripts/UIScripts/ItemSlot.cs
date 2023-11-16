@@ -60,7 +60,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             }
         }
 
-        if (equippedItem != null)
+        if (equippedItem != null && cursorItem == null)
         {
             PlayerStorage.instance.PickUpItemWithCursor(equippedItem);
             UnequipItem();

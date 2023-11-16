@@ -45,20 +45,20 @@ public class CharacterStatsPanel : MonoBehaviour
         moveSpeedTxt.text = "Increased Movement Speed: " + (player.stats.movementSpeed.value - player.stats.movementSpeed.baseValue) / player.stats.movementSpeed.baseValue * 100 + "%";
         atkSpeedTxt.text = "Increased Attack Speed: " + (player.stats.attackSpeed.value - player.stats.attackSpeed.baseValue) / player.stats.attackSpeed.baseValue * 100 + "%";
         atkDamageTxt.text = "Bonus Base Attack Damage: " + player.stats.attackDamage.value;
-        fireDamageTxt.text = "Increased Fire Damage: " + player.stats.increasedFireDamage.value + "%";
-        coldDamageTxt.text = "Increased Cold Damage: " + player.stats.increasedColdDamage.value + "%";
-        lightningDamageTxt.text = "Increased Lightning Damage: " + player.stats.increasedLightningDamage.value + "%";
-        areaDamageTxt.text = "Increased Area Damage: " + player.stats.increasedAreaDamage.value + "%";
-        areaEffectTxt.text = "Increased Area Effect: " + player.stats.increasedAreaEffect.value + "%";
-        projDamageTxt.text = "Increased Projectile Damage: " + player.stats.increasedProjectileDamage.value + "%";
-        projSpeedTxt.text = "Increased Projectile Speed: " + player.stats.increasedProjectileSpeed.value + "%";
+        fireDamageTxt.text = "Increased Fire Damage: " + player.stats.increasedFireDamage.value * 100 + "%";
+        coldDamageTxt.text = "Increased Cold Damage: " + player.stats.increasedColdDamage.value * 100 + "%";
+        lightningDamageTxt.text = "Increased Lightning Damage: " + player.stats.increasedLightningDamage.value * 100 + "%";
+        areaDamageTxt.text = "Increased Area Damage: " + player.stats.increasedAreaDamage.value * 100 + "%";
+        areaEffectTxt.text = "Increased Area Effect: " + player.stats.increasedAreaEffect.value * 100 + "%";
+        projDamageTxt.text = "Increased Projectile Damage: " + player.stats.increasedProjectileDamage.value * 100 + "%";
+        projSpeedTxt.text = "Increased Projectile Speed: " + player.stats.increasedProjectileSpeed.value * 100 + "%";
         noOfProjsTxt.text = "Additional Number Of Projectiles: " + player.stats.additionalNumberOfProjectiles.value;
-        igniteDamageTxt.text = "Increased Ignite Damage: " + player.stats.increasedIgniteDamage.value + "%";
-        igniteDurationTxt.text = "Increased Ignite Duration: " + player.stats.increasedIgniteDuration.value + "%";
+        igniteDamageTxt.text = "Increased Ignite Damage: " + player.stats.increasedIgniteDamage.value * 100 + "%";
+        igniteDurationTxt.text = "Increased Ignite Duration: " + player.stats.increasedIgniteDuration.value * 100 + "%";
         slowEffectTxt.text = "Increased Slow Effect: " + player.stats.increasedSlowEffect.value + "%";
-        slowDurationTxt.text = "Increased Slow Duration: " + player.stats.increasedSlowDuration.value + "%";
+        slowDurationTxt.text = "Increased Slow Duration: " + player.stats.increasedSlowDuration.value * 100 + "%";
         shockEffectTxt.text = "Increased Shock Effect: " + player.stats.increasedShockEffect.value + "%";
-        shockDurationTxt.text = "Increased Shock Duration: " + player.stats.increasedShockDuration.value + "%";
+        shockDurationTxt.text = "Increased Shock Duration: " + player.stats.increasedShockDuration.value * 100 + "%";
 
     }
 }

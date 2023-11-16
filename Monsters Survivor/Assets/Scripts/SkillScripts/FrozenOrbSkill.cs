@@ -75,9 +75,9 @@ public class FrozenOrbSkill : Skill
         }
         int iciclePierce = baseIciclePierce + skillTree.additionalIciclePierce;
         float icicleDamage = (baseIcicleDamage * (1 + skillTree.increasedBaseIcicleDamage) + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedIcicleDamage + skillUser.stats.increasedColdDamage.value + skillUser.stats.increasedProjectileDamage.value);
-        float icicleRange = baseIcicleRange * (1 + skillTree.increasedIcicleRange);
+        float icicleRange = baseIcicleRange * (1 + skillTree.increasedIcicleRange + skillUser.stats.increasedAreaEffect.value);
         float icicleSpeed = baseIcicleSpeed * (1 + skillTree.increasedIcicleSpeed + skillUser.stats.increasedProjectileSpeed.value);
-        float icicleShootRate = baseIcicleShootRate * (1 + skillTree.increasedIcicleShootRate);
+        float icicleShootRate = skillUser.stats.attackSpeed.value * (1 + skillTree.increasedIcicleShootRate);
 
         float icicleSlowEffect = baseIcicleSlowEffect + skillTree.increasedIcicleSlowEffect + skillUser.stats.increasedSlowEffect.value;
         float icicleSlowChance = baseIcicleSlowChance + skillTree.increasedIcicleSlowChance + skillUser.stats.additionalSlowChance.value;

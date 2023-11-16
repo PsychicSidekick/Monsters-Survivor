@@ -108,8 +108,8 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentSlope: 0
+    agentClimb: 0
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -5536,7 +5536,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +20% Cast Speed With Lightning Strike
+      value: +40% Cast Speed With Lightning Strike
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -15516,9 +15516,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+5 Additional Number Of Lightning Strikes
+      value: '+2 Additional Number Of Lightning Strikes
 
-        -15% Base Lightning
+        -10% Base Lightning
         Strike Damage'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
@@ -16278,10 +16278,11 @@ MonoBehaviour:
   title: Frozen Orb
   description: "Creates a frozen orb that travels forward, \nslowing enemies in its
     path. Frozen orb fires\na nova of icicles periodically, dealing Cold \ndamage
-    on hit.\n\nMana Cost: 50\nCooldown Time: 3s\nFrozen Orb Duration: 3s\nFrozen
-    Orb Slow Effect: 50%\nNumber Of Icicles: 6\nIcicle Damage: 100\nIcicle Fire Rate:
-    1/s\nIcicles Pierces 1 Target\nIcicle Slow Effect: 20%\nIcicle Slow Chance: 30%\nIcicle
-    Slow Duration: 3s"
+    on hit.\n(Icicle fire rate depends on the skill user's attack speed,\nRange of
+    icicles is increased by Area of Effect modifiers)\n\nMana Cost: 50\nCooldown
+    Time: 3s\nFrozen Orb Duration: 3s\nFrozen Orb Slow Effect: 50%\nNumber Of Icicles:
+    6\nIcicle Damage: 100\nIcicles Pierces 1 Target\nIcicle Slow Effect: 20%\nIcicle
+    Slow Chance: 30%\nIcicle Slow Duration: 3s"
   descriptionPanel: {fileID: 1435534865}
   fixedPos: 0
 --- !u!1001 &815657173
@@ -31589,7 +31590,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+100% Lightning Strike Radius
+      value: '+5 Additional Number Of Lightning Strikes
 
         +10 Mana Cost'
       objectReference: {fileID: 0}
@@ -32017,7 +32018,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +30% Lightning Strike Radius
+      value: +20% Lightning Strike Radius
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -41477,9 +41478,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: "Maximum number of Lightning Strikes is one\nAdditional number of Lightning
-        Strikes grant\n+5% Lightning Strike Radius and +10% Base \nLightning Strike
-        Damage instead\n"
+      value: 'Maximum number of Lightning Strikes is one
+
+        Additional number
+        of Lightning Strikes grant
+
+        +15% Base Lightning Strike Damage instead
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -43449,10 +43455,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+50% Cast Speed With Lightning Strike
+      value: '+100% Cast Speed With Lightning Strike
 
-        -20% Base Lightning
-        Strike Damage'
+        -30% Base Lightning
+        Strike Radius'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -44556,7 +44562,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+50% Lightning Strike Damage
+      value: '+15% Shock Effect
 
         +25% Lightning Strike Range'
       objectReference: {fileID: 0}
@@ -46110,7 +46116,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+5 Additional Numeber Of Lightning Strikes
+      value: '+60% Lightning Strike Damage
 
         +5 Mana Cost'
       objectReference: {fileID: 0}
@@ -51282,9 +51288,7 @@ MonoBehaviour:
   life: 0
   mana: 0
   xp: 0
-  level: 0
-  increasedRequiredXpPerLevel: 600
-  maxLevel: 16
+  increasedRequiredXpPerLevel: 500
   xpIsDirty: 1
   isAttacking: 0
   targetLoot: {fileID: 0}
@@ -51801,7 +51805,8 @@ MonoBehaviour:
   increasedLightningStrikeDamage: 0
   increasedBaseLightningStrikeDamage: 0
   increasedLightningStrikeRadius: 0
-  increasedMaximumLightningStrikeRange: 0
+  increasedBaseLightningStrikeRadius: 0
+  increasedLighningStrikeRange: 0
   increasedShockEffect: 0
   increasedShockChance: 0
   increasedShockDuration: 0

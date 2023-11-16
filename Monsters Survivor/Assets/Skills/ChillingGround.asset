@@ -21,7 +21,7 @@ MonoBehaviour:
   targetsCharacters: 0
   isChannellingSkill: 0
   chillingAreaPrefab: {fileID: 5133095757849603393, guid: 45b73c4772ffea144a21017d39c77b89, type: 3}
-  baseChillingGroundDamagePerSecond: 50
+  baseChillingGroundDamagePerSecond: 40
   baseChillingGroundHealingPerSecond: 10
   baseChillingGroundRadius: 6
   baseChillingGroundDuration: 4

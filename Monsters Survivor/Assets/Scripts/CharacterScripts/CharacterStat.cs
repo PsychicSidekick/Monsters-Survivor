@@ -121,14 +121,12 @@ public class CharacterStat
 
         finalValue *= 1 + totalPercentIncrease;
 
-        float roundedFinalValue = (float)Mathf.Round(finalValue * 100f) / 100f;
-
         // For "flat percentage increased" mods that does not have a flat base value
         if (type.ToString().Contains("Increased"))
         {
-            roundedFinalValue /= 100f;
+            finalValue /= 100f;
         }
 
-        return roundedFinalValue;
+        return finalValue;
     }
 }
