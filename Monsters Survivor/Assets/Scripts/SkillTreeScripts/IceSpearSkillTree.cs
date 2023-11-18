@@ -49,7 +49,7 @@ public class IceSpearSkillTree : SkillTree
         additionalNumberOfIceSpearPierces += 1;
     }
 
-    public void CastSpeed()
+    public void AttackSpeed()
     {
         increasedAttackSpeed += 20;
     }

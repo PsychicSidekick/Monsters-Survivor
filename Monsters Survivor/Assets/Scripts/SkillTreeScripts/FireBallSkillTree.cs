@@ -83,7 +83,7 @@ public class FireBallSkillTree : SkillTree
         increasedFireBallSpeed += 0.3f;
     }
 
-    public void CastSpeed()
+    public void AttackSpeed()
     {
         increasedAttackSpeed += 15;
     }

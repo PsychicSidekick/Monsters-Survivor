@@ -74,7 +74,7 @@ public class LightningBoltSkillTree : SkillTree
         additionalManaCost += 20;
     }
 
-    public void CastSpeed()
+    public void AttackSpeed()
     {
         increasedAttackSpeed += 15;
     }

@@ -53,26 +53,26 @@ public class LightningStrikeSkillTree : SkillTree
         increasedLightningStrikeRadius += 0.2f;
     }
 
-    public void CastSpeed()
+    public void AttackSpeed()
     {
         increasedAttackSpeed += 20;
     }
 
     public void PowerSplit()
     {
-        additionalNumberOfLightningStrikes += 2;
+        additionalNumberOfLightningStrikes += 4;
     }
 
     public void ThunderStorm()
     {
-        increasedLightningStrikeRadius += 5;
+        additionalNumberOfLightningStrikes += 10;
         additionalManaCost += 5;
     }
 
     public void RapidStrikes()
     {
         increasedAttackSpeed += 100;
-        increasedBaseLightningStrikeRadius -= 0.3f;
+        increasedBaseLightningStrikeRadius -= 0.2f;
     }
 
     public void ReducedCosts()
@@ -94,6 +94,7 @@ public class LightningStrikeSkillTree : SkillTree
         increasedLightningStrikeDamage = 0;
         increasedBaseLightningStrikeDamage = 0;
         increasedLightningStrikeRadius = 0;
+        increasedBaseLightningStrikeRadius = 0;
         increasedLighningStrikeRange = 0;
 
         increasedShockEffect = 0;
@@ -101,5 +102,6 @@ public class LightningStrikeSkillTree : SkillTree
         increasedShockDuration = 0;
 
         doesNotStopMoving = false;
+        maximumNumberOfLightningStrikesIsOne = false;
     }
 }

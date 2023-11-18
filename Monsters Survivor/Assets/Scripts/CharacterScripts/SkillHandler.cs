@@ -50,7 +50,7 @@ public class SkillHandler : MonoBehaviour
     {
         // Global cooldown
         bool readyToUseSkill = Time.time - 1 / skillUser.stats.attackSpeed.value > lastSkillUseTime;
-
+        
         foreach (SkillHolder skillHolder in skills)
         {
             switch (skillHolder.state)
@@ -78,6 +78,7 @@ public class SkillHandler : MonoBehaviour
                         lastSkillUseTime = Time.time;
 
                         skillHolder.skill.OnUse(skillUser);
+                        return;
                     }
                     break;
                 case SkillState.active:

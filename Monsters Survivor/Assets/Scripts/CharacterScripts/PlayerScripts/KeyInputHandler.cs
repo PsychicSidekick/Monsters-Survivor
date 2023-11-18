@@ -24,6 +24,7 @@ public class KeyInputHandler : MonoBehaviour
             if(Input.GetKey(skillHolder.key))
             {
                 skillHolder.triggerSkill = true;
+                return;
             }
             else
             {

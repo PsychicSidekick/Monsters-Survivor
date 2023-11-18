@@ -21,7 +21,14 @@ public class LightningStrikeSkill : Skill
     {
         LightningStrikeSkillTree skillTree = skillUser.GetComponent<LightningStrikeSkillTree>();
         SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
-        skillHandler.SetCurrentAttackSpeedMod(skillTree.increasedAttackSpeed);
+        if (skillTree.maximumNumberOfLightningStrikesIsOne)
+        {
+            skillHandler.SetCurrentAttackSpeedMod(skillTree.increasedAttackSpeed + (skillTree.additionalNumberOfLightningStrikes + (int)skillUser.stats.additionalNumberOfProjectiles.value) * 10);
+        }
+        else
+        {
+            skillHandler.SetCurrentAttackSpeedMod(skillTree.increasedAttackSpeed);
+        }
 
         if (!skillTree.doesNotStopMoving)
         {
@@ -50,7 +57,7 @@ public class LightningStrikeSkill : Skill
         float increasedBaseLightningStrikeDamage = 1 + skillTree.increasedBaseLightningStrikeDamage;
         if (skillTree.maximumNumberOfLightningStrikesIsOne)
         {
-            increasedBaseLightningStrikeDamage += (numberOfLightningStrikes - baseNumberOfLightningStrikes) * 0.15f;
+            increasedBaseLightningStrikeDamage += (numberOfLightningStrikes - baseNumberOfLightningStrikes) * 0.2f;
             numberOfLightningStrikes = 1;
         }
         float lightningStrikeDamage = (baseLightningStrikeDamage * increasedBaseLightningStrikeDamage + skillUser.stats.attackDamage.value) * (1 + skillTree.increasedLightningStrikeDamage + skillUser.stats.increasedLightningDamage.value + skillUser.stats.increasedAreaDamage.value);
