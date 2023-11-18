@@ -17,15 +17,15 @@ MonoBehaviour:
   skillSFX: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
   coolDownTime: 0
   activeTime: 0
-  baseManaCost: 15
+  baseManaCost: 20
   targetsCharacters: 0
   isChannellingSkill: 0
   lightningStrikeAreaPrefab: {fileID: 6512507329015173101, guid: ef85d401959c25843bee4c80cfee792b, type: 3}
   baseNumberOfLightningStrikes: 10
   baseLightningStrikeDamage: 150
-  baseLightningStrikeRadius: 1
+  baseLightningStrikeRadius: 0.9
   baseMinimumLightningStrikeRange: 2
   baseMaximumLightningStrikeRange: 6
   baseShockEffect: 30
-  baseShockChance: 50
-  baseShockDuration: 5
+  baseShockChance: 20
+  baseShockDuration: 3

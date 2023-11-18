@@ -77,7 +77,7 @@ public class LightningBoltSkill : Skill
             }
             if (skillTree.chainsToUser)
             {
-                collider.SetFriendlyEffects(lightningBoltDamage * 0.1f, false, skillUser, null);
+                collider.SetFriendlyEffects(lightningBoltDamage * 0.2f, false, skillUser, null);
                 proj.chainsToUser = true;
             }
         }

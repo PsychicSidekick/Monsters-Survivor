@@ -1477,7 +1477,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +30% Chilling Ground Radius
+      value: +15% Chilling Ground Radius
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -1497,7 +1497,7 @@ PrefabInstance:
       objectReference: {fileID: 1644112318}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -2078,7 +2078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -2455,7 +2455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -2654,7 +2654,7 @@ PrefabInstance:
       propertyPath: description
       value: 'Ignites are applied by explosions instead
 
-        +30% Ignite Chance'
+        +25% Ignite Chance'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -2852,7 +2852,7 @@ PrefabInstance:
       objectReference: {fileID: 1294955283}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -3057,8 +3057,8 @@ PrefabInstance:
       propertyPath: description
       value: '+1 Additional Number Of Lightning Bolts
 
-        -20% Base Lightning
-        Bolt Damage'
+        Lightning Bolts Chain
+        To 1 Fewer Target'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -3357,8 +3357,8 @@ MonoBehaviour:
   title: Lightning Bolt
   description: "Shoots out a lightning bolt that deals \nlightning damage and shocks
     enemies.\nLightning bolts chain to the nearest enemy on hit.\n\nMana Cost: 15\nLightning
-    Bolt Damage: 80\nLightning Bolts chain to 2 additional targets\nShock effect:
-    20%\nShock chance: 20%\nShock duration: 2s"
+    Bolt Damage: 70\nLightning Bolts chain to 2 additional targets\nShock effect:
+    20%\nShock chance: 20%\nShock duration: 1s"
   descriptionPanel: {fileID: 1435534865}
   fixedPos: 0
 --- !u!1001 &196055999
@@ -3674,9 +3674,9 @@ MonoBehaviour:
     damage to enemies
 
 
-    Mana Cost: 40
+    Mana Cost: 30
 
-    Fire Blast Damage: 150
+    Fire Blast Damage: 125
 
     Ignite
     Chance: 25%
@@ -3865,7 +3865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -4222,7 +4222,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+60% Shock Chance
+      value: '+30% Shock Chance
 
         +1 Additional Number Of Lightning Bolts
 
@@ -4247,7 +4247,7 @@ PrefabInstance:
       objectReference: {fileID: 1098314570}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -4765,7 +4765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -5536,7 +5536,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +40% Cast Speed With Lightning Strike
+      value: +20% Cast Speed With Lightning Strike
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -5556,7 +5556,7 @@ PrefabInstance:
       objectReference: {fileID: 1426961709}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -6333,7 +6333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -6720,7 +6720,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+50% Icicle Damage
+      value: '+25% Icicle Damage
 
         +5 Mana Cost'
       objectReference: {fileID: 0}
@@ -6742,7 +6742,7 @@ PrefabInstance:
       objectReference: {fileID: 1864341607}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -6948,7 +6948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +25% Ignite Chance
+      value: +20% Ignite Chance
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -8024,7 +8024,7 @@ MonoBehaviour:
   title: Ice Spear
   description: "Throws ice spears foward, dealing \ncold damage and have a chance
     to \nslow enemies on hit. Ice Spears pierces\nthrough enemies before they are
-    destroyed.\n\nIce Spear Damage: 75\nNumber of Ice Spears: 3\nPierces 1 Target\nSlow
+    destroyed.\n\nIce Spear Damage: 70\nNumber of Ice Spears: 3\nPierces 1 Target\nSlow
     Effect: 20%\nSlow Chance: 10%\nSlow Duration: 2s\n"
   descriptionPanel: {fileID: 1435534865}
   fixedPos: 0
@@ -8453,7 +8453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -9260,7 +9260,7 @@ PrefabInstance:
       objectReference: {fileID: 1767708670}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -9484,8 +9484,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -115.859985}
-  m_SizeDelta: {x: 0, y: -231.71997}
+  m_AnchoredPosition: {x: 0, y: -115.40207}
+  m_SizeDelta: {x: 0, y: -230.8041}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &468770245
 MonoBehaviour:
@@ -9863,7 +9863,9 @@ PrefabInstance:
         +20% Slow Chance
 
         +20%
-        Slow Duration'
+        Slow Duration
+
+        +20% Slow Effect'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -9883,7 +9885,7 @@ PrefabInstance:
       objectReference: {fileID: 1783086678}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -10370,9 +10372,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+30% Fire Blast Damage
+      value: '+50% Fire Blast Damage
 
-        +5 Mana Cost
+        +10 Mana Cost
 
 '
       objectReference: {fileID: 0}
@@ -10394,7 +10396,7 @@ PrefabInstance:
       objectReference: {fileID: 1689468277}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -10651,7 +10653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -10849,7 +10851,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +20% Shock Effect
+      value: +10% Shock Effect
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -10869,7 +10871,7 @@ PrefabInstance:
       objectReference: {fileID: 1946215784}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -11061,7 +11063,10 @@ PrefabInstance:
       propertyPath: description
       value: '+3 Additional Number Of Icicles
 
-        +30% Base Icicle Damage'
+        +10% Base Icicle Damage
+
+        +20
+        Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -12179,7 +12184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -12783,7 +12788,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: 'Lightning Bolts Chain To 4 Additional Targets
+      value: 'Lightning Bolts Chain To 3 Additional Targets
 
         -25% Base Lightning
         Bolt Damage'
@@ -12806,7 +12811,7 @@ PrefabInstance:
       objectReference: {fileID: 803512895}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -13016,7 +13021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -13349,7 +13354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -13952,7 +13957,7 @@ PrefabInstance:
       objectReference: {fileID: 2036712668}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -14402,7 +14407,7 @@ PrefabInstance:
 
         +10% Base Fire Ball Damage
 
-        +10
+        +5
         Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
@@ -14419,7 +14424,7 @@ PrefabInstance:
       objectReference: {fileID: 1514359943}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -14690,7 +14695,7 @@ PrefabInstance:
       objectReference: {fileID: 1712944807}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -15066,7 +15071,7 @@ PrefabInstance:
       objectReference: {fileID: 1665233100}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -15223,7 +15228,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+100% Icicles Fire Rate
+      value: '+50% Icicles Fire Rate
 
         +15 Mana Cost'
       objectReference: {fileID: 0}
@@ -15466,8 +15471,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 424.14}
-  m_SizeDelta: {x: 0, y: -848.28}
+  m_AnchoredPosition: {x: 0, y: 422.83655}
+  m_SizeDelta: {x: 0, y: -845.6731}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &784013740
 MonoBehaviour:
@@ -15516,10 +15521,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+2 Additional Number Of Lightning Strikes
-
-        -10% Base Lightning
-        Strike Damage'
+      value: +2 Additional Number Of Lightning Strikes
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -15539,7 +15541,7 @@ PrefabInstance:
       objectReference: {fileID: 1889702702}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -15830,16 +15832,16 @@ MonoBehaviour:
     Cooldown
     Time: 6s
 
-    Damage: 50
+    Damage: 100
 
     Number of orbs: 3
 
-    Shock chance: 10%
+    Shock chance: 20%
 
     Shock
-    duration: 2s
+    duration: 1s
 
-    Shock effect: 50%'
+    Shock effect: 20%'
   descriptionPanel: {fileID: 1435534865}
   fixedPos: 0
 --- !u!224 &796595384 stripped
@@ -15967,9 +15969,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+150% Base Meteor Shower Damage
+      value: '+500% Base Meteor Shower Damage
 
-        -95% Base Meteor Shower Radius'
+        -95% Base Meteor Shower Radius
+
+        +5s
+        Cooldown Time'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -16279,8 +16284,8 @@ MonoBehaviour:
   description: "Creates a frozen orb that travels forward, \nslowing enemies in its
     path. Frozen orb fires\na nova of icicles periodically, dealing Cold \ndamage
     on hit.\n(Icicle fire rate depends on the skill user's attack speed,\nRange of
-    icicles is increased by Area of Effect modifiers)\n\nMana Cost: 50\nCooldown
-    Time: 3s\nFrozen Orb Duration: 3s\nFrozen Orb Slow Effect: 50%\nNumber Of Icicles:
+    icicles is increased by Area of Effect modifiers)\n\nMana Cost: 30\nCooldown
+    Time: 4s\nFrozen Orb Duration: 4s\nFrozen Orb Slow Effect: 50%\nNumber Of Icicles:
     6\nIcicle Damage: 100\nIcicles Pierces 1 Target\nIcicle Slow Effect: 20%\nIcicle
     Slow Chance: 30%\nIcicle Slow Duration: 3s"
   descriptionPanel: {fileID: 1435534865}
@@ -16314,7 +16319,7 @@ PrefabInstance:
       objectReference: {fileID: 973603643}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -16591,9 +16596,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Lightning Strike
   description: "Strikes random areas around the player \nwith lightning, shocking
-    and dealing \nLightning damage to enemies hit.\n\nMana Cost: 15\nNumber Of Lightning
-    Strikes: 10\nLightning Strike Damage: 200\nShock Effect: 30%\nShock Chance: 50%\nShock
-    Duration: 5s"
+    and dealing \nLightning damage to enemies hit.\n\nMana Cost: 20\nNumber Of Lightning
+    Strikes: 10\nLightning Strike Damage: 150\nShock Effect: 30%\nShock Chance: 20%\nShock
+    Duration: 3s"
   descriptionPanel: {fileID: 1435534865}
   fixedPos: 0
 --- !u!1 &827349480
@@ -17399,7 +17404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -17664,7 +17669,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +30% Lightning Orb Damage
+      value: +20% Lightning Orb Damage
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -17680,7 +17685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -18848,7 +18853,7 @@ PrefabInstance:
       propertyPath: description
       value: '+70% Meteor Shower Damage
 
-        +20 Mana Cost
+        +10 Mana Cost
 
 '
       objectReference: {fileID: 0}
@@ -19702,7 +19707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -20289,10 +20294,7 @@ PrefabInstance:
       propertyPath: description
       value: '+1 Additional Number Of Fire Balls
 
-        +15 Mana Cost
-
-        -25%
-        Base Fire Ball Damage'
+        -30% Base Fire Ball Damage'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -20308,7 +20310,7 @@ PrefabInstance:
       objectReference: {fileID: 2138567140}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -21369,7 +21371,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +100% Shock Duration
+      value: +50% Shock Duration
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -21389,7 +21391,7 @@ PrefabInstance:
       objectReference: {fileID: 1301189453}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -21952,7 +21954,7 @@ PrefabInstance:
 
         +50% Fire Ball Speed
 
-        +20
+        +10
         Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
@@ -22620,8 +22622,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Meteor Shower
   description: "Calls down a meteor shower at the target area, \ndealing fire damage
-    to enemies in area continuously.\n\nMana Cost: 50\nCooldown Time: 6s\nMeteor
-    Shower Damage Per Second: 70\nMeteor Shower Duration: 4s\nIgnite Chance: 40%\nIgnite
+    to enemies in area continuously.\n\nMana Cost: 30\nCooldown Time: 7s\nMeteor
+    Shower Damage Per Second: 100\nMeteor Shower Duration: 5s\nIgnite Chance: 40%\nIgnite
     Duration: 4s"
   descriptionPanel: {fileID: 1435534865}
   fixedPos: 0
@@ -22983,7 +22985,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +50% Chaining Range
+      value: +30% Chaining Range
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -23003,7 +23005,7 @@ PrefabInstance:
       objectReference: {fileID: 998059601}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -24281,8 +24283,8 @@ MonoBehaviour:
   title: Chilling Ground
   description: "Creates an area of chill under the player, slowing \nand dealing
     Cold damage to enemies continuously. \nChilling Ground also heals the player
-    when they stand on it.\n\nMana Cost: 20\nCooldown Time: 5s\nChilling Ground Damage
-    Per Second: 50\nChilling Ground Healing Per Second: 10\nChilling Ground Duration:
+    when they stand on it.\n\nMana Cost: 25\nCooldown Time: 5s\nChilling Ground Damage
+    Per Second: 40\nChilling Ground Healing Per Second: 10\nChilling Ground Duration:
     4s\nSlow Effect: 30\n"
   descriptionPanel: {fileID: 1435534865}
   fixedPos: 0
@@ -24311,7 +24313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -24758,7 +24760,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+30% Slow Effect
+      value: '+20% Slow Effect
 
         +30% Chilling Ground Damage'
       objectReference: {fileID: 0}
@@ -24985,7 +24987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -25687,7 +25689,7 @@ PrefabInstance:
       objectReference: {fileID: 1745181309}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -25877,9 +25879,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+70% Meteor Shower Damage
+      value: '+60% Ignite Damage
 
-        -20 Mana Cost'
+        +60% Ignite Duration
+
+        +20% Ignite
+        Chance
+
+        +20 Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -25899,7 +25906,7 @@ PrefabInstance:
       objectReference: {fileID: 1926652893}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -25951,7 +25958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1243753135170330031, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: FireStorm
+      value: Hellfire
       objectReference: {fileID: 0}
     - target: {fileID: 1243753135170330031, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -26099,7 +26106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6801749013783739763, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_Name
-      value: Fire Storm
+      value: Hellfire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
@@ -26272,7 +26279,7 @@ PrefabInstance:
       objectReference: {fileID: 1870346074}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -26470,9 +26477,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+200% Chilling Ground Duration
+      value: '+100% Chilling Ground Duration
 
-        +5s Cooldown Time'
+        +4s Cooldown Time'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -27176,7 +27183,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +30% Cast Speed With Meteor Shower
+      value: '-3s Cooldown Time
+
+        -100% Meteor Shower Duration'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -27196,7 +27205,7 @@ PrefabInstance:
       objectReference: {fileID: 1926652893}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -27236,7 +27245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1243753135170330031, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: CastSpeed
+      value: InfiniteMeteors
       objectReference: {fileID: 0}
     - target: {fileID: 1243753135170330031, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -27376,7 +27385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6801749013783739763, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_Name
-      value: Cast Speed
+      value: Infinite Meteors
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
@@ -28538,7 +28547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -30053,7 +30062,7 @@ PrefabInstance:
       objectReference: {fileID: 81179872}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -31262,7 +31271,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +40% Ice Spear Range
+      value: +20% Ice Spear Range
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -31278,7 +31287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -31592,7 +31601,7 @@ PrefabInstance:
       propertyPath: description
       value: '+5 Additional Number Of Lightning Strikes
 
-        +10 Mana Cost'
+        +5 Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -31612,7 +31621,7 @@ PrefabInstance:
       objectReference: {fileID: 1445861440}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -31807,7 +31816,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+50% Chilling Ground Radius
+      value: '+30% Chilling Ground Radius
 
         -10% Base Chilling Ground Damage'
       objectReference: {fileID: 0}
@@ -32038,7 +32047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -32425,7 +32434,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +25% Chilling Ground Duration
+      value: +20% Chilling Ground Duration
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -32445,7 +32454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -32658,10 +32667,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: "Maximum number of Lightning Bolts is one\n+10% Chain Multiplier \n(Lightning
-        Bolt damage is increased by 10% every time it chains)\nEvery additional number
+      value: "Maximum number of Lightning Bolts is one\n+20% Chain Multiplier \n(Lightning
+        Bolt damage is increased by 20% every time it chains)\nEvery additional number
         of Lightning Bolts causes\nLightning Bolts to chain to 2 additional targets
-        instead\n\n"
+        instead"
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -32875,7 +32884,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: -50% Expansion Time
+      value: -15% Expansion Time
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -32895,7 +32904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -33117,9 +33126,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: 'Icicles Pierce 2 Additional Targets
+      value: 'Icicles Pierce 1 Additional Targets
 
-        +30% Icicle Range'
+        +15% Icicle Range'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -33139,7 +33148,7 @@ PrefabInstance:
       objectReference: {fileID: 1613023749}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -33341,7 +33350,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +30% Meteor Shower Duration
+      value: +10% Meteor Shower Duration
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -33946,9 +33955,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+2 Additional Number Of Icicles
+      value: '+1 Additional Number Of Icicles
 
-        +2 Mana Cost'
+        +5 Mana Cost'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -34186,7 +34195,7 @@ PrefabInstance:
       objectReference: {fileID: 9093911772442741417}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -34498,7 +34507,7 @@ PrefabInstance:
       objectReference: {fileID: 1500570544}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -35202,9 +35211,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '-4s Cooldown Time
-
-        -20 Mana Cost'
+      value: -3s Cooldown Time
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -35688,7 +35695,7 @@ PrefabInstance:
       objectReference: {fileID: 1836947252}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -36073,7 +36080,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +30% Lightning Orb Speed
+      value: +20% Lightning Orb Speed
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -36093,7 +36100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -36725,7 +36732,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +25% Ignite Chance
+      value: +15% Ignite Chance
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -36741,7 +36748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -37735,7 +37742,7 @@ PrefabInstance:
       objectReference: {fileID: 1512594021}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -38040,7 +38047,7 @@ PrefabInstance:
       objectReference: {fileID: 325013589}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -38824,7 +38831,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +30% Shock Chance
+      value: +20% Shock Chance
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -38844,7 +38851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -39177,7 +39184,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +50% Frozen Orb Duration
+      value: +30% Frozen Orb Duration
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -39197,7 +39204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -40267,7 +40274,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +100% Shock Duration
+      value: +30% Shock Duration
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -40287,7 +40294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -41808,7 +41815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -42657,14 +42664,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+60% Ignite Damage
+      value: '+25% Meteor Shower Damage
 
-        +20% Ignite Chance
+        +25% Meteor Shower Duration
 
-        +60% Ignite
-        Duration
-
-        +20 Mana Cost'
+        +1s
+        Cooldown Time'
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -42684,7 +42689,7 @@ PrefabInstance:
       objectReference: {fileID: 2033777242}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -42724,7 +42729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1243753135170330031, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: HellFire
+      value: FireStorm
       objectReference: {fileID: 0}
     - target: {fileID: 1243753135170330031, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -42860,7 +42865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6801749013783739763, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_Name
-      value: Hellfire
+      value: Fire Storm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
@@ -43226,9 +43231,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+10% Attack Speed
+      value: '+30% Meteor Shower Radius
 
-        -4s Cooldown Time
+        +5 Mana Cost
 
 '
       objectReference: {fileID: 0}
@@ -43250,7 +43255,7 @@ PrefabInstance:
       objectReference: {fileID: 1536399072}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -43290,7 +43295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1243753135170330031, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: InfiniteMeteors
+      value: ManaInfused
       objectReference: {fileID: 0}
     - target: {fileID: 1243753135170330031, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -43426,7 +43431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6801749013783739763, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: m_Name
-      value: Infinite Meteors
+      value: Mana Infused
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
@@ -43478,7 +43483,7 @@ PrefabInstance:
       objectReference: {fileID: 1445861440}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -43692,7 +43697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -43881,7 +43886,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +30% Shock Effect
+      value: +10% Shock Effect
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -43901,7 +43906,7 @@ PrefabInstance:
       objectReference: {fileID: 1455767762}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -44106,8 +44111,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: "+100% Lightning Orb Rotation Radius\n+20% Base Lightning Orb Damage\nLightning
-        Orbs created have their \nradii changed randomly."
+      value: "+150% Lightning Orb Rotation Radius\nLightning Orbs created have their
+        \nradii changed randomly."
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -44341,7 +44346,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: +30% Lightning Orb Duration
+      value: +20% Lightning Orb Duration
       objectReference: {fileID: 0}
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: descriptionPanel
@@ -44361,7 +44366,7 @@ PrefabInstance:
       objectReference: {fileID: 482465996}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -44562,7 +44567,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+15% Shock Effect
+      value: '+10% Shock Effect
 
         +25% Lightning Strike Range'
       objectReference: {fileID: 0}
@@ -44584,7 +44589,7 @@ PrefabInstance:
       objectReference: {fileID: 2024316305}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -46116,7 +46121,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6035333736965147859, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: description
-      value: '+60% Lightning Strike Damage
+      value: '+40% Lightning Strike Damage
 
         +5 Mana Cost'
       objectReference: {fileID: 0}
@@ -46138,7 +46143,7 @@ PrefabInstance:
       objectReference: {fileID: 1976741950}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -46460,7 +46465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -47310,7 +47315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -48081,7 +48086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter
@@ -48311,7 +48316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: maxAllocation
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1183882401200806876, guid: f9da7874b3857b6438ee57bb9fc769f2, type: 3}
       propertyPath: pointsCounter

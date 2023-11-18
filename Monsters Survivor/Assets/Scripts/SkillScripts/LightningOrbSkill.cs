@@ -65,8 +65,8 @@ public class LightningOrbSkill : Skill
             float lightningOrbRotationRadius = baseLightningOrbRotationRadius * (1 + skillTree.increasedLightningOrbRotationRadius);
             if (skillTree.randomRotationRadius)
             {
-                // Change radius by -30% to 30%
-                lightningOrbRotationRadius *= Random.Range(0.7f, 1.3f);
+                // Change radius by -50% to 50%
+                lightningOrbRotationRadius *= Random.Range(0.5f, 1.5f);
             }
 
             Vector3 spawnOffset = Quaternion.AngleAxis(i * 360 / numberOfLightningOrbs, rotationCenter.transform.up) * new Vector3(lightningOrbRotationRadius, 0, 0);

@@ -26,18 +26,18 @@ public class LightningBoltSkillTree : SkillTree
 
     public void ShockEffect()
     {
-        increasedShockEffect += 30;
+        increasedShockEffect += 10;
     }
 
     public void LightningFork()
     {
         additionalNumberOfLightningBolts += 1;
-        increasedBaseLightningBoltDamage -= 0.1f;
+        additionalNumberOfLightningBoltChains -= 1;
     }
 
     public void EnergyLoss()
     {
-        additionalNumberOfLightningBoltChains += 4;
+        additionalNumberOfLightningBoltChains += 3;
         increasedBaseLightningBoltDamage -= 0.25f;
     }
 
@@ -53,12 +53,12 @@ public class LightningBoltSkillTree : SkillTree
 
     public void ShockDuration()
     {
-        increasedShockDuration += 1;
+        increasedShockDuration += 0.5f;
     }
 
     public void ChainingRange()
     {
-        increasedLightningBoltChainingRange += 0.5f;
+        increasedLightningBoltChainingRange += 0.3f;
     }
 
     public void ElectroTherapy()
@@ -69,7 +69,7 @@ public class LightningBoltSkillTree : SkillTree
 
     public void MassElectrocution()
     {
-        increasedShockChance += 60;
+        increasedShockChance += 30;
         additionalNumberOfLightningBolts += 1;
         additionalManaCost += 20;
     }

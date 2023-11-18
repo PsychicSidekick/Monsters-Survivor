@@ -21,7 +21,7 @@ public class ChillingGroundSkillTree : SkillTree
 
     public void LargerArea()
     {
-        increasedChillingGroundRadius += 0.3f;
+        increasedChillingGroundRadius += 0.15f;
     }
 
     public void ManaEnchanted()
@@ -44,7 +44,7 @@ public class ChillingGroundSkillTree : SkillTree
 
     public void LingeringChill()
     {
-        increasedChillingGroundDuration += 0.25f;
+        increasedChillingGroundDuration += 0.2f;
     }
 
     public void BoneChilling()
@@ -54,20 +54,20 @@ public class ChillingGroundSkillTree : SkillTree
 
     public void MaximumCoverage()
     {
-        increasedChillingGroundRadius += 0.5f;
+        increasedChillingGroundRadius += 0.3f;
         increasedBaseChillingGroundDamage -= 0.1f;
     }
 
     public void AbsoluteZero()
     {
-        increasedSlowEffect += 30;
+        increasedSlowEffect += 20;
         increasedChillingGroundDamage += 0.3f;
     }
 
     public void EternalWinter()
     {
-        increasedChillingGroundDuration += 2;
-        additionalCooldownTime += 5;
+        increasedChillingGroundDuration += 1;
+        additionalCooldownTime += 4;
     }
 
     public void ReducedCooldown()

@@ -30,4 +30,4 @@ MonoBehaviour:
   baseLightningBoltSpread: 15
   baseShockEffect: 20
   baseShockChance: 20
-  baseShockDuration: 2
+  baseShockDuration: 1

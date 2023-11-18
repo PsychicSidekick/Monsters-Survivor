@@ -28,13 +28,13 @@ public class LightningStrikeSkillTree : SkillTree
 
     public void UnstableCurrents()
     {
-        increasedShockEffect += 15;
+        increasedShockEffect += 10;
         increasedLighningStrikeRange += 0.25f;
     }
 
     public void ManaCharged()
     {
-        increasedLightningStrikeDamage += 0.6f;
+        increasedLightningStrikeDamage += 0.4f;
         additionalManaCost += 5;
     }
 
@@ -55,19 +55,18 @@ public class LightningStrikeSkillTree : SkillTree
 
     public void CastSpeed()
     {
-        increasedAttackSpeed += 40;
+        increasedAttackSpeed += 20;
     }
 
     public void PowerSplit()
     {
         additionalNumberOfLightningStrikes += 2;
-        increasedBaseLightningStrikeDamage -= 0.1f;
     }
 
     public void ThunderStorm()
     {
         increasedLightningStrikeRadius += 5;
-        additionalManaCost += 10;
+        additionalManaCost += 5;
     }
 
     public void RapidStrikes()

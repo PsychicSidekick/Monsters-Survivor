@@ -17,12 +17,12 @@ MonoBehaviour:
   skillSFX: {fileID: 8300000, guid: d1857ae27d7a1d54f9c16a2d32e25e6a, type: 3}
   coolDownTime: 5
   activeTime: 0
-  baseManaCost: 20
+  baseManaCost: 25
   targetsCharacters: 0
   isChannellingSkill: 0
   chillingAreaPrefab: {fileID: 5133095757849603393, guid: 45b73c4772ffea144a21017d39c77b89, type: 3}
   baseChillingGroundDamagePerSecond: 40
   baseChillingGroundHealingPerSecond: 10
-  baseChillingGroundRadius: 6
+  baseChillingGroundRadius: 5
   baseChillingGroundDuration: 4
   baseSlowEffect: 30

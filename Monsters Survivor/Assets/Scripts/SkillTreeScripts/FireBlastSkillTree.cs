@@ -28,8 +28,8 @@ public class FireBlastSkillTree : SkillTree
 
     public void ManaBurner()
     {
-        increasedFireBlastDamage += 0.3f;
-        additionalManaCost += 5;
+        increasedFireBlastDamage += 0.5f;
+        additionalManaCost += 10;
     }
 
     public void FreedomBlaster()
@@ -80,12 +80,12 @@ public class FireBlastSkillTree : SkillTree
 
     public void BlastSpeed()
     {
-        increasedFireBlastExpansionTime -= 0.5f;
+        increasedFireBlastExpansionTime -= 0.15f;
     }
 
     public void IgniteChance()
     {
-        increasedIgniteChance += 25;
+        increasedIgniteChance += 15;
     }
 
     public void IgniteDuration()

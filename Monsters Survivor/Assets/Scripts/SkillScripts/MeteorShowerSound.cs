@@ -5,15 +5,19 @@ using UnityEngine;
 public class MeteorShowerSound : MonoBehaviour
 {
     public AudioClip meteorSFX;
+    public float playRate;
 
-    private void OnParticleCollision(GameObject other)
+    private void Start()
     {
-        if (Random.Range(1, 100) < 80)
+        StartCoroutine(RepeatMeteorSFX());
+    }
+
+    IEnumerator RepeatMeteorSFX()
+    {
+        while(true)
         {
-            if (Player.instance != null)
-            {
-                Player.instance.audioSource.PlayOneShot(meteorSFX);
-            }
+            GetComponent<AudioSource>().Play();
+            yield return new WaitForSeconds(1 / playRate);
         }
     }
 }

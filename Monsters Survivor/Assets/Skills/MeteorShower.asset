@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Meteor Shower
   skillIcon: {fileID: 21300000, guid: d9e411be101cab94d9b1a85d3a5390bc, type: 3}
   skillSFX: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
-  coolDownTime: 6
+  coolDownTime: 7
   activeTime: 0
   baseManaCost: 30
   targetsCharacters: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   meteorShowerColliderPrefab: {fileID: 3532440917268783606, guid: 6a8a7c0b68f869a45bb6f346de597aed, type: 3}
   meteorShowerParticlesPrefab: {fileID: 1578278915059731184, guid: a78f89c0573064446b23cee9cc21f306, type: 3}
   baseMeteorShowerDamagePerSecond: 100
-  baseMeteorShowerRadius: 5
+  baseMeteorShowerRadius: 4
   baseMeteorShowerDuration: 5
   baseIgniteChance: 40
   baseIgniteDuration: 4

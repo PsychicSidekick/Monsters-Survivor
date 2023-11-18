@@ -55,6 +55,8 @@ public class MainMenu : MonoBehaviour
         else
         {
             newGameConfirmPanel.SetActive(true);
+            inventoryPanel.SetActive(false);
+            stashPanel.SetActive(false);
         }
     }
 

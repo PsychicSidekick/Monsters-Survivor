@@ -65,6 +65,7 @@ public class IceSpearSkillTree : SkillTree
         additionalNumberOfIceSpearPierces += 2;
         increasedSlowChance += 20;
         increasedSlowDuration += 0.2f;
+        increasedSlowEffect += 20;
     }
 
     public void IceNova()
@@ -76,7 +77,7 @@ public class IceSpearSkillTree : SkillTree
 
     public void SpearRange()
     {
-        increasedIceSpearRange += 0.4f;
+        increasedIceSpearRange += 0.2f;
     }
 
     public void ReducedCosts()

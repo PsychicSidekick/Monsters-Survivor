@@ -47,11 +47,11 @@ public class MeteorShowerSkill : Skill
 
         GameObject meteorShowerParticles = Instantiate(meteorShowerParticlesPrefab, skillHandler.groundTarget - new Vector3(0, 1, 0), Quaternion.identity);
         meteorShowerParticles.transform.localScale = new Vector3(meteorShowerRadius * 0.11f, 1, meteorShowerRadius * 0.11f);
+        meteorShowerParticles.GetComponent<MeteorShowerSound>().playRate = 7;
         if (skillTree.raiseEmission)
         {
-            // Use audio source on skill user instead since having too many particles makes meteor shower sound disrupted
-            Destroy(meteorShowerParticles.GetComponent<MeteorShowerSound>());
-            skillUser.audioSource.PlayOneShot(skillSFX);
+            //Destroy(meteorShowerParticles.GetComponent<MeteorShowerSound>());
+            //skillUser.audioSource.PlayOneShot(skillSFX);
             ParticleSystem.EmissionModule emission = meteorShowerParticles.GetComponent<ParticleSystem>().emission;
             emission.rateOverTime = 200;
         }

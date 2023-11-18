@@ -27,26 +27,26 @@ public class FrozenOrbSkillTree : SkillTree
 
     public void FrozenMana()
     {
-        additionalNumberOfIcicles += 2;
-        additionalManaCost += 2;
+        additionalNumberOfIcicles += 1;
+        additionalManaCost += 5;
     }
 
     public void ManaInfused()
     {
-        increasedIcicleDamage += 0.5f;
+        increasedIcicleDamage += 0.25f;
         additionalManaCost += 5;
     }
 
     public void IceFactory()
     {
         additionalNumberOfIcicles += 3;
-        increasedBaseIcicleDamage += 0.3f;
+        increasedBaseIcicleDamage += 0.1f;
+        additionalManaCost += 20;
     }
 
     public void MultiOrb()
     {
-        additionalCooldownTime -= 4;
-        additionalManaCost -= 20;
+        additionalCooldownTime -= 3;
     }
 
     public void IcicleShootRate()
@@ -56,8 +56,8 @@ public class FrozenOrbSkillTree : SkillTree
 
     public void Streamlined()
     {
-        additionalIciclePierce += 2;
-        increasedIcicleRange += 0.3f;
+        additionalIciclePierce += 1;
+        increasedIcicleRange += 0.15f;
     }
 
     public void SplittedIcicles()
@@ -75,12 +75,12 @@ public class FrozenOrbSkillTree : SkillTree
     public void ManaEngine()
     {
         additionalManaCost += 15;
-        increasedIcicleShootRate += 1;
+        increasedIcicleShootRate += 0.5f;
     }
 
     public void OrbDuration()
     {
-        increasedFrozenOrbDuration += 0.5f;
+        increasedFrozenOrbDuration += 0.3f;
     }
 
     public void HeavyOrb()

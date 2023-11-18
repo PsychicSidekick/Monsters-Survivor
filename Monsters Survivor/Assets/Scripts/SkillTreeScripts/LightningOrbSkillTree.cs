@@ -29,7 +29,7 @@ public class LightningOrbSkillTree : SkillTree
 
     public void ShockEffect()
     {
-        increasedShockEffect += 20;
+        increasedShockEffect += 10;
     }
 
     public void ManaOrbs()
@@ -46,12 +46,12 @@ public class LightningOrbSkillTree : SkillTree
     public void ChaosOrbs()
     {
         randomRotationRadius = true;
-        increasedLightningOrbRotationRadius += 1;
+        increasedLightningOrbRotationRadius += 1.5f;
     }
 
     public void OrbSpeed()
     {
-        increasedLightningOrbSpeed += 0.3f;
+        increasedLightningOrbSpeed += 0.2f;
     }
 
     public void OrbDuration()
@@ -82,12 +82,12 @@ public class LightningOrbSkillTree : SkillTree
 
     public void ShockDuration()
     {
-        increasedShockDuration += 1;
+        increasedShockDuration += 0.3f;
     }
 
     public void ShockChance()
     {
-        increasedShockChance += 30;
+        increasedShockChance += 20;
     }
 
     public override void ResetSkillTree()
