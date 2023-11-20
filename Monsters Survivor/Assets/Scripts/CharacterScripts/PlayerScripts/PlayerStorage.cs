@@ -46,8 +46,11 @@ public class PlayerStorage : MonoBehaviour
     private void Start()
     {
         InitiateStorage();
-        GameSave storageSave = new GameSave();
-        storageSave.Load();
+        if (!Application.streamingAssetsPath.Contains("://") && !Application.streamingAssetsPath.Contains(":///"))
+        {
+            GameSave storageSave = new GameSave();
+            storageSave.Load();
+        }
     }
 
     private void Update()
@@ -95,11 +98,11 @@ public class PlayerStorage : MonoBehaviour
 
             for (int y = 0; y < inventorySize.y; y++)
             {
-                Cell c = Instantiate(cellPrefab, inventoryAnchor.transform.position + new Vector3(x * 60, y * -60, 0), Quaternion.identity).GetComponent<Cell>();
+                Cell c = Instantiate(cellPrefab, inventoryCells.transform, false).GetComponent<Cell>();
+                c.transform.localPosition = inventoryAnchor.transform.localPosition + new Vector3(x * 60, y * -60, 0);
                 c.pos = new Vector2Int(x, y);
                 c.storage = inventory;
                 c.occupied = false;
-                c.transform.SetParent(inventoryCells.transform);
                 cellCol.Add(c);
             }
 
@@ -112,11 +115,11 @@ public class PlayerStorage : MonoBehaviour
 
             for (int y = 0; y < stashSize.y; y++)
             {
-                Cell c = Instantiate(cellPrefab, stashAnchor.transform.position + new Vector3(x * 60, y * -60, 0), Quaternion.identity).GetComponent<Cell>();
+                Cell c = Instantiate(cellPrefab, stashCells.transform, false).GetComponent<Cell>();
+                c.transform.localPosition = stashAnchor.transform.localPosition + new Vector3(x * 60, y * -60, 0);
                 c.pos = new Vector2Int(x, y);
                 c.storage = stash;
                 c.occupied = false;
-                c.transform.SetParent(stashCells.transform);
                 cellCol.Add(c);
             }
 
@@ -329,7 +332,10 @@ public class PlayerStorage : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        GameSave storageSave = new GameSave();
-        storageSave.Save();
+        if (!Application.streamingAssetsPath.Contains("://") && !Application.streamingAssetsPath.Contains(":///"))
+        {
+            GameSave storageSave = new GameSave();
+            storageSave.Save();
+        }
     }
 }

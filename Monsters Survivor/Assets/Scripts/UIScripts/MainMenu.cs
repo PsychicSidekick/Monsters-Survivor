@@ -5,18 +5,20 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject helpPanel;
-
     public TMP_Text longestSurvivalTimeText;
     public GameObject loadingScreen;
     public Slider loadingBar;
 
+    public TMP_Text newGameButtonText;
+    public GameObject exitButton;
+
     public GameObject inventoryPanel;
     public GameObject stashPanel;
-
+    public GameObject helpPanel;
     public GameObject newGameConfirmPanel;
 
     private void Start()
@@ -24,6 +26,12 @@ public class MainMenu : MonoBehaviour
         longestSurvivalTimeText.text = "Your Longest Survival Time: " + TimeToString(PlayerPrefs.GetFloat("HighScore"));
         inventoryPanel = PlayerStorage.instance.transform.GetChild(0).gameObject;
         stashPanel = PlayerStorage.instance.transform.GetChild(1).gameObject;
+
+        if (Application.streamingAssetsPath.Contains("://") || Application.streamingAssetsPath.Contains(":///"))
+        {
+            newGameButtonText.text = "Start";
+            exitButton.SetActive(false);
+        }
     }
 
 
@@ -46,17 +54,24 @@ public class MainMenu : MonoBehaviour
 
     public void NewGameOnClick()
     {
-        string json = File.ReadAllText(Application.streamingAssetsPath + "/Save/save.txt");
-
-        if (json.Length < 72 && PlayerPrefs.GetFloat("HighScore") == 0)
+        if (!Application.streamingAssetsPath.Contains("://") && !Application.streamingAssetsPath.Contains(":///"))
         {
-            StartGameOnClick();
+            string json = File.ReadAllText(Application.streamingAssetsPath + "/Save/save.txt");
+
+            if (json.Length < 72 && PlayerPrefs.GetFloat("HighScore") == 0)
+            {
+                StartGameOnClick();
+            }
+            else
+            {
+                newGameConfirmPanel.SetActive(true);
+                inventoryPanel.SetActive(false);
+                stashPanel.SetActive(false);
+            }
         }
         else
         {
-            newGameConfirmPanel.SetActive(true);
-            inventoryPanel.SetActive(false);
-            stashPanel.SetActive(false);
+            StartGameOnClick();
         }
     }
 
@@ -64,6 +79,7 @@ public class MainMenu : MonoBehaviour
     {
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
         stashPanel.SetActive(!stashPanel.activeInHierarchy);
+        helpPanel.SetActive(false);
     }
 
     public void ShowHelpPanelOnClick()

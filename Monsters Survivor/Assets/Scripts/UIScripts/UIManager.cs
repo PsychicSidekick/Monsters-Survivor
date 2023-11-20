@@ -112,8 +112,11 @@ public class UIManager : MonoBehaviour
 
     public void ReturnToMainMenuOnClick()
     {
-        GameSave storageSave = new GameSave();
-        storageSave.Save();
+        if (!Application.streamingAssetsPath.Contains("://") && !Application.streamingAssetsPath.Contains(":///"))
+        {
+            GameSave storageSave = new GameSave();
+            storageSave.Save();
+        }
 
         GameManager.instance.UnpauseGame();
         PlayerStorage.instance.transform.GetChild(0).gameObject.SetActive(false);
