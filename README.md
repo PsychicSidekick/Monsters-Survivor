@@ -1,6 +1,6 @@
 # Monsters Survivor
 
-An ARPG(Action Role-playing Game) heavily inspired by other ARPGs like Path of Exile and Vampire Survivors, built in Unity Engine.
+An ARPG(Action Role-playing Game) heavily inspired by popular ARPGs like Path of Exile and Vampire Survivors, built in Unity Engine.
 
 Survive as long as you can by defeating waves of monsters, looting items, and leveling up.
 
