@@ -4,6 +4,8 @@ An ARPG(Action Role-playing Game) heavily inspired by popular ARPGs like Path of
 
 Survive as long as you can by defeating waves of monsters, looting items, and leveling up.
 
+Play Here: https://play.unity.com/mg/other/webgl-builds-379557
+
 ### Assets from the Unity Asset Store
 
 Fonts:
