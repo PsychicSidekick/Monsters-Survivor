@@ -6,7 +6,10 @@ Survive as long as you can by defeating waves of monsters, looting items, and le
 
 Play Here: https://play.unity.com/mg/other/webgl-builds-379557
 
-### Assets from the Unity Asset Store
+### Imported Assets
+3D Models & Animations:
+
+https://www.mixamo.com
 
 Fonts:
 
