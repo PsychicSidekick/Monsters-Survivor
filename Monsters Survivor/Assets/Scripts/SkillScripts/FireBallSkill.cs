@@ -32,7 +32,7 @@ public class FireBallSkill : Skill
 
     public override void UseSkill(Character skillUser)
     {
-        skillUser.GetComponent<AudioSource>().PlayOneShot(skillSFX);
+        skillUser.GetComponent<AudioSource>().PlayOneShot(skillSFX, 2);
         FireBallSkillTree skillTree = skillUser.GetComponent<FireBallSkillTree>();
         SkillHandler skillHandler = skillUser.GetComponent<SkillHandler>();
 

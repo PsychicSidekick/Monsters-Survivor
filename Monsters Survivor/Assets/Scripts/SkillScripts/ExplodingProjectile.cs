@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ExplodingProjectile : MonoBehaviour
 {
+    public static float lastExplosion = 0;
+
     public GameObject explosionPrefab;
     public AudioClip explosionSFX;
 
@@ -27,14 +29,21 @@ public class ExplodingProjectile : MonoBehaviour
         Character owner = GetComponent<EffectCollider>().owner;
         if (owner && owner.gameObject.activeInHierarchy)
         {
-            owner.audioSource.clip = explosionSFX;
-            owner.audioSource.Play();
+            if (Time.time - lastExplosion > 0.1f)
+            {
+                owner.audioSource.PlayOneShot(explosionSFX, 2);
+                lastExplosion = Time.time;
+            }
+            //owner.audioSource.clip = explosionSFX;
+            //owner.audioSource.Play();
             explosion.StartCoroutine(DestroyExplosion(explosion.gameObject));
         }
         else
         {
             Destroy(explosion.gameObject);
         }
+
+        owner.audioSource.volume = 0.15f;
     }
 
     public IEnumerator DestroyExplosion(GameObject explosion)

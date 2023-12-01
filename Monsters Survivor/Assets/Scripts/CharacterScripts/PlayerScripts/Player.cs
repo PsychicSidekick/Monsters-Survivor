@@ -83,7 +83,9 @@ public class Player : Character
             PlayerPrefs.SetFloat("HighScore", GameManager.instance.GetCurrentRunTime());
         }
         deathScreen.SetActive(true);
-        Camera.main.GetComponent<AudioSource>().PlayOneShot(deathSFX);
+        Camera.main.GetComponent<AudioSource>().Stop();
+        Camera.main.GetComponent<AudioSource>().volume = 1;
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(deathSFX, 0.2f);
         HUD.instance.timerStopped = true;
         base.OnDeath();
     }
