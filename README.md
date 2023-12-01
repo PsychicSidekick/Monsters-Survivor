@@ -6,7 +6,7 @@ Survive as long as you can by defeating waves of monsters, looting items, and le
 
 Play Here: https://play.unity.com/mg/other/webgl-builds-379557
 
-or Download Here: https://drive.google.com/uc?export=download&id=1jnKXQrKuxs6H3GMFL24hisGcubtcT5xe
+or Download Here: https://drive.google.com/uc?export=download&id=1PNcIgNJC60fk6Xk6YPQ_B72_Q3_-lF4e
 
 Extract and open "Monsters Survivor.exe" to play.
 
